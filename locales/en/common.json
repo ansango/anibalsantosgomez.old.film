@@ -3,13 +3,20 @@
   "langs": {
     "en": {
       "label": "English",
-      "value": "en",
-      "emoji": "🇺🇸"
+      "value": "en"
     },
     "es": {
       "label": "Spanish",
-      "value": "es",
-      "emoji": "🇪🇸"
+      "value": "es"
     }
+  },
+  "defaultSeo": {
+    "title": "Anibal Santos – Film photography",
+    "description": "Making film photography",
+    "image": "https://anibalsantosgomez.com/static/images/banner.png",
+    "author": "Anibal Santos",
+    "type": "website",
+    "site": "https://anibalsantosgomez.com",
+    "twitter": "@iamasync_"
   }
 }

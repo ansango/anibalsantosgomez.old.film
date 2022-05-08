@@ -2,7 +2,7 @@ const { withContentlayer } = require("next-contentlayer");
 const nextTranslate = require("next-translate");
 /** @type {import('next').NextConfig} */
 
-const config = withContentlayer({
+const config = nextTranslate({
   swcMinify: true,
   reactStrictMode: true,
   webpack: (config, { dev, isServer }) => {

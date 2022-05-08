@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { memo } from "react";
 import useTranslation from "next-translate/useTranslation";
 const SwitchLang = () => {
   const { asPath, locale, locales } = useRouter();
@@ -11,20 +10,20 @@ const SwitchLang = () => {
       return {
         route: asPath,
         loc,
-        label: t(`common:langs.${loc}.emoji`),
+        label: t(`common:langs.${loc}.value`),
       };
     })
     .filter(({ loc }) => loc !== locale);
 
   return (
-    <div>
+    <button className="uppercase">
       {langsRoutes.map(({ route, loc, label }) => (
         <Link href={route} key={loc} locale={loc}>
           <a>{label}</a>
         </Link>
       ))}
-    </div>
+    </button>
   );
 };
 
-export default memo(SwitchLang);
+export default SwitchLang;
