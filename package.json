@@ -11,13 +11,15 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "contentlayer": "^0.2.4",
+    "framer-motion": "^6.3.3",
     "next": "12.1.6",
     "next-contentlayer": "^0.2.4",
     "next-themes": "^0.2.0",
     "next-translate": "^1.4.0",
     "preact": "^10.7.2",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "use-delayed-render": "^0.0.7"
   },
   "devDependencies": {
     "@tailwindcss/typography": "tailwindcss/typography",

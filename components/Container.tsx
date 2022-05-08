@@ -9,11 +9,14 @@ type Props = {
 
 const Container: FC<Props> = ({ children, SEOProps }) => {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <>
       <SEO {...SEOProps} />
-      <Nav />
-      {children}
-    </div>
+      <div className="bg-gray-50 dark:bg-gray-900 flex flex-col justify-between h-screen">
+        <Nav />
+        <main>{children}</main>
+        <footer>hola</footer>
+      </div>
+    </>
   );
 };
 
