@@ -1,4 +1,4 @@
-import SwitchLang from "components/SwitchLang";
+import Container from "components/Container";
 import { pick } from "contentlayer/client";
 import { allBlogs } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
@@ -20,8 +20,7 @@ const Blog: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div>
-      <SwitchLang />
+    <Container>
       {posts.map(({ slug, title, summary, publishedAt, lang }) => (
         <div key={slug}>
           <h1>{title}</h1>
@@ -32,7 +31,7 @@ const Blog: NextPage = ({
           </Link>
         </div>
       ))}
-    </div>
+    </Container>
   );
 };
 
