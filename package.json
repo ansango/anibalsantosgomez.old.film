@@ -18,8 +18,7 @@
     "next-translate": "^1.4.0",
     "preact": "^10.7.2",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "use-delayed-render": "^0.0.7"
+    "react-dom": "18.1.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "tailwindcss/typography",
