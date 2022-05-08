@@ -1,3 +1,4 @@
+import SwitchLang from "components/SwitchLang";
 import { allBlogs, Blog } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
@@ -25,7 +26,12 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
 const Post: NextPage = ({ post }: { post: Blog }) => {
   const Component = useMDXComponent(post.body.code);
-  return <Component />;
+  return (
+    <div>
+      <SwitchLang />
+      <Component />
+    </div>
+  );
 };
 
 export default Post;
