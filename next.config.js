@@ -1,15 +1,10 @@
 const { withContentlayer } = require("next-contentlayer");
-
+const nextTranslate = require("next-translate");
 /** @type {import('next').NextConfig} */
 
-module.exports = withContentlayer({
+const config = nextTranslate({
   swcMinify: true,
   reactStrictMode: true,
-  i18n: {
-    locales: ["en", "es"],
-    defaultLocale: "en",
-    localeDetection: false,
-  },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
@@ -23,3 +18,5 @@ module.exports = withContentlayer({
     return config;
   },
 });
+
+module.exports = withContentlayer(config);

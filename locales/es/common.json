@@ -1,0 +1,15 @@
+{
+  "title": "next-translate library",
+  "langs": {
+    "en": {
+      "label": "Inglés",
+      "value": "en",
+      "emoji": "🇺🇸"
+    },
+    "es": {
+      "label": "Español",
+      "value": "es",
+      "emoji": "🇪🇸"
+    }
+  }
+}

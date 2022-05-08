@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <SwitchLang />
-      <Link href="blog">
+      <Link href="/blog">
         <a>Blog</a>
       </Link>
     </div>
