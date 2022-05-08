@@ -1,9 +1,11 @@
 import { pick } from "contentlayer/client";
 import { allBlogs } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import Link from "next/link";
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
+    .filter(({ lang }) => lang === locale)
     .map((post) => pick(post, ["slug", "title", "summary", "publishedAt"]))
     .sort(
       (a, b) =>
@@ -18,11 +20,14 @@ const Blog: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
-      {posts.map(({ slug, title, summary, publishedAt }) => (
+      {posts.map(({ slug, title, summary, publishedAt, lang }) => (
         <div key={slug}>
           <h1>{title}</h1>
           <p>{summary}</p>
           <p>{publishedAt}</p>
+          <Link href={`blog/${slug}`} locale={lang}>
+            <a>Read more</a>
+          </Link>
         </div>
       ))}
     </div>

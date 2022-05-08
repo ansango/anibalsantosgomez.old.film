@@ -5,6 +5,11 @@ const { withContentlayer } = require("next-contentlayer");
 module.exports = withContentlayer({
   swcMinify: true,
   reactStrictMode: true,
+  i18n: {
+    locales: ["en", "es"],
+    defaultLocale: "en",
+    localeDetection: false,
+  },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {

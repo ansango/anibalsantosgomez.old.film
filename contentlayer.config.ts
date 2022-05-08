@@ -19,19 +19,20 @@ const computedFields: ComputedFields = {
   },
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.\w{2}\.mdx$/, ""),
   },
 };
 
 const Blog = defineDocumentType(() => ({
   name: "Blog",
-  filePathPattern: "blog/*.mdx",
+  filePathPattern: "blog/**/*.mdx",
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     publishedAt: { type: "string", required: true },
     summary: { type: "string", required: true },
     image: { type: "string", required: true },
+    lang: { type: "string", required: true },
   },
   computedFields,
 }));

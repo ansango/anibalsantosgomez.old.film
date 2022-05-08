@@ -1,16 +1,21 @@
 import { allBlogs, Blog } from "contentlayer/generated";
-import { GetStaticPaths, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allBlogs.map(({ slug }) => ({ params: { slug } })),
+    paths: allBlogs.map(({ slug, lang }) => ({
+      params: { slug },
+      locale: lang,
+    })),
     fallback: false,
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const post = allBlogs.find(({ slug }) => slug === params.slug);
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+  const post = allBlogs.find(
+    ({ slug, lang }) => slug === params.slug && locale === lang
+  );
   return {
     props: {
       post,
