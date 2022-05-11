@@ -21,16 +21,18 @@ const Blog: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Container>
-      {posts.map(({ slug, title, summary, publishedAt, lang }) => (
-        <div key={slug}>
-          <h1>{title}</h1>
-          <p>{summary}</p>
-          <p>{publishedAt}</p>
-          <Link href={`blog/${slug}`} locale={lang}>
-            <a>Read more</a>
-          </Link>
-        </div>
-      ))}
+      {posts.map(({ slug, title, summary, publishedAt, lang }) => {
+        return (
+          <div key={slug}>
+            <h1>{title}</h1>
+            <p>{summary}</p>
+            <p>{publishedAt}</p>
+            <Link href={`/blog/${slug}`} locale={lang}>
+              <a>Read more</a>
+            </Link>
+          </div>
+        );
+      })}
     </Container>
   );
 };
