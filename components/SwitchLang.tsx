@@ -1,51 +1,23 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { Component, ReactNode, } from "react";
-
-interface Props {
-  children: ReactNode;
-}
-
-interface State {
-  hasError: boolean;
-}
-class ErrorBoundary extends Component<Props, State> {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    console.log(error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
-    }
-
-    return this.props.children;
-  }
-}
 
 const SwitchLang = () => {
-  const { locale } = useRouter();
+  const { locales, asPath, locale: currentLocale } = useRouter();
   const { t } = useTranslation();
 
-  const newLocale = locale === "en" ? "es" : "en";
-  
   return (
-    <Link href={"/"} locale={newLocale}>
-      <a>Hola</a>
-    </Link>
+    <>
+      {locales.map((locale) => {
+        const cn = locale === currentLocale ? "text-blue-500" : "";
+
+        return (
+          <Link href={asPath} key={locale} locale={locale}>
+            <a className={cn}>{locale}</a>
+          </Link>
+        );
+      })}
+    </>
   );
 };
 
