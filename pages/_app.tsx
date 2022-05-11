@@ -10,5 +10,5 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
-
-export default appWithTranslation(MyApp);
+export default MyApp
+// export default appWithTranslation(MyApp);
