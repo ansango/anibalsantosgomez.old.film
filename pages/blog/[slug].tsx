@@ -27,7 +27,15 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 const Post: NextPage = ({ post }: { post: Blog }) => {
   const Component = useMDXComponent(post.body.code);
   return (
-    <Container>
+    <Container
+      SEOProps={{
+        type: "article",
+        title: `${post.title} - Anibal Santos `,
+        date: post.publishedAt,
+        description: post.summary,
+        image: post.image,
+      }}
+    >
       <Component />
     </Container>
   );

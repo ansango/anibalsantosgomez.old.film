@@ -19,8 +19,11 @@ const computedFields: ComputedFields = {
   },
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.\w{2}\.mdx$/, ""),
+    resolve: (doc) => {
+      return doc._raw.sourceFileDir.split("/").pop();
+    },
   },
+  lang: { type: "string", resolve: (doc) => doc.lang },
 };
 
 const Blog = defineDocumentType(() => ({
