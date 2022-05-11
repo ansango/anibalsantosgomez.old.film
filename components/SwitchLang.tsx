@@ -7,12 +7,14 @@ const SwitchLang = () => {
   return (
     <>
       {locales.map((locale) => {
-        const cn = locale === currentLocale ? "text-blue-600 dark:text-blue-500" : "";
-
         return (
-          <Link href={asPath} key={locale} locale={locale}>
-            <a className={cn}>{locale}</a>
-          </Link>
+          <>
+            {locale !== currentLocale && (
+              <Link href={asPath} key={locale} locale={locale}>
+                <a>{locale}</a>
+              </Link>
+            )}
+          </>
         );
       })}
     </>
