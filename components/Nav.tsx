@@ -42,27 +42,27 @@ const path02Variants = {
 };
 
 const Nav = () => {
-  // const [open, cycleOpen] = useCycle(false, true);
-  // const path01Controls = useAnimation();
-  // const path02Controls = useAnimation();
+  const [open, cycleOpen] = useCycle(false, true);
+  const path01Controls = useAnimation();
+  const path02Controls = useAnimation();
 
-  // const onClick = async () => {
-  //   cycleOpen();
-  //   if (!open) {
-  //     await path02Controls.start(path02Variants.moving);
-  //     path01Controls.start(path01Variants.open);
-  //     path02Controls.start(path02Variants.open);
-  //   } else {
-  //     path01Controls.start(path01Variants.closed);
-  //     await path02Controls.start(path02Variants.moving);
-  //     path02Controls.start(path02Variants.closed);
-  //   }
-  // };
+  const onClick = async () => {
+    cycleOpen();
+    if (!open) {
+      await path02Controls.start(path02Variants.moving);
+      path01Controls.start(path01Variants.open);
+      path02Controls.start(path02Variants.open);
+    } else {
+      path01Controls.start(path01Variants.closed);
+      await path02Controls.start(path02Variants.moving);
+      path02Controls.start(path02Variants.closed);
+    }
+  };
   return (
     <div className="flex flex-col justify-center px-8">
       <nav className="flex items-center justify-between w-full relative max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
         <div className="">
-          {/* <button onClick={onClick}>
+          <button onClick={onClick}>
             <svg width="24" height="24" viewBox="0 0 24 24">
               <motion.path
                 {...path01Variants.closed}
@@ -77,13 +77,13 @@ const Nav = () => {
                 stroke="#000"
               />
             </svg>
-          </button> */}
+          </button>
         </div>
         <div className="flex items-center space-x-2">
           <SwitchLang />
           <SwitchTheme />
         </div>
-        {/* <AnimatePresence>
+        <AnimatePresence>
           {open && (
             <motion.div
               initial={{ width: 0 }}
@@ -115,7 +115,7 @@ const Nav = () => {
               </motion.div>
             </motion.div>
           )}
-        </AnimatePresence> */}
+        </AnimatePresence>
       </nav>
     </div>
   );
