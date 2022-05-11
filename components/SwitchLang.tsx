@@ -6,7 +6,7 @@ const SwitchLang = () => {
   const { t } = useTranslation();
 
   const langsRoutes = locales
-    .map((loc: string) => {
+    ?.map((loc: string) => {
       return {
         route: asPath,
         loc,
