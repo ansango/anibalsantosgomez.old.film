@@ -1,4 +1,4 @@
-import { useTranslation } from "next-i18next";
+import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC } from "react";
@@ -12,7 +12,8 @@ export type Props = {
 };
 
 const SEO: FC<Props> = ({ title, description, image, type, date }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
+  console.log(t("defaultSeo.title"));
   const meta = {
     title: title || t(`common:defaultSeo.title`),
     description: description || t(`common:defaultSeo.description`),

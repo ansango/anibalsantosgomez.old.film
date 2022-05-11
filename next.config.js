@@ -1,10 +1,13 @@
 const { withContentlayer } = require("next-contentlayer");
-const { i18n } = require("./next-i18next.config");
-
+const nextTranslate = require("next-translate");
 /** @type {import('next').NextConfig} */
 
-module.exports = withContentlayer({
-  swcMinify: true,
-  reactStrictMode: true,
-  i18n,
-});
+module.exports = withContentlayer(
+  nextTranslate({
+    swcMinify: true,
+    reactStrictMode: true,
+    webpack: (config) => {
+      return config;
+    },
+  })
+);
