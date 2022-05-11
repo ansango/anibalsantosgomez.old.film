@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { Component, ReactNode } from "react";
+import { Component, ReactNode, } from "react";
 
 interface Props {
   children: ReactNode;
@@ -37,19 +37,15 @@ class ErrorBoundary extends Component<Props, State> {
 }
 
 const SwitchLang = () => {
-  const { asPath, locale } = useRouter();
+  const { locale } = useRouter();
   const { t } = useTranslation();
 
   const newLocale = locale === "en" ? "es" : "en";
-
+  
   return (
-    <ErrorBoundary>
-      <button className="uppercase">
-        <Link href={asPath} locale={newLocale}>
-          <a>{t(`common:langs.${newLocale}.value`)}</a>
-        </Link>
-      </button>
-    </ErrorBoundary>
+    <Link href={"/"} locale={newLocale}>
+      <a>Hola</a>
+    </Link>
   );
 };
 
