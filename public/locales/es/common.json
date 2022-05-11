@@ -1,15 +1,4 @@
 {
-  "title": "next-translate library",
-  "langs": {
-    "en": {
-      "label": "Inglés",
-      "value": "en"
-    },
-    "es": {
-      "label": "Español",
-      "value": "es"
-    }
-  },
   "defaultSeo": {
     "title": "Anibal Santos – Fotografía",
     "description": "Hago cosas antiguas",

@@ -1,15 +1,5 @@
 {
-  "title": "next-translate library",
-  "langs": {
-    "en": {
-      "label": "English",
-      "value": "en"
-    },
-    "es": {
-      "label": "Spanish",
-      "value": "es"
-    }
-  },
+  
   "defaultSeo": {
     "title": "Anibal Santos – Film photography",
     "description": "Making film photography",
