@@ -5,7 +5,6 @@ import { allBlogs, Blog } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
 import { useState } from "react";
-
 import seoConfig from "lib/seoConfig";
 import useTranslation from "next-translate/useTranslation";
 import formatDate from "lib/formatDate";
