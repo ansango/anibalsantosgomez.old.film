@@ -6,16 +6,12 @@ const SwitchLang = () => {
 
   return (
     <>
-      {locales.map((locale) => {
-        return (
-          <>
-            {locale !== currentLocale && (
-              <Link href={asPath} key={locale} locale={locale}>
-                <a>{locale}</a>
-              </Link>
-            )}
-          </>
-        );
+      {locales.map((locale, index) => {
+        if (locale === currentLocale) {
+          <Link href={asPath} key={index} locale={locale}>
+            <a>{locale}</a>
+          </Link>;
+        }
       })}
     </>
   );

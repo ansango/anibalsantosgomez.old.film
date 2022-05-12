@@ -16,6 +16,8 @@ const CustomLink = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
+
+
 const MDXComponents = {
   Image,
   a: CustomLink,

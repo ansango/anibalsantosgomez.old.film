@@ -4,20 +4,20 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 11 May 2022 22:58:41 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 12 May 2022 00:24:36 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[10 Days in Norway]]></title>
-            <description><![CDATA[Visualize my journey through the scenic lands of Norway with rich, stunning pictures and daily travel logs.]]></description>
-            <link>https://anibalsantosgomez.com/blog/test</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/blog/test</guid>
-            <pubDate>Sat, 15 Jul 2017 00:00:00 GMT</pubDate>
+            <title><![CDATA[Firenze in black and white]]></title>
+            <description><![CDATA[Collection of black and white pictures of one of the most incredible cities in Italy]]></description>
+            <link>https://anibalsantosgomez.com/blog/firenze</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/blog/firenze</guid>
+            <pubDate>Thu, 12 May 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Diez días en Noruega]]></title>
-            <description><![CDATA[Visualice mi viaje por los paises de Noruega con imágenes increíbles y diarios de viaje.]]></description>
-            <link>https://anibalsantosgomez.com/es/blog/test</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/blog/test</guid>
+            <title><![CDATA[Florencia blanco y negro]]></title>
+            <description><![CDATA[Colección de fotos en blanco y negro sobre una de las ciudades mas increíbles de Italia]]></description>
+            <link>https://anibalsantosgomez.com/es/blog/firenze</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/blog/firenze</guid>
             <pubDate>Sat, 15 Jul 2017 00:00:00 GMT</pubDate>
         </item>
     </channel>
