@@ -1,10 +1,8 @@
-import Container from "components/Container";
 import { allBlogs, Blog } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import components from "components/MDXComponents";
 import BlogLayout from "layouts/blog";
-import { pick } from "contentlayer/client";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -29,14 +27,9 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     ({ slug }) => slug === params.slug
   );
   const nextPost = sortedPostsByDate[postIndex + 1] || null;
-  const currentPost = sortedPostsByDate[postIndex] 
+  const currentPost = sortedPostsByDate[postIndex];
   const previousPost = sortedPostsByDate[postIndex - 1] || null;
-  console.log(currentPost);
-  console.log(previousPost);
-  console.log(nextPost);
-  const post = allBlogs.find(
-    ({ slug, lang }) => slug === params.slug && locale === lang
-  );
+
   return {
     props: {
       currentPost,

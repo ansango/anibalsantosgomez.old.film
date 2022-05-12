@@ -6,6 +6,8 @@ import { parseISO, format } from "date-fns";
 import seoConfig from "lib/seoConfig";
 import Structure from "components/Structure";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
+import formatDate from "lib/formatDate";
 const BlogLayout = ({
   children,
   currentPost,
@@ -16,6 +18,8 @@ const BlogLayout = ({
   nextPost: Blog;
   previousPost: Blog;
 }>) => {
+  const { t } = useTranslation("common");
+
   return (
     <Container
       SeoProps={{
@@ -42,7 +46,7 @@ const BlogLayout = ({
               />
               <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
                 {seoConfig.author} /
-                {format(parseISO(currentPost.publishedAt), "MMMM dd, yyyy")}
+                {formatDate(currentPost.publishedAt, t("date-locale"))}
               </p>
             </div>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">

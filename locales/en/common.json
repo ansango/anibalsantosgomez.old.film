@@ -14,5 +14,6 @@
       "label": "Blog"
     }
   },
-  "read-more": "Read more"
+  "read-more": "Read more",
+  "date-locale": "en-US"
 }

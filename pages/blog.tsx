@@ -5,9 +5,11 @@ import { allBlogs, Blog } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
 import { useState } from "react";
-import { parseISO, format } from "date-fns";
+
 import seoConfig from "lib/seoConfig";
 import useTranslation from "next-translate/useTranslation";
+import formatDate from "lib/formatDate";
+
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
     .filter(({ lang }) => lang === locale)
@@ -17,7 +19,7 @@ export const getStaticProps: GetStaticProps = ({ locale }) => {
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
     );
 
-  return { props: { posts } };
+  return { props: { posts, locale } };
 };
 
 const BlogPost = ({
@@ -27,6 +29,8 @@ const BlogPost = ({
   publishedAt,
   lang,
 }: Pick<Blog, "slug" | "title" | "summary" | "publishedAt" | "lang">) => {
+  const { t } = useTranslation("common");
+
   return (
     <Link href={`/blog/${slug}`} locale={lang}>
       <a className="w-full">
@@ -36,7 +40,7 @@ const BlogPost = ({
               {title}
             </h4>
             <p className="mb-4 text-left text-gray-500 flex items-center space-x-1 w-full md:justify-end">
-              <span>{format(parseISO(publishedAt), "MMMM dd, yyyy")}</span>
+              {formatDate(publishedAt, t("date-locale"))}
             </p>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{summary}</p>
@@ -54,6 +58,7 @@ const Blog: NextPage = ({
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
   const { t } = useTranslation("blog");
+
   return (
     <Container
       SeoProps={{
