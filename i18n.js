@@ -4,5 +4,6 @@ module.exports = {
   localeDetection: false,
   pages: {
     "*": ["common"],
+    "/blog": ["blog"],
   },
 };
