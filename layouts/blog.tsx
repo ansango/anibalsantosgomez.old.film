@@ -19,7 +19,6 @@ const BlogLayout = ({
   previousPost: Blog;
 }>) => {
   const { t } = useTranslation("common");
-
   return (
     <Container
       SeoProps={{
@@ -37,20 +36,36 @@ const BlogLayout = ({
           </h1>
           <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
             <div className="flex items-center">
-              <Image
-                alt={seoConfig.author}
-                height={24}
-                width={24}
-                src="/avatar.jpeg"
-                className="rounded-full"
-              />
-              <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+              <span className="flex">
+                <Image
+                  alt={seoConfig.author}
+                  height={24}
+                  width={24}
+                  src="/avatar.jpeg"
+                  className="rounded-full"
+                />
+              </span>
+              <p className="ml-2 text-sm text-gray-700 dark:text-gray-300 h-full">
                 {seoConfig.author} /
                 {formatDate(currentPost.publishedAt, t("date-locale"))}
               </p>
             </div>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-              {currentPost.readingTime.text}
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0 flex items-center space-x-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="h-full">{currentPost.readingTime.text.split("read").join("")}</span>
             </p>
           </div>
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
