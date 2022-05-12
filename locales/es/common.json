@@ -2,5 +2,16 @@
   "defaultSeo": {
     "title": "Fotografía",
     "description": "Hago cosas antiguas"
+  },
+  "routes": {
+    "home": {
+      "label": "Inicio"
+    },
+    "about": {
+      "label": "Sobre mí"
+    },
+    "blog": {
+      "label": "Blog"
+    }
   }
 }

@@ -2,5 +2,16 @@
   "defaultSeo": {
     "title": "Film photography",
     "description": "Making film photography"
+  },
+  "routes": {
+    "home": {
+      "label": "Home"
+    },
+    "about": {
+      "label": "About"
+    },
+    "blog": {
+      "label": "Blog"
+    }
   }
 }

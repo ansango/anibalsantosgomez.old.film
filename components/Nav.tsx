@@ -3,21 +3,24 @@ import SwitchTheme from "./SwitchTheme";
 import Link from "next/link";
 import { useState } from "react";
 import Structure from "./Structure";
-
-const links = [
-  { name: "Home", to: "/", id: 1 },
-  { name: "Blog", to: "/blog", id: 3 },
-  { name: "About", to: "#", id: 2 },
-];
+import NavItem from "./NavItem";
+import useTranslation from "next-translate/useTranslation";
 
 const Nav = () => {
+  const { t } = useTranslation("common");
+
+  const links = [
+    { name: t("routes.home.label"), to: "/" },
+    { name: t("routes.blog.label"), to: "/blog" },
+    { name: t("routes.about.label"), to: "/about" },
+  ];
   const [open, toggle] = useState(false);
 
   return (
     <Structure>
       <div className="relative">
         <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
-          <div className="flex items-center">
+          <div className="flex items-center md:hidden">
             <button onClick={() => toggle(!open)} className="h-6 w-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +36,11 @@ const Nav = () => {
                 />
               </svg>
             </button>
+          </div>
+          <div className="md:block ml-[-0.60rem]">
+            {links.map(({ name, to }, index) => (
+              <NavItem key={index} text={name} href={to} />
+            ))}
           </div>
           <div className="flex items-center space-x-2">
             <SwitchLang />
@@ -68,8 +76,8 @@ const Nav = () => {
             </nav>
             <div className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
               <ul className="space-y-2 flex flex-col w-full">
-                {links.map(({ name, to, id }) => (
-                  <Link href={to} key={id} passHref>
+                {links.map(({ name, to }, index) => (
+                  <Link href={to} key={index} passHref>
                     <a className="py-3 border-b border-gray-200 dark:border-b-gray-800 hover:font-semibold">
                       {name}
                     </a>

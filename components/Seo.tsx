@@ -25,8 +25,8 @@ const Seo: FC<Props> = ({
   const localePrefix = locale === "en" ? "" : `/${locale}`;
 
   const meta = {
-    title: title || `${author} - ${t(`common:defaultSeo.title`)}`,
-    description: description || t(`common:defaultSeo.description`),
+    title: title || `${author} - ${t(`defaultSeo.title`)}`,
+    description: description || t(`defaultSeo.description`),
     image: image || imageDefault,
     type,
     author,

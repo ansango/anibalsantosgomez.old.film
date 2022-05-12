@@ -1,8 +1,16 @@
+import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import ExternalLink from "./ExternalLink";
 import Structure from "./Structure";
 
 const Footer = () => {
+  const { t } = useTranslation("common");
+
+  const links = [
+    { name: t("routes.home.label"), to: "/" },
+    { name: t("routes.blog.label"), to: "/blog" },
+    { name: t("routes.about.label"), to: "/about" },
+  ];
   return (
     <Structure>
       <footer className="flex flex-col justify-center items-start w-full mb-8">
@@ -10,21 +18,13 @@ const Footer = () => {
 
         <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
           <div className="flex flex-col space-y-4">
-            <Link href="/">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                Home
-              </a>
-            </Link>
-            <Link href="/blog">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                Blog
-              </a>
-            </Link>
-            <Link href="/about">
-              <a className="text-gray-500 hover:text-gray-600 transition">
-                About
-              </a>
-            </Link>
+            {links.map(({ name, to }, index) => (
+              <Link href={to} key={index}>
+                <a className="text-gray-500 hover:text-gray-600 transition">
+                  {name}
+                </a>
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col space-y-4">
             <ExternalLink href="https://instagram.com/iamasync">
