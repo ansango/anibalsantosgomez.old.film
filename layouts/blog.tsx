@@ -2,7 +2,6 @@ import Container from "components/Container";
 import { Blog } from "contentlayer/generated";
 import Image from "next/image";
 import { PropsWithChildren } from "react";
-import { parseISO, format } from "date-fns";
 import seoConfig from "lib/seoConfig";
 import Structure from "components/Structure";
 import Link from "next/link";
