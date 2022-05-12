@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PropsWithChildren } from "react";
 import { parseISO, format } from "date-fns";
 import seoConfig from "lib/seoConfig";
+import Structure from "components/Structure";
 const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Blog }>) => {
   return (
     <Container
@@ -14,8 +15,8 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Blog }>) => {
         description: post.summary,
         image: post.image,
       }}
-    >
-      <article className="flex flex-col items-start justify-center w-full mb-16">
+    ><Structure>
+      <article className="flex flex-col items-start justify-center mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {post.title}
         </h1>
@@ -40,7 +41,7 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Blog }>) => {
         <div className="w-full mt-4 prose dark:prose-dark max-w-none">
           {children}
         </div>
-      </article>
+      </article></Structure>
     </Container>
   );
 };

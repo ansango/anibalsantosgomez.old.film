@@ -1,4 +1,5 @@
 import Container from "components/Container";
+import Structure from "components/Structure";
 import { pick } from "contentlayer/client";
 import { allBlogs } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
@@ -26,20 +27,22 @@ const Blog: NextPage = ({
         description: "Blog de Anibal Santos",
       }}
     >
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        {posts.map(({ slug, title, summary, publishedAt, lang }) => {
-          return (
-            <div key={slug}>
-              <h1>{title}</h1>
-              <p>{summary}</p>
-              <p>{publishedAt}</p>
-              <Link href={`/blog/${slug}`} locale={lang}>
-                <a>Read more</a>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+      <Structure>
+        <div className="flex flex-col items-start justify-center mb-16">
+          {posts.map(({ slug, title, summary, publishedAt, lang }) => {
+            return (
+              <div key={slug}>
+                <h1>{title}</h1>
+                <p>{summary}</p>
+                <p>{publishedAt}</p>
+                <Link href={`/blog/${slug}`} locale={lang}>
+                  <a>Read more</a>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </Structure>
     </Container>
   );
 };

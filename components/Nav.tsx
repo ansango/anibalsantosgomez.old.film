@@ -2,6 +2,7 @@ import SwitchLang from "./SwitchLang";
 import SwitchTheme from "./SwitchTheme";
 import Link from "next/link";
 import { useState } from "react";
+import Structure from "./Structure";
 
 const links = [
   { name: "Home", to: "/", id: 1 },
@@ -13,60 +14,73 @@ const Nav = () => {
   const [open, toggle] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
-      <div className="flex items-center">
-        <button onClick={() => toggle(!open)} className="h-6 w-6">
-          {!open && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 8h16M4 16h16"
-              />
-            </svg>
-          )}
-          {open && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          )}
-        </button>
-      </div>
-      <div className="flex items-center space-x-2">
-        <SwitchLang />
-        <SwitchTheme />
-      </div>
-
-      {open && (
-        <div className="h-full absolute mt-60 w-full z-10 bg-gray-50">
-          <div className="space-y-2 flex flex-col">
-            {links.map(({ name, to, id }) => (
-              <Link href={to} key={id} passHref>
-                <a className="bg-gray-100 dark:bg-gray-800 p-3 border border-gray-200 dark:border-gray-800 rounded-md hover:shadow-md hover:scale-025 transition-all duration-200">
-                  {name}
-                </a>
-              </Link>
-            ))}
+    <Structure>
+      <div className="relative">
+        <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+          <div className="flex items-center">
+            <button onClick={() => toggle(!open)} className="h-6 w-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 8h16M4 16h16"
+                />
+              </svg>
+            </button>
           </div>
-        </div>
-      )}
-    </nav>
+          <div className="flex items-center space-x-2">
+            <SwitchLang />
+            <SwitchTheme />
+          </div>
+        </nav>
+        {open && (
+          <div className="h-screen absolute w-full z-10 bg-gray-100 dark:bg-gray-900 top-0">
+            <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+              <div className="flex items-center">
+                <button onClick={() => toggle(!open)} className="h-6 w-6">
+                  {open && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
+              <div className="flex items-center space-x-2">
+                <SwitchLang />
+                <SwitchTheme />
+              </div>
+            </nav>
+            <div className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+              <ul className="space-y-2 flex flex-col w-full">
+                {links.map(({ name, to, id }) => (
+                  <Link href={to} key={id} passHref>
+                    <a className="py-3 border-b border-gray-200 dark:border-b-gray-800 hover:font-semibold">
+                      {name}
+                    </a>
+                  </Link>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+    </Structure>
   );
 };
 
