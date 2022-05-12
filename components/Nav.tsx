@@ -8,7 +8,6 @@ import useTranslation from "next-translate/useTranslation";
 
 const Nav = () => {
   const { t } = useTranslation("common");
-
   const links = [
     { name: t("routes.home.label"), to: "/" },
     { name: t("routes.blog.label"), to: "/blog" },
@@ -77,7 +76,12 @@ const Nav = () => {
             <div className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
               <ul className="space-y-2 flex flex-col w-full">
                 {links.map(({ name, to }, index) => (
-                  <Link href={to} key={index} passHref>
+                  <Link
+                    href={to}
+                    key={index}
+                    passHref
+                    onClick={() => toggle(!open)}
+                  >
                     <a className="py-3 border-b border-gray-200 dark:border-b-gray-800 hover:font-semibold">
                       {name}
                     </a>
