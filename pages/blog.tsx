@@ -20,19 +20,26 @@ const Blog: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Container>
-      {posts.map(({ slug, title, summary, publishedAt, lang }) => {
-        return (
-          <div key={slug}>
-            <h1>{title}</h1>
-            <p>{summary}</p>
-            <p>{publishedAt}</p>
-            <Link href={`/blog/${slug}`} locale={lang}>
-              <a>Read more</a>
-            </Link>
-          </div>
-        );
-      })}
+    <Container
+      SeoProps={{
+        title: "Blog - Anibal Santos",
+        description: "Blog de Anibal Santos",
+      }}
+    >
+      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
+        {posts.map(({ slug, title, summary, publishedAt, lang }) => {
+          return (
+            <div key={slug}>
+              <h1>{title}</h1>
+              <p>{summary}</p>
+              <p>{publishedAt}</p>
+              <Link href={`/blog/${slug}`} locale={lang}>
+                <a>Read more</a>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </Container>
   );
 };

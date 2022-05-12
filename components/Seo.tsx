@@ -2,6 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import seoConfig from "lib/seoConfig";
 
 export type Props = {
   title?: string;
@@ -11,20 +12,27 @@ export type Props = {
   date?: string;
 };
 
-const SEO: FC<Props> = ({ title, description, image, type, date }) => {
+const Seo: FC<Props> = ({
+  title,
+  description,
+  image,
+  type = "website",
+  date,
+}) => {
+  const { author, site, twitter, image: imageDefault } = seoConfig;
   const { t } = useTranslation("common");
-  console.log(t("defaultSeo.title"));
+  const { asPath, locale } = useRouter();
+  const localePrefix = locale === "en" ? "" : `/${locale}`;
+  console.log(image);
   const meta = {
-    title: title || t(`common:defaultSeo.title`),
+    title: title || `${author} - ${t(`common:defaultSeo.title`)}`,
     description: description || t(`common:defaultSeo.description`),
-    image: image || t(`common:defaultSeo.image`),
-    type: type || t(`common:defaultSeo.type`),
-    author: t(`common:defaultSeo.author`),
-    site: t(`common:defaultSeo.site`),
-    twitter: t(`common:defaultSeo.twitter`),
+    image: image || imageDefault,
+    type,
+    author,
+    site: `${site}${localePrefix}`,
+    twitter,
   };
-
-  const { asPath } = useRouter();
 
   return (
     <Head>
@@ -48,4 +56,4 @@ const SEO: FC<Props> = ({ title, description, image, type, date }) => {
   );
 };
 
-export default SEO;
+export default Seo;

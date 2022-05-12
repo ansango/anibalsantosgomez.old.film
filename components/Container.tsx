@@ -1,20 +1,21 @@
 import { FC, ReactNode } from "react";
+import Footer from "./Footer";
 import Nav from "./Nav";
-import SEO, { Props as SEOProps } from "./SEO";
+import Seo, { Props as SeoProps } from "./Seo";
 
 type Props = {
   children: ReactNode;
-  SEOProps?: SEOProps;
+  SeoProps?: SeoProps;
 };
 
-const Container: FC<Props> = ({ children, SEOProps }) => {
+const Container: FC<Props> = ({ children, SeoProps }) => {
   return (
     <>
-      <SEO {...SEOProps} />
+      <Seo {...SeoProps} />
       <div className="bg-gray-50 dark:bg-gray-900 flex flex-col justify-between h-screen">
         <Nav />
         <main>{children}</main>
-        <footer>hola</footer>
+        <Footer />
       </div>
     </>
   );

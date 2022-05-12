@@ -2,7 +2,8 @@ import Container from "components/Container";
 import { allBlogs, Blog } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-
+import components from "components/MDXComponents";
+import BlogLayout from "layouts/blog";
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: allBlogs.map(({ slug, lang }) => ({
@@ -27,17 +28,9 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 const Post: NextPage = ({ post }: { post: Blog }) => {
   const Component = useMDXComponent(post.body.code);
   return (
-    <Container
-      SEOProps={{
-        type: "article",
-        title: `${post.title} - Anibal Santos `,
-        date: post.publishedAt,
-        description: post.summary,
-        image: post.image,
-      }}
-    >
-      <Component />
-    </Container>
+    <BlogLayout post={post}>
+      <Component components={{ ...components }} />
+    </BlogLayout>
   );
 };
 
