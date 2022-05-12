@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.0",
     "classnames": "^2.3.1",
     "contentlayer": "^0.2.4",
     "next": "12.1.6",

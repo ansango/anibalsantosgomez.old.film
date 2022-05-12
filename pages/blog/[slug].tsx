@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import components from "components/MDXComponents";
 import BlogLayout from "layouts/blog";
+import { pick } from "contentlayer/client";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -16,37 +17,48 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const postIndex = allBlogs.findIndex(
-    ({ slug, lang }) => slug !== params.slug && locale === lang
-  );
-  const prev = allBlogs[postIndex + 1] || null;
-  const next = allBlogs[postIndex - 1] || null;
+  const sortedPostsByDate = allBlogs
+    .filter(({ lang }) => lang === locale)
+    .map((post) => post)
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    );
 
+  const postIndex = sortedPostsByDate.findIndex(
+    ({ slug }) => slug === params.slug
+  );
+  const nextPost = sortedPostsByDate[postIndex + 1] || null;
+  const currentPost = sortedPostsByDate[postIndex] 
+  const previousPost = sortedPostsByDate[postIndex - 1] || null;
+  console.log(currentPost);
+  console.log(previousPost);
+  console.log(nextPost);
   const post = allBlogs.find(
     ({ slug, lang }) => slug === params.slug && locale === lang
   );
   return {
     props: {
-      post,
-      prev,
-      next,
+      currentPost,
+      nextPost,
+      previousPost,
     },
   };
 };
 
 const Post: NextPage = ({
-  post,
-  prev,
-  next,
+  currentPost,
+  nextPost,
+  previousPost,
 }: {
-  post: Blog;
-  prev: Blog;
-  next: Blog;
+  currentPost: Blog;
+  previousPost: Blog;
+  nextPost: Blog;
 }) => {
-  console.log(next);
-  const Component = useMDXComponent(post.body.code);
+  const props = { currentPost, nextPost, previousPost };
+  const Component = useMDXComponent(currentPost.body.code);
   return (
-    <BlogLayout post={post} next={next} prev={prev}>
+    <BlogLayout {...props}>
       <Component components={{ ...components }} />
     </BlogLayout>
   );
