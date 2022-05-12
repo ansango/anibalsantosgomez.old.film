@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = ({ locale }) => {
 
 
 
-const Blog: NextPage = ({
+const BlogPage: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [searchValue, setSearchValue] = useState("");
@@ -87,4 +87,4 @@ const Blog: NextPage = ({
   );
 };
 
-export default Blog;
+export default BlogPage;
