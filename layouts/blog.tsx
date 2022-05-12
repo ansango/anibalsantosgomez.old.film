@@ -7,6 +7,7 @@ import Structure from "components/Structure";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import formatDate from "lib/formatDate";
+import { ImageRender, Meta, Note } from "components/MDXComponents";
 const BlogLayout = ({
   children,
   currentPost,
@@ -25,7 +26,7 @@ const BlogLayout = ({
         title: `${currentPost.title} - ${seoConfig.author}`,
         date: `${new Date(currentPost.publishedAt).toISOString()}`,
         description: currentPost.summary,
-        image: currentPost.image,
+        image: currentPost.cover,
       }}
     >
       <Structure>
@@ -64,10 +65,29 @@ const BlogLayout = ({
                   d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span className="h-full">{currentPost.readingTime.text.split("read").join("")}</span>
+              <span className="h-full">
+                {currentPost.readingTime.text.split("read").join("")}
+              </span>
             </p>
           </div>
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+            <ImageRender
+              src={currentPost.cover}
+              alt={currentPost.title}
+              priority
+            />
+            <Note text={currentPost.coverNote} />
+            <hr />
+            <Meta
+              locale={t("date-locale")}
+              meta={currentPost.meta}
+              translations={{
+                camera: t("meta.camera"),
+                film: t("meta.film"),
+                period: t("meta.period"),
+                location: t("meta.location"),
+              }}
+            />
             {children}
           </div>
         </article>

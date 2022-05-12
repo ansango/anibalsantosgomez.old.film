@@ -15,5 +15,11 @@
     }
   },
   "read-more": "Read more",
-  "date-locale": "en-US"
+  "date-locale": "en-US",
+  "meta": {
+    "camera": "Camera",
+    "film": "Film",
+    "period": "Period",
+    "location": "Location"
+  }
 }

@@ -15,5 +15,11 @@
     }
   },
   "read-more": "Ver más",
-  "date-locale": "es-ES"
+  "date-locale": "es-ES",
+  "meta": {
+    "camera": "Cámara",
+    "film": "Película",
+    "period": "Período",
+    "location": "Ubicación"
+  }
 }
