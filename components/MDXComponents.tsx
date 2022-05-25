@@ -19,7 +19,7 @@ const CustomLink = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-type ImgProps = { type: "landscape" | "portrait" } & ImageProps;
+type ImgProps = { type?: "landscape" | "portrait" } & ImageProps;
 
 export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
   const width = type === "landscape" ? 1152 : 768;
