@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image, { ImageProps } from "next/image";
 import { Blog } from "contentlayer/generated";
 import formatDate from "lib/formatDate";
+import { FC } from "react";
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -18,15 +19,21 @@ const CustomLink = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-export const ImageRender = (props: ImageProps) => {
+type ImgProps = { type: "landscape" | "portrait" } & ImageProps;
+
+export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
+  const width = type === "landscape" ? 1152 : 768;
+  const height = type === "landscape" ? 768 : 1152;
   return (
-    <Image
-      alt={props.alt}
-      {...props}
-      width={1152}
-      height={768}
-      className="rounded-sm"
-    />
+    <div className="flex justify-center mb-2">
+      <Image
+        alt={props.alt}
+        width={width}
+        height={height}
+        {...props}
+        className="rounded-sm"
+      />
+    </div>
   );
 };
 
