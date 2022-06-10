@@ -10,7 +10,6 @@ const Nav = () => {
   const { t } = useTranslation("common");
   const links = [
     { name: t("routes.home.label"), to: "/" },
-    { name: t("routes.blog.label"), to: "/blog" },
     { name: t("routes.about.label"), to: "/about" },
   ];
   const [open, toggle] = useState(false);

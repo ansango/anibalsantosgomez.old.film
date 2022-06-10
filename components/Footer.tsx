@@ -8,7 +8,6 @@ const Footer = () => {
 
   const links = [
     { name: t("routes.home.label"), to: "/" },
-    { name: t("routes.blog.label"), to: "/blog" },
     { name: t("routes.about.label"), to: "/about" },
   ];
   return (
