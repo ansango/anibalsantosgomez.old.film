@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://anibalsantosgomez.com/blog</loc>
+    <loc>https://anibalsantosgomez.com/about</loc>
   </url>
 
   <url>
@@ -9,11 +9,23 @@
   </url>
 
   <url>
-    <loc>https://anibalsantosgomez.com/blog/firenze</loc>
+    <loc>https://anibalsantosgomez.com/asturias-perlora</loc>
   </url>
 
   <url>
-    <loc>https://anibalsantosgomez.com/es/blog</loc>
+    <loc>https://anibalsantosgomez.com/asturias-vigo</loc>
+  </url>
+
+  <url>
+    <loc>https://anibalsantosgomez.com/firenze</loc>
+  </url>
+
+  <url>
+    <loc>https://anibalsantosgomez.com/riano</loc>
+  </url>
+
+  <url>
+    <loc>https://anibalsantosgomez.com/es/about</loc>
   </url>
 
   <url>
@@ -21,6 +33,18 @@
   </url>
 
   <url>
-    <loc>https://anibalsantosgomez.com/es/blog/firenze</loc>
+    <loc>https://anibalsantosgomez.com/es/asturias-perlora</loc>
+  </url>
+
+  <url>
+    <loc>https://anibalsantosgomez.com/es/asturias-vigo</loc>
+  </url>
+
+  <url>
+    <loc>https://anibalsantosgomez.com/es/firenze</loc>
+  </url>
+
+  <url>
+    <loc>https://anibalsantosgomez.com/es/riano</loc>
   </url>
 </urlset>

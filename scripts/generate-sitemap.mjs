@@ -8,16 +8,17 @@ async function generate() {
   const prettierConfig = await prettier.resolveConfig("./.prettierrc.js");
   const pages = await globby([
     "pages/*.tsx",
-    "docs/**/*.mdx",
-    "!docs/*.mdx",
+    "blog/**/*.mdx",
+    "!blog/*.mdx",
     "!pages/_*.tsx",
     "!pages/api",
     "!pages/404.tsx",
+    "!pages/[slug].tsx",
   ]);
   const cleanFiles = pages.map((page) => {
     const c = page
       .replace("pages", "")
-      .replace("docs", "")
+      .replace("blog", "")
       .replace(".tsx", "")
       .replace(".mdx", "")
       .replace("/en", "")

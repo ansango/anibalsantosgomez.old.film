@@ -14,8 +14,8 @@ async function generate() {
       ``;
       const url =
         lang === "en"
-          ? `https://anibalsantosgomez.com/blog/${slug}`
-          : `https://anibalsantosgomez.com/${lang}/blog/${slug}`;
+          ? `https://anibalsantosgomez.com/${slug}`
+          : `https://anibalsantosgomez.com/${lang}/${slug}`;
       feed.item({
         title,
         url,

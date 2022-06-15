@@ -1,6 +1,6 @@
 const config = {
   image: "https://anibalsantosgomez.com/static/avatar.jpeg",
-  author: "Anibal Santos",
+  author: "Aníbal Santos Gómez",
   site: "https://anibalsantosgomez.com",
   twitter: "@iamasync_",
 };

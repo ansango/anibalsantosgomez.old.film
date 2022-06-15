@@ -13,7 +13,7 @@ const BlogPost = ({
   const { t } = useTranslation("common");
 
   return (
-    <Link href={`/blog/${slug}`} locale={lang}>
+    <Link href={`/${slug}`} locale={lang}>
       <a className="w-full">
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">

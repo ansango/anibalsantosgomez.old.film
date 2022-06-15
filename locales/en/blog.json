@@ -1,7 +1,0 @@
-{
-  "title": "Blog",
-  "description": "I've been taking photographs since 2004, and mostly analog since 2013. In total, I have published {{ posts }} collections on my blog. Use the search below to filter by title.",
-  "searcher": "Search posts",
-  "allPosts": "All Posts",
-  "noPosts": "No posts found"
-}

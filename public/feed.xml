@@ -4,21 +4,63 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 12 May 2022 01:03:19 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 15 Jun 2022 14:49:55 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[Firenze in black and white]]></title>
-            <description><![CDATA[Collection of black and white pictures of one of the most incredible cities in Italy]]></description>
-            <link>https://anibalsantosgomez.com/blog/firenze</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/blog/firenze</guid>
-            <pubDate>Thu, 12 May 2022 00:00:00 GMT</pubDate>
+            <title><![CDATA[Asturias and Perlora]]></title>
+            <description><![CDATA[Previously on Lost]]></description>
+            <link>https://anibalsantosgomez.com/asturias-perlora</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/asturias-perlora</guid>
+            <pubDate>Fri, 10 Jun 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Florencia blanco y negro]]></title>
-            <description><![CDATA[Colección de fotos en blanco y negro sobre una de las ciudades mas increíbles de Italia]]></description>
-            <link>https://anibalsantosgomez.com/es/blog/firenze</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/blog/firenze</guid>
-            <pubDate>Sat, 15 Jul 2017 00:00:00 GMT</pubDate>
+            <title><![CDATA[Asturias y Perlora]]></title>
+            <description><![CDATA[Anteriormente en Lost]]></description>
+            <link>https://anibalsantosgomez.com/es/asturias-perlora</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/asturias-perlora</guid>
+            <pubDate>Fri, 10 Jun 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Asturias and Vigo]]></title>
+            <description><![CDATA[Nature and mountains]]></description>
+            <link>https://anibalsantosgomez.com/asturias-vigo</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/asturias-vigo</guid>
+            <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Asturias y Vigo]]></title>
+            <description><![CDATA[Naturaleza y montañas]]></description>
+            <link>https://anibalsantosgomez.com/es/asturias-vigo</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/asturias-vigo</guid>
+            <pubDate>Thu, 26 May 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Firenze and Pisa]]></title>
+            <description><![CDATA[Black and white shots of colorful scenes]]></description>
+            <link>https://anibalsantosgomez.com/firenze</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/firenze</guid>
+            <pubDate>Tue, 10 May 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Firenze y Pisa]]></title>
+            <description><![CDATA[Fotografias en blanco y negro de escenas coloridas]]></description>
+            <link>https://anibalsantosgomez.com/es/firenze</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/firenze</guid>
+            <pubDate>Tue, 10 May 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Riaño]]></title>
+            <description><![CDATA[The eastern mountain of Leon]]></description>
+            <link>https://anibalsantosgomez.com/riano</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/riano</guid>
+            <pubDate>Sun, 15 May 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Riaño]]></title>
+            <description><![CDATA[La montaña oriental leonesa]]></description>
+            <link>https://anibalsantosgomez.com/es/riano</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/riano</guid>
+            <pubDate>Sun, 15 May 2022 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
