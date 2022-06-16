@@ -13,7 +13,6 @@ const Document = () => {
         />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
-
         <link
           href="/static/favicons/apple-touch-icon.png"
           rel="apple-touch-icon"
@@ -42,8 +41,10 @@ const Document = () => {
           content="/static/favicons/browserconfig.xml"
           name="msapplication-config"
         />
-
-        <meta content="" name="google-site-verification" />
+        <meta
+          content="Izrz_Y30pnHW61s00dFL8Ph2jki2MUbW7egwneZFVD8"
+          name="google-site-verification"
+        />
       </Head>
       <body className="bg-white dark:bg-black">
         <Main />
