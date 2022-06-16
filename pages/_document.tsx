@@ -45,10 +45,7 @@ const Document = () => {
           content="Izrz_Y30pnHW61s00dFL8Ph2jki2MUbW7egwneZFVD8"
           name="google-site-verification"
         />
-        <meta
-          content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-          name="robots"
-        />
+        <meta content="all" name="robots" />
       </Head>
       <body className="bg-white dark:bg-black">
         <Main />
