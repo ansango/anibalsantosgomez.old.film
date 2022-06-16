@@ -11,7 +11,7 @@
       },
       {
         "src": "/static/favicons/android-chrome-384x384.png",
-        "sizes": "192x192",
+        "sizes": "384x384",
         "type": "image/png"
       },
       {
