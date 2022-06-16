@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image, { ImageProps } from "next/image";
-import { Blog } from "contentlayer/generated";
 import formatDate from "lib/formatDate";
 import { FC } from "react";
 

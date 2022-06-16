@@ -5,6 +5,7 @@ import Image from "next/image";
 import avatar from "public/avatar.jpeg";
 import seoConfig from "lib/seoConfig";
 import useTranslation from "next-translate/useTranslation";
+
 import img1 from "public/images/01.webp";
 import img2 from "public/images/02.webp";
 import img3 from "public/images/03.webp";
