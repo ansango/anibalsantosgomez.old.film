@@ -38,7 +38,6 @@ const Blog = defineDocumentType(() => ({
     coverNote: { type: "string", required: true },
     lang: { type: "string", required: true },
     meta: { type: "json", required: true },
-    featured: { type: "boolean", required: false },
   },
   computedFields,
 }));
