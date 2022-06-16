@@ -31,4 +31,4 @@ const transformImages = async (src, format) => {
   console.log("Done");
 };
 
-transformImages("./blog/**/images/*.{jpg,jpeg,png,gif}", "webp");
+transformImages("./blog/**/images/*.{jpg,JPG,jpeg,JPEG,png,gif}", "webp");
