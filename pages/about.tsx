@@ -49,22 +49,26 @@ const About: NextPage = () => {
           <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
             {t("title")}
           </h1>
-          <div>
-            <Image
-              src={avatar}
-              alt={seoConfig.author}
-              className="w-full rounded-sm"
-              width={150}
-              height={150}
-            />
+          <div className="grid gap-5 grid-cols-12">
+            <div className="col-span-12 lg:col-span-3">
+              <Image
+                src={avatar}
+                alt={seoConfig.author}
+                className="w-full rounded-sm"
+                width={200}
+                height={200}
+              />
+            </div>
+            <div className="col-span-12 lg:col-span-9 space-y-5">
+              <p className="text-gray-600 dark:text-gray-400">
+                {t("p1")} {t("p2")}
+              </p>
+              <p className="text-gray-600 dark:text-gray-400">
+                {t("p3")} {t("p4")}
+              </p>
+            </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-400">
-            {t("p1")} {t("p2")}
-          </p>
-          <p className="text-gray-600 dark:text-gray-400">
-            {t("p3")} {t("p4")}
-          </p>
           <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-5 md:grid-cols-3 py-10">
             {gallery.map((item, index) => (
               <div key={index} className="flex">
