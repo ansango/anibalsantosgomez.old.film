@@ -59,10 +59,12 @@ const About: NextPage = () => {
             />
           </div>
 
-          <p className="text-gray-600 dark:text-gray-400">{t("p1")}</p>
-          <p className="text-gray-600 dark:text-gray-400">{t("p2")}</p>
-          <p className="text-gray-600 dark:text-gray-400">{t("p3")}</p>
-          <p className="text-gray-600 dark:text-gray-400">{t("p4")}</p>
+          <p className="text-gray-600 dark:text-gray-400">
+            {t("p1")} {t("p2")}
+          </p>
+          <p className="text-gray-600 dark:text-gray-400">
+            {t("p3")} {t("p4")}
+          </p>
           <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-5 md:grid-cols-3 py-10">
             {gallery.map((item, index) => (
               <div key={index} className="flex">
