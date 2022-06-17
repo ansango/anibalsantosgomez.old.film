@@ -6,6 +6,7 @@ import useTranslation from "next-translate/useTranslation";
 import cover from "public/images/universidad.webp";
 
 import Image from "next/image";
+import ContactForm from "components/ContactForm";
 const Contact: NextPage = () => {
   const { t } = useTranslation("contact");
   return (
@@ -44,56 +45,7 @@ const Contact: NextPage = () => {
                   {t("form.description")}
                 </p>
               </div>
-              <form className="grid gap-10 grid-cols-12">
-                <label className="block col-span-12 md:col-span-6">
-                  <input
-                    type="text"
-                    className="
-                    mt-0
-                    block
-                    w-full
-                    px-0.5
-                    bg-gray-100 dark:bg-gray-800
-                    border-0 border-b-2 border-gray-200 dark:border-gray-500
-                    focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100
-                  "
-                    placeholder={t("form.fields.name.placeholder")}
-                  />
-                </label>
-                <label className="block col-span-12 md:col-span-6">
-                  <input
-                    type="email"
-                    className="
-                    mt-0
-                    block
-                    w-full
-                    px-0.5
-                    bg-gray-100 dark:bg-gray-800
-                    border-0 border-b-2 border-gray-200 dark:border-gray-500
-                    focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100
-                  "
-                    placeholder={t("form.fields.email.placeholder")}
-                  />
-                </label>
-                <label className="block col-span-12">
-                  <textarea
-                    className="
-                    mt-0
-                    block
-                    w-full
-                    px-0.5
-                    bg-gray-100 dark:bg-gray-800
-                    border-0 border-b-2 border-gray-200 dark:border-gray-500
-                    focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100
-                  "
-                    placeholder={t("form.fields.message.placeholder")}
-                    rows={4}
-                  ></textarea>
-                </label>
-              </form>
-              <button className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto">
-                {t("form.submit")}
-              </button>
+              <ContactForm />
             </div>
           </div>
         </div>
