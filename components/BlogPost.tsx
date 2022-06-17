@@ -22,7 +22,7 @@ const BlogPost = ({
       <a className="w-full flex space-y-5 border-b border-gray-200 dark:border-b-gray-800 mb-2">
         <li className="w-full mb-2">
           <div className="flex justify-between flex-row">
-            <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
+            <h4 className="w-full mb-2 text-lg font-medium text-gray-900 dark:text-gray-100">
               {title}
             </h4>
             <p className="mb-4 text-left text-gray-500 flex items-center space-x-1 w-full justify-end">

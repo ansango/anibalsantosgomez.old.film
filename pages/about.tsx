@@ -43,8 +43,14 @@ const gallery = [
 
 const About: NextPage = () => {
   const { t } = useTranslation("about");
+
   return (
-    <Container>
+    <Container
+      SeoProps={{
+        title: `${t("title")} - ${seoConfig.author}`,
+        description: `${t("description")}`,
+      }}
+    >
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 space-y-5">
           <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">

@@ -1,0 +1,23 @@
+{
+  "title": "Contacto",
+  "description": "¡Hola!",
+  "form": {
+    "title": "¿Hablamos?",
+    "description": "Rellena el siguiente formulario y me pondré en contacto contigo.",
+    "fields": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Escribe tu nombre"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Escribe tu email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "¡Di hola!"
+      }
+    },
+    "submit": "Enviar"
+  }
+}

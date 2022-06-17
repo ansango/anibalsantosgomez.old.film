@@ -10,8 +10,8 @@
     "about": {
       "label": "About"
     },
-    "blog": {
-      "label": "Blog"
+    "contact": {
+      "label": "Contact"
     }
   },
   "read-more": "Read more",

@@ -12,7 +12,7 @@ const NavItem = ({ href, text }) => {
           isActive
             ? "font-semibold text-gray-800 dark:text-gray-200"
             : "font-normal text-gray-600 dark:text-gray-400",
-          "py-2 hover:underline transition-all"
+          "text-xl py-2 hover:underline transition-all"
         )}
       >
         <span className="capsize">{text}</span>

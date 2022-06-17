@@ -1,0 +1,23 @@
+{
+  "title": "Contact",
+  "description": "Say hello!",
+  "form": {
+    "title": "Let's talk",
+    "description": "Please fill out this form to contact me.",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Say hello!"
+      }
+    },
+    "submit": "Send"
+  }
+}

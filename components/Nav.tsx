@@ -15,6 +15,7 @@ const Nav = () => {
   const links = [
     { name: t("routes.home.label"), to: "/" },
     { name: t("routes.about.label"), to: "/about" },
+    { name: t("routes.contact.label"), to: "/contact" },
   ];
   const { asPath, locale } = useRouter();
   const isHome = asPath === "/";
@@ -60,7 +61,9 @@ const Nav = () => {
             </div>
             {!isHome && (
               <Link href="/" locale={locale}>
-                <a className="font-semibold sm:text-lg">{seoConfig.author}</a>
+                <a className="font-medium sm:text-lg hover:underline">
+                  {seoConfig.author}
+                </a>
               </Link>
             )}
           </nav>
@@ -90,7 +93,9 @@ const Nav = () => {
                   </button>
                 </div>
                 <Link href="/" locale={locale}>
-                  <a className="font-semibold sm:text-lg">{seoConfig.author}</a>
+                  <a className="font-medium sm:text-lg hover:underline">
+                    {seoConfig.author}
+                  </a>
                 </Link>
                 <div className="flex items-center space-x-2">
                   <SwitchLang />
