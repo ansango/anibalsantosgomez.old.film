@@ -90,7 +90,6 @@ export const Meta = ({
 
 const MDXComponents = {
   Image: ImageRender,
-  Note,
   Meta,
   a: CustomLink,
 };

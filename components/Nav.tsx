@@ -22,7 +22,9 @@ const Nav = () => {
 
   useEffect(() => {
     document.body.style.overflow = "auto";
+    toggle(false);
   }, [asPath]);
+
 
   const onToggleNav = () => {
     toggle((status) => {

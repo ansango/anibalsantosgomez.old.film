@@ -45,8 +45,8 @@ const BlogLayout = ({
               alt={currentPost.title}
               priority
             />
-            <Note text={currentPost.coverNote} />
-            <hr />
+            {children}
+
             <Meta
               locale={t("date-locale")}
               meta={currentPost.meta}
@@ -57,7 +57,6 @@ const BlogLayout = ({
                 location: t("meta.location"),
               }}
             />
-            {children}
           </div>
         </article>
         <div className="text-sm sm:text-base grid grid-cols-2 gap-5 md:gap-10 lg:gap-20 xl:gap-60 py-5">
