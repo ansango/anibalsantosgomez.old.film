@@ -30,7 +30,7 @@ const BlogLayout = ({
     >
       <Structure>
         <article className="flex flex-col items-start justify-center mx-auto mb-16">
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
             {currentPost.title}
           </h1>
           <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">

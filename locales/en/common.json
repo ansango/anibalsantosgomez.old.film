@@ -21,5 +21,8 @@
     "film": "Film",
     "period": "Period",
     "location": "Location"
-  }
+  },
+  "searcher": "Search posts",
+  "allPosts": "All Posts",
+  "noPosts": "No posts found"
 }

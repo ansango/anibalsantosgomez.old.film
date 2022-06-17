@@ -4,8 +4,9 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { allBlogs } from "contentlayer/generated";
 import { pick } from "contentlayer/client";
 import useTranslation from "next-translate/useTranslation";
-import ListLayout from "layouts/list";
-import seoConfig from "lib/seoConfig";
+import Link from "next/link";
+import Image from "next/image";
+
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
     .filter(({ lang }) => lang === locale)
@@ -28,9 +29,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <Container>
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16">
-          <div className="flex flex-col-reverse sm:flex-row items-start">
+          <div className="flex flex-col-reverse sm:flex-row items-start pb-10 lg:pb-20">
             <div className="flex flex-col pr-8">
-              <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
+              <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
                 {t("title")}
               </h1>
               <p className="text-gray-600 dark:text-gray-400 mb-5">
@@ -38,8 +39,15 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               </p>
             </div>
           </div>
-
-          <ListLayout {...{ posts }} initialGrid={true} />
+          <div className="grid grid-cols-1 gap-5 xl:gap-10">
+            {posts.map(({ slug, title, lang, cover }, index) => (
+              <Link href={`/${slug}`} locale={lang} key={index}>
+                <a className="w-full flex flex-col">
+                  <Image src={cover} alt={title} width={1152} height={768} />
+                </a>
+              </Link>
+            ))}
+          </div>
         </div>
       </Structure>
     </Container>

@@ -25,13 +25,7 @@ export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
   const height = type === "landscape" ? 768 : 1152;
   return (
     <div className="flex justify-center mb-2">
-      <Image
-        alt={props.alt}
-        width={width}
-        height={height}
-        {...props}
-        className="rounded-sm"
-      />
+      <Image alt={props.alt} width={width} height={height} {...props} />
     </div>
   );
 };

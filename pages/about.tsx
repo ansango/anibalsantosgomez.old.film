@@ -47,7 +47,7 @@ const About: NextPage = () => {
     <Container>
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 space-y-5">
-          <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
+          <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
             {t("title")}
           </h1>
           <div className="grid gap-5 grid-cols-12">
@@ -55,7 +55,6 @@ const About: NextPage = () => {
               <Image
                 src={avatar}
                 alt={seoConfig.author}
-                className="w-full rounded-sm"
                 width={200}
                 height={200}
               />
@@ -73,11 +72,7 @@ const About: NextPage = () => {
           <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-5 md:grid-cols-3 py-10">
             {gallery.map((item, index) => (
               <div key={index} className="flex">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full rounded-sm"
-                />
+                <Image src={item.src} alt={item.alt} className="w-full" />
               </div>
             ))}
           </div>

@@ -1,3 +1,5 @@
+import { InferGetStaticPropsType } from "next";
+import { getStaticProps } from "pages";
 import { FC, ReactNode } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
@@ -6,9 +8,9 @@ import Seo, { Props as SeoProps } from "./Seo";
 type Props = {
   children: ReactNode;
   SeoProps?: SeoProps;
-};
+} & InferGetStaticPropsType<typeof getStaticProps>;
 
-const Container: FC<Props> = ({ children, SeoProps }) => {
+const Container: FC<Props> = ({ children, SeoProps, posts }) => {
   return (
     <>
       <Seo {...SeoProps} />

@@ -21,5 +21,8 @@
     "film": "Película",
     "period": "Período",
     "location": "Ubicación"
-  }
+  },
+  "searcher": "Buscar colecciones",
+  "allPosts": "Todas las colecciones",
+  "noPosts": "No se encontraron colecciones."
 }
