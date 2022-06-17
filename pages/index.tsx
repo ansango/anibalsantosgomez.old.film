@@ -43,7 +43,13 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             {posts.map(({ slug, title, lang, cover }, index) => (
               <Link href={`/${slug}`} locale={lang} key={index}>
                 <a className="w-full flex flex-col">
-                  <Image src={cover} alt={title} width={1152} height={768} />
+                  <Image
+                    src={cover}
+                    alt={title}
+                    width={1152}
+                    height={768}
+                    priority={index === 0 ? true : false}
+                  />
                 </a>
               </Link>
             ))}
