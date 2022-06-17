@@ -40,7 +40,7 @@ const Nav = () => {
     <>
       <Structure>
         {!open && (
-          <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+          <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-4 pb-8 sm:pt-8 sm:pb-16 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
             <div className="flex items-center">
               <button onClick={onToggleNav} className="h-6 w-6">
                 <svg
@@ -60,7 +60,7 @@ const Nav = () => {
             </div>
             {!isHome && (
               <Link href="/" locale={locale}>
-                <a className="font-semibold text-lg">{seoConfig.author}</a>
+                <a className="font-semibold sm:text-lg">{seoConfig.author}</a>
               </Link>
             )}
           </nav>
@@ -69,7 +69,7 @@ const Nav = () => {
         {open && (
           <div className="relative">
             <div className="h-screen absolute w-full z-10 bg-gray-100 dark:bg-gray-900 top-0">
-              <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+              <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-4 pb-8 sm:pt-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
                 <div className="flex items-center">
                   <button onClick={onToggleNav} className="h-6 w-6">
                     {open && (
@@ -89,7 +89,9 @@ const Nav = () => {
                     )}
                   </button>
                 </div>
-                <div className="font-semibold text-lg">{seoConfig.author}</div>
+                <Link href="/" locale={locale}>
+                  <a className="font-semibold sm:text-lg">{seoConfig.author}</a>
+                </Link>
                 <div className="flex items-center space-x-2">
                   <SwitchLang />
                   <SwitchTheme />
