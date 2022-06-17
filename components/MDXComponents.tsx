@@ -24,7 +24,7 @@ export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
   const width = type === "landscape" ? 1152 : 768;
   const height = type === "landscape" ? 768 : 1152;
   return (
-    <div className="flex justify-center mb-2">
+    <div className="flex justify-center mb-10">
       <Image alt={props.alt} width={width} height={height} {...props} />
     </div>
   );
@@ -62,25 +62,25 @@ export const Meta = ({
     <ul className="px-0 text-sm md:text-base">
       <li className="flex justify-between md:justify-start px-0">
         <span className="mr-3 font-medium">{translations.camera}:</span>
-        <span className="italic">{camera}</span>
+        <span>{camera}</span>
       </li>
       {film && (
         <li className="flex justify-between md:justify-start px-0">
           <span className="mr-3 font-medium">{translations.film}:</span>
-          <span className="italic">
+          <span>
             {film.brand} {film.model} {film.iso}
           </span>
         </li>
       )}
       <li className="flex justify-between md:justify-start px-0">
         <span className="mr-3 font-medium">{translations.period}:</span>
-        <span className="italic">
+        <span>
           {formatDate(period.start, locale)} - {formatDate(period.end, locale)}
         </span>
       </li>
       <li className="flex justify-between md:justify-start px-0">
         <span className="mr-3 font-medium">{translations.location}:</span>
-        <span className="italic">
+        <span>
           {location.map((l) => `${l.city}, ${l.country}`).join(" / ")}
         </span>
       </li>
