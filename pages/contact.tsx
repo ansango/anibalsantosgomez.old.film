@@ -16,14 +16,16 @@ const Contact: NextPage = () => {
       }}
     >
       <Structure>
-        <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 space-y-5">
-          <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
-            {t("title")}
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-5">
-            {t("description")}
-          </p>
-          <div className="grid gap-5">
+        <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 space-y-10">
+          <div>
+            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+              {t("title")}
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-5">
+              {t("description")}
+            </p>
+          </div>
+          <div className="space-y-20">
             <div>
               <Image
                 src={cover}
