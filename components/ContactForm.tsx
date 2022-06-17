@@ -15,17 +15,57 @@ const ContactForm: FC = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = useCallback(async (contactForm) => {
-    try {
-      const response = await onPostContactForm({ contactForm });
-      toast.success("Here is your toast.", {
-        className: "bg-green-500 text-white rounded-none",
-        duration: 13000,
-      });
-    } catch (error) {
-      toast.error("Here is your toast.");
-    }
-  }, []);
+  const onSubmit = useCallback(
+    async (contactForm) => {
+      try {
+        await onPostContactForm({ contactForm });
+        toast(t("form.success"), {
+          className:
+            "rounded-none text-green-600 dark:text-green-400 dark:bg-gray-800 w-full",
+          duration: 13000,
+          icon: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          ),
+        });
+      } catch (error) {
+        toast(t("form.error"), {
+          className:
+            "rounded-none text-red-600 dark:text-red-400 dark:bg-gray-800",
+          duration: 13000,
+          icon: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ),
+        });
+      }
+    },
+    [t]
+  );
   return (
     <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
       <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">

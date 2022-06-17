@@ -30,6 +30,8 @@
         }
       }
     },
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "success": "Tu mensaje se envió. ¡Gracias!",
+    "error": "Error al enviar el mensaje."
   }
 }
