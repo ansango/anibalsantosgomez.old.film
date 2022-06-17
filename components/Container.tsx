@@ -4,7 +4,7 @@ import { FC, ReactNode } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import Seo, { Props as SeoProps } from "./Seo";
-
+import { Toaster } from "react-hot-toast";
 type Props = {
   children: ReactNode;
   SeoProps?: SeoProps;
@@ -19,6 +19,11 @@ const Container: FC<Props> = ({ children, SeoProps, posts }) => {
         <main>{children}</main>
         <Footer />
       </div>
+      <Toaster
+        toastOptions={{
+          position: "bottom-center",
+        }}
+      />
     </>
   );
 };

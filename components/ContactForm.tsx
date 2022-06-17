@@ -3,6 +3,7 @@ import { onPostContactForm } from "lib/services/contact";
 import useTranslation from "next-translate/useTranslation";
 import { FC, useCallback } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -17,22 +18,25 @@ const ContactForm: FC = () => {
   const onSubmit = useCallback(async (contactForm) => {
     try {
       const response = await onPostContactForm({ contactForm });
-      console.log(response);
+      toast.success("Here is your toast.", {
+        className: "bg-green-500 text-white rounded-none",
+        duration: 13000,
+      });
     } catch (error) {
-      console.error(error);
+      toast.error("Here is your toast.");
     }
   }, []);
   return (
     <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid gap-10 grid-cols-12">
-        <label className="block col-span-12 md:col-span-6">
+      <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
+        <label className="col-span-12 md:col-span-6">
           <input
             type="text"
             className={cn(
               errors.name
                 ? "focus:ring-0 focus:border-red-500 dark:focus:border-red-500 border-red-200 dark:border-red-500"
                 : "focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100 border-gray-200 dark:border-gray-500",
-              "mt-0 mb-1 block w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
             )}
             placeholder={t("form.fields.name.placeholder")}
             {...register("name", { required: true, minLength: 3 })}
@@ -48,14 +52,14 @@ const ContactForm: FC = () => {
             </span>
           )}
         </label>
-        <label className="block col-span-12 md:col-span-6">
+        <label className="col-span-12 md:col-span-6">
           <input
             type="email"
             className={cn(
               errors.email
                 ? "focus:ring-0 focus:border-red-500 dark:focus:border-red-500 border-red-200 dark:border-red-500"
                 : "focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100 border-gray-200 dark:border-gray-500",
-              "mt-0 mb-1 block w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
             )}
             placeholder={t("form.fields.email.placeholder")}
             {...register("email", {
@@ -74,13 +78,13 @@ const ContactForm: FC = () => {
             </span>
           )}
         </label>
-        <label className="block col-span-12">
+        <label className="col-span-12">
           <textarea
             className={cn(
               errors.message
                 ? "focus:ring-0 focus:border-red-500 dark:focus:border-red-500 border-red-200 dark:border-red-500"
                 : "focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100 border-gray-200 dark:border-gray-500",
-              "mt-0 mb-1 block w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
             )}
             placeholder={t("form.fields.message.placeholder")}
             {...register("message", { required: true, minLength: 10 })}

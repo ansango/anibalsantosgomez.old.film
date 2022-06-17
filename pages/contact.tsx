@@ -26,7 +26,7 @@ const Contact: NextPage = () => {
               {t("description")}
             </p>
           </div>
-          <div className="space-y-20">
+          <div className="space-y-20 w-full">
             <div>
               <Image
                 src={cover}
