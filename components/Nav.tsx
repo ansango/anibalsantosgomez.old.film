@@ -3,7 +3,6 @@ import SwitchTheme from "./SwitchTheme";
 import Structure from "./Structure";
 import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
-
 import seoConfig from "lib/seoConfig";
 import Searcher from "./Searcher";
 import NavItem from "./NavItem";
