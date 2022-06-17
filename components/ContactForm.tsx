@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { onPostContactForm } from "lib/services/contact";
 import useTranslation from "next-translate/useTranslation";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -13,16 +13,20 @@ const ContactForm: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const onSubmit = useCallback(
     async (contactForm) => {
+      setIsSubmitting(true);
       try {
         await onPostContactForm({ contactForm });
+        setIsSubmitting(false);
+        reset();
         toast(t("form.success"), {
           className:
             "rounded-none text-green-600 dark:text-green-400 dark:bg-gray-800 w-full",
-          duration: 13000,
+          duration: 4000,
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -41,10 +45,11 @@ const ContactForm: FC = () => {
           ),
         });
       } catch (error) {
+        setIsSubmitting(false);
         toast(t("form.error"), {
           className:
             "rounded-none text-red-600 dark:text-red-400 dark:bg-gray-800",
-          duration: 13000,
+          duration: 4000,
           icon: (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +150,7 @@ const ContactForm: FC = () => {
       <button
         className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
-        disabled={errors.name || errors.email || errors.message}
+        disabled={errors.name || errors.email || errors.message || isSubmitting}
       >
         {t("form.submit")}
       </button>
