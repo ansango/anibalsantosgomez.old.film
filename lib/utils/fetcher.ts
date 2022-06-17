@@ -6,7 +6,6 @@ export type ErrorFetcher = {
 const fetcher = async (
   ...args: Parameters<typeof fetch>
 ): Promise<any | Error> => {
-  args[0] = `${process.env.NEXT_PUBLIC_WEB_URI}${args[0]}`;
   return fetch(...args)
     .then()
     .then((response) => {
