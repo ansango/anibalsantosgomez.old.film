@@ -41,6 +41,25 @@ const gallery = [
   },
 ];
 
+const filmCameras = [
+  "Werlisa Color",
+  "Polaroid Land Camera 1000",
+  "Hanimex Pocket 200",
+  "Canon Prima Junior",
+  "Canon EOS 50 E",
+];
+const filmEquipment = [
+  "Valoi Advancer",
+  "Valoi Diffuser",
+  "Valoi Duster",
+  "Valoi 35mm Holder",
+  "Ayex AX-10 (N3)",
+  "Smallring Super Clamp",
+  "Tokina ATX-i 100mm Macro F2.8",
+  "Kaiser Fototechnik 2453",
+  "Canon EOS 6D",
+];
+
 const About: NextPage = () => {
   const { t } = useTranslation("about");
 
@@ -82,9 +101,36 @@ const About: NextPage = () => {
               </div>
             ))}
           </div>
-          <p className="text-gray-600 dark:text-gray-400">{t("p5")}</p>
-          <p className="text-gray-600 dark:text-gray-400">{t("p6")}</p>
-          <p className="text-gray-600 dark:text-gray-400">{t("p7")}</p>
+          <div className="space-y-5 pb-10">
+            <p className="text-gray-600 dark:text-gray-400">{t("p5")}</p>
+            <p className="text-gray-600 dark:text-gray-400">{t("p6")}</p>
+            <p className="text-gray-600 dark:text-gray-400">{t("p7")}</p>
+          </div>
+          <div className="space-y-10">
+            <h2 className="font-bold text-2xl md:text-3xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+              {t("gear")}
+            </h2>
+            <article>
+              <h3 className="font-bold text-xl md:text-2xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+                {t("filmCameras")}
+              </h3>
+              <ul>
+                {filmCameras.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article>
+              <h3 className="font-bold text-xl md:text-2xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+                {t("filmDevelopingEquipment")}
+              </h3>
+              <ul>
+                {filmEquipment.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
         </div>
       </Structure>
     </Container>
