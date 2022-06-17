@@ -1,6 +1,7 @@
 import cn from "classnames";
+import { onPostContactForm } from "lib/services/contact";
 import useTranslation from "next-translate/useTranslation";
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 type Props = {};
@@ -12,8 +13,15 @@ const ContactForm: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+
+  const onSubmit = useCallback(async (contactForm) => {
+    try {
+      const response = await onPostContactForm({ contactForm });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
   return (
     <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
       <div className="grid gap-10 grid-cols-12">

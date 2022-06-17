@@ -1,5 +1,5 @@
 import { Blog } from "contentlayer/generated";
-import formatDate from "lib/formatDate";
+import formatDate from "lib/utils/formatDate";
 import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
 import Link from "next/link";

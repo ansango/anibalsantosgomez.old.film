@@ -3,7 +3,7 @@ import Structure from "components/Structure";
 import { NextPage } from "next";
 import Image from "next/image";
 import avatar from "public/avatar.jpeg";
-import seoConfig from "lib/seoConfig";
+import seoConfig from "lib/utils/seoConfig";
 import useTranslation from "next-translate/useTranslation";
 
 import img1 from "public/images/01.webp";

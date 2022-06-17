@@ -1,7 +1,7 @@
 import Container from "components/Container";
 import Structure from "components/Structure";
 import { NextPage } from "next";
-import seoConfig from "lib/seoConfig";
+import seoConfig from "lib/utils/seoConfig";
 import useTranslation from "next-translate/useTranslation";
 import cover from "public/images/universidad.webp";
 
