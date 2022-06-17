@@ -1,12 +1,12 @@
 import Container from "components/Container";
 import { Blog } from "contentlayer/generated";
 import { PropsWithChildren } from "react";
-import seoConfig from "lib/seoConfig";
+import seoConfig from "lib/utils/seoConfig";
 import Structure from "components/Structure";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
-import formatDate from "lib/formatDate";
-import { ImageRender, Meta, Note } from "components/MDXComponents";
+import formatDate from "lib/utils/formatDate";
+import { ImageRender, Meta } from "components/MDXComponents";
 const BlogLayout = ({
   children,
   currentPost,

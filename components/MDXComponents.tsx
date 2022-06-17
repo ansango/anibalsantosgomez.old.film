@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image, { ImageProps } from "next/image";
-import formatDate from "lib/formatDate";
+import formatDate from "lib/utils/formatDate";
 import { FC } from "react";
 
 const CustomLink = (props) => {
