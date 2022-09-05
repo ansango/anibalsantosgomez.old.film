@@ -33,7 +33,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   const { t } = useTranslation("home");
   return (
-    <Container>
+    <Container
+      SeoProps={{
+        title: t("title"),
+        description: t("description"),
+      }}
+    >
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16">
           <div className="flex flex-col py-20 md:py-40 lg:py-60 xl:py-96 w-full">

@@ -14,7 +14,7 @@ const About: NextPage = () => {
   return (
     <Container
       SeoProps={{
-        title: `${t("title")} - ${seoConfig.author}`,
+        title: `${t("title")}`,
         description: `${t("description")}`,
       }}
     >

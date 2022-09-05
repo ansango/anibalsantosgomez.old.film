@@ -51,7 +51,12 @@ const Series: NextPage = () => {
   }
 
   return (
-    <Container>
+    <Container
+      SeoProps={{
+        title: `${t("title")}`,
+        description: `${t("description")}`,
+      }}
+    >
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16">
           <div className="flex flex-col py-10 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase">
