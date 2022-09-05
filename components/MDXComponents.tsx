@@ -3,6 +3,10 @@ import Image, { ImageProps } from "next/image";
 import formatDate from "lib/utils/formatDate";
 import { FC } from "react";
 
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+
 const CustomLink = (props) => {
   const href = props.href;
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
@@ -20,13 +24,33 @@ const CustomLink = (props) => {
 
 type ImgProps = { type?: "landscape" | "portrait" } & ImageProps;
 
+const boxVariant = {
+  visible: { opacity: 1, transition: { duration: 1 } },
+  hidden: { opacity: 0 },
+};
+
 export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
   const width = type === "landscape" ? 1152 : 768;
   const height = type === "landscape" ? 768 : 1152;
   return (
-    <div className="flex justify-center mb-5 md:mb-10 lg:mb-20 xl:mb-32">
+    <motion.div
+      ref={ref}
+      variants={boxVariant}
+      initial="hidden"
+      animate={control}
+      className="flex justify-center mb-5 md:mb-10 lg:mb-20 xl:mb-32"
+    >
       <Image alt={props.alt} width={width} height={height} {...props} />
-    </div>
+    </motion.div>
   );
 };
 

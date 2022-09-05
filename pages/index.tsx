@@ -6,8 +6,9 @@ import { pick } from "contentlayer/client";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
     .filter(({ lang, featured }) => lang === locale && featured)
@@ -28,11 +29,23 @@ export const getStaticProps: GetStaticProps = ({ locale }) => {
 
   return { props: { posts, locale } };
 };
-
+const boxVariant = {
+  visible: { opacity: 1, transition: { duration: 1 } },
+  hidden: { opacity: 0 },
+};
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
   const { t } = useTranslation("home");
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
   return (
     <Container
       SeoProps={{
@@ -58,10 +71,11 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </motion.div>
 
           <motion.div
+            ref={ref}
+            variants={boxVariant}
+            initial="hidden"
+            animate={control}
             className="grid grid-cols-1 gap-5 md:gap-10 lg:gap-20 xl:gap-32"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
           >
             {posts.map(({ slug, title, lang, cover }, index) => {
               return (
