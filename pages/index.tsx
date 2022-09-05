@@ -38,7 +38,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   const { t } = useTranslation("home");
   const control = useAnimation();
+
   const [ref, inView] = useInView();
+
   useEffect(() => {
     if (inView) {
       control.start("visible");
@@ -85,7 +87,13 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   key={index}
                   passHref
                 >
-                  <a className="w-full flex flex-col">
+                  <motion.a
+                    className="w-full flex flex-col"
+                    ref={ref}
+                    variants={boxVariant}
+                    initial="hidden"
+                    animate={control}
+                  >
                     <Image
                       src={cover}
                       alt={title}
@@ -93,7 +101,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                       height={768}
                       priority={index === 0 ? true : false}
                     />
-                  </a>
+                  </motion.a>
                 </Link>
               );
             })}
