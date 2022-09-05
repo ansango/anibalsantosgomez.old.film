@@ -12,8 +12,8 @@
     "description": "Rellena el siguiente formulario y me pondré en contacto contigo.",
     "fields": {
       "name": {
-        "label": "Nombre",
-        "placeholder": "Escribe tu nombre",
+        "label": "nombre",
+        "placeholder": "escribe tu nombre",
         "errors": {
           "required": "Introduce tu nombre",
           "minlength": "El nombre debe tener al menos 3 caracteres"
