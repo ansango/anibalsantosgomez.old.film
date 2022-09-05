@@ -6,6 +6,7 @@ import { pick } from "contentlayer/client";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
@@ -41,18 +42,35 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     >
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16">
-          <div className="flex flex-col py-20 md:py-40 lg:py-60 xl:py-96 w-full">
+          <motion.div
+            className="flex flex-col py-20 md:py-40 lg:py-60 xl:py-96 w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
               {t("description")}
             </h1>
             <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight">
               {t("timeline")}
             </p>
-          </div>
-          <div className="grid grid-cols-1 gap-5 md:gap-10 lg:gap-20 xl:gap-32">
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 gap-5 md:gap-10 lg:gap-20 xl:gap-32"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             {posts.map(({ slug, title, lang, cover }, index) => {
               return (
-                <Link href={`series/${slug}`} locale={lang} key={index}>
+                <Link
+                  href={`series/${slug}`}
+                  locale={lang}
+                  key={index}
+                  passHref
+                >
                   <a className="w-full flex flex-col">
                     <Image
                       src={cover}
@@ -65,7 +83,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 </Link>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </Structure>
     </Container>

@@ -3,14 +3,13 @@ import Container from "components/Container";
 import Structure from "components/Structure";
 import { pick } from "contentlayer/client";
 import { allBlogs } from "contentlayer/generated";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
-import Image from "next/image";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 import { useState } from "react";
-
-const MAX_POSTS = 5;
+import { motion } from "framer-motion";
+const MAX_POSTS = 10;
 
 const Series: NextPage = () => {
   const { locale } = useRouter();
@@ -59,16 +58,27 @@ const Series: NextPage = () => {
     >
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16">
-          <div className="flex flex-col py-10 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase">
+          <motion.div
+            className="flex flex-col py-10 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
               {t("title")}
             </h1>
             <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight">
               {t("description")}
             </p>
-          </div>
+          </motion.div>
           {pageNumbers.length !== 1 && (
-            <div className="w-full mb-4 relative pb-10">
+            <motion.div
+              className="w-full mb-4 relative pb-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
               <input
                 aria-label={t("searcher")}
                 type="text"
@@ -90,18 +100,29 @@ const Series: NextPage = () => {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-            </div>
+            </motion.div>
           )}
 
-          <ul className="w-full">
+          <motion.ul
+            key={currentPosts.length}
+            className="w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             {!currentPosts.length && (
               <p className="mb-4 text-gray-600">{t("noPosts")}</p>
             )}
             {currentPosts.map((post) => (
               <BlogPost key={post.title} {...post} />
             ))}
-          </ul>
-          <div className="flex justify-center py-3">
+          </motion.ul>
+          <motion.div
+            className="flex w-full justify-center py-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             {pageNumbers.length !== 1 &&
               pageNumbers.map((number) => {
                 const cn =
@@ -120,7 +141,7 @@ const Series: NextPage = () => {
                   </button>
                 );
               })}
-          </div>
+          </motion.div>
         </div>
       </Structure>
     </Container>
