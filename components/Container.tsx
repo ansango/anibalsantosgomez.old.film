@@ -5,6 +5,8 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import Seo, { Props as SeoProps } from "./Seo";
 import { Toaster } from "react-hot-toast";
+import { motion } from "framer-motion";
+
 type Props = {
   children: ReactNode;
   SeoProps?: SeoProps;

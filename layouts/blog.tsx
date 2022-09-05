@@ -7,6 +7,7 @@ import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import formatDate from "lib/utils/formatDate";
 import { ImageRender, Meta } from "components/MDXComponents";
+import { motion } from "framer-motion";
 const BlogLayout = ({
   children,
   currentPost,
@@ -30,15 +31,26 @@ const BlogLayout = ({
     >
       <Structure>
         <article className="flex flex-col items-start justify-center mx-auto mb-16">
-          <div className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase">
+          <motion.div
+            className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
               {currentPost.title}
             </h1>
             <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight">
               {formatDate(currentPost.publishedAt, t("date-locale"))}
             </p>
-          </div>
-          <div className="w-full mt-2 prose max-w-none">
+          </motion.div>
+          <motion.div
+            className="w-full mt-2 prose max-w-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             <Meta
               locale={t("date-locale")}
               meta={currentPost.meta}
@@ -55,7 +67,7 @@ const BlogLayout = ({
               priority
             />
             {children}
-          </div>
+          </motion.div>
         </article>
         <div className="text-sm sm:text-base grid grid-cols-2 gap-5 md:gap-10 lg:gap-20 xl:gap-60 py-5 lowercase">
           {previousPost ? (
