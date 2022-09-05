@@ -39,7 +39,7 @@ const Nav = () => {
   return (
     <>
       <Structure>
-        <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto py-5 md:py-10 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+        <nav className="flex items-center justify-between w-full relative border-gray-200 mx-auto py-5 md:py-10 text-gray-900 bg-gray-50 bg-opacity-60">
           <button className="font-medium">
             <Link href="/" locale={locale}>
               anibal santos

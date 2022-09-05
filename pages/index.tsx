@@ -35,12 +35,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <Container>
       <Structure>
-        <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16">
+        <div className="flex flex-col justify-center items-start border-gray-200 pb-16">
           <div className="flex flex-col py-20 md:py-40 lg:py-60 xl:py-96 w-full">
-            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight  dark:text-gray-300">
+            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
               {t("description")}
             </h1>
-            <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight  dark:text-gray-300">
+            <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight">
               {t("timeline")}
             </p>
           </div>

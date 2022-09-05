@@ -50,7 +50,7 @@ const Document = () => {
         />
         <meta content="all" name="robots" />
       </Head>
-      <body className="bg-gray-100 dark:bg-gray-900">
+      <body className="bg-gray-100">
         <Main />
         <NextScript />
       </body>

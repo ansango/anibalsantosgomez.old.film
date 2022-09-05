@@ -21,16 +21,14 @@ const BlogPost = ({
       <a className="w-full flex space-y-5 mb-2">
         <li className="w-full mb-2 lowercase">
           <div className="flex justify-between flex-row">
-            <h4 className="w-full text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h4 className="w-full text-lg font-medium text-gray-900">
               {title}
             </h4>
             <p className="mb-4 text-left text-gray-500 flex items-center space-x-1 w-full justify-end">
               {formatDate(publishedAt, t("date-locale"))}
             </p>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 line-clamp-1">
-            {summary}
-          </p>
+          <p className="text-gray-600 line-clamp-1">{summary}</p>
         </li>
       </a>
     </Link>

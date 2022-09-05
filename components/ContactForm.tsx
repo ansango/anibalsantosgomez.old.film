@@ -24,8 +24,7 @@ const ContactForm: FC = () => {
         setIsSubmitting(false);
         reset();
         toast(t("form.success"), {
-          className:
-            "rounded-none text-green-600 dark:text-green-400 dark:bg-gray-800 w-full",
+          className: "rounded-none text-green-600 w-full",
           duration: 4000,
           icon: (
             <svg
@@ -47,8 +46,7 @@ const ContactForm: FC = () => {
       } catch (error) {
         setIsSubmitting(false);
         toast(t("form.error"), {
-          className:
-            "rounded-none text-red-600 dark:text-red-400 dark:bg-gray-800",
+          className: "rounded-none text-red-600",
           duration: 4000,
           icon: (
             <svg
@@ -69,7 +67,7 @@ const ContactForm: FC = () => {
         });
       }
     },
-    [t]
+    [reset, t]
   );
   return (
     <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
@@ -79,20 +77,20 @@ const ContactForm: FC = () => {
             type="text"
             className={cn(
               errors.name
-                ? "focus:ring-0 focus:border-red-500 dark:focus:border-red-500 border-red-200 dark:border-red-500"
-                : "focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100 border-gray-200 dark:border-gray-500",
-              "mt-0 mb-1 w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
+                ? "focus:ring-0 focus:border-red-500 border-red-200"
+                : "focus:ring-0 focus:border-gray-900 border-gray-200",
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100border-0 border-b-2"
             )}
             placeholder={t("form.fields.name.placeholder")}
             {...register("name", { required: true, minLength: 3 })}
           />
           {errors.name?.type === "required" && (
-            <span className="text-red-600 dark:text-red-400">
+            <span className="text-red-600">
               {t("form.fields.name.errors.required")}
             </span>
           )}
           {errors.name?.type === "minLength" && (
-            <span className="text-red-600 dark:text-red-400">
+            <span className="text-red-600">
               {t("form.fields.name.errors.minlength")}
             </span>
           )}
@@ -102,9 +100,9 @@ const ContactForm: FC = () => {
             type="email"
             className={cn(
               errors.email
-                ? "focus:ring-0 focus:border-red-500 dark:focus:border-red-500 border-red-200 dark:border-red-500"
-                : "focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100 border-gray-200 dark:border-gray-500",
-              "mt-0 mb-1 w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
+                ? "focus:ring-0 focus:border-red-500 border-red-200"
+                : "focus:ring-0 focus:border-gray-900 border-gray-200",
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100border-0 border-b-2"
             )}
             placeholder={t("form.fields.email.placeholder")}
             {...register("email", {
@@ -113,12 +111,12 @@ const ContactForm: FC = () => {
             })}
           />
           {errors.email?.type === "required" && (
-            <span className="text-red-600 dark:text-red-400">
+            <span className="text-red-600">
               {t("form.fields.email.errors.required")}
             </span>
           )}
           {errors.email?.type === "pattern" && (
-            <span className="text-red-600 dark:text-red-400">
+            <span className="text-red-600">
               {t("form.fields.email.errors.pattern")}
             </span>
           )}
@@ -127,28 +125,28 @@ const ContactForm: FC = () => {
           <textarea
             className={cn(
               errors.message
-                ? "focus:ring-0 focus:border-red-500 dark:focus:border-red-500 border-red-200 dark:border-red-500"
-                : "focus:ring-0 focus:border-gray-900 dark:focus:border-gray-100 border-gray-200 dark:border-gray-500",
-              "mt-0 mb-1 w-full px-0.5 bg-gray-100 dark:bg-gray-800 border-0 border-b-2"
+                ? "focus:ring-0 focus:border-red-500 border-red-200"
+                : "focus:ring-0 focus:border-gray-900 border-gray-200",
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100border-0 border-b-2"
             )}
             placeholder={t("form.fields.message.placeholder")}
             {...register("message", { required: true, minLength: 10 })}
             rows={4}
           ></textarea>
           {errors.message?.type === "required" && (
-            <span className="text-red-600 dark:text-red-400">
+            <span className="text-red-600">
               {t("form.fields.message.errors.required")}
             </span>
           )}
           {errors.message?.type === "minLength" && (
-            <span className="text-red-600 dark:text-red-400">
+            <span className="text-red-600">
               {t("form.fields.message.errors.minlength")}
             </span>
           )}
         </label>
       </div>
       <button
-        className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-gray-200 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
         disabled={errors.name || errors.email || errors.message || isSubmitting}
       >

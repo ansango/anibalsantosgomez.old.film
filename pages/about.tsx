@@ -19,9 +19,9 @@ const About: NextPage = () => {
       }}
     >
       <Structure>
-        <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16 space-y-10">
+        <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10">
           <div className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase">
-            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight dark:text-gray-300">
+            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
               {t("title")}
             </h1>
           </div>
@@ -38,16 +38,16 @@ const About: NextPage = () => {
           </div>
 
           <div className="space-y-5 pb-10 lg:pb-20">
-            <p className="text-gray-600 dark:text-gray-400">{t("p1")}</p>
-            <p className="text-gray-600 dark:text-gray-400">{t("p2")}</p>
-            <p className="text-gray-600 dark:text-gray-400">{t("p3")}</p>
+            <p className="text-gray-600">{t("p1")}</p>
+            <p className="text-gray-600">{t("p2")}</p>
+            <p className="text-gray-600">{t("p3")}</p>
           </div>
           <div className="space-y-10 pb-10 lg:pb-20">
-            <h2 className="font-medium text-2xl md:text-3xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+            <h2 className="font-medium text-2xl md:text-3xl tracking-tight mb-1 text-gray-900">
               {t("gear")}
             </h2>
             <article>
-              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900">
                 {t("filmCameras")}
               </h3>
               <ul>
@@ -57,7 +57,7 @@ const About: NextPage = () => {
               </ul>
             </article>
             <article>
-              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900">
                 {t("filmDevelopingEquipment")}
               </h3>
               <ul>
@@ -69,12 +69,10 @@ const About: NextPage = () => {
           </div>
           <div className="w-full max-w-4xl space-y-20 pb-10 lg:pb-20">
             <div>
-              <h2 className="font-medium text-2xl md:text-3xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
+              <h2 className="font-medium text-2xl md:text-3xl tracking-tight mb-1 text-gray-900">
                 {t("form.title")}
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-5">
-                {t("form.description")}
-              </p>
+              <p className="text-gray-600 mb-5">{t("form.description")}</p>
             </div>
             <ContactForm />
           </div>
