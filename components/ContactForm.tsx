@@ -79,7 +79,7 @@ const ContactForm: FC = () => {
               errors.name
                 ? "focus:ring-0 focus:border-red-500 border-red-200"
                 : "focus:ring-0 focus:border-gray-900 border-gray-200",
-              "mt-0 mb-1 w-full px-0.5 bg-gray-100border-0 border-b-2"
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100 border-0 border-b-2"
             )}
             placeholder={t("form.fields.name.placeholder")}
             {...register("name", { required: true, minLength: 3 })}
@@ -102,7 +102,7 @@ const ContactForm: FC = () => {
               errors.email
                 ? "focus:ring-0 focus:border-red-500 border-red-200"
                 : "focus:ring-0 focus:border-gray-900 border-gray-200",
-              "mt-0 mb-1 w-full px-0.5 bg-gray-100border-0 border-b-2"
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100 border-0 border-b-2"
             )}
             placeholder={t("form.fields.email.placeholder")}
             {...register("email", {
@@ -126,27 +126,27 @@ const ContactForm: FC = () => {
             className={cn(
               errors.message
                 ? "focus:ring-0 focus:border-red-500 border-red-200"
-                : "focus:ring-0 focus:border-gray-900 border-gray-200",
-              "mt-0 mb-1 w-full px-0.5 bg-gray-100border-0 border-b-2"
+                : "focus:ring-0 focus:border-gray-900  border-gray-200",
+              "mt-0 mb-1 w-full px-0.5 bg-gray-100 border-0 border-b-2"
             )}
             placeholder={t("form.fields.message.placeholder")}
             {...register("message", { required: true, minLength: 10 })}
             rows={4}
           ></textarea>
           {errors.message?.type === "required" && (
-            <span className="text-red-600">
+            <span className="text-red-600 dark:text-red-400">
               {t("form.fields.message.errors.required")}
             </span>
           )}
           {errors.message?.type === "minLength" && (
-            <span className="text-red-600">
+            <span className="text-red-600 dark:text-red-400">
               {t("form.fields.message.errors.minlength")}
             </span>
           )}
         </label>
       </div>
       <button
-        className="bg-gray-200 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
         disabled={errors.name || errors.email || errors.message || isSubmitting}
       >
