@@ -37,7 +37,7 @@
       }
     },
     "submit": "enviar",
-    "success": "Tu mensaje se envió. ¡Gracias!",
-    "error": "Error al enviar el mensaje."
+    "success": "tu mensaje se envió. ¡gracias!",
+    "error": "error al enviar el mensaje."
   }
 }

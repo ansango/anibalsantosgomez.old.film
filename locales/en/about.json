@@ -37,7 +37,7 @@
       }
     },
     "submit": "send",
-    "success": "your message was sent! Thanks!",
+    "success": "your message was sent! thanks!",
     "error": "error sending your message."
   }
 }
