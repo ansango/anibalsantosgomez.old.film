@@ -3,7 +3,6 @@ import SwitchTheme from "./SwitchTheme";
 import Structure from "./Structure";
 import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
-import seoConfig from "lib/utils/seoConfig";
 import Searcher from "./Searcher";
 import NavItem from "./NavItem";
 import { useRouter } from "next/router";
@@ -17,14 +16,12 @@ const Nav = () => {
     { name: t("routes.contact.label"), to: "/contact" },
   ];
   const { asPath, locale } = useRouter();
-  const isHome = asPath === "/";
   const [open, toggle] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = "auto";
     toggle(false);
   }, [asPath]);
-
 
   const onToggleNav = () => {
     toggle((status) => {
@@ -40,39 +37,46 @@ const Nav = () => {
     <>
       <Structure>
         {!open && (
-          <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-4 pb-8 sm:pt-8 sm:pb-16 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+          <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto py-5 md:py-10 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+            <button className="font-medium">
+              <Link href="/" locale={locale}>
+                anibal santos
+              </Link>
+            </button>
             <div className="flex items-center">
-              <button onClick={onToggleNav} className="h-6 w-6">
+              <button onClick={onToggleNav} className="cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
                   fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
                   stroke="currentColor"
-                  strokeWidth={2}
+                  className="w-6 h-6"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M4 8h16M4 16h16"
+                    d="M3.75 9h16.5m-16.5 6.75h16.5"
                   />
                 </svg>
               </button>
             </div>
-            {!isHome && (
-              <Link href="/" locale={locale}>
-                <a className="font-medium sm:text-lg hover:underline">
-                  {seoConfig.author}
-                </a>
-              </Link>
-            )}
           </nav>
         )}
 
         {open && (
           <div className="relative">
             <div className="h-screen absolute w-full z-10 bg-gray-100 dark:bg-gray-900 top-0">
-              <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pt-4 pb-8 sm:pt-8 sm:pb-16 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+              <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto py-5 md:py-10 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
                 <div className="flex items-center">
+                  <button className="font-medium">
+                    <Link href="/" locale={locale}>
+                      anibal santos
+                    </Link>
+                  </button>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <SwitchLang />
                   <button onClick={onToggleNav} className="h-6 w-6">
                     {open && (
                       <svg
@@ -80,7 +84,7 @@ const Nav = () => {
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        strokeWidth={2}
+                        strokeWidth={1.5}
                       >
                         <path
                           strokeLinecap="round"
@@ -90,15 +94,6 @@ const Nav = () => {
                       </svg>
                     )}
                   </button>
-                </div>
-                <Link href="/" locale={locale}>
-                  <a className="font-medium sm:text-lg hover:underline">
-                    {seoConfig.author}
-                  </a>
-                </Link>
-                <div className="flex items-center space-x-2">
-                  <SwitchLang />
-                  <SwitchTheme />
                 </div>
               </nav>
               <div className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto pb-8 sm:pb-10 text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">

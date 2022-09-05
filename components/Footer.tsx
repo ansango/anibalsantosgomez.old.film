@@ -9,7 +9,6 @@ const Footer = () => {
   const links = [
     { name: t("routes.home.label"), to: "/" },
     { name: t("routes.about.label"), to: "/about" },
-    { name: t("routes.contact.label"), to: "/contact" },
   ];
   return (
     <Structure>
@@ -25,18 +24,11 @@ const Footer = () => {
                 </a>
               </Link>
             ))}
-          </div>
-          <div className="flex flex-col space-y-4">
             <ExternalLink href="https://instagram.com/iamasync">
-              Instagram
-            </ExternalLink>
-            <ExternalLink href="https://twitter.com/iamasync_">
-              Twitter
-            </ExternalLink>
-            <ExternalLink href="https://github.com/ansango">
-              GitHub
+              instagram
             </ExternalLink>
           </div>
+          <div className="flex flex-col space-y-4"></div>
         </div>
       </footer>
     </Structure>

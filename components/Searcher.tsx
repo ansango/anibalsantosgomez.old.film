@@ -5,7 +5,7 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 
-const MAX_POSTS = 3;
+const MAX_POSTS = 5;
 
 const Searcher: FC = () => {
   const { locale } = useRouter();

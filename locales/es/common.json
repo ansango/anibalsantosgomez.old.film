@@ -5,22 +5,19 @@
   },
   "routes": {
     "home": {
-      "label": "Inicio"
+      "label": "inicio"
     },
     "about": {
-      "label": "Sobre mí"
-    },
-    "contact": {
-      "label": "Contacto"
+      "label": "sobre mí"
     }
   },
-  "read-more": "Ver más",
+  "read-more": "ver más",
   "date-locale": "es-ES",
   "meta": {
-    "camera": "Cámara",
-    "film": "Película",
-    "period": "Período",
-    "location": "Ubicación"
+    "camera": "cámara",
+    "film": "película",
+    "period": "período",
+    "location": "ubicación"
   },
   "searcher": "Buscar colecciones",
   "allPosts": "Todas las colecciones",

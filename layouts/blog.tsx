@@ -30,23 +30,15 @@ const BlogLayout = ({
     >
       <Structure>
         <article className="flex flex-col items-start justify-center mx-auto mb-16">
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
-            {currentPost.title}
-          </h1>
-          <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
-            <div className="flex items-center"></div>
-            <p className="text-sm text-gray-700 dark:text-gray-300 h-full">
+          <div className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase">
+            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight  dark:text-gray-300">
+              {currentPost.title}
+            </h1>
+            <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight  dark:text-gray-300">
               {formatDate(currentPost.publishedAt, t("date-locale"))}
             </p>
           </div>
           <div className="w-full mt-2 prose dark:prose-dark max-w-none">
-            <ImageRender
-              src={currentPost.cover}
-              alt={currentPost.title}
-              priority
-            />
-            {children}
-
             <Meta
               locale={t("date-locale")}
               meta={currentPost.meta}
@@ -57,9 +49,15 @@ const BlogLayout = ({
                 location: t("meta.location"),
               }}
             />
+            <ImageRender
+              src={currentPost.cover}
+              alt={currentPost.title}
+              priority
+            />
+            {children}
           </div>
         </article>
-        <div className="text-sm sm:text-base grid grid-cols-2 gap-5 md:gap-10 lg:gap-20 xl:gap-60 py-5">
+        <div className="text-sm sm:text-base grid grid-cols-2 gap-5 md:gap-10 lg:gap-20 xl:gap-60 py-5 lowercase">
           {previousPost ? (
             <Link href={`/${previousPost.slug}`} className="">
               <a className="flex justify-start items-center space-x-1 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">

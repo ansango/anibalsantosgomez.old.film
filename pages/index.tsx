@@ -9,9 +9,16 @@ import Image from "next/image";
 
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const posts = allBlogs
-    .filter(({ lang }) => lang === locale)
+    .filter(({ lang, featured }) => lang === locale && featured)
     .map((post) =>
-      pick(post, ["slug", "title", "summary", "publishedAt", "cover"])
+      pick(post, [
+        "slug",
+        "title",
+        "summary",
+        "publishedAt",
+        "cover",
+        "featured",
+      ])
     )
     .sort(
       (a, b) =>
@@ -29,17 +36,15 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <Container>
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 dark:border-gray-700 pb-16">
-          <div className="flex flex-col-reverse sm:flex-row items-start pb-10 lg:pb-20">
-            <div className="flex flex-col pr-8">
-              <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-gray-900 dark:text-gray-100">
-                {t("title")}
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400 mb-5">
-                {t("description")}
-              </p>
-            </div>
+          <div className="flex flex-col py-20 md:py-40 lg:py-60 xl:py-96 w-full">
+            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight  dark:text-gray-300">
+              {t("description")}
+            </h1>
+            <p className="text-gray-900 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight  dark:text-gray-300">
+              {t("timeline")}
+            </p>
           </div>
-          <div className="grid grid-cols-1 gap-5 xl:gap-10">
+          <div className="grid grid-cols-1 gap-5 md:gap-10 lg:gap-20 xl:gap-32">
             {posts.map(({ slug, title, lang, cover }, index) => (
               <Link href={`/${slug}`} locale={lang} key={index}>
                 <a className="w-full flex flex-col">

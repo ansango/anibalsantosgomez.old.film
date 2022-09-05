@@ -5,22 +5,19 @@
   },
   "routes": {
     "home": {
-      "label": "Home"
+      "label": "home"
     },
     "about": {
-      "label": "About"
-    },
-    "contact": {
-      "label": "Contact"
+      "label": "about"
     }
   },
-  "read-more": "Read more",
+  "read-more": "read more",
   "date-locale": "en-US",
   "meta": {
-    "camera": "Camera",
-    "film": "Film",
-    "period": "Period",
-    "location": "Location"
+    "camera": "camera",
+    "film": "film",
+    "period": "period",
+    "location": "location"
   },
   "searcher": "Search posts",
   "allPosts": "All Posts",

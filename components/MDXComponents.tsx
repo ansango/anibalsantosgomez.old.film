@@ -24,7 +24,7 @@ export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
   const width = type === "landscape" ? 1152 : 768;
   const height = type === "landscape" ? 768 : 1152;
   return (
-    <div className="flex justify-center mb-10">
+    <div className="flex justify-center mb-5 md:mb-10 lg:mb-20 xl:mb-32">
       <Image alt={props.alt} width={width} height={height} {...props} />
     </div>
   );
@@ -59,28 +59,36 @@ export const Meta = ({
 }) => {
   const { camera, film, location, period } = meta;
   return (
-    <ul className="px-0 text-sm md:text-base">
-      <li className="flex justify-between md:justify-start px-0">
-        <span className="mr-3 font-medium">{translations.camera}:</span>
-        <span>{camera}</span>
+    <ul className="px-0 text-base pb-5 md:pb-10 lg:pb-20 lowercase">
+      <li className="flex justify-start px-0">
+        <span className="mr-3 text-gray-400 font-medium">
+          {translations.camera}
+        </span>
+        <span className="font-medium">{camera}</span>
       </li>
       {film && (
-        <li className="flex justify-between md:justify-start px-0">
-          <span className="mr-3 font-medium">{translations.film}:</span>
-          <span>
+        <li className="flex justify-start px-0">
+          <span className="mr-3 font-medium text-gray-400">
+            {translations.film}
+          </span>
+          <span className="font-medium">
             {film.brand} {film.model} {film.iso}
           </span>
         </li>
       )}
-      <li className="flex justify-between md:justify-start px-0">
-        <span className="mr-3 font-medium">{translations.period}:</span>
-        <span>
+      <li className="flex justify-start px-0">
+        <span className="mr-3 font-medium text-gray-400">
+          {translations.period}
+        </span>
+        <span className="font-medium">
           {formatDate(period.start, locale)} - {formatDate(period.end, locale)}
         </span>
       </li>
-      <li className="flex justify-between md:justify-start px-0">
-        <span className="mr-3 font-medium">{translations.location}:</span>
-        <span>
+      <li className="flex justify-start px-0">
+        <span className="mr-3 font-medium text-gray-400">
+          {translations.location}
+        </span>
+        <span className="font-medium">
           {location.map((l) => `${l.city}, ${l.country}`).join(" / ")}
         </span>
       </li>

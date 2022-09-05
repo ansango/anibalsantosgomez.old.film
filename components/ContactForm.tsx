@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 type Props = {};
 
 const ContactForm: FC = () => {
-  const { t } = useTranslation("contact");
+  const { t } = useTranslation("about");
   const {
     register,
     handleSubmit,
