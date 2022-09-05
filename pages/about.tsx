@@ -19,8 +19,8 @@ const About: NextPage = () => {
       }}
     >
       <Structure>
-        <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10">
-          <div className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase">
+        <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10 lowercase">
+          <div className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full">
             <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
               {t("title")}
             </h1>
@@ -50,7 +50,7 @@ const About: NextPage = () => {
               <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900">
                 {t("filmCameras")}
               </h3>
-              <ul>
+              <ul className="space-y-1">
                 {filmCameras.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
@@ -60,7 +60,7 @@ const About: NextPage = () => {
               <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900">
                 {t("filmDevelopingEquipment")}
               </h3>
-              <ul>
+              <ul className="space-y-1">
                 {filmEquipment.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}

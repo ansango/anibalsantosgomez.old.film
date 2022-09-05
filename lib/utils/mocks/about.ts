@@ -38,7 +38,9 @@ export const filmCameras = [
   "Polaroid Land Camera 1000",
   "Hanimex Pocket 200",
   "Canon Prima Junior",
+  "Canon EOS Elan",
   "Canon EOS 50 E",
+  "Canon EOS 33",
 ];
 export const filmEquipment = [
   "Valoi Advancer",
