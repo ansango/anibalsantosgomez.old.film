@@ -59,7 +59,7 @@ const BlogLayout = ({
         </article>
         <div className="text-sm sm:text-base grid grid-cols-2 gap-5 md:gap-10 lg:gap-20 xl:gap-60 py-5 lowercase">
           {previousPost ? (
-            <Link href={`/${previousPost.slug}`} className="">
+            <Link href={`/series/${previousPost.slug}`} className="">
               <a className="flex justify-start items-center space-x-1 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ const BlogLayout = ({
             <div></div>
           )}
           {nextPost && (
-            <Link href={`/${nextPost.slug}`}>
+            <Link href={`/series/${nextPost.slug}`}>
               <a className="flex justify-end items-center space-x-1 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">
                 <span className="line-clamp-1 w-full text-right">
                   {nextPost.title}
