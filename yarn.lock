@@ -3191,11 +3191,6 @@ next-contentlayer@^0.2.4:
     "@contentlayer/utils" "0.2.4"
     rxjs "^7.1.0"
 
-next-themes@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.2.0.tgz#fdc507f61e95b3ae513dee8d4783bcec8c02e3a3"
-  integrity sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==
-
 next-translate@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/next-translate/-/next-translate-1.4.0.tgz#8e423ea9010019ac9573cb6c88412273f8210f77"
