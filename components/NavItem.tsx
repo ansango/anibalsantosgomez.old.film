@@ -9,10 +9,7 @@ const NavItem = ({ href, text }) => {
     <Link href={href}>
       <a
         className={cn(
-          isActive
-            ? "font-semibold text-gray-800 dark:text-gray-200"
-            : "font-normal text-gray-600 dark:text-gray-400",
-          "text-xl py-2 hover:underline transition-all"
+          isActive ? "font-medium text-gray-800" : "font-normal text-gray-600"
         )}
       >
         <span className="capsize">{text}</span>
