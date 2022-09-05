@@ -7,19 +7,18 @@
     "home": {
       "label": "home"
     },
+    "series": {
+      "label": "series"
+    },
     "about": {
       "label": "about"
     }
   },
-  "read-more": "read more",
   "date-locale": "en-US",
   "meta": {
     "camera": "camera",
     "film": "film",
     "period": "period",
     "location": "location"
-  },
-  "searcher": "Search posts",
-  "allPosts": "All Posts",
-  "noPosts": "No posts found"
+  }
 }

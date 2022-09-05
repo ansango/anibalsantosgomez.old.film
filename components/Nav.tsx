@@ -1,9 +1,7 @@
 import SwitchLang from "./SwitchLang";
-import SwitchTheme from "./SwitchTheme";
 import Structure from "./Structure";
 import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
-import Searcher from "./Searcher";
 import NavItem from "./NavItem";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -12,6 +10,7 @@ const Nav = () => {
   const { t } = useTranslation("common");
   const links = [
     { name: t("routes.home.label"), to: "/" },
+    { name: t("routes.series.label"), to: "/series" },
     { name: t("routes.about.label"), to: "/about" },
   ];
   const { asPath, locale } = useRouter();
@@ -102,7 +101,6 @@ const Nav = () => {
                   ))}
                 </ul>
               </div>
-              <Searcher />
             </div>
           </div>
         )}

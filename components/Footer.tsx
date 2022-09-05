@@ -8,6 +8,7 @@ const Footer = () => {
 
   const links = [
     { name: t("routes.home.label"), to: "/" },
+    { name: t("routes.series.label"), to: "/series" },
     { name: t("routes.about.label"), to: "/about" },
   ];
   return (
@@ -24,11 +25,12 @@ const Footer = () => {
                 </a>
               </Link>
             ))}
+          </div>
+          <div className="flex flex-col space-y-4">
             <ExternalLink href="https://instagram.com/iamasync">
               instagram
             </ExternalLink>
           </div>
-          <div className="flex flex-col space-y-4"></div>
         </div>
       </footer>
     </Structure>

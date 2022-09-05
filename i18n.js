@@ -7,5 +7,6 @@ module.exports = {
     "/": ["home"],
     "/about": ["about", "common"],
     "/contact": ["contact", "common"],
+    "/series": ["series", "common"],
   },
 };
