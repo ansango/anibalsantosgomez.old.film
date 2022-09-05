@@ -4,77 +4,63 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 16 Jun 2022 18:04:15 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 05 Sep 2022 19:29:39 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Asturias and Perlora]]></title>
             <description><![CDATA[Previously on Lost]]></description>
-            <link>https://anibalsantosgomez.com/asturias-perlora</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/asturias-perlora</guid>
+            <link>https://anibalsantosgomez.com/series/asturias-perlora</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/asturias-perlora</guid>
             <pubDate>Fri, 30 Jul 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Asturias y Perlora]]></title>
             <description><![CDATA[Anteriormente en Lost]]></description>
-            <link>https://anibalsantosgomez.com/es/asturias-perlora</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/asturias-perlora</guid>
+            <link>https://anibalsantosgomez.com/es/series/asturias-perlora</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/asturias-perlora</guid>
             <pubDate>Fri, 30 Jul 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Asturias and Vigo]]></title>
             <description><![CDATA[Nature and mountains]]></description>
-            <link>https://anibalsantosgomez.com/asturias-vigo</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/asturias-vigo</guid>
+            <link>https://anibalsantosgomez.com/series/asturias-vigo</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/asturias-vigo</guid>
             <pubDate>Tue, 10 Aug 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Asturias y Vigo]]></title>
             <description><![CDATA[Naturaleza y montañas]]></description>
-            <link>https://anibalsantosgomez.com/es/asturias-vigo</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/asturias-vigo</guid>
+            <link>https://anibalsantosgomez.com/es/series/asturias-vigo</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/asturias-vigo</guid>
             <pubDate>Tue, 10 Aug 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Firenze and Pisa]]></title>
             <description><![CDATA[Black and white shots of colorful scenes]]></description>
-            <link>https://anibalsantosgomez.com/firenze</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/firenze</guid>
+            <link>https://anibalsantosgomez.com/series/firenze</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/firenze</guid>
             <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Firenze y Pisa]]></title>
             <description><![CDATA[Fotografias en blanco y negro de escenas coloridas]]></description>
-            <link>https://anibalsantosgomez.com/es/firenze</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/firenze</guid>
+            <link>https://anibalsantosgomez.com/es/series/firenze</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/firenze</guid>
             <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Riaño]]></title>
             <description><![CDATA[The eastern mountain of Leon]]></description>
-            <link>https://anibalsantosgomez.com/riano</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/riano</guid>
+            <link>https://anibalsantosgomez.com/series/riano</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/riano</guid>
             <pubDate>Thu, 12 Aug 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Riaño]]></title>
             <description><![CDATA[La montaña oriental leonesa]]></description>
-            <link>https://anibalsantosgomez.com/es/riano</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/riano</guid>
+            <link>https://anibalsantosgomez.com/es/series/riano</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/riano</guid>
             <pubDate>Thu, 12 Aug 2021 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Early Salamanca]]></title>
-            <description><![CDATA[First steps on the film photography journey.]]></description>
-            <link>https://anibalsantosgomez.com/early-salamanca</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/early-salamanca</guid>
-            <pubDate>Mon, 16 Sep 2013 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Empezando en Salamanca]]></title>
-            <description><![CDATA[Primeros pasos en el viaje de la fotografía química.]]></description>
-            <link>https://anibalsantosgomez.com/es/early-salamanca</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/early-salamanca</guid>
-            <pubDate>Mon, 16 Sep 2013 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

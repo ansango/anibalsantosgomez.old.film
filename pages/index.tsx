@@ -45,19 +45,21 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             </p>
           </div>
           <div className="grid grid-cols-1 gap-5 md:gap-10 lg:gap-20 xl:gap-32">
-            {posts.map(({ slug, title, lang, cover }, index) => (
-              <Link href={`/series/${slug}`} locale={lang} key={index}>
-                <a className="w-full flex flex-col">
-                  <Image
-                    src={cover}
-                    alt={title}
-                    width={1152}
-                    height={768}
-                    priority={index === 0 ? true : false}
-                  />
-                </a>
-              </Link>
-            ))}
+            {posts.map(({ slug, title, lang, cover }, index) => {
+              return (
+                <Link href={`/${slug}`} locale={lang} key={index}>
+                  <a className="w-full flex flex-col">
+                    <Image
+                      src={cover}
+                      alt={title}
+                      width={1152}
+                      height={768}
+                      priority={index === 0 ? true : false}
+                    />
+                  </a>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </Structure>

@@ -11,11 +11,10 @@ async function generate() {
 
   allBlogs.map(
     ({ slug, lang, title, publishedAt: date, summary: description }) => {
-      ``;
       const url =
         lang === "en"
-          ? `https://anibalsantosgomez.com/${slug}`
-          : `https://anibalsantosgomez.com/${lang}/${slug}`;
+          ? `https://anibalsantosgomez.com/series/${slug}`
+          : `https://anibalsantosgomez.com/${lang}/series/${slug}`;
       feed.item({
         title,
         url,

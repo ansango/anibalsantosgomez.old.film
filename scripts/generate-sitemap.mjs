@@ -18,7 +18,7 @@ async function generate() {
   const cleanFiles = pages.map((page) => {
     const c = page
       .replace("pages", "")
-      .replace("blog", "")
+      .replace("blog", "/series")
       .replace(".tsx", "")
       .replace(".mdx", "")
       .replace("/en", "")
