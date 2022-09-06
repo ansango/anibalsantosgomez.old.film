@@ -21,7 +21,7 @@ const About: NextPage = () => {
       }}
     >
       <Structure>
-        <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10 lowercase">
+        <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10">
           <motion.div
             className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full"
             initial={{ opacity: 0 }}
@@ -29,7 +29,7 @@ const About: NextPage = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight">
+            <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight lowercase">
               {t("title")}
             </h1>
           </motion.div>
@@ -66,24 +66,24 @@ const About: NextPage = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <h2 className="font-medium text-2xl md:text-3xl tracking-tight mb-1 text-gray-900">
+            <h2 className="font-medium text-2xl md:text-3xl tracking-tight mb-1 text-gray-900 lowercase">
               {t("gear")}
             </h2>
             <article>
-              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900">
+              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900 lowercase">
                 {t("filmCameras")}
               </h3>
-              <ul className="space-y-1">
+              <ul className="space-y-1 lowercase">
                 {filmCameras.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
             </article>
             <article>
-              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900">
+              <h3 className="font-medium text-xl md:text-2xl tracking-tight mb-1 text-gray-900 lowercase">
                 {t("filmDevelopingEquipment")}
               </h3>
-              <ul className="space-y-1">
+              <ul className="space-y-1 lowercase">
                 {filmEquipment.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
@@ -91,7 +91,7 @@ const About: NextPage = () => {
             </article>
           </motion.div>
           <motion.div
-            className="w-full max-w-4xl space-y-20 pb-10 lg:pb-20"
+            className="w-full max-w-4xl space-y-20 pb-10 lg:pb-20 lowercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
