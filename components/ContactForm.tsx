@@ -5,9 +5,11 @@ import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-type Props = {};
+type Props = {
+  lang: string;
+};
 
-const ContactForm: FC = () => {
+const ContactForm: FC<Props> = ({ lang }) => {
   const { t } = useTranslation("about");
   const {
     register,
@@ -20,7 +22,7 @@ const ContactForm: FC = () => {
     async (contactForm) => {
       setIsSubmitting(true);
       try {
-        await onPostContactForm({ contactForm });
+        await onPostContactForm({ contactForm, lang });
         setIsSubmitting(false);
         reset();
         toast(t("form.success"), {

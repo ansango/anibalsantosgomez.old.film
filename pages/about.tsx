@@ -8,7 +8,9 @@ import useTranslation from "next-translate/useTranslation";
 import { filmCameras, filmEquipment, gallery } from "lib/utils/mocks/about";
 import ContactForm from "components/ContactForm";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 const About: NextPage = () => {
+  const { locale: lang } = useRouter();
   const { t } = useTranslation("about");
 
   return (
@@ -100,7 +102,7 @@ const About: NextPage = () => {
               </h2>
               <p className="text-gray-600 mb-5">{t("form.description")}</p>
             </div>
-            <ContactForm />
+            <ContactForm lang={lang} />
           </motion.div>
         </div>
       </Structure>
