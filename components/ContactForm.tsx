@@ -69,7 +69,7 @@ const ContactForm: FC<Props> = ({ lang }) => {
         });
       }
     },
-    [reset, t]
+    [reset, t, lang]
   );
   return (
     <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
@@ -148,7 +148,7 @@ const ContactForm: FC<Props> = ({ lang }) => {
         </label>
       </div>
       <button
-        className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+        className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
         type="submit"
         disabled={errors.name || errors.email || errors.message || isSubmitting}
       >
