@@ -59,7 +59,7 @@ const Series: NextPage = () => {
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16">
           <motion.div
-            className="flex flex-col py-10 md:pt-[20rem] lg:pt-[30rem] xl:pt-[40rem] 2xl:pt-[50rem] w-full lowercase"
+            className="flex flex-col py-10 md:pt-[20rem] lg:pt-[30rem] w-full lowercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
