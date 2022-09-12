@@ -4,63 +4,49 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 05 Sep 2022 19:29:39 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 12 Sep 2022 22:02:46 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[Asturias and Perlora]]></title>
-            <description><![CDATA[Previously on Lost]]></description>
-            <link>https://anibalsantosgomez.com/series/asturias-perlora</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/asturias-perlora</guid>
-            <pubDate>Fri, 30 Jul 2021 00:00:00 GMT</pubDate>
+            <title><![CDATA[Vigo & Cies]]></title>
+            <description><![CDATA[Captures from Vigo & Cies]]></description>
+            <link>https://anibalsantosgomez.com/series/32-vigo-cies</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/32-vigo-cies</guid>
+            <pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Asturias y Perlora]]></title>
-            <description><![CDATA[Anteriormente en Lost]]></description>
-            <link>https://anibalsantosgomez.com/es/series/asturias-perlora</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/asturias-perlora</guid>
-            <pubDate>Fri, 30 Jul 2021 00:00:00 GMT</pubDate>
+            <title><![CDATA[Vigo & Cies]]></title>
+            <description><![CDATA[Capturas de Vigo & Cies]]></description>
+            <link>https://anibalsantosgomez.com/es/series/32-vigo-cies</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/32-vigo-cies</guid>
+            <pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Asturias and Vigo]]></title>
-            <description><![CDATA[Nature and mountains]]></description>
-            <link>https://anibalsantosgomez.com/series/asturias-vigo</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/asturias-vigo</guid>
-            <pubDate>Tue, 10 Aug 2021 00:00:00 GMT</pubDate>
+            <title><![CDATA[Lisboa]]></title>
+            <description><![CDATA[Postcards from Lisbon]]></description>
+            <link>https://anibalsantosgomez.com/series/33-lisboa</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/33-lisboa</guid>
+            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Asturias y Vigo]]></title>
-            <description><![CDATA[Naturaleza y montañas]]></description>
-            <link>https://anibalsantosgomez.com/es/series/asturias-vigo</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/asturias-vigo</guid>
-            <pubDate>Tue, 10 Aug 2021 00:00:00 GMT</pubDate>
+            <title><![CDATA[Lisboa]]></title>
+            <description><![CDATA[Postales de Lisboa]]></description>
+            <link>https://anibalsantosgomez.com/es/series/33-lisboa</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/33-lisboa</guid>
+            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Firenze and Pisa]]></title>
-            <description><![CDATA[Black and white shots of colorful scenes]]></description>
-            <link>https://anibalsantosgomez.com/series/firenze</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/firenze</guid>
-            <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
+            <title><![CDATA[Lisboa & Sintra]]></title>
+            <description><![CDATA[Postcards from Lisbon & Sintra]]></description>
+            <link>https://anibalsantosgomez.com/series/34-lisboa-sintra</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/34-lisboa-sintra</guid>
+            <pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Firenze y Pisa]]></title>
-            <description><![CDATA[Fotografias en blanco y negro de escenas coloridas]]></description>
-            <link>https://anibalsantosgomez.com/es/series/firenze</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/firenze</guid>
-            <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Riaño]]></title>
-            <description><![CDATA[The eastern mountain of Leon]]></description>
-            <link>https://anibalsantosgomez.com/series/riano</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/riano</guid>
-            <pubDate>Thu, 12 Aug 2021 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Riaño]]></title>
-            <description><![CDATA[La montaña oriental leonesa]]></description>
-            <link>https://anibalsantosgomez.com/es/series/riano</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/riano</guid>
-            <pubDate>Thu, 12 Aug 2021 00:00:00 GMT</pubDate>
+            <title><![CDATA[Lisboa & Sintra]]></title>
+            <description><![CDATA[Postales de Lisboa & Sintra]]></description>
+            <link>https://anibalsantosgomez.com/es/series/34-lisboa-sintra</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/34-lisboa-sintra</guid>
+            <pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
