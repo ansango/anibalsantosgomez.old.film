@@ -97,8 +97,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                     <Image
                       src={cover}
                       alt={title}
-                      width={1152}
-                      height={768}
+                      width={2048}
+                      height={1365}
                       priority={index === 0 ? true : false}
                     />
                   </motion.a>

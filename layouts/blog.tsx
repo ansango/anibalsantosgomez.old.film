@@ -32,7 +32,7 @@ const BlogLayout = ({
       <Structure>
         <article className="flex flex-col items-start justify-center mx-auto">
           <motion.div
-            className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full lowercase"
+            className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[40rem] 2xl:pt-[50rem] w-full lowercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

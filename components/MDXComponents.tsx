@@ -39,8 +39,8 @@ export const ImageRender: FC<ImgProps> = ({ type = "landscape", ...props }) => {
       control.start("hidden");
     }
   }, [control, inView]);
-  const width = type === "landscape" ? 1152 : 768;
-  const height = type === "landscape" ? 768 : 1152;
+  const width = type === "landscape" ? 2048 : 1365;
+  const height = type === "landscape" ? 1365 : 2048;
   return (
     <motion.div
       ref={ref}
@@ -96,7 +96,7 @@ export const Meta = ({
             {translations.film}
           </span>
           <span className="font-medium">
-            {film.brand} {film.model} {film.iso}
+            {film.brand} {film.model} / {film.iso}
           </span>
         </li>
       )}

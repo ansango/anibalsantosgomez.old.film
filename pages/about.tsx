@@ -23,7 +23,7 @@ const About: NextPage = () => {
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10">
           <motion.div
-            className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[48rem] w-full"
+            className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[40rem] 2xl:pt-[50rem] w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
