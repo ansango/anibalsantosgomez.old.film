@@ -23,7 +23,7 @@ const About: NextPage = () => {
       <Structure>
         <div className="flex flex-col justify-center items-start border-gray-200 pb-16 space-y-10 lowercase">
           <motion.div
-            className="flex flex-col py-20 md:pt-[20rem] lg:pt-[30rem] xl:pt-[40rem] 2xl:pt-[50rem] w-full"
+            className="flex flex-col py-10 md:pt-[20rem] lg:pt-[30rem] w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -33,7 +33,16 @@ const About: NextPage = () => {
               {t("title")}
             </h1>
           </motion.div>
-
+          <motion.div
+            className="space-y-5 pb-10 lg:pb-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <p className="text-gray-600">{t("p1")}</p>
+            <p className="text-gray-600">{t("p2")}</p>
+            <p className="text-gray-600">{t("p3")}</p>
+          </motion.div>
           <motion.div
             className="grid grid-cols-12 gap-5 lg:gap-10 pb-5"
             initial={{ opacity: 0 }}
@@ -50,16 +59,6 @@ const About: NextPage = () => {
             ))}
           </motion.div>
 
-          <motion.div
-            className="space-y-5 pb-10 lg:pb-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <p className="text-gray-600">{t("p1")}</p>
-            <p className="text-gray-600">{t("p2")}</p>
-            <p className="text-gray-600">{t("p3")}</p>
-          </motion.div>
           <motion.div
             className="space-y-10 pb-10 lg:pb-20"
             initial={{ opacity: 0 }}
