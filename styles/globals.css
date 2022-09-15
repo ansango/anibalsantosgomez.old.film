@@ -1,21 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
 
-@layer base {
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
   html {
-    font-family: "Work Sans";
+    color-scheme: dark;
   }
-}
-
-html {
-  min-width: 360px;
-  scroll-behavior: smooth;
-}
-
-#__next {
-  @apply bg-gray-50;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  body {
+    color: white;
+    background: black;
+  }
 }

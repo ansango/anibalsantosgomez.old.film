@@ -33,7 +33,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
-
-# Contentlayer
-.contentlayer
+next-env.d.ts
