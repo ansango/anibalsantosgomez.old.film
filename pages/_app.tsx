@@ -1,12 +1,11 @@
-import { type AppProps } from "next/app";
-import Tina from "../.tina/components/TinaDynamicProvider";
-import "../styles/globals.css";
+import "../styles.css";
+import TinaProvider from "../.tina/components/TinaDynamicProvider";
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }) => {
   return (
-    <Tina>
+    <TinaProvider>
       <Component {...pageProps} />
-    </Tina>
+    </TinaProvider>
   );
 };
 

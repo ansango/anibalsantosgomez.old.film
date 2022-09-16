@@ -1,30 +1,190 @@
-import { defineSchema, defineConfig } from "tinacms";
+import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
+import { contentBlockSchema } from "../components/blocks/content";
+import { featureBlockSchema } from "../components/blocks/features";
+import { heroBlockSchema } from "../components/blocks/hero";
+import { testimonialBlockSchema } from "../components/blocks/testimonial";
+import { iconSchema } from "../components/util/icon";
 import { client } from "./__generated__/client";
 
-const branch =
-  process.env.NEXT_PUBLIC_TINA_BRANCH ||
-  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
-  process.env.HEAD ||
-  "main";
 const schema = defineSchema({
-  // See https://tina.io/docs/tina-cloud/connecting-site/ for more information about this config
   config: {
-    token: "<Your Read Only Token>", // generated on app.tina.io,
-    clientId: "<Your Client ID>", // generated on app.tina.io
-    branch,
+    clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
+    branch:
+      process.env.NEXT_PUBLIC_TINA_BRANCH! || // custom branch env override
+      process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF! || // Vercel branch env
+      process.env.HEAD!, // Netlify branch env
+    token: process.env.TINA_TOKEN!,
+    media: {
+      // If you wanted cloudinary do this
+      // loadCustomStore: async () => {
+      //   const pack = await import("next-tinacms-cloudinary");
+      //   return pack.TinaCloudCloudinaryMediaStore;
+      // },
+      // this is the config for the tina cloud media store
+      tina: {
+        publicFolder: "public",
+        mediaRoot: "uploads",
+      },
+    },
   },
   collections: [
     {
       label: "Series",
       name: "serie",
-      path: "content/serie",
+      path: "content/series",
       format: "mdx",
-      ui: {
-        router: ({ document }) => {
-          // This can be used to add contextual editing to your site. See https://tina.io/docs/tinacms-context/#accessing-contextual-editing-from-the-cms for more information.
-          return `/serie/${document._sys.filename}`;
+      
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          type: "string",
         },
-      },
+
+        {
+          label: "Camera",
+          name: "camera",
+          type: "string",
+          options: [
+            "Canon EOS Elan",
+            "Canon EOS 50 E",
+            "Canon EOS 33",
+            "Canon EOS 50D",
+            "Canon EOS 6D",
+          ],
+        },
+        {
+          label: "Film",
+          name: "film",
+          type: "string",
+          options: [
+            "Kodak Gold 200",
+            "Kodak Portra 400",
+            "Kodak Ektar 100",
+            "Ilford Delta 3200",
+            "Ilford HP5 Plus 400",
+            "Ilford XP2 Super 400",
+            "Fujifilm C200",
+            "Fujifilm Superia 400",
+          ],
+        },
+        {
+          label: "Location",
+          name: "location",
+          type: "object",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              console.log(item);
+              return { label: `${item?.city}, ${item?.country}` };
+            },
+            defaultItem: {
+              city: "City",
+              country: "Country",
+            },
+          },
+          fields: [
+            {
+              label: "City",
+              name: "city",
+              type: "string",
+            },
+            {
+              label: "Country",
+              name: "country",
+              type: "string",
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Shot Period",
+          name: "shot",
+          fields: [
+            {
+              label: "Start",
+              name: "start",
+              type: "datetime",
+              ui: {
+                dateFormat: "MMMM DD YYYY",
+                timeFormat: "HH:mm",
+              },
+            },
+            {
+              label: "End",
+              name: "end",
+              type: "datetime",
+              ui: {
+                dateFormat: "MMMM DD YYYY",
+                timeFormat: "HH:mm",
+              },
+            },
+          ],
+        },
+        {
+          type: "image",
+          name: "cover",
+          label: "Cover",
+        },
+        {
+          type: "rich-text",
+          label: "Body",
+          name: "_body",
+          templates: [
+            {
+              name: "DateTime",
+              label: "Date & Time",
+              inline: true,
+              fields: [
+                {
+                  name: "format",
+                  label: "Format",
+                  type: "string",
+                  options: ["utc", "iso", "local"],
+                },
+              ],
+            },
+            {
+              name: "BlockQuote",
+              label: "Block Quote",
+              fields: [
+                {
+                  name: "children",
+                  label: "Quote",
+                  type: "rich-text",
+                },
+                {
+                  name: "authorName",
+                  label: "Author",
+                  type: "string",
+                },
+              ],
+            },
+          ],
+          isBody: true,
+        },
+        {
+          type: "datetime",
+          label: "Published At",
+          name: "publishedAt",
+          ui: {
+            dateFormat: "MMMM DD YYYY",
+            timeFormat: "hh:mm A",
+          },
+        },
+        {
+          type: "boolean",
+          label: "Is Published",
+          name: "isPublished",
+        },
+      ],
+    },
+
+    {
+      label: "Blog Posts",
+      name: "post",
+      path: "content/posts",
+      format: "mdx",
       fields: [
         {
           type: "string",
@@ -32,27 +192,288 @@ const schema = defineSchema({
           name: "title",
         },
         {
+          type: "image",
+          name: "heroImg",
+          label: "Hero Image",
+        },
+        {
           type: "rich-text",
-          label: "Serie Body",
-          name: "body",
-          isBody: true,
+          label: "Excerpt",
+          name: "excerpt",
+        },
+        {
+          type: "reference",
+          label: "Author",
+          name: "author",
+          collections: ["author"],
+        },
+        {
+          type: "datetime",
+          label: "Posted Date",
+          name: "date",
+          ui: {
+            dateFormat: "MMMM DD YYYY",
+            timeFormat: "hh:mm A",
+          },
+        },
+        {
+          type: "rich-text",
+          label: "Body",
+          name: "_body",
           templates: [
             {
-              name: "PageSection",
-              label: "Page Section",
+              name: "DateTime",
+              label: "Date & Time",
+              inline: true,
+              fields: [
+                {
+                  name: "format",
+                  label: "Format",
+                  type: "string",
+                  options: ["utc", "iso", "local"],
+                },
+              ],
+            },
+            {
+              name: "BlockQuote",
+              label: "Block Quote",
+              fields: [
+                {
+                  name: "children",
+                  label: "Quote",
+                  type: "rich-text",
+                },
+                {
+                  name: "authorName",
+                  label: "Author",
+                  type: "string",
+                },
+              ],
+            },
+            {
+              name: "NewsletterSignup",
+              label: "Newsletter Sign Up",
+              fields: [
+                {
+                  name: "children",
+                  label: "CTA",
+                  type: "rich-text",
+                },
+                {
+                  name: "placeholder",
+                  label: "Placeholder",
+                  type: "string",
+                },
+                {
+                  name: "buttonText",
+                  label: "Button Text",
+                  type: "string",
+                },
+                {
+                  name: "disclaimer",
+                  label: "Disclaimer",
+                  type: "rich-text",
+                },
+              ],
+              ui: {
+                defaultItem: {
+                  placeholder: "Enter your email",
+                  buttonText: "Notify Me",
+                },
+              },
+            },
+          ],
+          isBody: true,
+        },
+      ],
+    },
+    {
+      label: "Global",
+      name: "global",
+      path: "content/global",
+      format: "json",
+      fields: [
+        {
+          type: "object",
+          label: "Header",
+          name: "header",
+          fields: [
+            iconSchema,
+            {
+              type: "string",
+              label: "Color",
+              name: "color",
+              options: [
+                { label: "Default", value: "default" },
+                { label: "Primary", value: "primary" },
+              ],
+            },
+            {
+              type: "object",
+              label: "Nav Links",
+              name: "nav",
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.label };
+                },
+                defaultItem: {
+                  href: "home",
+                  label: "Home",
+                },
+              },
               fields: [
                 {
                   type: "string",
-                  name: "heading",
-                  label: "Heading",
+                  label: "Link",
+                  name: "href",
                 },
                 {
                   type: "string",
-                  name: "content",
-                  label: "Content",
-                  ui: {
-                    component: "textarea",
-                  },
+                  label: "Label",
+                  name: "label",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Footer",
+          name: "footer",
+          fields: [
+            {
+              type: "string",
+              label: "Color",
+              name: "color",
+              options: [
+                { label: "Default", value: "default" },
+                { label: "Primary", value: "primary" },
+              ],
+            },
+            {
+              type: "object",
+              label: "Social Links",
+              name: "social",
+              fields: [
+                {
+                  type: "string",
+                  label: "Facebook",
+                  name: "facebook",
+                },
+                {
+                  type: "string",
+                  label: "Twitter",
+                  name: "twitter",
+                },
+                {
+                  type: "string",
+                  label: "Instagram",
+                  name: "instagram",
+                },
+                {
+                  type: "string",
+                  label: "Github",
+                  name: "github",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Theme",
+          name: "theme",
+          fields: [
+            {
+              type: "string",
+              label: "Primary Color",
+              name: "color",
+              options: [
+                {
+                  label: "Blue",
+                  value: "blue",
+                },
+                {
+                  label: "Teal",
+                  value: "teal",
+                },
+                {
+                  label: "Green",
+                  value: "green",
+                },
+                {
+                  label: "Red",
+                  value: "red",
+                },
+                {
+                  label: "Pink",
+                  value: "pink",
+                },
+                {
+                  label: "Purple",
+                  value: "purple",
+                },
+                {
+                  label: "Orange",
+                  value: "orange",
+                },
+                {
+                  label: "Yellow",
+                  value: "yellow",
+                },
+              ],
+            },
+            {
+              type: "string",
+              name: "font",
+              label: "Font Family",
+              options: [
+                {
+                  label: "System Sans",
+                  value: "sans",
+                },
+                {
+                  label: "Nunito",
+                  value: "nunito",
+                },
+                {
+                  label: "Lato",
+                  value: "lato",
+                },
+              ],
+            },
+            {
+              type: "string",
+              name: "icon",
+              label: "Icon Set",
+              options: [
+                {
+                  label: "Boxicons",
+                  value: "boxicon",
+                },
+                {
+                  label: "Heroicons",
+                  value: "heroicon",
+                },
+              ],
+            },
+            {
+              type: "string",
+              name: "darkMode",
+              label: "Dark Mode",
+              options: [
+                {
+                  label: "System",
+                  value: "system",
+                },
+                {
+                  label: "Light",
+                  value: "light",
+                },
+                {
+                  label: "Dark",
+                  value: "dark",
                 },
               ],
             },
@@ -60,14 +481,82 @@ const schema = defineSchema({
         },
       ],
     },
+    {
+      label: "Authors",
+      name: "author",
+      path: "content/authors",
+      format: "md",
+      fields: [
+        {
+          type: "string",
+          label: "Name",
+          name: "name",
+        },
+        {
+          type: "string",
+          label: "Avatar",
+          name: "avatar",
+        },
+      ],
+    },
+    {
+      label: "Pages",
+      name: "page",
+      path: "content/pages",
+      fields: [
+        {
+          type: "object",
+          list: true,
+          name: "blocks",
+          label: "Sections",
+          ui: {
+            visualSelector: true,
+          },
+          templates: [
+            heroBlockSchema,
+            featureBlockSchema,
+            contentBlockSchema,
+            testimonialBlockSchema,
+          ],
+        },
+      ],
+    },
   ],
 });
-
-export default schema;
-
-// Your tina config
 
 export const tinaConfig = defineConfig({
   client,
   schema,
+  cmsCallback: (cms) => {
+    /**
+     * When `tina-admin` is enabled, this plugin configures contextual editing for collections
+     */
+    const RouteMapping = new RouteMappingPlugin((collection, document) => {
+      if (["author", "global"].includes(collection.name)) {
+        return undefined;
+      }
+      if (["page"].includes(collection.name)) {
+        if (document._sys.filename === "home") {
+          return `/`;
+        }
+        if (document._sys.filename === "about") {
+          return `/about`;
+        }
+        return undefined;
+      }
+      return `/${collection.name}/${document._sys.filename}`;
+    });
+    cms.plugins.add(RouteMapping);
+
+    return cms;
+  },
+  formifyCallback: ({ formConfig, createForm, createGlobalForm }) => {
+    if (formConfig.id === "content/global/index.json") {
+      return createGlobalForm(formConfig);
+    }
+
+    return createForm(formConfig);
+  },
 });
+
+export default schema;
