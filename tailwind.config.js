@@ -3,7 +3,10 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: "class",
   theme: {
     colors: {
@@ -55,27 +58,8 @@ module.exports = {
         800: "#C1360F",
       },
     },
-    screens: {
-      sm: "600px",
-      md: "900px",
-      lg: "1200px",
-      xl: "1500px",
-      "2xl": "1800px",
-    },
-    fontSize: {
-      xs: ".875rem",
-      sm: "1rem",
-      base: "1.125rem",
-      lg: "1.25rem",
-      xl: "1.5rem",
-      "2xl": "1.75rem",
-      "3xl": "2rem",
-      "4xl": "2.5rem",
-      "5xl": "3.25rem",
-      "6xl": "4rem",
-      "7xl": "5rem",
-      "8xl": "6rem",
-    },
+    screens: {},
+    fontSize: {},
     borderWidth: {
       DEFAULT: "3px",
       0: "0",
