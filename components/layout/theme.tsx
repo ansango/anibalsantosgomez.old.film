@@ -48,6 +48,7 @@ export const Theme = ({ data, children }) => {
   }, [setSystemDarkMode]);
 
   const {
+    mono = "gray",
     color = "blue",
     icon = "boxicon",
     font = "sans",
@@ -67,6 +68,7 @@ export const Theme = ({ data, children }) => {
   return (
     <ThemeContext.Provider
       value={{
+        mono,
         color,
         icon,
         font,

@@ -1,11 +1,10 @@
 {
   "header": {
     "icon": {
-      "color": "orange",
-      "style": "float",
-      "name": "tina"
+      "color": "",
+      "name": "menu"
     },
-    "color": "default",
+    "color": "primary",
     "nav": [
       {
         "href": "",
@@ -16,8 +15,8 @@
         "label": "About"
       },
       {
-        "href": "posts",
-        "label": "Blog"
+        "href": "series",
+        "label": "Series"
       }
     ]
   },
@@ -30,9 +29,10 @@
     }
   },
   "theme": {
-    "color": "blue",
-    "font": "sans",
-    "icon": "boxicon",
-    "darkMode": "system"
+    "mono": "zinc",
+    "color": "orange",
+    "font": "work-sans",
+    "icon": "heroicon",
+    "darkMode": "light"
   }
 }

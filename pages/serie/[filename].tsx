@@ -1,21 +1,18 @@
-import { Post } from "../../components/posts/post";
 import { client } from "../../.tina/__generated__/client";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
+import { Post } from "../../components/posts/post";
 
-// Use the props returned by get static props
-export default function BlogPostPage(
-  props: AsyncReturnType<typeof getStaticProps>["props"]
-) {
+const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
     data: props.data,
   });
-  if (data && data.post) {
+  if (data && data.serie) {
     return (
       <Layout rawData={data} data={data.global as any}>
-        <Post {...data.post} />;
+        <Post {...data.serie} />;
       </Layout>
     );
   }
@@ -24,10 +21,12 @@ export default function BlogPostPage(
       <div>No data</div>;
     </Layout>
   );
-}
+};
+
+export default SeriePage;
 
 export const getStaticProps = async ({ params }) => {
-  const tinaProps = await client.queries. blogPostQuery({
+  const tinaProps = await client.queries.serieQuery({
     relativePath: `${params.filename}.mdx`,
   });
   return {
@@ -37,17 +36,10 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-/**
- * To build the blog post pages we just iterate through the list of
- * posts and provide their "filename" as part of the URL path
- *
- * So a blog post at "content/posts/hello.md" would
- * be viewable at http://localhost:3000/posts/hello
- */
 export const getStaticPaths = async () => {
-  const postsListData = await client.queries.postConnection();
+  const postsListData = await client.queries.serieConnection();
   return {
-    paths: postsListData.data.postConnection.edges.map((post) => ({
+    paths: postsListData.data.serieConnection.edges.map((post) => ({
       params: { filename: post.node._sys.filename },
     })),
     fallback: "blocking",

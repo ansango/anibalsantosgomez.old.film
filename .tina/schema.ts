@@ -3,8 +3,11 @@ import { contentBlockSchema } from "../components/blocks/content";
 import { featureBlockSchema } from "../components/blocks/features";
 import { heroBlockSchema } from "../components/blocks/hero";
 import { testimonialBlockSchema } from "../components/blocks/testimonial";
-import { iconSchema } from "../components/util/icon";
+import { iconSchema } from "./schemas";
+import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
+import { cameras } from "./schemas/camera/options";
+import { films } from "./schemas/film/options";
 
 const schema = defineSchema({
   config: {
@@ -33,7 +36,6 @@ const schema = defineSchema({
       name: "serie",
       path: "content/series",
       format: "mdx",
-      
       fields: [
         {
           label: "Title",
@@ -45,28 +47,13 @@ const schema = defineSchema({
           label: "Camera",
           name: "camera",
           type: "string",
-          options: [
-            "Canon EOS Elan",
-            "Canon EOS 50 E",
-            "Canon EOS 33",
-            "Canon EOS 50D",
-            "Canon EOS 6D",
-          ],
+          options: cameras,
         },
         {
           label: "Film",
           name: "film",
           type: "string",
-          options: [
-            "Kodak Gold 200",
-            "Kodak Portra 400",
-            "Kodak Ektar 100",
-            "Ilford Delta 3200",
-            "Ilford HP5 Plus 400",
-            "Ilford XP2 Super 400",
-            "Fujifilm C200",
-            "Fujifilm Superia 400",
-          ],
+          options: films,
         },
         {
           label: "Location",
@@ -75,7 +62,6 @@ const schema = defineSchema({
           list: true,
           ui: {
             itemProps: (item) => {
-              console.log(item);
               return { label: `${item?.city}, ${item?.country}` };
             },
             defaultItem: {
@@ -179,114 +165,6 @@ const schema = defineSchema({
         },
       ],
     },
-
-    {
-      label: "Blog Posts",
-      name: "post",
-      path: "content/posts",
-      format: "mdx",
-      fields: [
-        {
-          type: "string",
-          label: "Title",
-          name: "title",
-        },
-        {
-          type: "image",
-          name: "heroImg",
-          label: "Hero Image",
-        },
-        {
-          type: "rich-text",
-          label: "Excerpt",
-          name: "excerpt",
-        },
-        {
-          type: "reference",
-          label: "Author",
-          name: "author",
-          collections: ["author"],
-        },
-        {
-          type: "datetime",
-          label: "Posted Date",
-          name: "date",
-          ui: {
-            dateFormat: "MMMM DD YYYY",
-            timeFormat: "hh:mm A",
-          },
-        },
-        {
-          type: "rich-text",
-          label: "Body",
-          name: "_body",
-          templates: [
-            {
-              name: "DateTime",
-              label: "Date & Time",
-              inline: true,
-              fields: [
-                {
-                  name: "format",
-                  label: "Format",
-                  type: "string",
-                  options: ["utc", "iso", "local"],
-                },
-              ],
-            },
-            {
-              name: "BlockQuote",
-              label: "Block Quote",
-              fields: [
-                {
-                  name: "children",
-                  label: "Quote",
-                  type: "rich-text",
-                },
-                {
-                  name: "authorName",
-                  label: "Author",
-                  type: "string",
-                },
-              ],
-            },
-            {
-              name: "NewsletterSignup",
-              label: "Newsletter Sign Up",
-              fields: [
-                {
-                  name: "children",
-                  label: "CTA",
-                  type: "rich-text",
-                },
-                {
-                  name: "placeholder",
-                  label: "Placeholder",
-                  type: "string",
-                },
-                {
-                  name: "buttonText",
-                  label: "Button Text",
-                  type: "string",
-                },
-                {
-                  name: "disclaimer",
-                  label: "Disclaimer",
-                  type: "rich-text",
-                },
-              ],
-              ui: {
-                defaultItem: {
-                  placeholder: "Enter your email",
-                  buttonText: "Notify Me",
-                },
-              },
-            },
-          ],
-          isBody: true,
-        },
-      ],
-    },
     {
       label: "Global",
       name: "global",
@@ -387,71 +265,27 @@ const schema = defineSchema({
           fields: [
             {
               type: "string",
+              label: "Monochrome Color",
+              name: "mono",
+              options: [...monoColors],
+            },
+            {
+              type: "string",
               label: "Primary Color",
               name: "color",
-              options: [
-                {
-                  label: "Blue",
-                  value: "blue",
-                },
-                {
-                  label: "Teal",
-                  value: "teal",
-                },
-                {
-                  label: "Green",
-                  value: "green",
-                },
-                {
-                  label: "Red",
-                  value: "red",
-                },
-                {
-                  label: "Pink",
-                  value: "pink",
-                },
-                {
-                  label: "Purple",
-                  value: "purple",
-                },
-                {
-                  label: "Orange",
-                  value: "orange",
-                },
-                {
-                  label: "Yellow",
-                  value: "yellow",
-                },
-              ],
+              options: [...colorFull],
             },
             {
               type: "string",
               name: "font",
               label: "Font Family",
-              options: [
-                {
-                  label: "System Sans",
-                  value: "sans",
-                },
-                {
-                  label: "Nunito",
-                  value: "nunito",
-                },
-                {
-                  label: "Lato",
-                  value: "lato",
-                },
-              ],
+              options: [...fontFamilies],
             },
             {
               type: "string",
               name: "icon",
               label: "Icon Set",
               options: [
-                {
-                  label: "Boxicons",
-                  value: "boxicon",
-                },
                 {
                   label: "Heroicons",
                   value: "heroicon",
@@ -478,24 +312,6 @@ const schema = defineSchema({
               ],
             },
           ],
-        },
-      ],
-    },
-    {
-      label: "Authors",
-      name: "author",
-      path: "content/authors",
-      format: "md",
-      fields: [
-        {
-          type: "string",
-          label: "Name",
-          name: "name",
-        },
-        {
-          type: "string",
-          label: "Avatar",
-          name: "avatar",
         },
       ],
     },
@@ -532,7 +348,7 @@ export const tinaConfig = defineConfig({
      * When `tina-admin` is enabled, this plugin configures contextual editing for collections
      */
     const RouteMapping = new RouteMappingPlugin((collection, document) => {
-      if (["author", "global"].includes(collection.name)) {
+      if (["global"].includes(collection.name)) {
         return undefined;
       }
       if (["page"].includes(collection.name)) {

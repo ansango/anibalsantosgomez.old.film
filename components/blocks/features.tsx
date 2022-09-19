@@ -3,7 +3,7 @@ import { Section } from "../util/section";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
 import type { TinaTemplate } from "tinacms";
-import { iconSchema } from "../util/icon";
+import { iconSchema } from "../../.tina/schemas";
 
 export const Feature = ({ featuresColor, data, tinaField }) => {
   return (

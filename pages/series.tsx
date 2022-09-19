@@ -7,7 +7,7 @@ import { Layout } from "../components/layout";
 export default function HomePage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
 ) {
-  const posts = props.data.postConnection.edges;
+  const posts = props.data.serieConnection.edges;
 
   return (
     <Layout>
@@ -21,7 +21,8 @@ export default function HomePage(
 }
 
 export const getStaticProps = async () => {
-  const tinaProps = await client.queries.pageQuery();
+  const tinaProps = await client.queries.seriesPublishedQuery();
+
   return {
     props: {
       ...tinaProps,

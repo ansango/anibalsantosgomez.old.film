@@ -1,15 +1,10 @@
 query pageQuery {
   ...LayoutQueryFragment
-  postConnection {
+  serieConnection {
     edges {
       node {
         id
         _values
-        author {
-          ... on Author {
-            ...AuthorParts
-          }
-        }
         _sys {
           filename
         }
@@ -25,14 +20,36 @@ query contentQuery($relativePath: String!) {
   }
 }
 
-query blogPostQuery($relativePath: String!) {
+query serieQuery($relativePath: String!) {
   ...LayoutQueryFragment
-  post(relativePath: $relativePath) {
-    ...PostParts
-    author {
-      ... on Author {
-        name
-        avatar
+  serie(relativePath: $relativePath) {
+    ...SerieParts
+  }
+}
+
+query seriesPublishedQuery {
+  serieConnection(filter: { isPublished: { eq: true } }) {
+    edges {
+      node {
+        title
+        camera
+        film
+        location {
+          city
+          country
+        }
+        shot {
+          start
+          end
+        }
+        cover
+        _body
+        publishedAt
+        isPublished
+        id
+        _sys {
+          filename
+        }
       }
     }
   }
