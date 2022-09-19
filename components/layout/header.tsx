@@ -94,9 +94,11 @@ export const Header = ({ data }) => {
       <div className={`py-5 md:py-10 ${headerColorCss}`}>
         <Container size="custom" className="py-0 relative z-10 max-w-8xl">
           <div className="flex items-center justify-between">
-            <h4 className="select-none text-lg font-medium tracking-tight opacity-80 transition duration-150 ease-out transform hover:opacity-100">
+            <h4
+              className={`select-none text-lg font-medium tracking-tight opacity-80 transition duration-150 ease-out transform hover:opacity-100`}
+            >
               <Link href="/" passHref>
-                <a className="flex items-center">anibal santos</a>
+                <a>anibal santos</a>
               </Link>
             </h4>
             <div className="inline-flex space-x-2 items-center">
@@ -120,7 +122,6 @@ export const Header = ({ data }) => {
                         : data.iconClose.color,
                       size: !isOpen ? data.iconMenu.size : data.iconClose.size,
                     }}
-                    className="inline-block h-auto w-10 mr-1"
                   />
                 </button>
                 {isOpen && (

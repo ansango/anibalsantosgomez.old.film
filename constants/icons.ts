@@ -14,11 +14,13 @@ import {
   UserIcon,
   ChatBubbleBottomCenterIcon,
   CloudIcon,
+  EyeIcon,
 } from "@heroicons/react/24/outline";
 
 export const iconsTheme = {
   menu: { hi: Bars2Icon },
   close: { hi: XMarkIcon },
+  eye: { hi: EyeIcon },
   // defaults
   code: { hi: CodeBracketIcon },
   like: { hi: HandThumbUpIcon },

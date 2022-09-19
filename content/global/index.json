@@ -8,7 +8,7 @@
       "size": "sm",
       "name": "close"
     },
-    "color": "primary",
+    "color": "default",
     "nav": [
       {
         "href": "",
