@@ -9,7 +9,7 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
     variables: props.variables,
     data: props.data,
   });
-  if (data && data.serie) {
+  if (data && data.serie && data.serie.isPublished) {
     return (
       <Layout rawData={data} data={data.global as any}>
         <Post {...data.serie} />;

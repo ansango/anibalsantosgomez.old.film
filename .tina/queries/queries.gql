@@ -35,7 +35,7 @@ query seriesPublishedQuery {
         camera
         film
         location {
-          city
+          name
           country
         }
         shot {

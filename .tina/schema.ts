@@ -9,6 +9,7 @@ import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
 import { cameras } from "./schemas/camera/options";
 import { films } from "./schemas/film/options";
+import { series } from "./schemas/tags/options";
 
 const schema = defineSchema({
   config: {
@@ -42,6 +43,9 @@ const schema = defineSchema({
           label: "Title",
           name: "title",
           type: "string",
+          ui: {
+            defaultValue: "Untitled",
+          },
         },
 
         {
@@ -49,39 +53,18 @@ const schema = defineSchema({
           name: "camera",
           type: "string",
           options: cameras,
+          ui: {
+            defaultValue: cameras[1],
+          },
         },
         {
           label: "Film",
           name: "film",
           type: "string",
           options: films,
-        },
-        {
-          label: "Location",
-          name: "location",
-          type: "object",
-          list: true,
           ui: {
-            itemProps: (item) => {
-              return { label: `${item?.city}, ${item?.country}` };
-            },
-            defaultItem: {
-              city: "City",
-              country: "Country",
-            },
+            defaultValue: films[0],
           },
-          fields: [
-            {
-              label: "City",
-              name: "city",
-              type: "string",
-            },
-            {
-              label: "Country",
-              name: "country",
-              type: "string",
-            },
-          ],
         },
         {
           type: "object",
@@ -105,6 +88,33 @@ const schema = defineSchema({
                 dateFormat: "MMMM DD YYYY",
                 timeFormat: "HH:mm",
               },
+            },
+          ],
+        },
+        {
+          label: "Location",
+          name: "location",
+          type: "object",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: `${item?.name}, ${item?.country}` };
+            },
+            defaultItem: {
+              name: "Name",
+              country: "Country",
+            },
+          },
+          fields: [
+            {
+              label: "Name",
+              name: "name",
+              type: "string",
+            },
+            {
+              label: "Country",
+              name: "country",
+              type: "string",
             },
           ],
         },
@@ -149,6 +159,28 @@ const schema = defineSchema({
             },
           ],
           isBody: true,
+        },
+        {
+          label: "Tags",
+          name: "tags",
+          type: "object",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item?.label };
+            },
+            defaultItem: {
+              label: "tag",
+            },
+          },
+          fields: [
+            {
+              type: "string",
+              label: "Label",
+              name: "label",
+              options: series,
+            },
+          ],
         },
         {
           type: "datetime",
