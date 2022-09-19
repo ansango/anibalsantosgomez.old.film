@@ -101,7 +101,7 @@ export const Footer = ({ data, rawData }) => {
         </div>
 
         {process.env.NODE_ENV === "development" && (
-          <RawRenderer parentColor={data.color} rawData={rawData} />
+          <RawRenderer rawData={rawData} />
         )}
       </Container>
     </footer>
