@@ -343,6 +343,7 @@ const schema = defineSchema({
 export const tinaConfig = defineConfig({
   client,
   schema,
+
   cmsCallback: (cms) => {
     /**
      * When `tina-admin` is enabled, this plugin configures contextual editing for collections
