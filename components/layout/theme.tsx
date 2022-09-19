@@ -2,7 +2,6 @@ import * as React from "react";
 import GlobalData from "../../content/global/index.json";
 
 const ThemeContext = React.createContext(GlobalData.theme);
-
 export const useTheme = () => React.useContext(ThemeContext);
 
 const updateRenderColorMode = (themeMode: "dark" | "light") => {
@@ -17,12 +16,10 @@ const updateRenderColorMode = (themeMode: "dark" | "light") => {
 const getUserSystemDarkMode = () => {
   if (typeof window !== "undefined") {
     const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
-
     if (userMedia.matches) {
       return "dark";
     }
   }
-
   return "light";
 };
 
@@ -34,13 +31,11 @@ export const Theme = ({ data, children }) => {
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
-
       const updateSystemMediaPreference = (event) => {
         setSystemDarkMode(event.matches ? "dark" : "light");
       };
 
       userMedia.addEventListener("change", updateSystemMediaPreference);
-
       return () =>
         userMedia.removeEventListener("change", updateSystemMediaPreference);
     }
@@ -49,8 +44,8 @@ export const Theme = ({ data, children }) => {
 
   const {
     mono = "gray",
-    color = "blue",
-    icon = "boxicon",
+    color = "default",
+    icon = "heroicon",
     font = "sans",
     darkMode = "system",
   } = data;

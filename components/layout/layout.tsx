@@ -52,6 +52,14 @@ export const mainMonoClass = {
   stone: "text-stone-800 dark:text-stone-100 flex-1 flex flex-col",
 };
 
+export const tx = {
+  slate: "text-slate-800 dark:text-slate-100",
+  gray: "text-gray-800 dark:text-gray-100",
+  zinc: "text-zinc-800 dark:text-zinc-100",
+  neutral: "text-neutral-800 dark:text-neutral-100",
+  stone: "text-stone-800 dark:text-stone-100",
+};
+
 const bg = {
   slate: "bg-slate-50 dark:bg-slate-900",
   gray: "bg-gray-50 dark:bg-gray-900",
@@ -61,11 +69,10 @@ const bg = {
 };
 
 export const Layout = ({ rawData = {}, data = layoutData, children }) => {
-  const mainClass = mainMonoClass[data.theme.mono];
+  
   return (
     <>
       <Head font={data?.theme.font} />
-
       <Theme data={data?.theme}>
         <div
           className={`min-h-screen flex flex-col ${
@@ -74,10 +81,12 @@ export const Layout = ({ rawData = {}, data = layoutData, children }) => {
             data.theme.font === "work-sans" && "font-work-sans"
           } ${data.theme.font === "sans" && "font-sans"} ${
             bg[data.theme.mono]
-          }`}
+          } ${tx[data.theme.mono]}`}
         >
           <Header data={data?.header} />
-          <main className={mainClass}>{children}</main>
+          <main className={`${tx[data.theme.mono]} flex-1 flex flex-col`}>
+            {children}
+          </main>
           <Footer rawData={rawData} data={data?.footer} />
         </div>
       </Theme>

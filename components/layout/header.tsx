@@ -62,7 +62,6 @@ const useAutoClose = ({ setIsOpen, menu }) => {
 };
 
 export const Header = ({ data }) => {
-  console.log(data);
   const menu = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   useAutoClose({ setIsOpen, menu });

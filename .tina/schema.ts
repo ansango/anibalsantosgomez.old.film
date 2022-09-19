@@ -209,7 +209,6 @@ const schema = defineSchema({
           label: "Header",
           name: "header",
           fields: [
-            { ...iconSchema },
             { ...iconSchema, label: "Icon Menu", name: "iconMenu" },
             { ...iconSchema, label: "Icon Close", name: "iconClose" },
             {
@@ -335,7 +334,13 @@ const schema = defineSchema({
               type: "string",
               label: "Primary Color",
               name: "color",
-              options: [...colorFull],
+              options: [
+                ...colorFull,
+                {
+                  label: "Default",
+                  value: "default",
+                },
+              ],
             },
             {
               type: "string",

@@ -16,7 +16,7 @@ export const Container = ({
 
   return (
     <div
-      className={`max-w-7xl mx-auto px-6 sm:px-8 ${verticalPadding[size]} ${className}`}
+      className={`w-full max-w-6xl mx-auto ${verticalPadding[size]} ${className}`}
       {...props}
     >
       {children}

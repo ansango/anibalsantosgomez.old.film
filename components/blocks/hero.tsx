@@ -6,18 +6,37 @@ import { useTheme } from "../layout";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { TinaTemplate } from "tinacms";
 
+const headlineColorClasses = {
+  mono: {
+    slate: "text-slate-900 dark:text-slate-50",
+    gray: "text-gray-900 dark:text-gray-50",
+    zinc: "text-zinc-900 dark:text-zinc-50",
+    neutral: "text-neutral-900 dark:text-neutral-50",
+    stone: "text-stone-900 dark:text-stone-50",
+  },
+  primary: {
+    red: "text-red-600 dark:text-red-400",
+    orange: "text-orange-600 dark:text-orange-400",
+    yellow: "text-yellow-600 dark:text-yellow-400",
+    amber: "text-amber-600 dark:text-amber-400",
+    lime: "text-lime-600 dark:text-lime-400",
+    green: "text-green-600 dark:text-green-400",
+    emerald: "text-emerald-600 dark:text-emerald-400",
+    teal: "text-teal-600 dark:text-teal-400",
+    cyan: "text-cyan-600 dark:text-cyan-400",
+    sky: "text-sky-600 dark:text-sky-400",
+    blue: "text-blue-600 dark:text-blue-400",
+    indigo: "text-indigo-600 dark:text-indigo-400",
+    violet: "text-violet-600 dark:text-violet-400",
+    purple: "text-purple-600 dark:text-purple-400",
+    fuchsia: "text-fuchsia-600 dark:text-fuchsia-400",
+    pink: "text-pink-600 dark:text-pink-400",
+    rose: "text-rose-600 dark:text-rose-400",
+  },
+};
+
 export const Hero = ({ data, parentField }) => {
   const theme = useTheme();
-  const headlineColorClasses = {
-    blue: "from-blue-400 to-blue-600",
-    teal: "from-teal-400 to-teal-600",
-    green: "from-green-400 to-green-600",
-    red: "from-red-400 to-red-600",
-    pink: "from-pink-400 to-pink-600",
-    purple: "from-purple-400 to-purple-600",
-    orange: "from-orange-300 to-orange-600",
-    yellow: "from-yellow-400 to-yellow-600",
-  };
 
   return (
     <Section color={data.color}>
@@ -26,6 +45,22 @@ export const Hero = ({ data, parentField }) => {
         className="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-8 items-center justify-center"
       >
         <div className="row-start-2 lg:row-start-1 lg:col-start-1 lg:col-end-3 text-center lg:text-left">
+          {data.headline && (
+            <h1
+              data-tinafield={`${parentField}.headline`}
+              className={`w-full relative	mb-10 text-5xl font-extrabold tracking-normal leading-tight title-font`}
+            >
+              <span
+                className={`bg-clip-text  ${
+                  data.color === "primary"
+                    ? headlineColorClasses.mono[theme.mono]
+                    : headlineColorClasses.primary[theme.color]
+                }`}
+              >
+                {data.headline}
+              </span>
+            </h1>
+          )}
           {data.tagline && (
             <h2
               data-tinafield={`${parentField}.tagline`}
@@ -35,22 +70,7 @@ export const Hero = ({ data, parentField }) => {
               <span className="absolute w-full h-full left-0 top-0 rounded-full -z-1 bg-current opacity-7"></span>
             </h2>
           )}
-          {data.headline && (
-            <h3
-              data-tinafield={`${parentField}.headline`}
-              className={`w-full relative	mb-10 text-5xl font-extrabold tracking-normal leading-tight title-font`}
-            >
-              <span
-                className={`bg-clip-text text-transparent bg-gradient-to-r  ${
-                  data.color === "primary"
-                    ? `from-white to-gray-100`
-                    : headlineColorClasses[theme.color]
-                }`}
-              >
-                {data.headline}
-              </span>
-            </h3>
-          )}
+
           {data.text && (
             <div
               data-tinafield={`${parentField}.text`}
@@ -101,13 +121,13 @@ export const heroBlockSchema: TinaTemplate = {
   fields: [
     {
       type: "string",
-      label: "Tagline",
-      name: "tagline",
+      label: "Headline",
+      name: "headline",
     },
     {
       type: "string",
-      label: "Headline",
-      name: "headline",
+      label: "Tagline",
+      name: "tagline",
     },
     {
       label: "Text",

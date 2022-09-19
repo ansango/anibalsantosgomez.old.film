@@ -1,5 +1,13 @@
 ---
 blocks:
+  - headline: This Big Text is Totally Awesome
+    tagline: Here's some text above the other text
+    text: |+
+      Y aqui una pequena descripcion
+
+      ![](/uploads/08.webp)
+
+    _template: hero
   - headline: Welcome to the Tina Starter
     text: >
       This project is set up to show you the basics of working with Tina. You're

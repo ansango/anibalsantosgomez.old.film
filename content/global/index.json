@@ -1,10 +1,5 @@
 {
   "header": {
-    "icon": {
-      "color": "",
-      "size": "sm",
-      "name": "menu"
-    },
     "iconMenu": {
       "size": "sm",
       "name": "menu"
@@ -13,7 +8,7 @@
       "size": "sm",
       "name": "close"
     },
-    "color": "default",
+    "color": "primary",
     "nav": [
       {
         "href": "",
@@ -54,7 +49,7 @@
   },
   "theme": {
     "mono": "stone",
-    "color": "",
+    "color": "default",
     "font": "work-sans",
     "icon": "heroicon",
     "darkMode": "light"
