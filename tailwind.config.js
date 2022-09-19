@@ -56,6 +56,7 @@ module.exports = {
         nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
         lato: ["Lato", ...defaultTheme.fontFamily.sans],
         "work-sans": ["Work Sans", ...defaultTheme.fontFamily.sans],
+        "ibm-sans": ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
       },
       typography: (theme) => ({
         DEFAULT: {

@@ -15,4 +15,8 @@ export const fontFamilies = [
     label: "Work Sans",
     value: "work-sans",
   },
+  {
+    label: "IBM Plex Sans",
+    value: "ibm-sans",
+  },
 ];

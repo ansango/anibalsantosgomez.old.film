@@ -1,9 +1,6 @@
 import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
-import { featureBlockSchema } from "../components/blocks/features";
 import { heroBlockSchema } from "../components/blocks/hero";
-import { testimonialBlockSchema } from "../components/blocks/testimonial";
-import { seriesBlockSchema } from "../components/blocks/series";
 import { iconSchema } from "./schemas";
 import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
@@ -386,6 +383,7 @@ const schema = defineSchema({
       label: "Pages",
       name: "page",
       path: "content/pages",
+      format: "mdx",
       fields: [
         {
           type: "object",
@@ -395,13 +393,7 @@ const schema = defineSchema({
           ui: {
             visualSelector: true,
           },
-          templates: [
-            heroBlockSchema,
-            featureBlockSchema,
-            contentBlockSchema,
-            testimonialBlockSchema,
-            seriesBlockSchema,
-          ],
+          templates: [heroBlockSchema, contentBlockSchema],
         },
       ],
     },
