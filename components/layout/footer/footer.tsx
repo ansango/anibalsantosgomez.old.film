@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { FaFacebookF, FaGithub, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { Container } from "../../util/container";
 import { RawRenderer } from "./rawRenderer";
@@ -50,8 +49,50 @@ const footerColor = {
   },
 };
 
-export const Footer = ({ data, icon, rawData }) => {
+export const Footer = ({ data, rawData }) => {
   const { color, mono } = useTheme();
+  const [prefix, setPrefix] = React.useState("");
+
+  React.useEffect(() => {
+    if (window.location.pathname.startsWith("/admin")) {
+      setPrefix("/admin");
+    }
+  });
+
+  const internalLinks =
+    (data.links &&
+      data.links.map((link, i) => ({
+        el: (
+          <Link
+            key={`${link.label}-${i}`}
+            href={`${prefix}/${link.href}`}
+            passHref
+          >
+            <a>{link.label}</a>
+          </Link>
+        ),
+      }))) ||
+    [];
+  const socialLinks =
+    (data.social &&
+      data.social.map((link, i) => ({
+        el: (
+          <a
+            key={`${link.label}-${i}-external`}
+            className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
+            href={link.href}
+            target="_blank"
+          >
+            {link.label}
+          </a>
+        ),
+      }))) ||
+    [];
+  const links = [...internalLinks, ...socialLinks];
+
+  const blockOneLinks = links.slice(0, 4);
+  const blockTwoLinks = links.slice(4, 8);
+  const blockThreeLinks = links.slice(8, 12);
 
   const footerColorCss =
     data.color === "primary"
@@ -59,86 +100,23 @@ export const Footer = ({ data, icon, rawData }) => {
       : footerColor.mono[mono];
 
   return (
-    <footer className={`bg-gradient-to-br ${footerColorCss}`}>
+    <footer className={footerColorCss}>
       <Container className="relative" size="small">
-        <div className="flex justify-between items-center gap-6 flex-wrap">
-          <Link href="/" passHref>
-            <a className="group mx-2 flex items-center font-bold tracking-tight text-gray-400 dark:text-gray-300 opacity-50 hover:opacity-100 transition duration-150 ease-out whitespace-nowrap">
-              <Icon
-                parentColor={data.color}
-                data={{
-                  name: icon.name,
-                  color: data.color === "primary" ? "primary" : icon.color,
-                  style: icon.style,
-                }}
-                className="inline-block h-10 w-auto group-hover:text-orange-500"
-              />
-            </a>
-          </Link>
-          <div className="flex gap-4">
-            {data.social && data.social.facebook && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.facebook}
-                target="_blank"
-              >
-                <FaFacebookF
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : color
-                    ]
-                  }`}
-                />
-              </a>
-            )}
-            {data.social && data.social.twitter && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.twitter}
-                target="_blank"
-              >
-                <FaTwitter
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : color
-                    ]
-                  }`}
-                />
-              </a>
-            )}
-            {data.social && data.social.instagram && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.instagram}
-                target="_blank"
-              >
-                <AiFillInstagram
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : color
-                    ]
-                  }`}
-                />
-              </a>
-            )}
-            {data.social && data.social.github && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.github}
-                target="_blank"
-              >
-                <FaGithub
-                  className={`${socialIconClasses} ${
-                    socialIconColorClasses[
-                      data.color === "primary" ? "primary" : color
-                    ]
-                  }`}
-                />
-              </a>
-            )}
+        <div className="grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
+          <div className="flex flex-col space-y-4">
+            {blockOneLinks.map((item) => item.el)}
           </div>
-          <RawRenderer parentColor={data.color} rawData={rawData} />
+          <div className="flex flex-col space-y-4">
+            {blockTwoLinks.map((item) => item.el)}
+          </div>
+          <div className="flex flex-col space-y-4">
+            {blockThreeLinks.map((item) => item.el)}
+          </div>
         </div>
+
+        {process.env.NODE_ENV === "development" && (
+          <RawRenderer parentColor={data.color} rawData={rawData} />
+        )}
       </Container>
     </footer>
   );

@@ -22,11 +22,62 @@
   },
   "footer": {
     "color": "default",
-    "social": {
-      "facebook": "/",
-      "twitter": "/",
-      "instagram": "/"
-    }
+    "links": [
+      {
+        "href": "",
+        "label": "A"
+      },
+      {
+        "href": "",
+        "label": "B"
+      },
+      {
+        "href": "",
+        "label": "C"
+      },
+      {
+        "href": "",
+        "label": "D"
+      },
+      {
+        "href": "",
+        "label": "E"
+      },
+      {
+        "href": "",
+        "label": "F"
+      },
+      {
+        "href": "",
+        "label": "G"
+      },
+      {
+        "href": "",
+        "label": "H"
+      }
+    ],
+    "social": [
+      {
+        "href": "/",
+        "label": "T"
+      },
+      {
+        "href": "/",
+        "label": "W"
+      },
+      {
+        "href": "/",
+        "label": "I"
+      },
+      {
+        "href": "/",
+        "label": "T"
+      },
+      {
+        "href": "/",
+        "label": "R"
+      }
+    ]
   },
   "theme": {
     "mono": "stone",

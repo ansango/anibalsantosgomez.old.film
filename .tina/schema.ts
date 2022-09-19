@@ -264,28 +264,55 @@ const schema = defineSchema({
             },
             {
               type: "object",
-              label: "Social Links",
-              name: "social",
+              label: "Links",
+              name: "links",
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.label };
+                },
+                defaultItem: {
+                  href: "",
+                  label: "Home",
+                },
+              },
               fields: [
                 {
                   type: "string",
-                  label: "Facebook",
-                  name: "facebook",
+                  label: "Link",
+                  name: "href",
                 },
                 {
                   type: "string",
+                  label: "Label",
+                  name: "label",
+                },
+              ],
+            },
+            {
+              type: "object",
+              label: "Social Links",
+              name: "social",
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.label };
+                },
+                defaultItem: {
+                  href: "/",
                   label: "Twitter",
-                  name: "twitter",
+                },
+              },
+              fields: [
+                {
+                  type: "string",
+                  label: "Link",
+                  name: "href",
                 },
                 {
                   type: "string",
-                  label: "Instagram",
-                  name: "instagram",
-                },
-                {
-                  type: "string",
-                  label: "Github",
-                  name: "github",
+                  label: "Label",
+                  name: "label",
                 },
               ],
             },
