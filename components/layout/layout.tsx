@@ -4,7 +4,6 @@ import { Header } from "./header";
 import { Footer } from "./footer";
 import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
-import { colorFull } from "../../constants/colors";
 
 const Head = ({ font = layoutData.theme.font }) => {
   return (
@@ -53,6 +52,14 @@ export const mainMonoClass = {
   stone: "text-stone-800 dark:text-stone-100 flex-1 flex flex-col",
 };
 
+const bg = {
+  slate: "bg-slate-50 dark:bg-slate-900",
+  gray: "bg-gray-50 dark:bg-gray-900",
+  zinc: "bg-zinc-50 dark:bg-zinc-900",
+  neutral: "bg-neutral-50 dark:bg-neutral-900",
+  stone: "bg-stone-50 dark:bg-stone-900",
+};
+
 export const Layout = ({ rawData = {}, data = layoutData, children }) => {
   const mainClass = mainMonoClass[data.theme.mono];
   return (
@@ -65,7 +72,9 @@ export const Layout = ({ rawData = {}, data = layoutData, children }) => {
             data.theme.font === "nunito" && "font-nunito"
           } ${data.theme.font === "lato" && "font-lato"} ${
             data.theme.font === "work-sans" && "font-work-sans"
-          } ${data.theme.font === "sans" && "font-sans"}`}
+          } ${data.theme.font === "sans" && "font-sans"} ${
+            bg[data.theme.mono]
+          }`}
         >
           <Header data={data?.header} />
           <main className={mainClass}>{children}</main>
