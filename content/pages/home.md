@@ -24,7 +24,7 @@ blocks:
   - items:
       - icon:
           color: red
-          style: float
+          size: 2xl
           name: code
         title: Amazing Feature
         text: >-
@@ -32,14 +32,14 @@ blocks:
           Praesent ac faucibus risus, eu lacinia enim.
       - icon:
           color: primary
-          style: float
+          size: 2xl
           name: like
         title: This Is a Feature
         text: Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
       - icon:
           color: green
-          style: float
-          name: palette
+          size: 2xl
+          name: shield
         title: Configurable Theme
         text: >-
           Edit global theme configuration with Tina. Change your theme's primary

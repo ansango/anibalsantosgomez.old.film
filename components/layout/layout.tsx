@@ -4,7 +4,7 @@ import { Header } from "./header";
 import { Footer } from "./footer";
 import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
-import { colorFull} from "../../constants/colors";
+import { colorFull } from "../../constants/colors";
 
 const Head = ({ font = layoutData.theme.font }) => {
   return (
@@ -45,16 +45,16 @@ const Head = ({ font = layoutData.theme.font }) => {
   );
 };
 
-const mainOptions: { [key: string]: string } = colorFull.reduce(
-  (acc, { value }) => {
-    acc[value] = `text-${value}-800 dark:text-${value}-50 flex-1 flex flex-col`;
-    return acc;
-  },
-  {}
-);
+export const mainMonoClass = {
+  slate: "text-slate-800 dark:text-slate-100 flex-1 flex flex-col",
+  gray: "text-gray-800 dark:text-gray-100 flex-1 flex flex-col",
+  zinc: "text-zinc-800 dark:text-zinc-100 flex-1 flex flex-col",
+  neutral: "text-neutral-800 dark:text-neutral-100 flex-1 flex flex-col",
+  stone: "text-stone-800 dark:text-stone-100 flex-1 flex flex-col",
+};
 
 export const Layout = ({ rawData = {}, data = layoutData, children }) => {
-  const mainClass = mainOptions[data.theme.mono];
+  const mainClass = mainMonoClass[data.theme.mono];
   return (
     <>
       <Head font={data?.theme.font} />

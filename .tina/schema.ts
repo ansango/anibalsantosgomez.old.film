@@ -3,6 +3,7 @@ import { contentBlockSchema } from "../components/blocks/content";
 import { featureBlockSchema } from "../components/blocks/features";
 import { heroBlockSchema } from "../components/blocks/hero";
 import { testimonialBlockSchema } from "../components/blocks/testimonial";
+import { seriesBlockSchema } from "../components/blocks/series";
 import { iconSchema } from "./schemas";
 import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
@@ -333,6 +334,7 @@ const schema = defineSchema({
             featureBlockSchema,
             contentBlockSchema,
             testimonialBlockSchema,
+            seriesBlockSchema,
           ],
         },
       ],
@@ -349,6 +351,7 @@ export const tinaConfig = defineConfig({
      * When `tina-admin` is enabled, this plugin configures contextual editing for collections
      */
     const RouteMapping = new RouteMappingPlugin((collection, document) => {
+      console.log("collection", collection);
       if (["global"].includes(collection.name)) {
         return undefined;
       }
@@ -358,6 +361,9 @@ export const tinaConfig = defineConfig({
         }
         if (document._sys.filename === "about") {
           return `/about`;
+        }
+        if (document._sys.filename === "series") {
+          return `/series`;
         }
         return undefined;
       }

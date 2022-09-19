@@ -8,7 +8,7 @@ export const colors = Object.keys(iconColorClass).map((color) => ({
 }));
 
 export const sizes = Object.keys(iconSizeClass).map((size) => ({
-  label: formatFieldLabel(size),
+  label: size,
   value: size,
 }));
 
