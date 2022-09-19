@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "../util/container";
 import { useTheme } from ".";
@@ -44,7 +44,29 @@ const activeItemClasses = {
   yellow: "border-b-3 border-yellow-300 dark:border-yellow-600",
 };
 
+const useAutoClose = ({ setIsOpen, menu }) => {
+  const handleClosure = useCallback(
+    (event) => !menu.current.contains(event.target) && setIsOpen(false),
+    [setIsOpen, menu]
+  );
+
+  useEffect(() => {
+    window.addEventListener("click", handleClosure);
+    window.addEventListener("focusin", handleClosure);
+
+    return () => {
+      window.removeEventListener("click", handleClosure);
+      window.removeEventListener("focusin", handleClosure);
+    };
+  }, [handleClosure, menu]);
+};
+
 export const Header = ({ data }) => {
+  console.log(data);
+  const menu = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  useAutoClose({ setIsOpen, menu });
+
   const { color, mono } = useTheme();
 
   const headerColorCss =
@@ -70,47 +92,72 @@ export const Header = ({ data }) => {
 
   return (
     <>
-      <div className={headerColorCss}>
+      <div className={`py-5 md:py-10 ${headerColorCss}`}>
         <Container size="custom" className="py-0 relative z-10 max-w-8xl">
           <div className="flex items-center justify-between">
-            <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
+            <h4 className="select-none text-lg font-medium tracking-tight opacity-80 transition duration-150 ease-out transform hover:opacity-100">
               <Link href="/" passHref>
-                <a className="flex items-center">
+                <a className="flex items-center">anibal santos</a>
+              </Link>
+            </h4>
+            <div className="inline-flex space-x-2 items-center">
+              <div className="relative inline-block text-left" ref={menu}>
+                <button
+                  type="button"
+                  id="menu-button"
+                  aria-expanded={isOpen}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setIsOpen((isOpen) => !isOpen);
+                  }}
+                  className="flex items-center"
+                >
                   <Icon
                     parentColor={data.color}
                     data={{
-                      name: data.icon.name,
-                      color: data.icon.color,
-                      size: data.icon.size,
+                      name: !isOpen ? data.iconMenu.name : data.iconClose.name,
+                      color: !isOpen
+                        ? data.iconMenu.color
+                        : data.iconClose.color,
+                      size: !isOpen ? data.iconMenu.size : data.iconClose.size,
                     }}
                     className="inline-block h-auto w-10 mr-1"
-                  />{" "}
-                  anibal santos
-                </a>
-              </Link>
-            </h4>
-            <ul className="flex gap-6 sm:gap-8 lg:gap-10">
-              {data.nav &&
-                data.nav.map((item, i) => {
-                  const activeItem =
-                    item.href === ""
-                      ? typeof location !== "undefined" &&
-                        location.pathname == "/"
-                      : windowUrl.includes(item.href);
-                  return (
-                    <li
-                      key={`${item.label}-${i}`}
-                      className={activeItem ? activeItemClasses[color] : ""}
-                    >
-                      <Link href={`${prefix}/${item.href}`} passHref>
-                        <a className="select-none	text-base inline-block tracking-wide font-regular transition duration-150 ease-out opacity-70 hover:opacity-100 py-8">
-                          {item.label}
-                        </a>
-                      </Link>
-                    </li>
-                  );
-                })}
-            </ul>
+                  />
+                </button>
+                {isOpen && (
+                  <div
+                    className="absolute right-0 z-10 mt-4 w-24 p-2 origin-top-right rounded-md bg-gray-50 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu"
+                    aria-hidden={!isOpen}
+                  >
+                    <ul className="space-y-2 flex flex-col w-full">
+                      {data.nav &&
+                        data.nav.map((item, i) => {
+                          const activeItem =
+                            item.href === ""
+                              ? typeof location !== "undefined" &&
+                                location.pathname == "/"
+                              : windowUrl.includes(item.href);
+                          return (
+                            <li
+                              key={`${item.label}-${i}`}
+                              className={
+                                activeItem ? activeItemClasses[color] : ""
+                              }
+                            >
+                              <Link href={`${prefix}/${item.href}`} passHref>
+                                <a className="opacity-80 hover:opacity-100 transition duration-150 ease-out">
+                                  {item.label}
+                                </a>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </Container>
       </div>

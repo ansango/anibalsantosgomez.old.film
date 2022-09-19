@@ -2,9 +2,18 @@
   "header": {
     "icon": {
       "color": "",
+      "size": "sm",
       "name": "menu"
     },
-    "color": "primary",
+    "iconMenu": {
+      "size": "sm",
+      "name": "menu"
+    },
+    "iconClose": {
+      "size": "sm",
+      "name": "close"
+    },
+    "color": "default",
     "nav": [
       {
         "href": "",
@@ -21,67 +30,31 @@
     ]
   },
   "footer": {
-    "color": "default",
+    "color": "primary",
     "links": [
       {
         "href": "",
-        "label": "A"
+        "label": "Home"
       },
       {
-        "href": "",
-        "label": "B"
+        "href": "about",
+        "label": "About"
       },
       {
-        "href": "",
-        "label": "C"
-      },
-      {
-        "href": "",
-        "label": "D"
-      },
-      {
-        "href": "",
-        "label": "E"
-      },
-      {
-        "href": "",
-        "label": "F"
-      },
-      {
-        "href": "",
-        "label": "G"
-      },
-      {
-        "href": "",
-        "label": "H"
+        "href": "series",
+        "label": "Series"
       }
     ],
     "social": [
       {
-        "href": "/",
-        "label": "T"
-      },
-      {
-        "href": "/",
-        "label": "W"
-      },
-      {
-        "href": "/",
-        "label": "I"
-      },
-      {
-        "href": "/",
-        "label": "T"
-      },
-      {
-        "href": "/",
-        "label": "R"
+        "href": "https://www.instagram.com/iamasync/",
+        "label": "Instagram"
       }
     ]
   },
   "theme": {
     "mono": "stone",
-    "color": "orange",
+    "color": "",
     "font": "work-sans",
     "icon": "heroicon",
     "darkMode": "light"

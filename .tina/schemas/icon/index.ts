@@ -1,6 +1,4 @@
 import { TinaField } from "tinacms";
-import { iconColorClass, iconSizeClass } from "../../../components/util/icon";
-import { iconsTheme } from "../../../constants";
 import { colors, sizes, names } from "./options";
 
 export const iconSchema: TinaField = {

@@ -1,24 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { AiFillInstagram } from "react-icons/ai";
 import { Container } from "../../util/container";
 import { RawRenderer } from "./rawRenderer";
 import { useTheme } from "..";
-import { Icon } from "../../util/icon";
-
-const socialIconClasses = "h-7 w-auto";
-
-const socialIconColorClasses = {
-  blue: "text-blue-500 dark:text-blue-400 hover:text-blue-300",
-  teal: "text-teal-500 dark:text-teal-400 hover:text-teal-300",
-  green: "text-green-500 dark:text-green-400 hover:text-green-300",
-  red: "text-red-500 dark:text-red-400 hover:text-red-300",
-  pink: "text-pink-500 dark:text-pink-400 hover:text-pink-300",
-  purple: "text-purple-500 dark:text-purple-400 hover:text-purple-300",
-  orange: "text-orange-500 dark:text-orange-400 hover:text-orange-300",
-  yellow: "text-yellow-500 dark:text-yellow-400 hover:text-yellow-300",
-  primary: "text-white opacity-80 hover:opacity-100",
-};
 
 const footerColor = {
   mono: {
@@ -68,7 +52,9 @@ export const Footer = ({ data, rawData }) => {
             href={`${prefix}/${link.href}`}
             passHref
           >
-            <a>{link.label}</a>
+            <a className="opacity-80 hover:opacity-100 transition duration-150 ease-out">
+              {link.label}
+            </a>
           </Link>
         ),
       }))) ||
@@ -79,7 +65,7 @@ export const Footer = ({ data, rawData }) => {
         el: (
           <a
             key={`${link.label}-${i}-external`}
-            className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
+            className="opacity-80 hover:opacity-100 transition duration-150 ease-out"
             href={link.href}
             target="_blank"
           >

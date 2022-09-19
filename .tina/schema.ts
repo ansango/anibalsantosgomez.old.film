@@ -209,7 +209,9 @@ const schema = defineSchema({
           label: "Header",
           name: "header",
           fields: [
-            iconSchema,
+            { ...iconSchema },
+            { ...iconSchema, label: "Icon Menu", name: "iconMenu" },
+            { ...iconSchema, label: "Icon Close", name: "iconClose" },
             {
               type: "string",
               label: "Color",
