@@ -66,18 +66,40 @@ const renderHero = (data, parentField) => {
             <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
               <div className="flex flex-col w-full mb-12 text-center">
                 {data.headline && (
-                  <h1 className="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl" data-tinafield={`${parentField}.headline`}>
+                  <h1
+                    className="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl"
+                    data-tinafield={`${parentField}.headline`}
+                  >
                     {data.headline}
                   </h1>
                 )}
                 {data.text && (
-                  <p className="max-w-xl mx-auto mt-8 text-base leading-relaxed text-center text-gray-500"  data-tinafield={`${parentField}.text`}>
+                  <p
+                    className="max-w-xl mx-auto mt-8 text-base leading-relaxed text-center text-gray-500"
+                    data-tinafield={`${parentField}.text`}
+                  >
                     {data.text}
                   </p>
                 )}
               </div>
             </div>
-          </Container>
+          </Container>{" "}
+          {data.image?.src && (
+            <Container>
+              <div
+                className="flex flex-col items-center justify-center"
+                data-tinafield={`${parentField}.image`}
+              >
+                <Image
+                  className="object-cover object-center w-full"
+                  alt={data.image.alt}
+                  src={data.image.src ?? ""}
+                  width={data.image.type === "portrait" ? 1365 : 2048}
+                  height={data.image.type === "portrait" ? 2048 : 1365}
+                />
+              </div>
+            </Container>
+          )}
         </Section>
       );
     default:
