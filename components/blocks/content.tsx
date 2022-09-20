@@ -6,7 +6,7 @@ import type { TinaTemplate } from "tinacms";
 
 export const Content = ({ data, parentField = "" }) => {
   return (
-    <Section color={data.color}>
+    <Section>
       <Container
         className={`max-w-4xl prose prose-neutral prose-p:text-base ${
           data.color === "primary" ? `prose-primary` : `dark:prose-dark`
