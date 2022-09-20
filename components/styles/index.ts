@@ -54,7 +54,6 @@ export const primaryTextColors = {
   stone: "text-stone-600",
 };
 
-
 export const primaryHoverTextColors = {
   red: "hover:text-red-600",
   orange: "hover:text-orange-600",
@@ -103,4 +102,29 @@ export const primaryBorderColors = {
   zinc: "border-zinc-600",
   neutral: "border-neutral-600",
   stone: "border-stone-600",
+};
+
+export const primaryHoverBorderColors = {
+  red: "hover:border-red-600",
+  orange: "hover:border-orange-600",
+  amber: "hover:border-amber-600",
+  yellow: "hover:border-yellow-600",
+  lime: "hover:border-lime-600",
+  green: "hover:border-green-600",
+  emerald: "hover:border-emerald-600",
+  teal: "hover:border-teal-600",
+  cyan: "hover:border-cyan-600",
+  sky: "hover:border-sky-600",
+  blue: "hover:border-blue-600",
+  indigo: "hover:border-indigo-600",
+  violet: "hover:border-violet-600",
+  purple: "hover:border-purple-600",
+  fuchsia: "hover:border-fuchsia-600",
+  pink: "hover:border-pink-600",
+  rose: "hover:border-rose-600",
+  slate: "hover:border-slate-600",
+  gray: "hover:border-gray-600",
+  zinc: "hover:border-zinc-600",
+  neutral: "hover:border-neutral-600",
+  stone: "hover:border-stone-600",
 };

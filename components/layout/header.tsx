@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
 import { useTheme } from "./theme";
 import {
   primaryBorderColors,
+  primaryHoverBorderColors,
   primaryHoverTextColors,
   primaryTextColors,
 } from "../styles";
@@ -28,17 +29,8 @@ const useAutoClose = ({ setIsOpen, menu }) => {
 
 const Nav = ({ nav }) => {
   const { color } = useTheme();
-  // If we're on an admin path, other links should also link to their admin paths
-  const [prefix, setPrefix] = React.useState("");
-  const [windowUrl, setUrl] = React.useState("");
-  const isBrowser = typeof window !== "undefined";
-  const hasUrl = isBrowser ? window.location.href : "";
-
-  React.useEffect(() => {
-    setUrl(hasUrl);
-  }, [hasUrl]);
-
-  React.useEffect(() => {
+  const [prefix, setPrefix] = useState("");
+  useEffect(() => {
     if (window.location.pathname.startsWith("/admin")) {
       setPrefix("/admin");
     }
@@ -47,10 +39,6 @@ const Nav = ({ nav }) => {
   return (
     <>
       {nav.map((item, i) => {
-        const activeItem =
-          item.href === ""
-            ? typeof location !== "undefined" && location.pathname == "/"
-            : windowUrl.includes(item.href);
         return (
           <Link
             href={`${prefix}/${item.href}`}
@@ -58,9 +46,7 @@ const Nav = ({ nav }) => {
             key={`${item.label}-${i}`}
           >
             <a
-              className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline text-neutral-600 ${
-                primaryHoverTextColors[color]
-              }  ${activeItem ? primaryTextColors[color] : ""}`}
+              className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] text-neutral-600 ${primaryHoverTextColors[color]} border-b-2 border-transparent ${primaryHoverBorderColors[color]}`}
             >
               {item.label}
             </a>

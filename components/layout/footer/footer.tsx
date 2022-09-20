@@ -1,15 +1,15 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Container } from "../../util/container";
 import { RawRenderer } from "./rawRenderer";
-import { primaryTextColors } from "../../styles";
+import { primaryHoverTextColors, primaryTextColors } from "../../styles";
 import { useTheme } from "../theme";
 
 export const Footer = ({ data, rawData }) => {
   const { color } = useTheme();
-  const [prefix, setPrefix] = React.useState("");
+  const [prefix, setPrefix] = useState("");
 
-  React.useEffect(() => {
+ useEffect(() => {
     if (window.location.pathname.startsWith("/admin")) {
       setPrefix("/admin");
     }
@@ -21,7 +21,9 @@ export const Footer = ({ data, rawData }) => {
         el: (
           <li key={`${link.label}-${i}`}>
             <Link href={`${prefix}/${link.href}`} passHref>
-              <a className="text-sm font-normal text-neutral-500 hover:text-neutral-900">
+              <a
+                className={`text-sm font-normal text-neutral-500 ${primaryHoverTextColors[color]}`}
+              >
                 {link.label}
               </a>
             </Link>
@@ -35,7 +37,7 @@ export const Footer = ({ data, rawData }) => {
         el: (
           <li key={`${link.label}-${i}-external`}>
             <a
-              className="text-sm font-normal text-neutral-500 hover:text-neutral-900"
+              className={`text-sm font-normal text-neutral-500 ${primaryHoverTextColors[color]}`}
               href={link.href}
               target="_blank"
             >
