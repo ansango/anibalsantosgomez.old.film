@@ -39,9 +39,9 @@ export const Hero = ({ data, parentField = "" }) => {
             )}
           </div>
         </div>
-      </Container>{" "}
-      <Container>
-        {data.image?.src && (
+      </Container>
+      {data.image?.src && (
+        <Container>
           <div
             className="flex flex-col items-center justify-center"
             data-tinafield={`${parentField}.image`}
@@ -54,8 +54,8 @@ export const Hero = ({ data, parentField = "" }) => {
               height={data.image.type === "portrait" ? 2048 : 1365}
             />
           </div>
-        )}
-      </Container>
+        </Container>
+      )}
     </Section>
   );
 };
