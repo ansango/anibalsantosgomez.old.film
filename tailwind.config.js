@@ -38,6 +38,9 @@ module.exports = {
       4: "4px",
     },
     extend: {
+      aspectRatio: {
+        "4/3": "4 / 3",
+      },
       textDecoration: ["active"],
       opacity: {
         7: ".075",

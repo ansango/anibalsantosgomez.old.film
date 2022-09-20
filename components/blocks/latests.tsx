@@ -61,7 +61,7 @@ export const Latests = ({ data, parentField = "" }) => {
                       <div className="flex-shrink-0">
                         {serie.cover && (
                           <img
-                            className="object-cover w-full"
+                            className="object-cover w-full aspect-4/3"
                             alt=""
                             src={serie.cover}
                             width={2048}

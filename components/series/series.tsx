@@ -27,7 +27,7 @@ export const Series = ({ data }) => {
                     {serie.cover && (
                       <div className="w-full relative sm:w-48 md:w-64 lg:w-32">
                         <img
-                          className="object-cover w-full"
+                          className="object-cover w-full aspect-4/3"
                           alt=""
                           src={serie.cover}
                           width={2048}
