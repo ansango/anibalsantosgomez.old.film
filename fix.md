@@ -1,0 +1,2 @@
+- avatar mail template
+- contact form styles
