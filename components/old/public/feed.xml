@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Anibal Santos]]></title>
+        <description><![CDATA[Anibal Santos]]></description>
+        <link>https://anibalsantosgomez.com</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Mon, 12 Sep 2022 22:02:46 GMT</lastBuildDate>
+        <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Vigo & Cies]]></title>
+            <description><![CDATA[Captures from Vigo & Cies]]></description>
+            <link>https://anibalsantosgomez.com/series/32-vigo-cies</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/32-vigo-cies</guid>
+            <pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Vigo & Cies]]></title>
+            <description><![CDATA[Capturas de Vigo & Cies]]></description>
+            <link>https://anibalsantosgomez.com/es/series/32-vigo-cies</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/32-vigo-cies</guid>
+            <pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lisboa]]></title>
+            <description><![CDATA[Postcards from Lisbon]]></description>
+            <link>https://anibalsantosgomez.com/series/33-lisboa</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/33-lisboa</guid>
+            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lisboa]]></title>
+            <description><![CDATA[Postales de Lisboa]]></description>
+            <link>https://anibalsantosgomez.com/es/series/33-lisboa</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/33-lisboa</guid>
+            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lisboa & Sintra]]></title>
+            <description><![CDATA[Postcards from Lisbon & Sintra]]></description>
+            <link>https://anibalsantosgomez.com/series/34-lisboa-sintra</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/series/34-lisboa-sintra</guid>
+            <pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lisboa & Sintra]]></title>
+            <description><![CDATA[Postales de Lisboa & Sintra]]></description>
+            <link>https://anibalsantosgomez.com/es/series/34-lisboa-sintra</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/34-lisboa-sintra</guid>
+            <pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
