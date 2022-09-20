@@ -74,7 +74,7 @@ const renderHero = (data, parentField) => {
                     className="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl"
                     data-tinafield={`${parentField}.headline`}
                   >
-                    {data.headline}
+                    {data.headline} s
                   </h1>
                 )}
                 {data.text && (
