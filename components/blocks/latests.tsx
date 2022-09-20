@@ -58,7 +58,7 @@ export const Latests = ({ data, parentField = "" }) => {
                     <a className="flex flex-col mb-12 overflow-hidden cursor-pointer">
                       <div className="flex-shrink-0">
                         {serie.cover && (
-                          <Image
+                          <img
                             className="object-cover w-full"
                             alt=""
                             src={serie.cover}

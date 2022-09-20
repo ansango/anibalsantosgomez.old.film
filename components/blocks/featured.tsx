@@ -57,7 +57,7 @@ export const Featured = ({ data, parentField = "" }) => {
                     <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6">
                       <div className="flex-shrink-0">
                         {lastSerie.cover && (
-                          <Image
+                          <img
                             className="object-cover w-full"
                             alt=""
                             src={lastSerie.cover}
@@ -103,7 +103,7 @@ export const Featured = ({ data, parentField = "" }) => {
                         <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6">
                           <div className="flex-shrink-0">
                             {serie.cover && (
-                              <Image
+                              <img
                                 className="object-cover w-full"
                                 alt=""
                                 src={serie.cover}

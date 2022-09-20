@@ -42,7 +42,7 @@ export const Series = ({ data }) => {
                   <div className="mb-4 sm:mb-0 sm:mr-4">
                     {serie.cover && (
                       <div className="w-full relative sm:w-48 md:w-64 lg:w-32">
-                        <Image
+                        <img
                           className="object-cover w-full"
                           alt=""
                           src={serie.cover}

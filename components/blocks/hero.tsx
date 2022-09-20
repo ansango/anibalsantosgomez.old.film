@@ -4,14 +4,13 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
 import type { TinaTemplate } from "tinacms";
-import NextImage from "next/image";
 
 const Image = ({ data, parentField = "" }) => (
   <div
     className="flex flex-col items-center justify-center"
     data-tinafield={`${parentField}.image`}
   >
-    <NextImage
+    <img
       className="object-cover object-center w-full"
       alt={data.image.alt}
       src={data.image.src ?? ""}
@@ -74,7 +73,7 @@ const renderHero = (data, parentField) => {
                     className="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl"
                     data-tinafield={`${parentField}.headline`}
                   >
-                    {data.headline} s
+                    {data.headline}
                   </h1>
                 )}
                 {data.text && (
