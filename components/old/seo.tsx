@@ -1,8 +1,6 @@
-import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import seoConfig from "lib/utils/seoConfig";
 
 export type Props = {
   title?: string;
@@ -12,25 +10,30 @@ export type Props = {
   date?: string;
 };
 
+const seoConfig = {
+  image: "https://anibalsantosgomez.com/static/avatar.jpeg",
+  author: "Aníbal Santos Gómez",
+  site: "https://anibalsantosgomez.com",
+  twitter: "@iamasync_",
+};
+
 const Seo: FC<Props> = ({
-  title,
-  description,
+  title = "film captures",
+  description = "film captures",
   image,
   type = "website",
   date,
 }) => {
   const { author, site, twitter, image: imageDefault } = seoConfig;
-  const { t } = useTranslation("common");
-  const { asPath, locale } = useRouter();
-  const localePrefix = locale === "en" ? "" : `/${locale}`;
+  const { asPath } = useRouter();
 
   const meta = {
-    title: title || `${author} - ${t(`defaultSeo.title`)}`,
-    description: description || t(`defaultSeo.description`),
+    title: `${author} - ${title}`,
+    description: description,
     image: image || imageDefault,
     type,
     author,
-    site: `${site}${localePrefix}`,
+    site: `${site}`,
     twitter,
   };
 
