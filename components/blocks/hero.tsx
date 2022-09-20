@@ -100,8 +100,6 @@ const renderHero = (data, parentField) => {
 };
 
 export const Hero = ({ data, parentField = "" }) => {
-  const theme = useTheme();
-
   return <Section color={data.color}>{renderHero(data, parentField)}</Section>;
 };
 

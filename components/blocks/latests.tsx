@@ -4,7 +4,6 @@ import client from "../../.tina/__generated__/client";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { formatDate, countPhotos } from "../../utils";
-import Image from "next/image";
 import Link from "next/link";
 
 export const Latests = ({ data, parentField = "" }) => {
@@ -35,7 +34,7 @@ export const Latests = ({ data, parentField = "" }) => {
       });
     };
   }, []);
-  console.log(series.data);
+
   return (
     <>
       {series.data?.length > 0 ? (

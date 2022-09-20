@@ -109,14 +109,6 @@ export const Header = ({ data }) => {
   const menu = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   useAutoClose({ setIsOpen, menu });
-
-  const { color, mono } = useTheme();
-
-  const headerColorCss =
-    data.color === "primary"
-      ? headerColor.primary[color]
-      : headerColor.mono[mono];
-
   return (
     <Container>
       <div className="flex flex-col md:items-center md:justify-between md:flex-row">

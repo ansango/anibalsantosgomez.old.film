@@ -1,10 +1,8 @@
 import { TinaTemplate } from "tinacms";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-
 import { client } from "../../.tina/__generated__/client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { formatDate, countPhotos } from "../../utils";
 

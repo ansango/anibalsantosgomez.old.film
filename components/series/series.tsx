@@ -1,24 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { BsArrowRight } from "react-icons/bs";
-import { useTheme } from "../layout";
 import { formatDate } from "../../utils";
-import Image from "next/image";
 
 export const Series = ({ data }) => {
-  const theme = useTheme();
-  const titleColorClasses = {
-    blue: "group-hover:text-blue-600 dark:group-hover:text-blue-300",
-    teal: "group-hover:text-teal-600 dark:group-hover:text-teal-300",
-    green: "group-hover:text-green-600 dark:group-hover:text-green-300",
-    red: "group-hover:text-red-600 dark:group-hover:text-red-300",
-    pink: "group-hover:text-pink-600 dark:group-hover:text-pink-300",
-    purple: "group-hover:text-purple-600 dark:group-hover:text-purple-300",
-    orange: "group-hover:text-orange-600 dark:group-hover:text-orange-300",
-    yellow: "group-hover:text-yellow-500 dark:group-hover:text-yellow-300",
-  };
-
   return (
     <div className="space-y-5 sm:space-y-0">
       <div className="relative">
