@@ -22,11 +22,11 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
         data={data.global as any}
         seo={{
           ...seoConfig,
-          title: serie.title,
-          description: serie.summary,
+          title: serie.seo.title,
+          description: serie.seo.description,
           route: props.route,
           date: serie.publishedAt,
-          image: serie.cover,
+          image: serie.meta.cover,
         }}
       >
         <Post {...data.serie} />;

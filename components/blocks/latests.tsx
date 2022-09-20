@@ -85,8 +85,7 @@ export const Latests = ({ data, parentField = "" }) => {
                               {serie.title}
                             </h3>
                             <p className="text-lg font-normal text-gray-500">
-                              Filling text so you can see how it looks like with
-                              text. Did I said text?
+                             {serie.summary}
                             </p>
                           </div>
                         </div>

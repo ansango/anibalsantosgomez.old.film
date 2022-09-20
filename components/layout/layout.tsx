@@ -165,11 +165,13 @@ export const seoSchema: TinaField = {
       type: "string",
       label: "Title",
       name: "title",
+      required: true,
     },
     {
       type: "string",
       label: "Description",
       name: "description",
+      required: true,
     },
   ],
 };

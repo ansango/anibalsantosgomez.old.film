@@ -1,4 +1,9 @@
-import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
+import {
+  defineSchema,
+  defineConfig,
+  RouteMappingPlugin,
+  TinaField,
+} from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
 import {
   heroBlockSchema,
@@ -35,6 +40,146 @@ export const series = [...kodak, ...fuji, ...cineStill, ...ilford].map(
   (value) => kebabParser(value)
 );
 
+const metaSchema: TinaField = {
+  type: "object",
+  name: "meta",
+  label: "Meta",
+  fields: [
+    {
+      type: "image",
+      name: "cover",
+      label: "Cover",
+    },
+    {
+      label: "Camera",
+      name: "camera",
+      type: "string",
+      required: true,
+      options: [
+        "Canon EOS Elan",
+        "Canon EOS 50 E",
+        "Canon EOS 33",
+        "Canon EOS 50D",
+        "Canon EOS 6D",
+      ],
+    },
+    {
+      label: "Film",
+      name: "film",
+      type: "string",
+      required: true,
+      options: [
+        "Digital",
+        "Kodak Gold 200",
+        "Kodak Portra 400",
+        "Kodak Ektar 100",
+        "Ilford Delta 3200",
+        "Ilford HP5 Plus 400",
+        "Ilford XP2 Super 400",
+        "Fujifilm C200",
+        "Fujifilm Superia 400",
+      ],
+    },
+    {
+      label: "Map",
+      name: "map",
+      type: "object",
+      fields: [
+        {
+          label: "Promoted locations",
+          name: "promoted",
+          type: "string",
+          required: true,
+          list: true,
+          ui: {
+            defaultValue: ["Salamanca, Spain"],
+          },
+        },
+        {
+          label: "Locations",
+          name: "locations",
+          type: "object",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: `${item?.name}, ${item?.country}` };
+            },
+            defaultItem: {
+              name: "Name",
+              country: "Country",
+            },
+          },
+          fields: [
+            {
+              label: "Name",
+              name: "name",
+              type: "string",
+            },
+            {
+              label: "Country",
+              name: "country",
+              type: "string",
+            },
+            {
+              label: "Latitude",
+              name: "latitude",
+              type: "number",
+            },
+            {
+              label: "Longitude",
+              name: "longitude",
+              type: "number",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      type: "object",
+      label: "Shot Period",
+      name: "shot",
+      fields: [
+        {
+          label: "Start",
+          name: "start",
+          type: "datetime",
+          required: true,
+          ui: {
+            dateFormat: "MMMM DD YYYY",
+            timeFormat: "HH:mm",
+          },
+        },
+        {
+          label: "End",
+          name: "end",
+          type: "datetime",
+          required: true,
+          ui: {
+            dateFormat: "MMMM DD YYYY",
+            timeFormat: "HH:mm",
+          },
+        },
+      ],
+    },
+    {
+      label: "Tags",
+      name: "tags",
+      type: "string",
+      list: true,
+      options: series,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.label };
+        },
+        defaultItem: {
+          label: "tag",
+        },
+      },
+    },
+  ],
+};
+
 const schema = defineSchema({
   config: {
     clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
@@ -63,114 +208,26 @@ const schema = defineSchema({
       path: "content/series",
       format: "mdx",
       fields: [
+        seoSchema,
         {
           label: "Title",
           name: "title",
           type: "string",
         },
         {
-          label: "Summary",
-          name: "summary",
+          label: "Description",
+          name: "description",
           type: "string",
         },
         {
-          label: "Description",
-          name: "description",
+          label: "Summary",
+          name: "summary",
           type: "string",
           ui: {
             component: "textarea",
           },
         },
-        {
-          label: "Camera",
-          name: "camera",
-          type: "string",
-          options: [
-            "Canon EOS Elan",
-            "Canon EOS 50 E",
-            "Canon EOS 33",
-            "Canon EOS 50D",
-            "Canon EOS 6D",
-          ],
-          ui: {
-            defaultValue: "Canon EOS 50 E",
-          },
-        },
-        {
-          label: "Film",
-          name: "film",
-          type: "string",
-          options: [
-            "Kodak Gold 200",
-            "Kodak Portra 400",
-            "Kodak Ektar 100",
-            "Ilford Delta 3200",
-            "Ilford HP5 Plus 400",
-            "Ilford XP2 Super 400",
-            "Fujifilm C200",
-            "Fujifilm Superia 400",
-          ],
-          ui: {
-            defaultValue: "Kodak Gold 200",
-          },
-        },
-        {
-          type: "object",
-          label: "Shot Period",
-          name: "shot",
-          fields: [
-            {
-              label: "Start",
-              name: "start",
-              type: "datetime",
-              ui: {
-                dateFormat: "MMMM DD YYYY",
-                timeFormat: "HH:mm",
-              },
-            },
-            {
-              label: "End",
-              name: "end",
-              type: "datetime",
-              ui: {
-                dateFormat: "MMMM DD YYYY",
-                timeFormat: "HH:mm",
-              },
-            },
-          ],
-        },
-        {
-          label: "Location",
-          name: "location",
-          type: "object",
-          list: true,
-          ui: {
-            itemProps: (item) => {
-              return { label: `${item?.name}, ${item?.country}` };
-            },
-            defaultItem: {
-              name: "Name",
-              country: "Country",
-            },
-          },
-          fields: [
-            {
-              label: "Name",
-              name: "name",
-              type: "string",
-            },
-            {
-              label: "Country",
-              name: "country",
-              type: "string",
-            },
-          ],
-        },
-        {
-          type: "image",
-          name: "cover",
-          label: "Cover",
-        },
+        metaSchema,
         {
           type: "rich-text",
           label: "Body",
@@ -208,28 +265,7 @@ const schema = defineSchema({
           ],
           isBody: true,
         },
-        {
-          label: "Tags",
-          name: "tags",
-          type: "object",
-          list: true,
-          ui: {
-            itemProps: (item) => {
-              return { label: item?.label };
-            },
-            defaultItem: {
-              label: "tag",
-            },
-          },
-          fields: [
-            {
-              type: "string",
-              label: "Label",
-              name: "label",
-              options: series,
-            },
-          ],
-        },
+
         {
           type: "datetime",
           label: "Published At",

@@ -46,9 +46,7 @@ export const Series = ({ data }) => {
                       </h3>
                     </p>
                     <p className="mt-2 text-lg text-gray-500">
-                      A wonderful serenity has taken possession of my entire
-                      soul, like these sweet mornings of spring which I enjoy
-                      with my whole heart.
+                      {serie.summary}
                     </p>
                   </div>
                 </a>

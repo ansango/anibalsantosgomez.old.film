@@ -15,12 +15,12 @@
         "label": "Home"
       },
       {
-        "href": "about",
-        "label": "About"
-      },
-      {
         "href": "series",
         "label": "Series"
+      },
+      {
+        "href": "about",
+        "label": "About"
       }
     ]
   },
@@ -32,12 +32,12 @@
         "label": "Home"
       },
       {
-        "href": "about",
-        "label": "About"
-      },
-      {
         "href": "series",
         "label": "Series"
+      },
+      {
+        "href": "about",
+        "label": "About"
       }
     ],
     "social": [
@@ -48,7 +48,6 @@
     ]
   },
   "theme": {
-    "mono": "neutral",
     "color": "default",
     "font": "work-sans",
     "icon": "heroicon",

@@ -83,8 +83,7 @@ export const Featured = ({ data, parentField = "" }) => {
                               {lastSerie.title}
                             </h3>
                             <p className="text-lg font-normal text-gray-500">
-                              Filling text so you can see how it looks like with
-                              text. Did I said text?
+                             {lastSerie.summary}
                             </p>
                           </div>
                         </div>
@@ -129,8 +128,7 @@ export const Featured = ({ data, parentField = "" }) => {
                                   {serie.title}
                                 </h3>
                                 <p className="text-lg font-normal text-gray-500">
-                                  Filling text so you can see how it looks like
-                                  with text. Did I said text?
+                                 {serie.summary}
                                 </p>
                               </div>
                             </div>

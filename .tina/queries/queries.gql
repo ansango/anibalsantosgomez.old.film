@@ -32,17 +32,6 @@ query seriesPublishedQuery {
     edges {
       node {
         title
-        camera
-        film
-        location {
-          name
-          country
-        }
-        shot {
-          start
-          end
-        }
-        cover
         _body
         publishedAt
         isPublished
@@ -63,17 +52,6 @@ query seriesFeaturedQuery {
     edges {
       node {
         title
-        camera
-        film
-        location {
-          name
-          country
-        }
-        shot {
-          start
-          end
-        }
-        cover
         _body
         publishedAt
         isPublished
@@ -92,17 +70,6 @@ query seriesLatestsQuery {
     edges {
       node {
         title
-        camera
-        film
-        location {
-          name
-          country
-        }
-        shot {
-          start
-          end
-        }
-        cover
         _body
         publishedAt
         isPublished
