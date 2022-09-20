@@ -1,4 +1,4 @@
-import ContactForm from "components/blocks/contact-form";
+import ContactForm from "../components/blocks/contact-form";
 import { Hero } from "../components/blocks";
 import { Layout } from "../components/layout";
 import { Container } from "../components/util/container";
