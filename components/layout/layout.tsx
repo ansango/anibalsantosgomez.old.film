@@ -40,16 +40,29 @@ const Head = ({ font = layoutData.theme.font }) => {
           />
         </>
       )}
-      {font === "ibm-sans" && (
-        <>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet"
-          />
-        </>
-      )}
+      <link href="/site.webmanifest" rel="manifest" />
+      <link
+        href="/apple-touch-icon.png"
+        rel="apple-touch-icon"
+        sizes="180x180"
+      />
+      <link
+        href="/favicon-32x32.png"
+        rel="icon"
+        sizes="32x32"
+        type="image/png"
+      />
+      <link
+        href="/favicon-16x16.png"
+        rel="icon"
+        sizes="16x16"
+        type="image/png"
+      />
+      <link color="#4a9885" href="/safari-pinned-tab.svg" rel="mask-icon" />
+      <meta content="#ffffff" name="theme-color" />
+      <meta content="#ffffff" name="msapplication-TileColor" />
+      <meta content="/browserconfig.xml" name="msapplication-config" />{" "}
+      <meta content="all" name="robots" />
     </NextHead>
   );
 };
