@@ -1,2 +1,3 @@
 - avatar mail template
 - contact form styles
+- toast provider

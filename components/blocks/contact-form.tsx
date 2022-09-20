@@ -2,7 +2,7 @@ import { onPostContactForm } from "../../lib/services/contact";
 import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Container } from "components/util/container";
+import { Container } from "..//util/container";
 
 type Props = {
   lang?: string;
