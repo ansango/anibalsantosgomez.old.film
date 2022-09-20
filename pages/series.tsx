@@ -1,19 +1,19 @@
 import { Container } from "../components/util/container";
 import { Section } from "../components/util/section";
-import { Posts } from "../components/posts";
+import { Series } from "../components/series";
 import { client } from "../.tina/__generated__/client";
 import { Layout } from "../components/layout";
 
-export default function HomePage(
+export default function SeriesPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
 ) {
-  const posts = props.data.serieConnection.edges;
+  const series = props.data.serieConnection.edges;
 
   return (
     <Layout>
-      <Section className="flex-1">
-        <Container size="large">
-          <Posts data={posts} />
+      <Section>
+        <Container>
+          <Series data={series} />
         </Container>
       </Section>
     </Layout>

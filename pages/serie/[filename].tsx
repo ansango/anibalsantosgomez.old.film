@@ -1,7 +1,7 @@
 import { client } from "../../.tina/__generated__/client";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
-import { Post } from "../../components/posts/post";
+import { Post } from "../../components/series/post";
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { data } = useTina({
