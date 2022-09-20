@@ -7,30 +7,6 @@ import { Theme } from "./theme";
 import { Toaster } from "react-hot-toast";
 import { TinaField } from "tinacms";
 
-export const mainMonoClass = {
-  slate: "text-slate-800 dark:text-slate-100 flex-1 flex flex-col",
-  gray: "text-gray-800 dark:text-gray-100 flex-1 flex flex-col",
-  zinc: "text-zinc-800 dark:text-zinc-100 flex-1 flex flex-col",
-  neutral: "text-neutral-800 dark:text-neutral-100 flex-1 flex flex-col",
-  stone: "text-stone-800 dark:text-stone-100 flex-1 flex flex-col",
-};
-
-export const tx = {
-  slate: "text-slate-800 dark:text-slate-100",
-  gray: "text-gray-800 dark:text-gray-100",
-  zinc: "text-zinc-800 dark:text-zinc-100",
-  neutral: "text-neutral-800 dark:text-neutral-100",
-  stone: "text-stone-800 dark:text-stone-100",
-};
-
-const bg = {
-  slate: "bg-slate-50 dark:bg-slate-900",
-  gray: "bg-gray-50 dark:bg-gray-900",
-  zinc: "bg-zinc-50 dark:bg-zinc-900",
-  neutral: "bg-neutral-50 dark:bg-neutral-900",
-  stone: "bg-stone-50 dark:bg-stone-900",
-};
-
 export const seoConfig = {
   title: "film captures",
   description: "film captures",
@@ -136,12 +112,10 @@ export const Layout = ({
             data.theme.font === "nunito" && "font-nunito"
           } ${data.theme.font === "lato" && "font-lato"} ${
             data.theme.font === "work-sans" && "font-work-sans"
-          } ${data.theme.font === "sans" && "font-sans"} ${
-            bg[data.theme.mono]
-          } ${tx[data.theme.mono]}`}
+          } ${data.theme.font === "sans" && "font-sans"} bg-neutral-50/10 dark:bg-neutral-900`}
         >
           <Header data={data?.header} />
-          <main className={`${tx[data.theme.mono]} flex-1 flex flex-col`}>
+          <main className={`flex-1 flex flex-col`}>
             {children}
           </main>
           <Footer rawData={rawData} data={data?.footer} />
@@ -149,7 +123,7 @@ export const Layout = ({
       </Theme>
       <Toaster
         toastOptions={{
-          position: "bottom-center",
+          position: "top-right",
         }}
       />
     </>

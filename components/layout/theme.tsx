@@ -43,8 +43,8 @@ export const Theme = ({ data, children }) => {
   }, [setSystemDarkMode]);
 
   const {
-    mono = "gray",
-    color = "default",
+    mono = "neutral",
+    color = "gray",
     icon = "heroicon",
     font = "sans",
     darkMode = "system",

@@ -3,6 +3,8 @@ import * as React from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import type { TinaTemplate } from "tinacms";
+import { useTheme } from "../layout";
+import { primaryTextColors } from "../styles";
 
 const Image = ({ data, parentField = "" }) => (
   <div
@@ -19,7 +21,7 @@ const Image = ({ data, parentField = "" }) => (
   </div>
 );
 
-const renderHero = (data, parentField) => {
+const renderHero = (data, parentField, color) => {
   switch (data.type) {
     case "left":
       return (
@@ -29,7 +31,7 @@ const renderHero = (data, parentField) => {
               <div className="flex flex-col items-start mb-16 text-left lg:flex-grow lg:w-1/2 lg:pr-24 md:mb-0">
                 {data.tagline && (
                   <span
-                    className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase"
+                    className={`mb-8 text-xs font-bold tracking-widest uppercase  ${primaryTextColors[color]}`}
                     data-tinafield={`${parentField}.tagline`}
                   >
                     {data.tagline}
@@ -45,7 +47,7 @@ const renderHero = (data, parentField) => {
                 )}
                 {data.text && (
                   <p
-                    className="mb-8 text-base leading-relaxed text-left text-gray-500"
+                    className="mb-8 text-base leading-relaxed text-left text-neutral-500"
                     data-tinafield={`${parentField}.text`}
                   >
                     {data.text}
@@ -77,7 +79,7 @@ const renderHero = (data, parentField) => {
                 )}
                 {data.text && (
                   <p
-                    className="max-w-xl mx-auto mt-8 text-base leading-relaxed text-center text-gray-500"
+                    className="max-w-xl mx-auto mt-8 text-base leading-relaxed text-center text-neutral-500"
                     data-tinafield={`${parentField}.text`}
                   >
                     {data.text}
@@ -99,7 +101,8 @@ const renderHero = (data, parentField) => {
 };
 
 export const Hero = ({ data, parentField = "" }) => {
-  return <Section>{renderHero(data, parentField)}</Section>;
+  const { color } = useTheme();
+  return <Section>{renderHero(data, parentField, color)}</Section>;
 };
 
 export const heroBlockSchema: TinaTemplate = {
@@ -153,12 +156,6 @@ export const heroBlockSchema: TinaTemplate = {
           name: "alt",
           label: "Alt Text",
           type: "string",
-        },
-        {
-          name: "type",
-          label: "Type",
-          type: "string",
-          options: ["portrait", "landscape"],
         },
       ],
     },

@@ -24,7 +24,6 @@
     ]
   },
   "footer": {
-    "color": "primary",
     "links": [
       {
         "href": "",
@@ -51,7 +50,7 @@
     ]
   },
   "theme": {
-    "color": "default",
+    "color": "lime",
     "font": "work-sans",
     "icon": "heroicon",
     "darkMode": "light"

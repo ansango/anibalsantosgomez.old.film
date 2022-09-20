@@ -397,12 +397,55 @@ const schema = defineSchema({
           fields: [
             {
               type: "string",
+              label: "Mono Color",
+              name: "mono",
+              options: [
+                {
+                  label: "Slate",
+                  value: "slate",
+                },
+                {
+                  label: "Gray",
+                  value: "gray",
+                },
+                {
+                  label: "Zinc",
+                  value: "zinc",
+                },
+                {
+                  label: "Neutral",
+                  value: "neutral",
+                },
+                {
+                  label: "Stone",
+                  value: "stone",
+                },
+              ],
+            },
+            {
+              type: "string",
               label: "Primary Color",
               name: "color",
               options: [
                 {
-                  label: "Default",
-                  value: "default",
+                  label: "Slate",
+                  value: "slate",
+                },
+                {
+                  label: "Gray",
+                  value: "gray",
+                },
+                {
+                  label: "Zinc",
+                  value: "zinc",
+                },
+                {
+                  label: "Neutral",
+                  value: "neutral",
+                },
+                {
+                  label: "Stone",
+                  value: "stone",
                 },
                 {
                   label: "Red",
@@ -472,26 +515,6 @@ const schema = defineSchema({
                 {
                   label: "Rose",
                   value: "rose",
-                },
-                {
-                  label: "Slate",
-                  value: "slate",
-                },
-                {
-                  label: "Gray",
-                  value: "gray",
-                },
-                {
-                  label: "Zinc",
-                  value: "zinc",
-                },
-                {
-                  label: "Neutral",
-                  value: "neutral",
-                },
-                {
-                  label: "Stone",
-                  value: "stone",
                 },
               ],
             },
