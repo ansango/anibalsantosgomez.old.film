@@ -5,6 +5,7 @@ import { Series } from "../components/series";
 import { client } from "../.tina/__generated__/client";
 import { Layout } from "../components/layout";
 import { Hero } from "../components/blocks";
+import { seoConfig } from "components/layout/layout";
 
 export default function SeriesPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
@@ -12,7 +13,13 @@ export default function SeriesPage(
   const series = props.data.serieConnection.edges;
 
   return (
-    <Layout>
+    <Layout
+      seo={{
+        ...seoConfig,
+        title: "Series",
+        description: "My developed Raw Rolls",
+      }}
+    >
       <Hero
         data={{
           tagline: "Raw Rolls",

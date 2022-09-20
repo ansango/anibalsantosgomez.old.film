@@ -9,6 +9,7 @@ import { iconSchema } from "../components/util/icon";
 
 import { client } from "./__generated__/client";
 import { kebabParser } from "../lib/utils";
+import { seoSchema } from "../components/layout/layout";
 
 const kodak = [
   "Kodak",
@@ -66,11 +67,20 @@ const schema = defineSchema({
           label: "Title",
           name: "title",
           type: "string",
+        },
+        {
+          label: "Summary",
+          name: "summary",
+          type: "string",
+        },
+        {
+          label: "Description",
+          name: "description",
+          type: "string",
           ui: {
-            defaultValue: "Untitled",
+            component: "textarea",
           },
         },
-
         {
           label: "Camera",
           name: "camera",
@@ -530,6 +540,7 @@ const schema = defineSchema({
       path: "content/pages",
       format: "mdx",
       fields: [
+        seoSchema,
         {
           type: "object",
           list: true,

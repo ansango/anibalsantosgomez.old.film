@@ -1,3 +1,6 @@
-- contact form styles
 - seo
+- scripts rss feed sitemap
+- theme styles global
+- contact form styles
 - alerts wickedblocks
+- series styles

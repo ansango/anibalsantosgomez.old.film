@@ -3,6 +3,8 @@ import { client } from "../../.tina/__generated__/client";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
 import { Post } from "../../components/series/post";
+import FourOhFour from "pages/404";
+import { seoConfig } from "components/layout/layout";
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { data } = useTina({
@@ -10,18 +12,28 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
     variables: props.variables,
     data: props.data,
   });
+
+  const { serie } = data;
+
   if (data && data.serie && data.serie.isPublished) {
     return (
-      <Layout rawData={data} data={data.global as any}>
+      <Layout
+        rawData={data}
+        data={data.global as any}
+        seo={{
+          ...seoConfig,
+          title: serie.title,
+          description: serie.summary,
+          route: props.route,
+          date: serie.publishedAt,
+          image: serie.cover,
+        }}
+      >
         <Post {...data.serie} />;
       </Layout>
     );
   }
-  return (
-    <Layout>
-      <div>No data</div>;
-    </Layout>
-  );
+  return <FourOhFour />;
 };
 
 export default SeriePage;
@@ -33,6 +45,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       ...tinaProps,
+      route: `serie/${params.filename}`,
     },
   };
 };
