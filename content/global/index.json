@@ -8,7 +8,6 @@
       "size": "sm",
       "name": "close"
     },
-    "color": "default",
     "nav": [
       {
         "href": "",
@@ -44,6 +43,10 @@
       {
         "href": "https://www.instagram.com/iamasync/",
         "label": "Instagram"
+      },
+      {
+        "href": "https://github.com/ansango/",
+        "label": "Github"
       }
     ]
   },

@@ -301,15 +301,6 @@ const schema = defineSchema({
             { ...iconSchema, label: "Icon Menu", name: "iconMenu" },
             { ...iconSchema, label: "Icon Close", name: "iconClose" },
             {
-              type: "string",
-              label: "Color",
-              name: "color",
-              options: [
-                { label: "Default", value: "default" },
-                { label: "Primary", value: "primary" },
-              ],
-            },
-            {
               type: "object",
               label: "Nav Links",
               name: "nav",
@@ -343,15 +334,6 @@ const schema = defineSchema({
           label: "Footer",
           name: "footer",
           fields: [
-            {
-              type: "string",
-              label: "Color",
-              name: "color",
-              options: [
-                { label: "Default", value: "default" },
-                { label: "Primary", value: "primary" },
-              ],
-            },
             {
               type: "object",
               label: "Links",
