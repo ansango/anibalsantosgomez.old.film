@@ -100,7 +100,7 @@ const renderHero = (data, parentField) => {
 };
 
 export const Hero = ({ data, parentField = "" }) => {
-  return <Section color={data.color}>{renderHero(data, parentField)}</Section>;
+  return <Section>{renderHero(data, parentField)}</Section>;
 };
 
 export const heroBlockSchema: TinaTemplate = {
