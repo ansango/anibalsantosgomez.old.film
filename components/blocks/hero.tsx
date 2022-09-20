@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-import { useTheme } from "../layout";
 import type { TinaTemplate } from "tinacms";
 
 const Image = ({ data, parentField = "" }) => (

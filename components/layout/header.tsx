@@ -1,48 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "../util/container";
-import { useTheme } from ".";
 import { Icon } from "../util/icon";
-
-const headerColor = {
-  mono: {
-    slate: "text-slate-900 dark:text-slate-50",
-    gray: "text-gray-900 dark:text-gray-50",
-    zinc: "text-zinc-900 dark:text-zinc-50",
-    neutral: "text-neutral-900 dark:text-neutral-50",
-    stone: "text-stone-900 dark:text-stone-50",
-  },
-  primary: {
-    red: "text-red-600 dark:text-red-400",
-    orange: "text-orange-600 dark:text-orange-400",
-    yellow: "text-yellow-600 dark:text-yellow-400",
-    amber: "text-amber-600 dark:text-amber-400",
-    lime: "text-lime-600 dark:text-lime-400",
-    green: "text-green-600 dark:text-green-400",
-    emerald: "text-emerald-600 dark:text-emerald-400",
-    teal: "text-teal-600 dark:text-teal-400",
-    cyan: "text-cyan-600 dark:text-cyan-400",
-    sky: "text-sky-600 dark:text-sky-400",
-    blue: "text-blue-600 dark:text-blue-400",
-    indigo: "text-indigo-600 dark:text-indigo-400",
-    violet: "text-violet-600 dark:text-violet-400",
-    purple: "text-purple-600 dark:text-purple-400",
-    fuchsia: "text-fuchsia-600 dark:text-fuchsia-400",
-    pink: "text-pink-600 dark:text-pink-400",
-    rose: "text-rose-600 dark:text-rose-400",
-  },
-};
-
-const activeItemClasses = {
-  blue: "text-blue-500",
-  teal: "border-b-3 border-teal-200 dark:border-teal-700",
-  green: "border-b-3 border-green-200 dark:border-green-700",
-  red: "border-b-3 border-red-300 dark:border-red-700",
-  pink: "border-b-3 border-pink-200 dark:border-pink-700",
-  purple: "border-b-3 border-purple-200 dark:border-purple-700",
-  orange: "border-b-3 border-orange-200 dark:border-orange-700",
-  yellow: "border-b-3 border-yellow-300 dark:border-yellow-600",
-};
 
 const useAutoClose = ({ setIsOpen, menu }) => {
   const handleClosure = useCallback(
@@ -93,7 +52,7 @@ const Nav = ({ nav }) => {
           >
             <a
               className={`px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline ${
-                activeItem ? activeItemClasses["blue"] : ""
+                activeItem ? "text-blue-500" : ""
               }`}
             >
               {item.label}

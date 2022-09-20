@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Blocks } from "../components/blocks-renderer";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../components/layout";

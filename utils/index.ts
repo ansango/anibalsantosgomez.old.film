@@ -28,6 +28,7 @@ export const formatDate = (date, locale = "en-US") => {
   return now;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const countPhotos = (serie: any) => {
   const photosLength = serie._body.children
     .filter((child) => child.type === "p")
