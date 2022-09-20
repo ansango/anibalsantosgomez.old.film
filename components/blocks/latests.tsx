@@ -40,7 +40,7 @@ export const Latests = ({ data, parentField = "" }) => {
     <>
       {series.data?.length > 0 ? (
         <Section>
-          <Container>
+          <Container className="py-6 lg:py-12">
             <div className="pb-4 border-b border-gray-600">
               <h3 className="text-xl font-semibold leading-6 text-gray-800">
                 {data.title}

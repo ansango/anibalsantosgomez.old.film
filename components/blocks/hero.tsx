@@ -22,18 +22,25 @@ export const Hero = ({ data, parentField }) => {
       <Container>
         <div className="flex flex-wrap items-center mx-auto 2xl:max-w-7xl">
           <div className="flex flex-col items-start mb-16 text-left lg:flex-grow lg:w-1/2 lg:pr-24 md:mb-0">
-            <span className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
-              {" "}
-              Your tagline{" "}
-            </span>
-            <h1 className="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl">
-              {data.headline && <>{data.headline}</>}
-            </h1>
-            <p className="mb-8 text-base leading-relaxed text-left text-gray-400">
-              {data.text && <>{data.text}</>}
-            </p>
+            {data.tagline && (
+              <span className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
+                {data.tagline}
+              </span>
+            )}
+            {data.headline && (
+              <h1 className="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl">
+                {data.headline}
+              </h1>
+            )}
+            {data.text && (
+              <p className="mb-8 text-base leading-relaxed text-left text-gray-500">
+                {data.text}
+              </p>
+            )}
           </div>
         </div>
+      </Container>{" "}
+      <Container>
         {data.image.src && (
           <div
             className="flex flex-col items-center justify-center"
