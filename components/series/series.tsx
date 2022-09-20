@@ -20,12 +20,12 @@ export const Series = ({ data }) => {
   };
 
   return (
-    <section>
+    <>
       <div className="relative">
-        <div className="relative flex justify-start">
-          <span className="pr-3 text-lg font-medium text-neutral-600">
-            All Series
-          </span>
+        <div className="pb-4 border-b border-gray-600">
+          <h3 className="text-xl font-semibold leading-6 text-neutral-600">
+            All series
+          </h3>
         </div>
       </div>
       <div className="space-y-8 lg:divide-y lg:divide-gray-100">
@@ -71,6 +71,6 @@ export const Series = ({ data }) => {
           );
         })}
       </div>
-    </section>
+    </>
   );
 };

@@ -3,6 +3,7 @@ import { Section } from "../components/util/section";
 import { Series } from "../components/series";
 import { client } from "../.tina/__generated__/client";
 import { Layout } from "../components/layout";
+import { Hero } from "../components/blocks";
 
 export default function SeriesPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
@@ -11,6 +12,13 @@ export default function SeriesPage(
 
   return (
     <Layout>
+      <Hero
+        data={{
+          tagline: "Raw Rolls",
+          headline: "Series",
+          text: "You can find all the series I've shot and developed here.",
+        }}
+      />
       <Section>
         <Container>
           <Series data={series} />

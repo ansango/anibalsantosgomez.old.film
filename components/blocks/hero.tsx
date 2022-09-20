@@ -14,7 +14,7 @@ const titleColors = {
   stone: "text-stone-600 dark:text-stone-50",
 };
 
-export const Hero = ({ data, parentField }) => {
+export const Hero = ({ data, parentField = "" }) => {
   const theme = useTheme();
 
   return (
@@ -41,7 +41,7 @@ export const Hero = ({ data, parentField }) => {
         </div>
       </Container>{" "}
       <Container>
-        {data.image.src && (
+        {data.image?.src && (
           <div
             className="flex flex-col items-center justify-center"
             data-tinafield={`${parentField}.image`}
