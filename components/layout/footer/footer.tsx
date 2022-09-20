@@ -16,17 +16,13 @@ export const Footer = ({ data, rawData }) => {
     (data.links &&
       data.links.map((link, i) => ({
         el: (
-          <Link
-            key={`${link.label}-${i}`}
-            href={`${prefix}/${link.href}`}
-            passHref
-          >
-            <li>
+          <li key={`${link.label}-${i}`}>
+            <Link href={`${prefix}/${link.href}`} passHref>
               <a className="text-sm font-normal text-gray-500 hover:text-gray-900">
                 {link.label}
               </a>
-            </li>
-          </Link>
+            </Link>{" "}
+          </li>
         ),
       }))) ||
     [];
