@@ -4,6 +4,7 @@ import { Header } from "./header";
 import { Footer } from "./footer";
 import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
+import { Toaster } from "react-hot-toast";
 
 const Head = ({ font = layoutData.theme.font }) => {
   return (
@@ -112,6 +113,11 @@ export const Layout = ({ rawData = {}, data = layoutData, children }) => {
           <Footer rawData={rawData} data={data?.footer} />
         </div>
       </Theme>
+      <Toaster
+        toastOptions={{
+          position: "bottom-center",
+        }}
+      />
     </>
   );
 };
