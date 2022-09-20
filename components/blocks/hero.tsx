@@ -19,28 +19,24 @@ export const Hero = ({ data, parentField }) => {
 
   return (
     <Section color={data.color}>
-      <Container size="large">
-        <div className="h-[60vh]  flex flex-col justify-end pb-28">
-          <h1
-            className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight ${
-              titleColors[theme.mono]
-            }`}
-            data-tinafield={`${parentField}.headline`}
-          >
-            {data.headline && <>{data.headline}</>}
-          </h1>
-          <p
-            className={`text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight ${
-              titleColors[theme.mono]
-            }`}
-            data-tinafield={`${parentField}.text`}
-          >
-            {data.text && <>{data.text}</>}
-          </p>
+      <Container>
+        <div className="flex flex-wrap items-center mx-auto 2xl:max-w-7xl">
+          <div className="flex flex-col items-start mb-16 text-left lg:flex-grow lg:w-1/2 lg:pr-24 md:mb-0">
+            <span className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
+              {" "}
+              Your tagline{" "}
+            </span>
+            <h1 className="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl">
+              {data.headline && <>{data.headline}</>}
+            </h1>
+            <p className="mb-8 text-base leading-relaxed text-left text-gray-400">
+              {data.text && <>{data.text}</>}
+            </p>
+          </div>
         </div>
         {data.image.src && (
           <div
-            className="flex flex-col items-center justify-center pb-24"
+            className="flex flex-col items-center justify-center"
             data-tinafield={`${parentField}.image`}
           >
             <Image
@@ -63,11 +59,17 @@ export const heroBlockSchema: TinaTemplate = {
   ui: {
     previewSrc: "",
     defaultItem: {
+      tagline: "Your tagline",
       headline: "This Big Text is Totally Awesome",
       text: "Here's some text above the other text",
     },
   },
   fields: [
+    {
+      name: "tagline",
+      label: "Tagline",
+      type: "string",
+    },
     {
       type: "string",
       label: "Headline",

@@ -1,22 +1,9 @@
 import React from "react";
 
-export const Container = ({
-  children,
-  size = "medium",
-  className = "",
-  ...props
-}) => {
-  const verticalPadding = {
-    custom: "",
-    small: "py-8",
-    medium: "py-12",
-    large: "py-24",
-    default: "py-12",
-  };
-
+export const Container = ({ children, className = "", ...props }) => {
   return (
     <div
-      className={`w-full max-w-7xl mx-auto px-5 ${verticalPadding[size]} ${className}`}
+      className={`w-full max-w-7xl 2xl:max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24 2xl:px-12 px-4 py-12 mx-auto ${className}`}
       {...props}
     >
       {children}

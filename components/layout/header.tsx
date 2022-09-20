@@ -34,7 +34,7 @@ const headerColor = {
 };
 
 const activeItemClasses = {
-  blue: "border-b-3 border-blue-200 dark:border-blue-700",
+  blue: "text-blue-500",
   teal: "border-b-3 border-teal-200 dark:border-teal-700",
   green: "border-b-3 border-green-200 dark:border-green-700",
   red: "border-b-3 border-red-300 dark:border-red-700",
@@ -61,18 +61,7 @@ const useAutoClose = ({ setIsOpen, menu }) => {
   }, [handleClosure, menu]);
 };
 
-export const Header = ({ data }) => {
-  const menu = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-  useAutoClose({ setIsOpen, menu });
-
-  const { color, mono } = useTheme();
-
-  const headerColorCss =
-    data.color === "primary"
-      ? headerColor.primary[color]
-      : headerColor.mono[mono];
-
+const Nav = ({ nav }) => {
   // If we're on an admin path, other links should also link to their admin paths
   const [prefix, setPrefix] = React.useState("");
   const [windowUrl, setUrl] = React.useState("");
@@ -91,77 +80,90 @@ export const Header = ({ data }) => {
 
   return (
     <>
-      <div className={`py-5 md:py-10 ${headerColorCss}`}>
-        <Container size="custom" className="py-0 relative z-10 max-w-8xl">
-          <div className="flex items-center justify-between">
-            <div></div>
-            {/* <h4
-              className={`select-none text-lg font-medium tracking-tight opacity-80 transition duration-150 ease-out transform hover:opacity-100`}
+      {nav.map((item, i) => {
+        const activeItem =
+          item.href === ""
+            ? typeof location !== "undefined" && location.pathname == "/"
+            : windowUrl.includes(item.href);
+        return (
+          <Link
+            href={`${prefix}/${item.href}`}
+            passHref
+            key={`${item.label}-${i}`}
+          >
+            <a
+              className={`px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline ${
+                activeItem ? activeItemClasses["blue"] : ""
+              }`}
             >
-              <Link href="/" passHref>
-                <a>anibal santos</a>
-              </Link>
-            </h4> */}
-            <div className="inline-flex space-x-2 items-center">
-              <div className="relative inline-block text-left" ref={menu}>
-                <button
-                  type="button"
-                  id="menu-button"
-                  aria-expanded={isOpen}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setIsOpen((isOpen) => !isOpen);
-                  }}
-                  className="flex items-center"
-                >
-                  <Icon
-                    parentColor={data.color}
-                    data={{
-                      name: !isOpen ? data.iconMenu.name : data.iconClose.name,
-                      color: !isOpen
-                        ? data.iconMenu.color
-                        : data.iconClose.color,
-                      size: !isOpen ? data.iconMenu.size : data.iconClose.size,
-                    }}
-                  />
-                </button>
-                {isOpen && (
-                  <div
-                    className="absolute right-0 z-10 mt-4 w-24 p-2 origin-top-right rounded-md bg-gray-50 ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu"
-                    aria-hidden={!isOpen}
-                  >
-                    <ul className="space-y-2 flex flex-col w-full">
-                      {data.nav &&
-                        data.nav.map((item, i) => {
-                          const activeItem =
-                            item.href === ""
-                              ? typeof location !== "undefined" &&
-                                location.pathname == "/"
-                              : windowUrl.includes(item.href);
-                          return (
-                            <li
-                              key={`${item.label}-${i}`}
-                              className={
-                                activeItem ? activeItemClasses[color] : ""
-                              }
-                            >
-                              <Link href={`${prefix}/${item.href}`} passHref>
-                                <a className="opacity-80 hover:opacity-100 transition duration-150 ease-out">
-                                  {item.label}
-                                </a>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
+              {item.label}
+            </a>
+          </Link>
+        );
+      })}
     </>
+  );
+};
+
+export const Header = ({ data }) => {
+  const menu = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  useAutoClose({ setIsOpen, menu });
+
+  const { color, mono } = useTheme();
+
+  const headerColorCss =
+    data.color === "primary"
+      ? headerColor.primary[color]
+      : headerColor.mono[mono];
+
+  return (
+    <Container>
+      <div className="flex flex-col md:items-center md:justify-between md:flex-row">
+        <div className="flex flex-row items-center justify-between lg:justify-start">
+          <Link href="/">
+            <a className="text-lg font-bold tracking-tighter text-blue-600 transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8">
+              anibalsantos
+            </a>
+          </Link>
+          <div ref={menu}>
+            <button
+              className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+              type="button"
+              id="menu-button"
+              aria-expanded={isOpen}
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsOpen((isOpen) => !isOpen);
+              }}
+            >
+              <Icon
+                parentColor={data.color}
+                data={{
+                  name: !isOpen ? data.iconMenu.name : data.iconClose.name,
+                  color: !isOpen ? data.iconMenu.color : data.iconClose.color,
+                  size: !isOpen ? data.iconMenu.size : data.iconClose.size,
+                }}
+              />
+            </button>
+            {isOpen && (
+              <div
+                className="absolute right-5 z-10 mt-4 w-24 p-2 origin-top-right rounded-md bg-gray-50 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-hidden={!isOpen}
+              >
+                <ul className="space-y-2 flex flex-col w-full">
+                  {data.nav && <Nav nav={data.nav} />}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <nav className="flex-col items-center flex-grow hidden pb-4 border-blue-600 md:pb-0 md:flex md:justify-end md:flex-row lg:border-l-2 lg:pl-2">
+          {data.nav && <Nav nav={data.nav} />}
+        </nav>
+      </div>
+    </Container>
   );
 };
