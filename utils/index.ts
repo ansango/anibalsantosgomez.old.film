@@ -28,4 +28,16 @@ export const formatDate = (date, locale = "en-US") => {
   return now;
 };
 
-export default formatDate;
+export const countPhotos = (serie: any) => {
+  const photosLength = serie._body.children
+    .filter((child) => child.type === "p")
+    .map((child) => child.children)
+    .filter((child) => child[0].type === "img").length;
+  const result =
+    photosLength > 1
+      ? `${photosLength} photos`
+      : photosLength === 1
+      ? `${photosLength} photo`
+      : "";
+  return result;
+};

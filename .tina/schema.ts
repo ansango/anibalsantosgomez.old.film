@@ -1,7 +1,11 @@
 import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
-import { heroBlockSchema } from "../components/blocks/hero";
-import { featuredBlockSchema } from "../components/blocks/featured";
+import {
+  heroBlockSchema,
+  featuredBlockSchema,
+  latestsBlockSchema,
+} from "../components/blocks";
+
 import { iconSchema } from "./schemas";
 import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
@@ -399,7 +403,12 @@ const schema = defineSchema({
           ui: {
             visualSelector: true,
           },
-          templates: [heroBlockSchema, featuredBlockSchema, contentBlockSchema],
+          templates: [
+            heroBlockSchema,
+            featuredBlockSchema,
+            latestsBlockSchema,
+            contentBlockSchema,
+          ],
         },
       ],
     },
