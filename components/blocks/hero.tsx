@@ -20,9 +20,9 @@ export const Hero = ({ data, parentField }) => {
   return (
     <Section color={data.color}>
       <Container size="large">
-        <div className="pb-24">
+        <div className="h-[60vh]  flex flex-col justify-end pb-28">
           <h1
-            className={`text-2xl font-bold leading-none tracking-tighter md:text-5xl lg:text-6xl lg:max-w-7xl ${
+            className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight ${
               titleColors[theme.mono]
             }`}
             data-tinafield={`${parentField}.headline`}
@@ -30,21 +30,23 @@ export const Hero = ({ data, parentField }) => {
             {data.headline && <>{data.headline}</>}
           </h1>
           <p
-            className="max-w-xl mt-8 text-base leading-relaxed text-gray-500"
-            data-tinafield={`${parentField}.tagline`}
+            className={`text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-tight ${
+              titleColors[theme.mono]
+            }`}
+            data-tinafield={`${parentField}.text`}
           >
-            {data.tagline && <>{data.tagline}</>}
+            {data.text && <>{data.text}</>}
           </p>
         </div>
-        {data.image && (
+        {data.image.src && (
           <div
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center pb-24"
             data-tinafield={`${parentField}.image`}
           >
             <Image
               className="object-cover object-center w-full"
               alt={data.image.alt}
-              src={data.image.src}
+              src={data.image.src ?? ""}
               width={data.image.type === "portrait" ? 1365 : 2048}
               height={data.image.type === "portrait" ? 2048 : 1365}
             />
@@ -59,10 +61,10 @@ export const heroBlockSchema: TinaTemplate = {
   name: "hero",
   label: "Hero",
   ui: {
-    previewSrc: "/blocks/08.webp",
+    previewSrc: "",
     defaultItem: {
       headline: "This Big Text is Totally Awesome",
-      tagline: "Here's some text above the other text",
+      text: "Here's some text above the other text",
     },
   },
   fields: [
@@ -73,43 +75,11 @@ export const heroBlockSchema: TinaTemplate = {
     },
     {
       type: "string",
-      label: "Tagline",
-      name: "tagline",
-    },
-    {
-      label: "Actions",
-      name: "actions",
-      type: "object",
-      list: true,
+      label: "Text",
+      name: "text",
       ui: {
-        defaultItem: {
-          label: "Action Label",
-          type: "button",
-          icon: true,
-          link: "/",
-        },
+        component: "textarea",
       },
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Type",
-          name: "type",
-          type: "string",
-          options: [
-            { label: "Button", value: "button" },
-            { label: "Link", value: "link" },
-          ],
-        },
-        {
-          label: "Link",
-          name: "link",
-          type: "string",
-        },
-      ],
     },
     {
       type: "object",

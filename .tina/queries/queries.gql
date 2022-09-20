@@ -54,3 +54,35 @@ query seriesPublishedQuery {
     }
   }
 }
+
+query seriesFeaturedQuery {
+  serieConnection(
+    sort: "publishedAt"
+    filter: { isPublished: { eq: true }, isFeatured: { eq: true } }
+  ) {
+    edges {
+      node {
+        title
+        camera
+        film
+        location {
+          name
+          country
+        }
+        shot {
+          start
+          end
+        }
+        cover
+        _body
+        publishedAt
+        isPublished
+        isFeatured
+        id
+        _sys {
+          filename
+        }
+      }
+    }
+  }
+}

@@ -15,3 +15,17 @@ export const kebabParser = (str) => {
     .replace(/\s+/g, "-")
     .toLowerCase();
 };
+
+export const formatDate = (date, locale = "en-US") => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
+  const now = new Date(date).toLocaleDateString(locale, options);
+
+  return now;
+};
+
+export default formatDate;

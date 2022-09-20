@@ -1,6 +1,7 @@
 import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
 import { heroBlockSchema } from "../components/blocks/hero";
+import { featuredBlockSchema } from "../components/blocks/featured";
 import { iconSchema } from "./schemas";
 import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
@@ -187,6 +188,11 @@ const schema = defineSchema({
             dateFormat: "MMMM DD YYYY",
             timeFormat: "hh:mm A",
           },
+        },
+        {
+          type: "boolean",
+          label: "Is Featured",
+          name: "isFeatured",
         },
         {
           type: "boolean",
@@ -393,7 +399,7 @@ const schema = defineSchema({
           ui: {
             visualSelector: true,
           },
-          templates: [heroBlockSchema, contentBlockSchema],
+          templates: [heroBlockSchema, featuredBlockSchema, contentBlockSchema],
         },
       ],
     },
