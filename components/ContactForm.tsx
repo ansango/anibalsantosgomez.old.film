@@ -1,6 +1,4 @@
-import cn from "classnames";
-import { onPostContactForm } from "lib/services/contact";
-import useTranslation from "next-translate/useTranslation";
+import { onPostContactForm } from "../lib/services/contact";
 import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -9,8 +7,7 @@ type Props = {
   lang: string;
 };
 
-const ContactForm: FC<Props> = ({ lang }) => {
-  const { t } = useTranslation("about");
+const ContactForm: FC<Props> = ({ lang = "en" }) => {
   const {
     register,
     handleSubmit,

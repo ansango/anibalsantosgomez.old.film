@@ -43,17 +43,16 @@ export const countPhotos = (serie: any) => {
   return result;
 };
 
-
 export type ErrorFetcher = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error: any;
   message: string;
 };
 
-const fetcher = async (
+export const fetcher = async (
   ...args: Parameters<typeof fetch>
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any | Error> => {
+): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+Promise<any | Error> => {
   return fetch(...args)
     .then()
     .then((response) => {
