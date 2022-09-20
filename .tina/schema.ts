@@ -5,13 +5,34 @@ import {
   featuredBlockSchema,
   latestsBlockSchema,
 } from "../components/blocks";
+import { iconSchema } from "../components/util/icon";
 
-import { iconSchema } from "./schemas";
-import { colorFull, monoColors, fontFamilies } from "../constants";
 import { client } from "./__generated__/client";
-import { cameras } from "./schemas/camera/options";
-import { films } from "./schemas/film/options";
-import { series } from "./schemas/tags/options";
+import { kebabParser } from "../lib/utils";
+
+const kodak = [
+  "Kodak",
+  "Kodak Portra 400",
+  "Kodak Portra 160",
+  "Kodak Portra 800",
+  "Kodak Ektra 100",
+  "Kodak Gold 100",
+  "Kodak Gold 200",
+  "Kodak Ultramax 400",
+  "Kodak Pro Image 100",
+  "Kodak T-Max 400",
+];
+const fuji = ["Fujifilm", "Fujifilm Superia 400", "Fujifilm C200"];
+const cineStill = ["CineStill", "CineStill 800T"];
+const ilford = [
+  "Ilford",
+  "Ilford HP5 400",
+  "Ilford Delta 3200",
+  "Ilford XP2 400",
+];
+export const series = [...kodak, ...fuji, ...cineStill, ...ilford].map(
+  (value) => kebabParser(value)
+);
 
 const schema = defineSchema({
   config: {
@@ -54,18 +75,33 @@ const schema = defineSchema({
           label: "Camera",
           name: "camera",
           type: "string",
-          options: cameras,
+          options: [
+            "Canon EOS Elan",
+            "Canon EOS 50 E",
+            "Canon EOS 33",
+            "Canon EOS 50D",
+            "Canon EOS 6D",
+          ],
           ui: {
-            defaultValue: cameras[1],
+            defaultValue: "Canon EOS 50 E",
           },
         },
         {
           label: "Film",
           name: "film",
           type: "string",
-          options: films,
+          options: [
+            "Kodak Gold 200",
+            "Kodak Portra 400",
+            "Kodak Ektar 100",
+            "Ilford Delta 3200",
+            "Ilford HP5 Plus 400",
+            "Ilford XP2 Super 400",
+            "Fujifilm C200",
+            "Fujifilm Superia 400",
+          ],
           ui: {
-            defaultValue: films[0],
+            defaultValue: "Kodak Gold 200",
           },
         },
         {
@@ -333,19 +369,101 @@ const schema = defineSchema({
           fields: [
             {
               type: "string",
-              label: "Monochrome Color",
-              name: "mono",
-              options: [...monoColors],
-            },
-            {
-              type: "string",
               label: "Primary Color",
               name: "color",
               options: [
-                ...colorFull,
                 {
                   label: "Default",
                   value: "default",
+                },
+                {
+                  label: "Red",
+                  value: "red",
+                },
+                {
+                  label: "Orange",
+                  value: "orange",
+                },
+                {
+                  label: "Amber",
+                  value: "amber",
+                },
+                {
+                  label: "Yellow",
+                  value: "yellow",
+                },
+                {
+                  value: "lime",
+                  label: "Lime",
+                },
+                {
+                  label: "Green",
+                  value: "green",
+                },
+                {
+                  label: "Emerald",
+                  value: "emerald",
+                },
+                {
+                  label: "Teal",
+                  value: "teal",
+                },
+                {
+                  label: "Cyan",
+                  value: "cyan",
+                },
+                {
+                  label: "Sky",
+                  value: "sky",
+                },
+                {
+                  label: "Blue",
+                  value: "blue",
+                },
+                {
+                  label: "Indigo",
+                  value: "indigo",
+                },
+                {
+                  label: "Violet",
+                  value: "violet",
+                },
+
+                {
+                  label: "Purple",
+                  value: "purple",
+                },
+                {
+                  label: "Fuchsia",
+                  value: "fuchsia",
+                },
+                {
+                  label: "Pink",
+                  value: "pink",
+                },
+                {
+                  label: "Rose",
+                  value: "rose",
+                },
+                {
+                  label: "Slate",
+                  value: "slate",
+                },
+                {
+                  label: "Gray",
+                  value: "gray",
+                },
+                {
+                  label: "Zinc",
+                  value: "zinc",
+                },
+                {
+                  label: "Neutral",
+                  value: "neutral",
+                },
+                {
+                  label: "Stone",
+                  value: "stone",
                 },
               ],
             },
@@ -353,7 +471,24 @@ const schema = defineSchema({
               type: "string",
               name: "font",
               label: "Font Family",
-              options: [...fontFamilies],
+              options: [
+                {
+                  label: "System Sans",
+                  value: "sans",
+                },
+                {
+                  label: "Nunito",
+                  value: "nunito",
+                },
+                {
+                  label: "Lato",
+                  value: "lato",
+                },
+                {
+                  label: "Work Sans",
+                  value: "work-sans",
+                },
+              ],
             },
             {
               type: "string",

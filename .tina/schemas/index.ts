@@ -1,1 +1,0 @@
-export { iconSchema } from "./icon";

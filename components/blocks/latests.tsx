@@ -3,7 +3,7 @@ import { TinaTemplate } from "tinacms";
 import client from "../../.tina/__generated__/client";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-import { formatDate, countPhotos } from "../../utils";
+import { formatDate, countPhotos } from "../../lib/utils";
 import Link from "next/link";
 
 export const Latests = ({ data, parentField = "" }) => {

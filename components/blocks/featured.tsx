@@ -4,7 +4,7 @@ import { Section } from "../util/section";
 import { client } from "../../.tina/__generated__/client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { formatDate, countPhotos } from "../../utils";
+import { formatDate, countPhotos } from "../../lib/utils";
 
 export const Featured = ({ data, parentField = "" }) => {
   const [series, setSeries] = useState({

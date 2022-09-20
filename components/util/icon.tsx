@@ -1,6 +1,47 @@
 import * as React from "react";
 import { useTheme } from "../layout";
-import { iconsTheme } from "../../constants";
+import { formatFieldLabel } from "../../lib/utils";
+import { TinaField } from "tinacms";
+
+import {
+  Bars2Icon,
+  XMarkIcon,
+  CodeBracketIcon,
+  HandThumbUpIcon,
+  MapIcon,
+  SwatchIcon,
+  ChartBarIcon,
+  MapPinIcon,
+  ShieldCheckIcon,
+  AdjustmentsHorizontalIcon,
+  ShoppingBagIcon,
+  BeakerIcon,
+  UserIcon,
+  ChatBubbleBottomCenterIcon,
+  CloudIcon,
+  EyeIcon,
+} from "@heroicons/react/24/outline";
+
+
+export const iconsTheme = {
+  menu: { hi: Bars2Icon },
+  close: { hi: XMarkIcon },
+  eye: { hi: EyeIcon },
+  // defaults
+  code: { hi: CodeBracketIcon },
+  like: { hi: HandThumbUpIcon },
+  map: { hi: MapIcon },
+  palette: { hi: SwatchIcon },
+  chart: { hi: ChartBarIcon },
+  pin: { hi: MapPinIcon },
+  shield: { hi: ShieldCheckIcon },
+  settings: { hi: AdjustmentsHorizontalIcon },
+  store: { hi: ShoppingBagIcon },
+  tube: { hi: BeakerIcon },
+  user: { hi: UserIcon },
+  chat: { hi: ChatBubbleBottomCenterIcon },
+  cloud: { hi: CloudIcon },
+};
 
 export const iconColorClass = {
   red: "text-red-600 dark:text-red-400",
@@ -47,6 +88,15 @@ export const iconSizeClass = {
   "2xl": "w-20 h-20",
 };
 
+
+export const iconSets = [
+  {
+    label: "Heroicons",
+    value: "heroicon",
+  },
+];
+
+
 export const Icon = ({
   data,
   parentColor = "",
@@ -81,4 +131,45 @@ export const Icon = ({
       className={`${iconSizeClasses} ${iconColorClasses} ${className}`}
     />
   );
+};
+
+const colors = Object.keys(iconColorClass).map((color) => ({
+  label: formatFieldLabel(color),
+  value: color,
+}));
+
+const sizes = Object.keys(iconSizeClass).map((size) => ({
+  label: size,
+  value: size,
+}));
+
+const names = Object.keys(iconsTheme).map((icon) => ({
+  label: formatFieldLabel(icon),
+  value: icon,
+}));
+
+export const iconSchema: TinaField = {
+  type: "object",
+  label: "Icon",
+  name: "icon",
+  fields: [
+    {
+      type: "string",
+      label: "Color",
+      name: "color",
+      options: colors,
+    },
+    {
+      type: "string",
+      label: "Size",
+      name: "size",
+      options: sizes,
+    },
+    {
+      type: "string",
+      label: "Icon",
+      name: "name",
+      options: names,
+    },
+  ],
 };

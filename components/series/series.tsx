@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { formatDate } from "../../utils";
+import { formatDate } from "../../lib/utils";
 
 export const Series = ({ data }) => {
   return (
