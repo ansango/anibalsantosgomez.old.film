@@ -4,13 +4,28 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
 import type { TinaTemplate } from "tinacms";
-import Image from "next/image";
+import NextImage from "next/image";
+
+const Image = ({ data, parentField = "" }) => (
+  <div
+    className="flex flex-col items-center justify-center"
+    data-tinafield={`${parentField}.image`}
+  >
+    <NextImage
+      className="object-cover object-center w-full"
+      alt={data.image.alt}
+      src={data.image.src ?? ""}
+      width={data.image.type === "portrait" ? 1365 : 2048}
+      height={data.image.type === "portrait" ? 2048 : 1365}
+    />
+  </div>
+);
 
 const renderHero = (data, parentField) => {
   switch (data.type) {
     case "left":
       return (
-        <Section color={data.color}>
+        <>
           <Container>
             <div className="flex flex-wrap items-center mx-auto 2xl:max-w-7xl">
               <div className="flex flex-col items-start mb-16 text-left lg:flex-grow lg:w-1/2 lg:pr-24 md:mb-0">
@@ -43,25 +58,14 @@ const renderHero = (data, parentField) => {
           </Container>
           {data.image?.src && (
             <Container>
-              <div
-                className="flex flex-col items-center justify-center"
-                data-tinafield={`${parentField}.image`}
-              >
-                <Image
-                  className="object-cover object-center w-full"
-                  alt={data.image.alt}
-                  src={data.image.src ?? ""}
-                  width={data.image.type === "portrait" ? 1365 : 2048}
-                  height={data.image.type === "portrait" ? 2048 : 1365}
-                />
-              </div>
+              <Image data={data} parentField={parentField} />
             </Container>
           )}
-        </Section>
+        </>
       );
     case "center":
       return (
-        <Section color={data.color}>
+        <>
           <Container>
             <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
               <div className="flex flex-col w-full mb-12 text-center">
@@ -86,21 +90,10 @@ const renderHero = (data, parentField) => {
           </Container>{" "}
           {data.image?.src && (
             <Container>
-              <div
-                className="flex flex-col items-center justify-center"
-                data-tinafield={`${parentField}.image`}
-              >
-                <Image
-                  className="object-cover object-center w-full"
-                  alt={data.image.alt}
-                  src={data.image.src ?? ""}
-                  width={data.image.type === "portrait" ? 1365 : 2048}
-                  height={data.image.type === "portrait" ? 2048 : 1365}
-                />
-              </div>
+              <Image data={data} parentField={parentField} />
             </Container>
           )}
-        </Section>
+        </>
       );
     default:
       return null;
@@ -110,7 +103,7 @@ const renderHero = (data, parentField) => {
 export const Hero = ({ data, parentField = "" }) => {
   const theme = useTheme();
 
-  return <>{renderHero(data, parentField)}</>;
+  return <Section color={data.color}>{renderHero(data, parentField)}</Section>;
 };
 
 export const heroBlockSchema: TinaTemplate = {

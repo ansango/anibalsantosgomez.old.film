@@ -17,6 +17,7 @@ export default function SeriesPage(
           tagline: "Raw Rolls",
           headline: "Series",
           text: "You can find all the series I've shot and developed here.",
+          type: "left",
         }}
       />
       <Section>
