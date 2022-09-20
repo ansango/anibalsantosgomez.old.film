@@ -8,7 +8,7 @@ type Props = {
   lang?: string;
 };
 
-const ContactForm: FC<Props> = ({ lang = "en" }) => {
+export const ContactForm: FC<Props> = ({ lang = "en" }) => {
   const {
     register,
     handleSubmit,
@@ -175,5 +175,3 @@ const ContactForm: FC<Props> = ({ lang = "en" }) => {
     </Container>
   );
 };
-
-export default ContactForm;
