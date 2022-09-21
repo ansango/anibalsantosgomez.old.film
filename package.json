@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
+    "postbuil": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/rss.mjs && node ./lib/scripts/sitemap.mjs",
+    "tc": "NODE_OPTIONS='--experimental-json-modules' tsc ./.tina/__generated__/client.ts --outDir ./lib/scripts",
     "start": "tinacms build && next start",
     "export": "npm run build && next export",
     "lint": "eslint . --ext .ts,.tsx"
@@ -29,7 +31,8 @@
     "postcss-nesting": "^10.2.0",
     "prettier": "^2.7.1",
     "rss": "^1.2.2",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.1.8",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
@@ -47,6 +50,7 @@
     "react-icons": "^4.2.0",
     "react-intersection-observer": "^9.4.0",
     "react-is": "^17.0.2",
+    "remove": "^0.1.5",
     "styled-components": "^5.1.3",
     "styled-jsx": "^3.2.5",
     "tinacms": "^0.69.3",

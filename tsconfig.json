@@ -22,5 +22,5 @@
     "**/*.tsx",
     ".forestry/types.ts",
     ".forestry/config.ts"
-  ]
+, "lib/scripts/rss.mjs"  ]
 }

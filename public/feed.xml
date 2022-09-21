@@ -4,49 +4,28 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 12 Sep 2022 22:02:46 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 21 Sep 2022 10:49:54 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[Vigo & Cies]]></title>
-            <description><![CDATA[Captures from Vigo & Cies]]></description>
-            <link>https://anibalsantosgomez.com/series/32-vigo-cies</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/32-vigo-cies</guid>
-            <pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate>
+            <title><![CDATA[Hola]]></title>
+            <description><![CDATA[hola que tal]]></description>
+            <link>https://anibalsantosgomez.com/serie/prueba</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/serie/prueba</guid>
+            <pubDate>Tue, 20 Sep 2022 01:04:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Vigo & Cies]]></title>
-            <description><![CDATA[Capturas de Vigo & Cies]]></description>
-            <link>https://anibalsantosgomez.com/es/series/32-vigo-cies</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/32-vigo-cies</guid>
-            <pubDate>Thu, 25 Aug 2022 00:00:00 GMT</pubDate>
+            <title><![CDATA[a]]></title>
+            <description><![CDATA[a]]></description>
+            <link>https://anibalsantosgomez.com/serie/prueba2</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/serie/prueba2</guid>
+            <pubDate>Mon, 19 Sep 2022 01:05:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Lisboa]]></title>
-            <description><![CDATA[Postcards from Lisbon]]></description>
-            <link>https://anibalsantosgomez.com/series/33-lisboa</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/33-lisboa</guid>
-            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Lisboa]]></title>
-            <description><![CDATA[Postales de Lisboa]]></description>
-            <link>https://anibalsantosgomez.com/es/series/33-lisboa</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/33-lisboa</guid>
-            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Lisboa & Sintra]]></title>
-            <description><![CDATA[Postcards from Lisbon & Sintra]]></description>
-            <link>https://anibalsantosgomez.com/series/34-lisboa-sintra</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/series/34-lisboa-sintra</guid>
-            <pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Lisboa & Sintra]]></title>
-            <description><![CDATA[Postales de Lisboa & Sintra]]></description>
-            <link>https://anibalsantosgomez.com/es/series/34-lisboa-sintra</link>
-            <guid isPermaLink="true">https://anibalsantosgomez.com/es/series/34-lisboa-sintra</guid>
-            <pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate>
+            <title><![CDATA[Prueba 3]]></title>
+            <description><![CDATA[Prueba para delete]]></description>
+            <link>https://anibalsantosgomez.com/serie/prueba3</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/serie/prueba3</guid>
+            <pubDate>Tue, 20 Sep 2022 01:20:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
