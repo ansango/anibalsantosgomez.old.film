@@ -4,13 +4,14 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 21 Sep 2022 10:49:54 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 21 Sep 2022 12:34:27 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Hola]]></title>
             <description><![CDATA[hola que tal]]></description>
             <link>https://anibalsantosgomez.com/serie/prueba</link>
             <guid isPermaLink="true">https://anibalsantosgomez.com/serie/prueba</guid>
+            <dc:creator><![CDATA[Anibal Santos]]></dc:creator>
             <pubDate>Tue, 20 Sep 2022 01:04:00 GMT</pubDate>
         </item>
         <item>
@@ -18,6 +19,7 @@
             <description><![CDATA[a]]></description>
             <link>https://anibalsantosgomez.com/serie/prueba2</link>
             <guid isPermaLink="true">https://anibalsantosgomez.com/serie/prueba2</guid>
+            <dc:creator><![CDATA[Anibal Santos]]></dc:creator>
             <pubDate>Mon, 19 Sep 2022 01:05:00 GMT</pubDate>
         </item>
         <item>
@@ -25,6 +27,7 @@
             <description><![CDATA[Prueba para delete]]></description>
             <link>https://anibalsantosgomez.com/serie/prueba3</link>
             <guid isPermaLink="true">https://anibalsantosgomez.com/serie/prueba3</guid>
+            <dc:creator><![CDATA[Anibal Santos]]></dc:creator>
             <pubDate>Tue, 20 Sep 2022 01:20:00 GMT</pubDate>
         </item>
     </channel>
