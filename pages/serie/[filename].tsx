@@ -3,7 +3,7 @@ import { client } from "../../.tina/__generated__/client";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
 import { Post } from "../../components/series/post";
-import FourOhFour from "pages/404";
+import FourOhFour from "../404";
 import { seoConfig } from "../../components/layout/layout";
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
