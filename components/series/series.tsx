@@ -83,12 +83,12 @@ export const Series = ({ data, parentField = "" }) => {
                               {formatDate(serie.publishedAt)}
                             </span>
                             <h3
-                              className={`mt-3 text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                              className={`mt-3 text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                             >
                               {serie.title}
                             </h3>
                             <p
-                              className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-2`}
+                              className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-2 ${monoRestColors.groupTextHover700[mono]}`}
                             >
                               {serie.summary}
                             </p>

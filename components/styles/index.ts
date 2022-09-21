@@ -283,4 +283,18 @@ export const monoRestColors = {
     neutral: "divide-neutral-100 dark:divide-neutral-800",
     stone: "divide-stone-100 dark:divide-stone-800",
   },
+  groupTextHover700: {
+    slate: "group-hover:text-slate-700 dark:group-hover:text-slate-300",
+    gray: "group-hover:text-gray-700 dark:group-hover:text-gray-300",
+    zinc: "group-hover:text-zinc-700 dark:group-hover:text-zinc-300",
+    neutral: "group-hover:text-neutral-700 dark:group-hover:text-neutral-300",
+    stone: "group-hover:text-stone-700 dark:group-hover:text-stone-300",
+  },
+  groupTextHover800: {
+    slate: "group-hover:text-slate-800 dark:group-hover:text-slate-200",
+    gray: "group-hover:text-gray-800 dark:group-hover:text-gray-200",
+    zinc: "group-hover:text-zinc-800 dark:group-hover:text-zinc-200",
+    neutral: "group-hover:text-neutral-800 dark:group-hover:text-neutral-200",
+    stone: "group-hover:text-stone-800 dark:group-hover:text-stone-200",
+  },
 };
