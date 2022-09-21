@@ -3,6 +3,7 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { TinaTemplate } from "tinacms";
+import { useTheme } from "../layout";
 
 export const Content = ({ data, parentField = "" }) => {
   return (
