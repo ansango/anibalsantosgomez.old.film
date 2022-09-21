@@ -52,7 +52,7 @@
   "theme": {
     "mono": "neutral",
     "color": "neutral",
-    "font": "work-sans",
+    "font": "lato",
     "icon": "heroicon",
     "darkMode": "dark"
   },
