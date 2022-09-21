@@ -51,10 +51,10 @@
   },
   "theme": {
     "mono": "neutral",
-    "color": "neutral",
+    "color": "emerald",
     "font": "work-sans",
     "icon": "heroicon",
-    "darkMode": "dark"
+    "darkMode": "light"
   },
   "_collection": "global",
   "_keepTemplateKey": false,
