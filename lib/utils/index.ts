@@ -30,7 +30,7 @@ export const formatDate = (date, locale = "en-US") => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const countPhotos = (serie: any) => {
-  const photosLength = serie._body.children
+  const photosLength = serie._body?.children
     .filter((child) => child.type === "p")
     .map((child) => child.children)
     .filter((child) => child[0].type === "img").length;

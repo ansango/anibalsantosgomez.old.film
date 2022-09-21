@@ -47,7 +47,7 @@ export const Featured = ({ data, parentField = "" }) => {
           <Container className="py-6 lg:py-12">
             <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
               <h3
-                className={`text-xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
+                className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
                 data-tinafield={`${parentField}.title`}
               >
                 {data.title}
@@ -60,11 +60,11 @@ export const Featured = ({ data, parentField = "" }) => {
                   <Link href={`/serie/${lastSerie._sys.filename}`} passHref>
                     <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6">
                       <div className="flex-shrink-0">
-                        {lastSerie.cover && (
+                        {lastSerie.meta.cover && (
                           <img
                             className="object-cover w-full aspect-4/3"
                             alt=""
-                            src={lastSerie.cover}
+                            src={lastSerie.meta.cover}
                             width={2048}
                             height={1365}
                           />
@@ -85,12 +85,12 @@ export const Featured = ({ data, parentField = "" }) => {
 
                           <div className="mt-2 space-y-6">
                             <h3
-                              className={`text-2xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                              className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
                             >
                               {lastSerie.title}
                             </h3>
                             <p
-                              className={`text-lg font-normal ${monoTextColors[500][mono]}`}
+                              className={`text-base font-normal ${monoTextColors[500][mono]}`}
                             >
                               {lastSerie.summary}
                             </p>
@@ -111,11 +111,11 @@ export const Featured = ({ data, parentField = "" }) => {
                       >
                         <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6">
                           <div className="flex-shrink-0">
-                            {serie.cover && (
+                            {serie.meta?.cover && (
                               <img
                                 className="object-cover w-full aspect-4/3"
                                 alt=""
-                                src={serie.cover}
+                                src={serie.meta.cover}
                                 width={2048}
                                 height={1365}
                               />
@@ -136,12 +136,12 @@ export const Featured = ({ data, parentField = "" }) => {
 
                               <div className="mt-2 space-y-6">
                                 <h3
-                                  className={`text-2xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                                  className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
                                 >
                                   {serie.title}
                                 </h3>
                                 <p
-                                  className={`text-lg font-normal ${monoTextColors[500][mono]}`}
+                                  className={`text-base font-normal ${monoTextColors[500][mono]}`}
                                 >
                                   {serie.summary}
                                 </p>

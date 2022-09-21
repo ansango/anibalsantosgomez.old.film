@@ -11,7 +11,7 @@ export const Series = ({ data }) => {
       <div className="relative">
         <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
           <h2
-            className={`text-xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
+            className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
           >
             All series
           </h2>
@@ -31,12 +31,12 @@ export const Series = ({ data }) => {
               >
                 <a className="pt-8 sm:flex lg:items-end group">
                   <div className="mb-4 sm:mb-0 sm:mr-4">
-                    {serie.cover && (
+                    {serie.meta?.cover && (
                       <div className="w-full relative sm:w-48 md:w-64 lg:w-32">
                         <img
                           className="object-cover w-full aspect-4/3"
                           alt=""
-                          src={serie.cover}
+                          src={serie.meta?.cover }
                           width={2048}
                           height={1365}
                         />
@@ -49,12 +49,12 @@ export const Series = ({ data }) => {
                     </span>
                     <p className="mt-3 text-lg font-medium leading-6">
                       <h3
-                        className={`text-2xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                        className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
                       >
                         {serie.title}
                       </h3>
                     </p>
-                    <p className={`mt-2 text-lg ${monoTextColors[500][mono]}`}>
+                    <p className={`mt-2 text-base ${monoTextColors[500][mono]}`}>
                       {serie.summary}
                     </p>
                   </div>

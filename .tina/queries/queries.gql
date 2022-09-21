@@ -32,10 +32,17 @@ query seriesPublishedQuery {
     edges {
       node {
         title
-        _body
+        description
+        summary
+        meta {
+          cover
+          camera
+          film
+          tags
+        }
+        id
         publishedAt
         isPublished
-        id
         _sys {
           filename
         }
