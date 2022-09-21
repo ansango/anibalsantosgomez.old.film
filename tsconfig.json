@@ -15,12 +15,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "exclude": ["node_modules", ".old"],
+  "exclude": ["node_modules", ".old", "lib/scripts"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".forestry/types.ts",
     ".forestry/config.ts"
-, "lib/scripts/rss.mjs"  ]
+  ]
 }
