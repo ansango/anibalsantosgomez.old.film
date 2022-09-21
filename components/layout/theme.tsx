@@ -45,7 +45,7 @@ export const Theme = ({ data, children }) => {
   const {
     mono = "neutral",
     color = "neutral",
-    icon = "heroicon",
+    icon = "hi",
     font = "sans",
     darkMode = "system",
   } = data;

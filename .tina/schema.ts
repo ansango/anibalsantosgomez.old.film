@@ -548,7 +548,7 @@ const schema = defineSchema({
               options: [
                 {
                   label: "Heroicons",
-                  value: "heroicon",
+                  value: "hi",
                 },
               ],
             },
