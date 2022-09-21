@@ -12,7 +12,7 @@ const Image = ({ data, parentField = "" }) => (
     data-tinafield={`${parentField}.image`}
   >
     <img
-      className="object-cover object-center w-full"
+      className="object-cover w-full aspect-4/3"
       alt={data.image.alt}
       src={data.image.src ?? ""}
       width={data.image.type === "portrait" ? 1365 : 2048}
