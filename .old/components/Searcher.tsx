@@ -108,4 +108,4 @@ const Searcher: FC = () => {
   );
 };
 
-export default Searcher;
+

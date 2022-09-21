@@ -1,50 +1,24 @@
 import { TinaTemplate } from "tinacms";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-import { client } from "../../.tina/__generated__/client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatDate, countPhotos } from "../../lib/utils";
 import { useTheme } from "../layout";
 import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
+import { useFeaturedSeriesQuery } from "../../lib/hooks";
 
 export const Featured = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
-  const [series, setSeries] = useState({
-    loading: true,
-    data: null,
-  });
-
-  useEffect(() => {
-    client.queries.seriesFeaturedQuery().then((res) => {
-      setSeries({
-        loading: false,
-        data: res.data.serieConnection.edges
-          .map((edge) => edge.node)
-          .sort((a, b) => {
-            return (
-              new Date(b.publishedAt).getTime() -
-              new Date(a.publishedAt).getTime()
-            );
-          }),
-      });
-    });
-    return () => {
-      setSeries({
-        loading: false,
-        data: null,
-      });
-    };
-  }, []);
-
-  const lastSerie = series.data && series.data[0];
-  const restSeries = series.data && series.data.slice(1, 3);
+  const { series, loading } = useFeaturedSeriesQuery({ init: 0, limit: 3 });
+  const lastSerie = series?.filter((serie) => serie.priority === true)[0];
+  const restSeries = series?.filter((serie) => serie.priority === false);
 
   return (
-    <>
-      {series.data?.length > 0 ? (
-        <Section>
-          <Container className="py-6 lg:py-12">
+    <Section>
+      <Container className="py-6 lg:py-12">
+        {loading && <div>Loading...</div>}
+        {series?.length > 0 ? (
+          <>
             <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
               <h2
                 className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
@@ -154,10 +128,10 @@ export const Featured = ({ data, parentField = "" }) => {
                 </div>
               </div>
             </div>
-          </Container>
-        </Section>
-      ) : null}
-    </>
+          </>
+        ) : null}
+      </Container>
+    </Section>
   );
 };
 

@@ -1,48 +1,22 @@
-import { useEffect, useState } from "react";
 import { TinaTemplate } from "tinacms";
-import client from "../../.tina/__generated__/client";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { formatDate, countPhotos } from "../../lib/utils";
 import Link from "next/link";
 import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useTheme } from "../layout";
+import { useLatestSeriesQuery } from "../../lib/hooks";
 
 export const Latests = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
-  const [series, setSeries] = useState({
-    loading: true,
-    data: null,
-  });
-
-  useEffect(() => {
-    client.queries.seriesLatestsQuery().then((res) => {
-      setSeries({
-        loading: false,
-        data: res.data.serieConnection.edges
-          .map((edge) => edge.node)
-          .sort((a, b) => {
-            return (
-              new Date(b.publishedAt).getTime() -
-              new Date(a.publishedAt).getTime()
-            );
-          })
-          .slice(0, 6),
-      });
-    });
-    return () => {
-      setSeries({
-        loading: false,
-        data: null,
-      });
-    };
-  }, []);
+  const { series, loading } = useLatestSeriesQuery({ init: 0, limit: 6 });
 
   return (
-    <>
-      {series.data?.length > 0 ? (
-        <Section>
-          <Container className="py-6 lg:py-12">
+    <Section>
+      <Container className="py-6 lg:py-12">
+        {loading && <div>Loading...</div>}
+        {series?.length > 0 ? (
+          <>
             <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
               <h2
                 className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
@@ -54,7 +28,7 @@ export const Latests = ({ data, parentField = "" }) => {
 
             <div className="relative mx-auto max-w-7xl">
               <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-                {series.data.map((serie, i) => (
+                {series.map((serie, i) => (
                   <Link
                     href={`/serie/${serie._sys.filename}`}
                     passHref
@@ -104,10 +78,10 @@ export const Latests = ({ data, parentField = "" }) => {
                 ))}
               </div>
             </div>
-          </Container>
-        </Section>
-      ) : null}
-    </>
+          </>
+        ) : null}
+      </Container>
+    </Section>
   );
 };
 
