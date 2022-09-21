@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/rss.mjs",
+    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/rss.mjs && node ./lib/scripts/sitemap.mjs",
     "start": "tinacms build && next start",
     "export": "npm run build && next export",
     "lint": "eslint . --ext .ts,.tsx"
