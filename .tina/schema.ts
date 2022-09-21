@@ -5,13 +5,13 @@ import {
   TinaField,
 } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
+import { heroBlockSchema } from "../components/blocks";
+import { iconSchema } from "../components/util/icon";
 import {
-  heroBlockSchema,
   featuredBlockSchema,
   latestsBlockSchema,
-} from "../components/blocks";
-import { iconSchema } from "../components/util/icon";
-
+  allSeriesSchema,
+} from "../components/series";
 import { client } from "./__generated__/client";
 import { kebabParser } from "../lib/utils";
 import { seoSchema } from "../components/layout/layout";
@@ -594,6 +594,7 @@ const schema = defineSchema({
             heroBlockSchema,
             featuredBlockSchema,
             latestsBlockSchema,
+            allSeriesSchema,
             contentBlockSchema,
           ],
         },

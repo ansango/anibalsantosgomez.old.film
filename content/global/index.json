@@ -52,13 +52,8 @@
   "theme": {
     "mono": "neutral",
     "color": "neutral",
-    "font": "lato",
+    "font": "work-sans",
     "icon": "heroicon",
-    "darkMode": "dark"
-  },
-  "_collection": "global",
-  "_keepTemplateKey": false,
-  "_template": "global",
-  "_relativePath": "index.json",
-  "_id": "content/global/index.json"
+    "darkMode": "light"
+  }
 }

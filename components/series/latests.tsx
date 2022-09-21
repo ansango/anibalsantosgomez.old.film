@@ -44,12 +44,12 @@ export const Latests = ({ data, parentField = "" }) => {
         <Section>
           <Container className="py-6 lg:py-12">
             <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
-              <h3
+              <h2
                 className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
                 data-tinafield={`${parentField}.title`}
               >
                 {data.title}
-              </h3>
+              </h2>
             </div>
 
             <div className="relative mx-auto max-w-7xl">
@@ -112,12 +112,12 @@ export const Latests = ({ data, parentField = "" }) => {
 };
 
 export const latestsBlockSchema: TinaTemplate = {
-  name: "latests",
-  label: "Latests",
+  label: "Latests Series",
+  name: "latestsSeries",
   ui: {
     previewSrc: "",
     defaultItem: {
-      title: "Latests",
+      title: "Latests Series",
     },
   },
   fields: [
