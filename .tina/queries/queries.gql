@@ -59,11 +59,17 @@ query seriesFeaturedQuery {
     edges {
       node {
         title
-        _body
+        description
+        summary
+        meta {
+          cover
+          camera
+          film
+          tags
+        }
+        id
         publishedAt
         isPublished
-        isFeatured
-        id
         _sys {
           filename
         }
@@ -77,11 +83,17 @@ query seriesLatestsQuery {
     edges {
       node {
         title
-        _body
+        description
+        summary
+        meta {
+          cover
+          camera
+          film
+          tags
+        }
+        id
         publishedAt
         isPublished
-        isFeatured
-        id
         _sys {
           filename
         }

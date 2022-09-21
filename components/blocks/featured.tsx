@@ -16,7 +16,7 @@ export const Featured = ({ data, parentField = "" }) => {
   });
 
   useEffect(() => {
-    client.queries.seriesPublishedQuery().then((res) => {
+    client.queries.seriesFeaturedQuery().then((res) => {
       setSeries({
         loading: false,
         data: res.data.serieConnection.edges
