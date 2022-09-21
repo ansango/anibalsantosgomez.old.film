@@ -4,7 +4,7 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import type { TinaTemplate } from "tinacms";
 import { useTheme } from "../layout";
-import { primaryTextColors } from "../styles";
+import { monoTextColors, primaryTextColors } from "../styles";
 
 const Image = ({ data, parentField = "" }) => (
   <div
@@ -21,7 +21,7 @@ const Image = ({ data, parentField = "" }) => (
   </div>
 );
 
-const renderHero = (data, parentField, color) => {
+const renderHero = (data, parentField, color, mono) => {
   switch (data.type) {
     case "left":
       return (
@@ -39,7 +39,7 @@ const renderHero = (data, parentField, color) => {
                 )}
                 {data.headline && (
                   <h1
-                    className="mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl"
+                    className={`mb-8 text-4xl font-bold leading-none tracking-tighter ${monoTextColors[700][mono]} md:text-7xl`}
                     data-tinafield={`${parentField}.headline`}
                   >
                     {data.headline}
@@ -47,7 +47,7 @@ const renderHero = (data, parentField, color) => {
                 )}
                 {data.text && (
                   <p
-                    className="mb-8 text-base leading-relaxed text-left text-neutral-500"
+                    className={`mb-8 text-base leading-relaxed text-left ${monoTextColors[500][mono]}`}
                     data-tinafield={`${parentField}.text`}
                   >
                     {data.text}
@@ -71,7 +71,7 @@ const renderHero = (data, parentField, color) => {
               <div className="flex flex-col w-full mb-12 text-center">
                 {data.headline && (
                   <h1
-                    className="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl"
+                    className={`max-w-5xl text-2xl font-bold leading-none tracking-tighter ${monoTextColors[700][mono]} md:text-5xl lg:text-6xl lg:max-w-7xl`}
                     data-tinafield={`${parentField}.headline`}
                   >
                     {data.headline}
@@ -79,7 +79,7 @@ const renderHero = (data, parentField, color) => {
                 )}
                 {data.text && (
                   <p
-                    className="max-w-xl mx-auto mt-8 text-base leading-relaxed text-center text-neutral-500"
+                    className={`max-w-xl mx-auto mt-8 text-base leading-relaxed text-center ${monoTextColors[500][mono]}`}
                     data-tinafield={`${parentField}.text`}
                   >
                     {data.text}
@@ -101,8 +101,8 @@ const renderHero = (data, parentField, color) => {
 };
 
 export const Hero = ({ data, parentField = "" }) => {
-  const { color } = useTheme();
-  return <Section>{renderHero(data, parentField, color)}</Section>;
+  const { color, mono } = useTheme();
+  return <Section>{renderHero(data, parentField, color, mono)}</Section>;
 };
 
 export const heroBlockSchema: TinaTemplate = {

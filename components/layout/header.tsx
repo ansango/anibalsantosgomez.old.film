@@ -4,6 +4,7 @@ import { Container } from "../util/container";
 import { Icon } from "../util/icon";
 import { useTheme } from "./theme";
 import {
+  monoTextColors,
   primaryBorderColors,
   primaryHoverBorderColors,
   primaryHoverTextColors,
@@ -28,7 +29,7 @@ const useAutoClose = ({ setIsOpen, menu }) => {
 };
 
 const Nav = ({ nav }) => {
-  const { color } = useTheme();
+  const { color, mono } = useTheme();
   const [prefix, setPrefix] = useState("");
   useEffect(() => {
     if (window.location.pathname.startsWith("/admin")) {
@@ -46,7 +47,7 @@ const Nav = ({ nav }) => {
             key={`${item.label}-${i}`}
           >
             <a
-              className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] text-neutral-600 ${primaryHoverTextColors[color]} border-b-2 border-transparent ${primaryHoverBorderColors[color]}`}
+              className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]} border-b-2 border-transparent ${primaryHoverBorderColors[color]}`}
             >
               {item.label}
             </a>

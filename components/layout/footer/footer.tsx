@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Container } from "../../util/container";
 import { RawRenderer } from "./rawRenderer";
-import { primaryHoverTextColors, primaryTextColors } from "../../styles";
+import {
+  monoTextColors,
+  primaryHoverTextColors,
+  primaryTextColors,
+} from "../../styles";
 import { useTheme } from "../theme";
 
 export const Footer = ({ data, rawData }) => {
-  const { color } = useTheme();
+  const { color, mono } = useTheme();
   const [prefix, setPrefix] = useState("");
 
- useEffect(() => {
+  useEffect(() => {
     if (window.location.pathname.startsWith("/admin")) {
       setPrefix("/admin");
     }
@@ -22,7 +26,7 @@ export const Footer = ({ data, rawData }) => {
           <li key={`${link.label}-${i}`}>
             <Link href={`${prefix}/${link.href}`} passHref>
               <a
-                className={`text-sm font-normal text-neutral-500 ${primaryHoverTextColors[color]}`}
+                className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
               >
                 {link.label}
               </a>
@@ -37,7 +41,7 @@ export const Footer = ({ data, rawData }) => {
         el: (
           <li key={`${link.label}-${i}-external`}>
             <a
-              className={`text-sm font-normal text-neutral-500 ${primaryHoverTextColors[color]}`}
+              className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
               href={link.href}
               target="_blank"
             >
@@ -59,11 +63,11 @@ export const Footer = ({ data, rawData }) => {
             <div className="space-y-8 xl:col-span-1">
               <a
                 href="./index.html"
-                className={`text-lg font-bold tracking-tighter ${primaryTextColors[color]} transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8`}
+                className={`text-lg font-bold tracking-tight ${primaryTextColors[color]} transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8`}
               >
                 anibalsantos
               </a>
-              <p className="mt-2 text-sm text-neutral-500">
+              <p className={`mt-2 text-sm ${monoTextColors[500][mono]}`}>
                 film captures / miscellaneous
               </p>
             </div>
@@ -94,7 +98,9 @@ export const Footer = ({ data, rawData }) => {
           </div>
 
           <div className="px-5 py-12 mt-12 mx-auto bg-neutral-100 dark:bg-neutral-800 max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-20">
-            <span className="mt-2 text-sm font-light text-neutral-500">
+            <span
+              className={`mt-2 text-sm font-light ${monoTextColors[500][mono]}`}
+            >
               Copyright © 2013 - {new Date().getFullYear()}. Anibal Santos. All
               rights reserved.
             </span>

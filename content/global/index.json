@@ -50,9 +50,10 @@
     ]
   },
   "theme": {
-    "color": "lime",
+    "mono": "neutral",
+    "color": "neutral",
     "font": "work-sans",
     "icon": "heroicon",
-    "darkMode": "light"
+    "darkMode": "dark"
   }
 }

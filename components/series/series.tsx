@@ -1,18 +1,25 @@
 import React from "react";
 import Link from "next/link";
 import { formatDate } from "../../lib/utils";
+import { monoBordersColors, monoTextColors, monoRestColors } from "../styles";
+import { useTheme } from "../layout";
 
 export const Series = ({ data }) => {
+  const { mono } = useTheme();
   return (
     <div className="space-y-5 sm:space-y-0">
       <div className="relative">
-        <div className="pb-4 border-b border-gray-600">
-          <h2 className="text-xl font-semibold leading-6 text-gray-800">
+        <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
+          <h2
+            className={`text-xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
+          >
             All series
           </h2>
         </div>
       </div>
-      <div className="space-y-12 sm:space-y-8 lg:divide-y lg:divide-gray-100">
+      <div
+        className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]}`}
+      >
         {data.map(({ node }) => {
           const serie = node;
           return (
@@ -37,15 +44,17 @@ export const Series = ({ data }) => {
                     )}
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">
+                    <span className={`text-sm ${monoTextColors[500][mono]}`}>
                       {formatDate(serie.publishedAt)}
                     </span>
                     <p className="mt-3 text-lg font-medium leading-6">
-                      <h3 className="text-2xl font-semibold leading-none tracking-tighter text-neutral-600">
+                      <h3
+                        className={`text-2xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                      >
                         {serie.title}
                       </h3>
                     </p>
-                    <p className="mt-2 text-lg text-gray-500">
+                    <p className={`mt-2 text-lg ${monoTextColors[500][mono]}`}>
                       {serie.summary}
                     </p>
                   </div>

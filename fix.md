@@ -1,4 +1,3 @@
-- schema series grouped
 - scripts rss feed sitemap
 - theme styles global
 - contact form styles
