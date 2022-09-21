@@ -90,7 +90,7 @@ export const Featured = ({ data, parentField = "" }) => {
                               {lastSerie.title}
                             </h3>
                             <p
-                              className={`text-base font-normal ${monoTextColors[500][mono]} line-clamp-4 lg:line-clamp-3 ${monoRestColors.groupTextHover800[mono]}`}
+                              className={`text-base font-normal line-clamp-4 lg:line-clamp-5 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                             >
                               {lastSerie.summary}
                             </p>
@@ -141,7 +141,7 @@ export const Featured = ({ data, parentField = "" }) => {
                                   {serie.title}
                                 </h3>
                                 <p
-                                  className={`text-base font-normal line-clamp-4 lg:line-clamp-3 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+                                  className={`text-base font-normal line-clamp-4 lg:line-clamp-5 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
                                 >
                                   {serie.summary}
                                 </p>

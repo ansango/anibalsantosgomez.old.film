@@ -5,7 +5,7 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { formatDate, countPhotos } from "../../lib/utils";
 import Link from "next/link";
-import { monoTextColors, monoBordersColors } from "../styles";
+import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useTheme } from "../layout";
 
 export const Latests = ({ data, parentField = "" }) => {
@@ -60,7 +60,7 @@ export const Latests = ({ data, parentField = "" }) => {
                     passHref
                     key={`serie-${i}`}
                   >
-                    <a className="flex flex-col mb-12 overflow-hidden cursor-pointer">
+                    <a className="flex flex-col mb-12 overflow-hidden cursor-pointer group">
                       <div className="flex-shrink-0">
                         {serie.meta?.cover && (
                           <img
@@ -87,12 +87,12 @@ export const Latests = ({ data, parentField = "" }) => {
 
                           <div className="mt-2 space-y-6">
                             <h3
-                              className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                              className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                             >
                               {serie.title}
                             </h3>
                             <p
-                              className={`text-base font-normal ${monoTextColors[500][mono]}`}
+                              className={`text-base font-normal line-clamp-4 lg:line-clamp-5 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
                             >
                               {serie.summary}
                             </p>
