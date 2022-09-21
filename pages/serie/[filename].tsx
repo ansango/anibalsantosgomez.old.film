@@ -4,7 +4,7 @@ import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
 import { Post } from "../../components/series/post";
 import FourOhFour from "pages/404";
-import { seoConfig } from "components/layout/layout";
+import { seoConfig } from "../../components/layout/layout";
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { data } = useTina({

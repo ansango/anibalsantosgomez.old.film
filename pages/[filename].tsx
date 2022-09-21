@@ -3,7 +3,7 @@ import { Blocks } from "../components/blocks-renderer";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../components/layout";
 import { client } from "../.tina/__generated__/client";
-import { seoConfig } from "components/layout/layout";
+import { seoConfig } from "../components/layout/layout";
 
 export default function NextPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
