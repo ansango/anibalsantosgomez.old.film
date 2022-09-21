@@ -22,8 +22,8 @@ export default function NextPage(
       data={data.global as any}
       seo={{
         ...seoConfig,
-        title: page.seo?.title,
-        description: page.seo?.description,
+        title: page?.seo?.title,
+        description: page?.seo?.description,
         route: props.route,
       }}
     >
