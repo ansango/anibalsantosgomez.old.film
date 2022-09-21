@@ -1,23 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import { useCallback, useEffect } from "react";
 
-export const useHover = () => {
-  const [value, setValue] = useState(false);
-  const ref = useRef(null);
-  const handleMouseOver = () => setValue(true);
-  const handleMouseOut = () => setValue(false);
-  useEffect(
-    () => {
-      const node = ref.current;
-      if (node) {
-        node.addEventListener("mouseover", handleMouseOver);
-        node.addEventListener("mouseout", handleMouseOut);
-        return () => {
-          node.removeEventListener("mouseover", handleMouseOver);
-          node.removeEventListener("mouseout", handleMouseOut);
-        };
-      }
-    },
-    [ref.current] // Recall only if ref changes
+export const useAutoClose = ({ setIsOpen, menu }) => {
+  const { asPath } = useRouter();
+  useEffect(() => setIsOpen(false), [asPath]);
+
+  const handleClosure = useCallback(
+    (event) => !menu.current.contains(event.target) && setIsOpen(false),
+    [setIsOpen, menu]
   );
-  return [ref, value];
+
+  useEffect(() => {
+    window.addEventListener("click", handleClosure);
+    window.addEventListener("focusin", handleClosure);
+
+    return () => {
+      window.removeEventListener("click", handleClosure);
+      window.removeEventListener("focusin", handleClosure);
+    };
+  }, [handleClosure, menu]);
 };

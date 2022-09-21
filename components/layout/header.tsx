@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
@@ -10,34 +10,13 @@ import {
   primaryHoverTextColors,
   primaryTextColors,
 } from "../styles";
-import { useRouter } from "next/router";
-
-const useAutoClose = ({ setIsOpen, menu }) => {
-  const handleClosure = useCallback(
-    (event) => !menu.current.contains(event.target) && setIsOpen(false),
-    [setIsOpen, menu]
-  );
-
-  useEffect(() => {
-    window.addEventListener("click", handleClosure);
-    window.addEventListener("focusin", handleClosure);
-
-    return () => {
-      window.removeEventListener("click", handleClosure);
-      window.removeEventListener("focusin", handleClosure);
-    };
-  }, [handleClosure, menu]);
-};
+import { useAutoClose } from "../../lib/hooks";
 
 export const Header = ({ data }) => {
   const { color, mono } = useTheme();
-  const { asPath } = useRouter();
   const menu = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   useAutoClose({ setIsOpen, menu });
-  useEffect(() => {
-    setIsOpen(false);
-  }, [asPath]);
 
   return (
     <Container>
