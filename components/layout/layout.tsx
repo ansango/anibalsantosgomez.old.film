@@ -32,9 +32,8 @@ export const Layout = ({
     <>
       <NextHead>
         <title>
-          {seo.title} - {seo.uname}
+          {seo.title}
         </title>
-        <meta name="robots" content="follow, index" />
         <meta content={seo.description} name="description" />
         <meta property="og:url" content={`${seo.site}/${seo.route}`} />
         <link rel="canonical" href={`${seo.site}/${seo.route}`} />
@@ -51,60 +50,6 @@ export const Layout = ({
         {seo.date && (
           <meta property="article:published_time" content={seo.date} />
         )}
-
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {data?.theme.font === "nunito" && (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link
-              href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap"
-              rel="stylesheet"
-            />
-          </>
-        )}
-        {data.theme.font === "lato" && (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link
-              href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
-              rel="stylesheet"
-            />
-          </>
-        )}
-        {data.theme.font === "work-sans" && (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link
-              href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,700;1,500;1,600;1,700&display=swap"
-              rel="stylesheet"
-            />
-          </>
-        )}
-        <link href="/site.webmanifest" rel="manifest" />
-        <link
-          href="/apple-touch-icon.png"
-          rel="apple-touch-icon"
-          sizes="180x180"
-        />
-        <link
-          href="/favicon-32x32.png"
-          rel="icon"
-          sizes="32x32"
-          type="image/png"
-        />
-        <link
-          href="/favicon-16x16.png"
-          rel="icon"
-          sizes="16x16"
-          type="image/png"
-        />
-        <link color="#4a9885" href="/safari-pinned-tab.svg" rel="mask-icon" />
-        <meta content="#ffffff" name="theme-color" />
-        <meta content="#ffffff" name="msapplication-TileColor" />
-        <meta content="/browserconfig.xml" name="msapplication-config" />
       </NextHead>
       <Theme data={data?.theme}>
         <div
@@ -112,12 +57,12 @@ export const Layout = ({
             data.theme.font === "nunito" && "font-nunito"
           } ${data.theme.font === "lato" && "font-lato"} ${
             data.theme.font === "work-sans" && "font-work-sans"
-          } ${data.theme.font === "sans" && "font-sans"} bg-neutral-50/10 dark:bg-neutral-900`}
+          } ${
+            data.theme.font === "sans" && "font-sans"
+          } bg-neutral-50/10 dark:bg-neutral-900`}
         >
           <Header data={data?.header} />
-          <main className={`flex-1 flex flex-col`}>
-            {children}
-          </main>
+          <main className={`flex-1 flex flex-col`}>{children}</main>
           <Footer rawData={rawData} data={data?.footer} />
         </div>
       </Theme>

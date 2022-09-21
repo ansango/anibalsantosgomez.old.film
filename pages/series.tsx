@@ -10,7 +10,8 @@ import { seoConfig } from "../components/layout/layout";
 export default function SeriesPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
 ) {
-  const series = props.data.serieConnection.edges;
+  const series =
+    props.data.serieConnection.edges.map((serie) => serie.node) || [];
 
   return (
     <Layout
@@ -30,7 +31,7 @@ export default function SeriesPage(
       />
       <Section>
         <Container>
-          <Series data={series} />
+          <Series series={series} />
         </Container>
       </Section>
     </Layout>

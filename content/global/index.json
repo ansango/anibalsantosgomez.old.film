@@ -54,11 +54,6 @@
     "color": "neutral",
     "font": "work-sans",
     "icon": "heroicon",
-    "darkMode": "system"
-  },
-  "_collection": "global",
-  "_keepTemplateKey": false,
-  "_template": "global",
-  "_relativePath": "index.json",
-  "_id": "content/global/index.json"
+    "darkMode": "light"
+  }
 }

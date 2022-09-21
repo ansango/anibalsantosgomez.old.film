@@ -37,7 +37,7 @@ export const Latests = ({ data, parentField = "" }) => {
       });
     };
   }, []);
-  console.log(series.data);
+
   return (
     <>
       {series.data?.length > 0 ? (
