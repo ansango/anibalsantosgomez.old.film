@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatDate, countPhotos } from "../../lib/utils";
 import { useTheme } from "../layout";
-import { monoTextColors, monoBordersColors } from "../styles";
+import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 
 export const Featured = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
@@ -58,7 +58,7 @@ export const Featured = ({ data, parentField = "" }) => {
               <div className="grid gap-8 grid-cols-12 mx-auto mt-12">
                 {lastSerie && (
                   <Link href={`/serie/${lastSerie._sys.filename}`} passHref>
-                    <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6">
+                    <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
                       <div className="flex-shrink-0">
                         {lastSerie.meta.cover && (
                           <img
@@ -85,12 +85,12 @@ export const Featured = ({ data, parentField = "" }) => {
 
                           <div className="mt-2 space-y-6">
                             <h3
-                              className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                              className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                             >
                               {lastSerie.title}
                             </h3>
                             <p
-                              className={`text-base font-normal ${monoTextColors[500][mono]}`}
+                              className={`text-base font-normal ${monoTextColors[500][mono]} line-clamp-4 lg:line-clamp-3 ${monoRestColors.groupTextHover800[mono]}`}
                             >
                               {lastSerie.summary}
                             </p>
@@ -109,7 +109,7 @@ export const Featured = ({ data, parentField = "" }) => {
                         passHref
                         key={`serie-${i}`}
                       >
-                        <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6">
+                        <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
                           <div className="flex-shrink-0">
                             {serie.meta?.cover && (
                               <img
@@ -136,12 +136,12 @@ export const Featured = ({ data, parentField = "" }) => {
 
                               <div className="mt-2 space-y-6">
                                 <h3
-                                  className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]}`}
+                                  className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                                 >
                                   {serie.title}
                                 </h3>
                                 <p
-                                  className={`text-base font-normal ${monoTextColors[500][mono]}`}
+                                  className={`text-base font-normal line-clamp-4 lg:line-clamp-3 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                                 >
                                   {serie.summary}
                                 </p>

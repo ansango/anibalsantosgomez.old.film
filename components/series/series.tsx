@@ -88,7 +88,7 @@ export const Series = ({ data, parentField = "" }) => {
                               {serie.title}
                             </h3>
                             <p
-                              className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-2 ${monoRestColors.groupTextHover700[mono]}`}
+                              className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-4 lg:line-clamp-3 ${monoRestColors.groupTextHover700[mono]}`}
                             >
                               {serie.summary}
                             </p>
