@@ -62,10 +62,10 @@ export const Series = ({ data, parentField = "" }) => {
                   return (
                     <article key={serie._sys.filename}>
                       <Link href={`/serie/` + serie._sys.filename} passHref>
-                        <a className="pt-8 sm:flex lg:items-end group">
+                        <a className="pt-8 sm:flex lg:items-start group">
                           <div className="mb-4 sm:mb-0 sm:mr-4">
                             {serie.meta?.cover && (
-                              <div className="w-full relative sm:w-48 md:w-64 lg:w-32">
+                              <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
                                 <img
                                   className="object-cover w-full aspect-4/3"
                                   alt=""
@@ -88,7 +88,7 @@ export const Series = ({ data, parentField = "" }) => {
                               {serie.title}
                             </h3>
                             <p
-                              className={`mt-2 text-base ${monoTextColors[500][mono]}`}
+                              className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-2`}
                             >
                               {serie.summary}
                             </p>
