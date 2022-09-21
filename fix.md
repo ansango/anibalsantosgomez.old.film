@@ -1,3 +1,3 @@
 - contact form styles
 - alerts wickedblocks
-- series styles
+- series styless
