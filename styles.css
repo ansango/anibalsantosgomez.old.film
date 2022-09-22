@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.toast {
+  @apply rounded-xl w-full max-w-sm bg-neutral-50 dark:bg-neutral-800 !important;
+}
+
+.toast-success {
+  @apply text-green-600 dark:text-green-500 !important;
+}
+
+.toast-error {
+  @apply text-red-600 dark:text-red-500 !important;
+}

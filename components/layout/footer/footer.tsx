@@ -61,12 +61,13 @@ export const Footer = ({ data, rawData }) => {
         <Container>
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
-              <a
-                href="./index.html"
-                className={`text-lg font-bold tracking-tight ${primaryTextColors[color]} transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8`}
-              >
-                anibalsantos
-              </a>
+              <Link href="/" passHref>
+                <a
+                  className={`text-lg font-bold tracking-tight ${primaryTextColors[color]} transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8`}
+                >
+                  anibalsantos
+                </a>
+              </Link>
               <p className={`mt-2 text-sm ${monoTextColors[500][mono]}`}>
                 film captures / miscellaneous
               </p>

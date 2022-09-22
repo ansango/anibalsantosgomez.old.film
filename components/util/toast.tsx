@@ -8,9 +8,9 @@ export const Toast: FC<ToasterProps> = ({ position, ...props }) => {
   return <>{isMounted && <Toaster position={position} {...props} />}</>;
 };
 
-export const baseToast = ({ message, duration, colorText, icon }) =>
+export const baseToast = ({ message, duration, className, icon }) =>
   toast(message, {
-    className: `rounded-xl bg-transparent w-full max-w-sm bg-neutral-50 dark:bg-neutral-800 ${colorText}`,
+    className: `toast ${className}`,
     duration,
     icon,
   });
@@ -18,7 +18,7 @@ export const baseToast = ({ message, duration, colorText, icon }) =>
 export const toastSuccess = ({ duration = 4000, message = "Success!" }) =>
   baseToast({
     message,
-    colorText: "text-green-600 dark:text-green-500",
+    className: "toast-success",
     duration,
     icon: (
       <Icon
@@ -26,7 +26,7 @@ export const toastSuccess = ({ duration = 4000, message = "Success!" }) =>
           name: "check",
           size: "sm",
         }}
-        className="text-green-600 dark:text-green-500"
+        className="toast-success"
       />
     ),
   });
@@ -34,7 +34,7 @@ export const toastSuccess = ({ duration = 4000, message = "Success!" }) =>
 export const toastError = ({ duration = 4000, message = "Error!" }) =>
   baseToast({
     message,
-    colorText: "text-red-600 dark:text-red-500",
+    className: "toast-error",
     duration,
     icon: (
       <Icon
@@ -42,7 +42,7 @@ export const toastError = ({ duration = 4000, message = "Error!" }) =>
           name: "close",
           size: "sm",
         }}
-        className="text-red-600 dark:text-red-500"
+        className="toast-error"
       />
     ),
   });
