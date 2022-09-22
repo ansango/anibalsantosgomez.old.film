@@ -308,3 +308,6 @@ export const monoRestColors = {
       "bg-stone-100 dark:bg-stone-800 placeholder-stone-400 focus:ring-white focus:ring-offset-stone-300 dark:focus:ring-stone-700 dark:focus:ring-offset-stone-700",
   },
 };
+
+export const baseInputStyles =
+  "block w-full px-5 py-3 text-base transition duration-500 ease-in-out transform border border-transparent rounded-lg focus:outline-none focus:border-transparent focus:ring-2 focus:ring-offset-2";

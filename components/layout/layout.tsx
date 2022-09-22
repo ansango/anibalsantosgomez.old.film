@@ -66,6 +66,7 @@ export const Layout = ({
           <Footer rawData={rawData} data={data?.footer} />
         </div>
       </Theme>
+      //TODO: find a way to style with tailwindcss
       <Toaster
         toastOptions={{
           position: "top-right",

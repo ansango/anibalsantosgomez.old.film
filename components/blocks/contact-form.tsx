@@ -3,20 +3,73 @@ import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Container } from "..//util/container";
+import { TinaTemplate } from "tinacms";
+
+import {
+  baseInputStyles,
+  monoBordersColors,
+  monoTextColors,
+  monoRestColors,
+  primaryHoverTextColors,
+} from "../styles";
+import { useTheme } from "../layout";
 
 type Props = {
   lang?: string;
+  data: any;
+  parentField: string;
 };
 
-export const ContactForm: FC<Props> = ({ lang = "en" }) => {
+const toastSuccess = () =>
+  toast("your message was sent! thanks!", {
+    className: "rounded-none text-green-600 w-full",
+    duration: 4000,
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    ),
+  });
+
+const toastError = () =>
+  toast("error sending your message.", {
+    className: "rounded-none text-red-600", //TODO: MAQUETAR
+    duration: 4000,
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    ),
+  });
+
+export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+  const { mono, color } = useTheme();
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // TODO: Refactorizar
   const onSubmit = useCallback(
     async (contactForm) => {
       setIsSubmitting(true);
@@ -24,48 +77,10 @@ export const ContactForm: FC<Props> = ({ lang = "en" }) => {
         await onPostContactForm({ contactForm, lang });
         setIsSubmitting(false);
         reset();
-        toast("your message was sent! thanks!", {
-          className: "rounded-none text-green-600 w-full",
-          duration: 4000,
-          icon: (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          ),
-        });
+        toastSuccess();
       } catch (error) {
         setIsSubmitting(false);
-        toast("error sending your message.", {
-          className: "rounded-none text-red-600",
-          duration: 4000,
-          icon: (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ),
-        });
+        toastError();
       }
     },
     [reset, lang]
@@ -79,10 +94,10 @@ export const ContactForm: FC<Props> = ({ lang = "en" }) => {
           <label className="col-span-12 md:col-span-6">
             <input
               type="text"
-              className={`mt-0 mb-1 w-full px-0.5 bg-gray-100 border-0 border-b-2 ${
+              className={`${baseInputStyles} ${
                 errors.name
                   ? "focus:ring-0 focus:border-red-500 border-red-200"
-                  : "focus:ring-0 focus:border-gray-900 border-gray-200"
+                  : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
               }`}
               placeholder="enter your name"
               {...register("name", { required: true, minLength: 3 })}
@@ -99,10 +114,10 @@ export const ContactForm: FC<Props> = ({ lang = "en" }) => {
           <label className="col-span-12 md:col-span-6">
             <input
               type="email"
-              className={`mt-0 mb-1 w-full px-0.5 bg-gray-100 border-0 border-b-2 ${
+              className={`${baseInputStyles} ${
                 errors.mail
                   ? "focus:ring-0 focus:border-red-500 border-red-200"
-                  : "focus:ring-0 focus:border-gray-900 border-gray-200"
+                  : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
               }`}
               placeholder="enter your email"
               {...register("email", {
@@ -121,10 +136,10 @@ export const ContactForm: FC<Props> = ({ lang = "en" }) => {
           </label>
           <label className="col-span-12">
             <textarea
-              className={`mt-0 mb-1 w-full px-0.5 bg-gray-100 border-0 border-b-2 ${
+              className={`${baseInputStyles} ${
                 errors.message
                   ? "focus:ring-0 focus:border-red-500 border-red-200"
-                  : "focus:ring-0 focus:border-gray-900 border-gray-200"
+                  : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
               }`}
               placeholder="say hello!"
               {...register("message", { required: true, minLength: 10 })}
@@ -171,7 +186,92 @@ export const ContactForm: FC<Props> = ({ lang = "en" }) => {
           )}
           send
         </button>
+        <button
+          type="submit"
+          className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Sign in
+        </button>
       </form>
     </Container>
   );
+};
+
+// TODO:  ACABAR y meter labels
+
+export const contactFormSchema: TinaTemplate = {
+  label: "Contact Form",
+  name: "contactForm",
+  fields: [
+    {
+      label: "Name",
+      name: "name",
+      type: "object",
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          type: "string",
+        },
+        {
+          label: "Placeholder",
+          name: "placeholder",
+          type: "string",
+        },
+      ],
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "object",
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          type: "string",
+        },
+        {
+          label: "Placeholder",
+          name: "placeholder",
+          type: "string",
+        },
+      ],
+    },
+    {
+      label: "Message",
+      name: "message",
+      type: "object",
+
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          type: "string",
+        },
+        {
+          label: "Placeholder",
+          name: "placeholder",
+          type: "string",
+        },
+      ],
+    },
+    {
+      label: "Submit Button",
+      name: "submit",
+      type: "object",
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          type: "string",
+        },
+
+        {
+          label: "Disabled",
+          name: "disabled",
+          type: "boolean",
+        },
+      ],
+    },
+  ],
 };

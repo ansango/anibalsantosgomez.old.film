@@ -4,8 +4,11 @@ import {
   RouteMappingPlugin,
   TinaField,
 } from "tinacms";
-import { contentBlockSchema } from "../components/blocks/content";
-import { heroBlockSchema } from "../components/blocks";
+import {
+  contentBlockSchema,
+  contactFormSchema,
+  heroBlockSchema,
+} from "../components/blocks/";
 import { iconSchema } from "../components/util/icon";
 import {
   featuredBlockSchema,
@@ -595,6 +598,7 @@ const schema = defineSchema({
             featuredBlockSchema,
             latestsBlockSchema,
             allSeriesSchema,
+            contactFormSchema,
             contentBlockSchema,
           ],
         },

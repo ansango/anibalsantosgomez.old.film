@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { formatDate } from "../../lib/utils";
 import {
+  baseInputStyles,
   monoBordersColors,
   monoTextColors,
   monoRestColors,
@@ -14,9 +15,6 @@ import { useAllSeriesQuery } from "../../lib/hooks";
 import { useState } from "react";
 import { Icon } from "../util/icon";
 
-const baseSearchStyles =
-  "block w-full px-5 py-3 text-base transition duration-500 ease-in-out transform border border-transparent rounded-lg focus:outline-none focus:border-transparent focus:ring-2 focus:ring-offset-2";
-
 const Searcher = ({ onSearch, placeholder }) => {
   const { mono } = useTheme();
   return (
@@ -26,7 +24,7 @@ const Searcher = ({ onSearch, placeholder }) => {
         type="text"
         onChange={onSearch}
         placeholder={placeholder}
-        className={`${baseSearchStyles} ${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`}
+        className={`${baseInputStyles} ${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`}
       />
 
       <span className="absolute top-0 right-0 translate-y-2/3 -translate-x-3">

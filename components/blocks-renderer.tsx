@@ -1,6 +1,6 @@
 import React from "react";
 import type { Page } from "../.tina/__generated__/types";
-import { Hero, Content } from "./blocks";
+import { Hero, Content, ContactForm } from "./blocks";
 import { Series, Featured, Latests } from "./series";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
@@ -52,6 +52,15 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
                     key={i + block.__typename}
                   >
                     <Series data={block} parentField={`blocks.${i}`} />
+                  </div>
+                );
+              case "PageBlocksContactForm":
+                return (
+                  <div
+                    data-tinafield={`blocks.${i}`}
+                    key={i + block.__typename}
+                  >
+                    <ContactForm data={block} parentField={`blocks.${i}`} />
                   </div>
                 );
               default:
