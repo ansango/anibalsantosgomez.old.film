@@ -129,7 +129,6 @@ export const primaryHoverBorderColors = {
   stone: "hover:border-stone-600 dark:hover:border-stone-400",
 };
 
-
 export const monoTextColors = {
   50: {
     slate: "text-slate-50",
@@ -297,5 +296,15 @@ export const monoRestColors = {
     zinc: "group-hover:text-zinc-800 dark:group-hover:text-zinc-200",
     neutral: "group-hover:text-neutral-800 dark:group-hover:text-neutral-200",
     stone: "group-hover:text-stone-800 dark:group-hover:text-stone-200",
+  },
+  inputBg: {
+    slate:
+      "bg-slate-100 dark:bg-slate-800 placeholder-slate-400 focus:ring-white focus:ring-offset-slate-300 dark:focus:ring-slate-700 dark:focus:ring-offset-slate-700",
+    gray: "bg-gray-100 dark:bg-gray-800 placeholder-gray-400 focus:ring-white focus:ring-offset-gray-300 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-700",
+    zinc: "bg-zinc-100 dark:bg-zinc-800 placeholder-zinc-400 focus:white focus:ring-offset-zinc-300 dark:focus:ring-zinc-700 dark:focus:ring-offset-zinc-700",
+    neutral:
+      "bg-neutral-100 dark:bg-neutral-800 placeholder-neutral-400 focus:ring-white focus:ring-offset-neutral-300 dark:focus:ring-neutral-700 dark:focus:ring-offset-neutral-700",
+    stone:
+      "bg-stone-100 dark:bg-stone-800 placeholder-stone-400 focus:ring-white focus:ring-offset-stone-300 dark:focus:ring-stone-700 dark:focus:ring-offset-stone-700",
   },
 };

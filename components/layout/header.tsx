@@ -43,7 +43,6 @@ export const Header = ({ data }) => {
               <Icon
                 data={{
                   name: !isOpen ? data.iconMenu.name : data.iconClose.name,
-                  color: !isOpen ? data.iconMenu.color : data.iconClose.color,
                   size: !isOpen ? data.iconMenu.size : data.iconClose.size,
                 }}
               />
