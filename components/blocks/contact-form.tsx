@@ -148,15 +148,18 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
               )}
             </div>
           </div>
-
-          <button
-            type="submit"
-            className={`${baseButtonStyles} ${buttonPrimaryColors[color]}`}
-            disabled={disabled}
-          >
-            {isSubmitting && <Spinner />}
-            {submit?.label}
-          </button>
+          <div className="sm:flex">
+            <div>
+              <button
+                type="submit"
+                className={`${baseButtonStyles} ${buttonPrimaryColors[color]}`}
+                disabled={disabled}
+              >
+                {isSubmitting && <Spinner />}
+                {submit?.label}
+              </button>
+            </div>
+          </div>
         </form>
         <Toast position="top-right" />
       </Container>
