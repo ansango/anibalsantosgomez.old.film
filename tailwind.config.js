@@ -2,6 +2,264 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const defaultTheme = require("tailwindcss/defaultTheme");
 
+const plugins = [
+  require("@tailwindcss/typography"),
+  require("@tailwindcss/line-clamp"),
+  require("@tailwindcss/forms"),
+];
+
+const fontSize = {
+  xs: ".875rem",
+  sm: "1rem",
+  base: "1.125rem",
+  lg: "1.25rem",
+  xl: "1.5rem",
+  "2xl": "1.75rem",
+  "3xl": "2rem",
+  "4xl": "2.5rem",
+  "5xl": "3.25rem",
+  "6xl": "4rem",
+  "7xl": "5rem",
+  "8xl": "6rem",
+};
+//text-4xl dark:text-slate-300 md:text-7xl
+const typography = ({ colors }) => {
+  const { slate, gray, zinc, neutral, stone, pink } = colors;
+  return {
+    DEFAULT: {
+      css: {
+        pre: {
+          lineHeight: 1.5,
+        },
+        code: {
+          padding: "0.25rem",
+          margin: "-0.25rem 1px",
+        },
+        "code::before": {
+          content: '""',
+        },
+        "code::after": {
+          content: '""',
+        },
+      },
+    },
+    slate: {
+      css: {
+        "--tw-prose-body": slate[500],
+        "--tw-prose-headings": slate[700],
+        "--tw-prose-lead": slate[500],
+        "--tw-prose-links": slate[700],
+        "--tw-prose-bold": slate[600],
+        "--tw-prose-counters": slate[500],
+        "--tw-prose-bullets": slate[500],
+        "--tw-prose-hr": slate[200],
+        "--tw-prose-quotes": slate[600],
+        "--tw-prose-quote-borders": slate[400],
+        "--tw-prose-captions": slate[400],
+        "--tw-prose-code": slate[100],
+        "--tw-prose-pre-code": slate[700],
+        "--tw-prose-pre-bg": slate[100],
+        "--tw-prose-th-borders": slate[200],
+        "--tw-prose-td-borders": slate[200],
+
+        "--tw-prose-invert-body": slate[400],
+        "--tw-prose-invert-headings": slate[300],
+        "--tw-prose-invert-lead": slate[500],
+        "--tw-prose-invert-links": slate[300],
+        "--tw-prose-invert-bold": slate[400],
+        "--tw-prose-invert-counters": slate[500],
+        "--tw-prose-invert-bullets": slate[500],
+        "--tw-prose-invert-hr": slate[200],
+        "--tw-prose-invert-quotes": slate[400],
+        "--tw-prose-invert-quote-borders": slate[400],
+        "--tw-prose-invert-captions": slate[400],
+        "--tw-prose-invert-code": slate[100],
+        "--tw-prose-invert-pre-code": slate[300],
+        "--tw-prose-invert-pre-bg": slate[100],
+        "--tw-prose-invert-th-borders": slate[200],
+        "--tw-prose-invert-td-borders": slate[200],
+      },
+    },
+    gray: {
+      css: {
+        "--tw-prose-body": gray[500],
+        "--tw-prose-headings": gray[700],
+        "--tw-prose-lead": gray[500],
+        "--tw-prose-links": gray[700],
+        "--tw-prose-bold": gray[600],
+        "--tw-prose-counters": gray[500],
+        "--tw-prose-bullets": gray[500],
+        "--tw-prose-hr": gray[200],
+        "--tw-prose-quotes": gray[600],
+        "--tw-prose-quote-borders": gray[400],
+        "--tw-prose-captions": gray[400],
+        "--tw-prose-code": gray[100],
+        "--tw-prose-pre-code": gray[700],
+        "--tw-prose-pre-bg": gray[100],
+        "--tw-prose-th-borders": gray[200],
+        "--tw-prose-td-borders": gray[200],
+
+        "--tw-prose-invert-body": gray[400],
+        "--tw-prose-invert-headings": gray[300],
+        "--tw-prose-invert-lead": gray[500],
+        "--tw-prose-invert-links": gray[300],
+        "--tw-prose-invert-bold": gray[400],
+        "--tw-prose-invert-counters": gray[500],
+        "--tw-prose-invert-bullets": gray[500],
+        "--tw-prose-invert-hr": gray[200],
+        "--tw-prose-invert-quotes": gray[400],
+        "--tw-prose-invert-quote-borders": gray[400],
+        "--tw-prose-invert-captions": gray[400],
+        "--tw-prose-invert-code": gray[100],
+        "--tw-prose-invert-pre-code": gray[300],
+        "--tw-prose-invert-pre-bg": gray[100],
+        "--tw-prose-invert-th-borders": gray[200],
+        "--tw-prose-invert-td-borders": gray[200],
+      },
+    },
+    zinc: {
+      css: {
+        "--tw-prose-body": zinc[500],
+        "--tw-prose-headings": zinc[700],
+        "--tw-prose-lead": zinc[500],
+        "--tw-prose-links": zinc[700],
+        "--tw-prose-bold": zinc[600],
+        "--tw-prose-counters": zinc[500],
+        "--tw-prose-bullets": zinc[500],
+        "--tw-prose-hr": zinc[200],
+        "--tw-prose-quotes": zinc[600],
+        "--tw-prose-quote-borders": zinc[400],
+        "--tw-prose-captions": zinc[400],
+        "--tw-prose-code": zinc[100],
+        "--tw-prose-pre-code": zinc[700],
+        "--tw-prose-pre-bg": zinc[100],
+        "--tw-prose-th-borders": zinc[200],
+        "--tw-prose-td-borders": zinc[200],
+
+        "--tw-prose-invert-body": zinc[400],
+        "--tw-prose-invert-headings": zinc[300],
+        "--tw-prose-invert-lead": zinc[500],
+        "--tw-prose-invert-links": zinc[300],
+        "--tw-prose-invert-bold": zinc[400],
+        "--tw-prose-invert-counters": zinc[500],
+        "--tw-prose-invert-bullets": zinc[500],
+        "--tw-prose-invert-hr": zinc[200],
+        "--tw-prose-invert-quotes": zinc[400],
+        "--tw-prose-invert-quote-borders": zinc[400],
+        "--tw-prose-invert-captions": zinc[400],
+        "--tw-prose-invert-code": zinc[100],
+        "--tw-prose-invert-pre-code": zinc[300],
+        "--tw-prose-invert-pre-bg": zinc[100],
+        "--tw-prose-invert-th-borders": zinc[200],
+        "--tw-prose-invert-td-borders": zinc[200],
+      },
+    },
+
+    neutral: {
+      css: {
+        "--tw-prose-body": neutral[500],
+        "--tw-prose-headings": neutral[700],
+        "--tw-prose-lead": neutral[500],
+        "--tw-prose-links": neutral[700],
+        "--tw-prose-bold": neutral[600],
+        "--tw-prose-counters": neutral[500],
+        "--tw-prose-bullets": neutral[500],
+        "--tw-prose-hr": neutral[200],
+        "--tw-prose-quotes": neutral[600],
+        "--tw-prose-quote-borders": neutral[400],
+        "--tw-prose-captions": neutral[400],
+        "--tw-prose-code": neutral[100],
+        "--tw-prose-pre-code": neutral[700],
+        "--tw-prose-pre-bg": neutral[100],
+        "--tw-prose-th-borders": neutral[200],
+        "--tw-prose-td-borders": neutral[200],
+
+        "--tw-prose-invert-body": neutral[400],
+        "--tw-prose-invert-headings": neutral[300],
+        "--tw-prose-invert-lead": neutral[500],
+        "--tw-prose-invert-links": neutral[300],
+        "--tw-prose-invert-bold": neutral[400],
+        "--tw-prose-invert-counters": neutral[500],
+        "--tw-prose-invert-bullets": neutral[500],
+        "--tw-prose-invert-hr": neutral[200],
+        "--tw-prose-invert-quotes": neutral[400],
+        "--tw-prose-invert-quote-borders": neutral[400],
+        "--tw-prose-invert-captions": neutral[400],
+        "--tw-prose-invert-code": neutral[100],
+        "--tw-prose-invert-pre-code": neutral[300],
+        "--tw-prose-invert-pre-bg": neutral[100],
+        "--tw-prose-invert-th-borders": neutral[200],
+        "--tw-prose-invert-td-borders": neutral[200],
+      },
+    },
+
+    stone: {
+      css: {
+        "--tw-prose-body": stone[500],
+        "--tw-prose-headings": stone[700],
+        "--tw-prose-lead": stone[500],
+        "--tw-prose-links": stone[700],
+        "--tw-prose-bold": stone[600],
+        "--tw-prose-counters": stone[500],
+        "--tw-prose-bullets": stone[500],
+        "--tw-prose-hr": stone[200],
+        "--tw-prose-quotes": stone[600],
+        "--tw-prose-quote-borders": stone[400],
+        "--tw-prose-captions": stone[400],
+        "--tw-prose-code": stone[100],
+        "--tw-prose-pre-code": stone[700],
+        "--tw-prose-pre-bg": stone[100],
+        "--tw-prose-th-borders": stone[200],
+        "--tw-prose-td-borders": stone[200],
+
+        "--tw-prose-invert-body": stone[400],
+        "--tw-prose-invert-headings": stone[300],
+        "--tw-prose-invert-lead": stone[500],
+        "--tw-prose-invert-links": stone[300],
+        "--tw-prose-invert-bold": stone[400],
+        "--tw-prose-invert-counters": stone[500],
+        "--tw-prose-invert-bullets": stone[500],
+        "--tw-prose-invert-hr": stone[200],
+        "--tw-prose-invert-quotes": stone[400],
+        "--tw-prose-invert-quote-borders": stone[400],
+        "--tw-prose-invert-captions": stone[400],
+        "--tw-prose-invert-code": stone[100],
+        "--tw-prose-invert-pre-code": stone[300],
+        "--tw-prose-invert-pre-bg": stone[100],
+        "--tw-prose-invert-th-borders": stone[200],
+        "--tw-prose-invert-td-borders": stone[200],
+      },
+    },
+  };
+};
+
+const extend = {
+  aspectRatio: { "4/3": "4 / 3" },
+  opacity: {
+    7: ".075",
+    15: ".15",
+  },
+  maxWidth: {
+    "8xl": "86rem",
+  },
+  spacing: {
+    128: "32rem",
+  },
+  zIndex: {
+    "-1": "-1",
+  },
+  fontFamily: {
+    nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
+    lato: ["Lato", ...defaultTheme.fontFamily.sans],
+    "work-sans": ["Work Sans", ...defaultTheme.fontFamily.sans],
+    "ibm-sans": ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
+    mono: ["Fira Code", ...defaultTheme.fontFamily.mono],
+  },
+  typography,
+};
+
+const borderWidth = { DEFAULT: "3px", 0: "0", 2: "2px", 3: "3px", 4: "4px" };
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -9,177 +267,9 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    fontSize: {
-      xs: ".875rem",
-      sm: "1rem",
-      base: "1.125rem",
-      lg: "1.25rem",
-      xl: "1.5rem",
-      "2xl": "1.75rem",
-      "3xl": "2rem",
-      "4xl": "2.5rem",
-      "5xl": "3.25rem",
-      "6xl": "4rem",
-      "7xl": "5rem",
-      "8xl": "6rem",
-    },
-    borderWidth: {
-      DEFAULT: "3px",
-      0: "0",
-      2: "2px",
-      3: "3px",
-      4: "4px",
-    },
-    extend: {
-      aspectRatio: {
-        "4/3": "4 / 3",
-      },
-      textDecoration: ["active"],
-      opacity: {
-        7: ".075",
-        15: ".15",
-      },
-      maxWidth: {
-        "8xl": "86rem",
-      },
-      spacing: {
-        128: "32rem",
-      },
-      zIndex: {
-        "-1": "-1",
-      },
-      fontFamily: {
-        nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
-        lato: ["Lato", ...defaultTheme.fontFamily.sans],
-        "work-sans": ["Work Sans", ...defaultTheme.fontFamily.sans],
-        "ibm-sans": ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
-      },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            pre: {
-              color: theme("colors.gray.700"),
-              backgroundColor: theme("colors.gray.100"),
-              lineHeight: 1.5,
-            },
-            code: {
-              backgroundColor: theme("colors.gray.100"),
-              padding: "0.25rem",
-              borderRadius: "3px",
-              margin: "-0.25rem 1px",
-            },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
-            },
-            "p:first-of-type": {
-              fontSize: "1.125rem",
-            },
-          },
-        },
-        tint: {
-          css: {
-            pre: {
-              color: theme("colors.gray.800"),
-              backgroundColor: theme("colors.gray.150"),
-            },
-          },
-        },
-        lg: {
-          css: {
-            pre: {
-              lineHeight: 1.5,
-            },
-            "p:first-of-type": {
-              fontSize: "1.365rem",
-            },
-          },
-        },
-        xl: {
-          css: {
-            pre: {
-              lineHeight: 1.5,
-            },
-            "p:first-of-type": {
-              fontSize: "1.365rem",
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: theme("colors.gray.200"),
-            '[class~="lead"]': { color: theme("colors.gray.400") },
-            a: { color: theme("colors.gray.100") },
-            strong: { color: theme("colors.gray.100") },
-            "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-            hr: { borderColor: theme("colors.gray.800") },
-            blockquote: {
-              color: theme("colors.gray.100"),
-              borderLeftColor: theme("colors.gray.800"),
-            },
-            h1: { color: theme("colors.gray.100") },
-            h2: { color: theme("colors.gray.100") },
-            h3: { color: theme("colors.gray.100") },
-            h4: { color: theme("colors.gray.100") },
-            code: {
-              color: theme("colors.gray.100"),
-              backgroundColor: theme("colors.gray.1000"),
-            },
-            "a code": { color: theme("colors.gray.100") },
-            pre: {
-              color: theme("colors.gray.200"),
-              backgroundColor: theme("colors.gray.900"),
-            },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.700"),
-            },
-            "tbody tr": { borderBottomColor: theme("colors.gray.800") },
-          },
-        },
-        primary: {
-          css: {
-            color: theme("colors.gray.50"),
-            '[class~="lead"]': { color: theme("colors.gray.400") },
-            a: { color: theme("colors.gray.100") },
-            strong: { color: theme("colors.gray.100") },
-            "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-            hr: { borderColor: theme("colors.gray.800") },
-            blockquote: {
-              color: theme("colors.gray.100"),
-              borderLeftColor: theme("colors.gray.800"),
-            },
-            h1: { color: theme("colors.gray.100") },
-            h2: { color: theme("colors.gray.100") },
-            h3: { color: theme("colors.gray.100") },
-            h4: { color: theme("colors.gray.100") },
-            code: {
-              color: theme("colors.gray.100"),
-              backgroundColor: "rgba(0,0,0,0.15)",
-            },
-            "a code": { color: theme("colors.gray.100") },
-            pre: {
-              color: theme("colors.gray.200"),
-              backgroundColor: "rgba(0,0,0,0.15)",
-            },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.700"),
-            },
-            "tbody tr": { borderBottomColor: theme("colors.gray.800") },
-          },
-        },
-      }),
-    },
+    fontSize,
+    borderWidth,
+    extend,
   },
-  variants: {
-    extend: { typography: ["tint", "dark", "primary"] },
-  },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins,
 };

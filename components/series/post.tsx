@@ -51,6 +51,8 @@ const components: Components<{
   ),
 };
 
+//TODO: ACABAR MERGEO DE COMPONENTES!!!!
+
 export const Post = (props) => {
   const date = new Date(props.date);
   let formattedDate = "";

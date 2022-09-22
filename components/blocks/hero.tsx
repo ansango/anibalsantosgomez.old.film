@@ -27,7 +27,7 @@ const renderHero = (data, parentField, color, mono) => {
       return (
         <>
           <Container>
-            <div className="flex flex-wrap items-center mx-auto 2xl:max-w-7xl">
+            <div className="flex flex-wrap items-center mx-auto 5xl:max-w-7xl">
               <div className="flex flex-col items-start mb-16 text-left lg:flex-grow lg:w-1/2 lg:pr-24 md:mb-0">
                 {data.tagline && (
                   <span
@@ -39,7 +39,7 @@ const renderHero = (data, parentField, color, mono) => {
                 )}
                 {data.headline && (
                   <h1
-                    className={`mb-8 text-4xl font-bold leading-none tracking-tighter ${monoTextColors[700][mono]} md:text-7xl`}
+                    className={`mb-8 text-5xl font-bold leading-none tracking-tighter ${monoTextColors[700][mono]} md:text-7xl`}
                     data-tinafield={`${parentField}.headline`}
                   >
                     {data.headline}
@@ -71,7 +71,7 @@ const renderHero = (data, parentField, color, mono) => {
               <div className="flex flex-col w-full mb-12 text-center">
                 {data.headline && (
                   <h1
-                    className={`max-w-5xl text-2xl font-bold leading-none tracking-tighter ${monoTextColors[700][mono]} md:text-5xl lg:text-6xl lg:max-w-7xl`}
+                    className={`max-w-5xl text-5xl font-bold leading-none tracking-tighter ${monoTextColors[700][mono]} md:text-7xl lg:max-w-7xl`}
                     data-tinafield={`${parentField}.headline`}
                   >
                     {data.headline}

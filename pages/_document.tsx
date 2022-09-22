@@ -20,6 +20,10 @@ export default function Document() {
           rel="stylesheet"
         />
         <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
           href="/apple-touch-icon.png"
           rel="apple-touch-icon"
           sizes="180x180"
