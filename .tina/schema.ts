@@ -245,7 +245,7 @@ const schema = defineSchema({
                   name: "format",
                   label: "Format",
                   type: "string",
-                  options: ["utc", "iso", "local"],
+                  options: ["utc", "iso", "local"], //TODO: AQUI METER EL TINA MD NUEVO!!!!
                 },
               ],
             },

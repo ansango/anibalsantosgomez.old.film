@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -20,7 +20,11 @@ import {
 
 //TODO: ACABAR MERGEO DE COMPONENTES!!!!
 
-export const Content = ({ data, parentField = "", components }) => {
+export const Content: FC<{
+  data: any;
+  parentField?: string;
+  components?: any;
+}> = ({ data, parentField = "", components }) => {
   const { color, mono } = useTheme();
   const classElements = data.highlight
     ? `${h1["colors"][color]}
@@ -51,7 +55,7 @@ export const Content = ({ data, parentField = "", components }) => {
         `}
         data-tinafield={`${parentField}.body`}
       >
-        <TinaMarkdown content={data.body} {...{ ...components }} /> 
+        <TinaMarkdown content={data.body} components={components} />
       </Container>
     </Section>
   );

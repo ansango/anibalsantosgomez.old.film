@@ -4,6 +4,7 @@ import { Section } from "../util/section";
 import format from "date-fns/format";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
+import { Content } from "../blocks";
 
 const components: Components<{
   BlockQuote: {
