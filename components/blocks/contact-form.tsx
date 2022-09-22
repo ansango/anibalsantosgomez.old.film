@@ -1,18 +1,20 @@
 import { onPostContactForm } from "../../lib/services/contact";
 import { FC, useCallback, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Container } from "..//util/container";
 import { TinaTemplate } from "tinacms";
 
 import {
   baseInputStyles,
-  monoBordersColors,
   monoTextColors,
   monoRestColors,
-  primaryHoverTextColors,
+  baseButtonStyles,
+  buttonPrimaryColors,
 } from "../styles";
 import { useTheme } from "../layout";
+import { Section } from "../util/section";
+import { Spinner } from "../util/spinner";
 
 type Props = {
   lang?: string;
@@ -41,7 +43,7 @@ const toastSuccess = () =>
 const toastError = () =>
   toast("error sending your message.", {
     className: "rounded-none text-red-600", //TODO: MAQUETAR
-    duration: 4000,
+    duration: 10004000,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -61,15 +63,21 @@ const toastError = () =>
   });
 
 export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
+  const { mono, color } = useTheme();
+  const { email, fullName, message, submit } = data;
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-  const { mono, color } = useTheme();
 
-  const [isSubmitting, setIsSubmitting] = useState(false); // TODO: Refactorizar
+  const areErrors = Object.keys(errors).length > 0;
+  const disabled = isSubmitting || areErrors;
+
   const onSubmit = useCallback(
     async (contactForm) => {
       setIsSubmitting(true);
@@ -85,127 +93,143 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
     },
     [reset, lang]
   );
-  const areErrors = Object.keys(errors).length > 0;
-  const disabled = isSubmitting || areErrors;
+
   return (
-    <Container>
-      <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
-          <label className="col-span-12 md:col-span-6">
-            <input
-              type="text"
-              className={`${baseInputStyles} ${
-                errors.name
-                  ? "focus:ring-0 focus:border-red-500 border-red-200"
-                  : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
-              }`}
-              placeholder="enter your name"
-              {...register("name", { required: true, minLength: 3 })}
-            />
-            {errors.name?.type === "required" && (
-              <span className="text-red-600">please enter your name</span>
-            )}
-            {errors.name?.type === "minLength" && (
-              <span className="text-red-600">
-                your name must be at least 3 characters long
-              </span>
-            )}
-          </label>
-          <label className="col-span-12 md:col-span-6">
-            <input
-              type="email"
-              className={`${baseInputStyles} ${
-                errors.mail
-                  ? "focus:ring-0 focus:border-red-500 border-red-200"
-                  : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
-              }`}
-              placeholder="enter your email"
-              {...register("email", {
-                required: true,
-                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              })}
-            />
-            {errors.email?.type === "required" && (
-              <span className="text-red-600">please enter your email</span>
-            )}
-            {errors.email?.type === "pattern" && (
-              <span className="text-red-600">
-                please enter a valid email address
-              </span>
-            )}
-          </label>
-          <label className="col-span-12">
-            <textarea
-              className={`${baseInputStyles} ${
-                errors.message
-                  ? "focus:ring-0 focus:border-red-500 border-red-200"
-                  : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
-              }`}
-              placeholder="say hello!"
-              {...register("message", { required: true, minLength: 10 })}
-              rows={4}
-            ></textarea>
-            {errors.message?.type === "required" && (
-              <span className="text-red-600 dark:text-red-400">
-                please enter a message
-              </span>
-            )}
-            {errors.message?.type === "minLength" && (
-              <span className="text-red-600 dark:text-red-400">
-                your message must be at least 10 characters long
-              </span>
-            )}
-          </label>
-        </div>
-        <button
-          className="bg-gray-200 dark:bg-gray-800 hover:font-medium transition-all py-4 px-4 md:py-2 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-          type="submit"
-          disabled={disabled}
-        >
-          {isSubmitting && (
-            <svg
-              className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-          )}
-          send
-        </button>
-        <button
-          type="submit"
-          className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-        >
-          Sign in
-        </button>
-      </form>
-    </Container>
+    <Section>
+      <Container>
+        <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
+            <div className="space-y-1 col-span-12 md:col-span-6">
+              <label
+                className={`block text-sm font-medium ${monoTextColors[600][mono]}`}
+                htmlFor="name"
+              >
+                {fullName?.label}
+              </label>
+              <input
+                type="text"
+                className={`${baseInputStyles} ${
+                  errors.name
+                    ? `${monoTextColors[600][mono]} ${monoRestColors.inputBgOnError[mono]}`
+                    : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
+                }`}
+                placeholder={fullName?.placeholder}
+                {...register("name", { required: true, minLength: 3 })}
+              />
+              {errors.name?.type === "required" && (
+                <div className="text-red-600 dark:text-red-500">
+                  Please enter your name
+                </div>
+              )}
+              {errors.name?.type === "minLength" && (
+                <div className="text-red-600 dark:text-red-500">
+                  Your name must be at least 3 characters long
+                </div>
+              )}
+            </div>
+            <div className="space-y-1 col-span-12 md:col-span-6">
+              <label
+                className={`block text-sm font-medium ${monoTextColors[600][mono]}`}
+                htmlFor="email"
+              >
+                {email?.label}
+              </label>
+              <input
+                type="email"
+                className={`${baseInputStyles} ${
+                  errors.email
+                    ? `${monoTextColors[600][mono]} ${monoRestColors.inputBgOnError[mono]}`
+                    : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
+                }`}
+                placeholder={email?.placeholder}
+                {...register("email", {
+                  required: true,
+                  pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                })}
+              />
+              {errors.email?.type === "required" && (
+                <div className="text-red-600 dark:text-red-500">
+                  Please enter your email
+                </div>
+              )}
+              {errors.email?.type === "pattern" && (
+                <div className="text-red-600 dark:text-red-500">
+                  Please enter a valid email address
+                </div>
+              )}
+            </div>
+            <div className="space-y-1 col-span-12">
+              <label
+                className={`block text-sm font-medium ${monoTextColors[600][mono]}`}
+                htmlFor="message"
+              >
+                {message?.label}
+              </label>
+              <textarea
+                className={`${baseInputStyles} ${
+                  errors.message
+                    ? `${monoTextColors[600][mono]} ${monoRestColors.inputBgOnError[mono]}`
+                    : `${monoTextColors[600][mono]} ${monoRestColors.inputBg[mono]}`
+                }`}
+                placeholder={message?.placeholder}
+                {...register("message", { required: true, minLength: 10 })}
+                rows={4}
+              ></textarea>
+              {errors.message?.type === "required" && (
+                <div className="text-red-600 dark:text-red-500">
+                  Please enter a message
+                </div>
+              )}
+              {errors.message?.type === "minLength" && (
+                <div className="text-red-600 dark:text-red-500">
+                  Your message must be at least 10 characters long
+                </div>
+              )}
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className={`${baseButtonStyles} ${buttonPrimaryColors[color]}`}
+            disabled={disabled}
+          >
+            {isSubmitting && <Spinner />}
+            {submit?.label}
+          </button>
+        </form>
+      </Container>
+    </Section>
   );
 };
-
-// TODO:  ACABAR y meter labels
 
 export const contactFormSchema: TinaTemplate = {
   label: "Contact Form",
   name: "contactForm",
+  ui: {
+    previewSrc: "",
+    defaultItem: {
+      fullName: {
+        label: "Name",
+        placeholder: "Enter your name",
+      },
+      email: {
+        label: "Email",
+        placeholder: "Enter your email",
+      },
+      message: {
+        label: "Message",
+        placeholder: "Say hello!",
+      },
+      submit: {
+        label: "Send",
+        disabled: false,
+      },
+    },
+  },
   fields: [
     {
-      label: "Name",
-      name: "name",
+      label: "Full Name",
+      name: "fullName",
       type: "object",
       fields: [
         {

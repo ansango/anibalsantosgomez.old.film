@@ -129,6 +129,47 @@ export const primaryHoverBorderColors = {
   stone: "hover:border-stone-600 dark:hover:border-stone-400",
 };
 
+export const buttonPrimaryColors = {
+  red: "text-white dark:text-red-100 bg-red-600 dark:bg-red-800 hover:bg-red-700 dark:hover:bg-red-600",
+  orange:
+    "text-white dark:text-orange-100 bg-orange-600 dark:bg-orange-800 hover:bg-orange-700 dark:hover:bg-orange-600",
+  amber:
+    "text-white dark:text-amber-100 bg-amber-600 dark:bg-amber-800 hover:bg-amber-700 dark:hover:bg-amber-600",
+  yellow:
+    "text-white dark:text-yellow-100 bg-yellow-600 dark:bg-yellow-800 hover:bg-yellow-700 dark:hover:bg-yellow-600",
+  lime: "text-white dark:text-lime-100 bg-lime-600 dark:bg-lime-800 hover:bg-lime-700 dark:hover:bg-lime-600",
+  green:
+    "text-white dark:text-green-100 bg-green-600 dark:bg-green-800 hover:bg-green-700 dark:hover:bg-green-600",
+  emerald:
+    "text-white dark:text-emerald-100 bg-emerald-600 dark:bg-emerald-800 hover:bg-emerald-700 dark:hover:bg-emerald-600",
+  teal: "text-white dark:text-teal-100 bg-teal-600 dark:bg-teal-800 hover:bg-teal-700 dark:hover:bg-teal-600",
+  cyan: "text-white dark:text-cyan-100 bg-cyan-600 dark:bg-cyan-800 hover:bg-cyan-700 dark:hover:bg-cyan-600",
+  sky: "text-white dark:text-sky-100 bg-sky-600 dark:bg-sky-800 hover:bg-sky-700 dark:hover:bg-sky-600",
+  blue: "text-white dark:text-blue-100 bg-blue-600 dark:bg-blue-800 hover:bg-blue-700 dark:hover:bg-blue-600",
+  indigo:
+    "text-white dark:text-indigo-100 bg-indigo-600 dark:bg-indigo-800 hover:bg-indigo-700 dark:hover:bg-indigo-600",
+  violet:
+    "text-white dark:text-violet-100 bg-violet-600 dark:bg-violet-800 hover:bg-violet-700 dark:hover:bg-violet-600",
+  purple:
+    "text-white dark:text-purple-100 bg-purple-600 dark:bg-purple-800 hover:bg-purple-700 dark:hover:bg-purple-600",
+  fuchsia:
+    "text-white dark:text-fuchsia-100 bg-fuchsia-600 dark:bg-fuchsia-800 hover:bg-fuchsia-700 dark:hover:bg-fuchsia-600",
+  pink: "text-white dark:text-pink-100 bg-pink-600 dark:bg-pink-800 hover:bg-pink-700 dark:hover:bg-pink-600",
+  rose: "text-white dark:text-rose-100 bg-rose-600 dark:bg-rose-800 hover:bg-rose-700 dark:hover:bg-rose-600",
+  slate:
+    "text-white dark:text-slate-100 bg-slate-600 dark:bg-slate-800 hover:bg-slate-700 dark:hover:bg-slate-600",
+  gray: "text-white dark:text-gray-100 bg-gray-600 dark:bg-gray-800 hover:bg-gray-700 dark:hover:bg-gray-600",
+  zinc: "text-white dark:text-zinc-100 bg-zinc-600 dark:bg-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-600",
+  neutral:
+    "text-white dark:text-neutral-100 bg-neutral-600 dark:bg-neutral-800 hover:bg-neutral-700 dark:hover:bg-neutral-600",
+  stone:
+    "text-white dark:text-stone-100 bg-stone-600 dark:bg-stone-800 hover:bg-stone-700 dark:hover:bg-stone-600",
+};
+
+export const spinnerPrimaryColors = {
+  red: "text-red-600 dark:text-red-400",
+}
+
 export const monoTextColors = {
   50: {
     slate: "text-slate-50",
@@ -307,7 +348,22 @@ export const monoRestColors = {
     stone:
       "bg-stone-100 dark:bg-stone-800 placeholder-stone-400 focus:ring-white focus:ring-offset-stone-300 dark:focus:ring-stone-700 dark:focus:ring-offset-stone-700",
   },
+  inputBgOnError: {
+    slate:
+      "bg-slate-100 dark:bg-slate-800 placeholder-slate-400 focus:ring-white focus:ring-offset-red-300 dark:focus:ring-red-700 dark:focus:ring-offset-red-700",
+    gray: "bg-gray-100 dark:bg-gray-800 placeholder-gray-400 focus:ring-white focus:ring-offset-red-300 dark:focus:ring-red-700 dark:focus:ring-offset-red-700",
+    zinc: "bg-zinc-100 dark:bg-zinc-800 placeholder-zinc-400 focus:ring-white focus:ring-offset-red-300 dark:focus:ring-red-700 dark:focus:ring-offset-red-700",
+    neutral:
+      "bg-neutral-100 dark:bg-neutral-800 placeholder-neutral-400 focus:ring-white focus:ring-offset-red-300 dark:focus:ring-red-700 dark:focus:ring-offset-red-700",
+    stone:
+      "bg-stone-100 dark:bg-stone-800 placeholder-stone-400 focus:ring-white focus:ring-offset-red-300 dark:focus:ring-red-700 dark:focus:ring-offset-red-700",
+  },
 };
 
 export const baseInputStyles =
   "block w-full px-5 py-3 text-base transition duration-500 ease-in-out transform border border-transparent rounded-lg focus:outline-none focus:border-transparent focus:ring-2 focus:ring-offset-2";
+
+export const baseButtonStyles =
+  "flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center transition duration-500 ease-in-out transform rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed";
+
+export const c = "text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500";
