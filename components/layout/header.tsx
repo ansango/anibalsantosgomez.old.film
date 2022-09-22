@@ -12,6 +12,8 @@ import {
 } from "../styles";
 import { useAutoClose } from "../../lib/hooks";
 
+// TODO cambiar por sidebar?
+
 export const Header = ({ data }) => {
   const { color, mono } = useTheme();
   const menu = useRef(null);

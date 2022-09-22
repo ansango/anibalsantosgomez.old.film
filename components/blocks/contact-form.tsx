@@ -27,7 +27,7 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
   const { mono, color } = useTheme();
   const { email, fullName, message, submit } = data;
 
-  const [isSubmitting, setIsSubmitting] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
@@ -58,9 +58,6 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
   return (
     <Section>
       <Container>
-        <button onClick={() => toastSuccess({ duration: 140000 })}>
-          Success
-        </button>
         <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
             <div className="space-y-1 col-span-12 md:col-span-6">
