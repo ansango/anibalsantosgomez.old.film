@@ -61,9 +61,7 @@ export const Icon = ({ data, className = "", tinaField = "" }) => {
   const iconName = data.name;
   const IconSVG = iconsTheme[icon][iconName];
   const iconSizeClasses = data.size && iconSizeClass[data.size];
-  console.log(
-    `${iconSizeClasses} ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]} ${className}`
-  );
+
   return (
     <IconSVG
       data-tinafield={tinaField}

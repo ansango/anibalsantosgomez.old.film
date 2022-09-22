@@ -58,8 +58,6 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
   return (
     <Section>
       <Container>
-        <button onClick={toastSuccess}>Success</button>
-        <button onClick={toastError}>Error</button>
         <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
             <div className="space-y-1 col-span-12 md:col-span-6">
@@ -161,7 +159,6 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
           </button>
         </form>
         <Toast position="top-right" />
-        <Toast position="bottom-right" />
       </Container>
     </Section>
   );
