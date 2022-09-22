@@ -4,7 +4,6 @@ import { Header } from "./header";
 import { Footer } from "./footer";
 import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
-import { Toaster } from "react-hot-toast";
 import { TinaField } from "tinacms";
 
 export const seoConfig = {
@@ -31,9 +30,7 @@ export const Layout = ({
   return (
     <>
       <NextHead>
-        <title>
-          {seo.title}
-        </title>
+        <title>{seo.title}</title>
         <meta content={seo.description} name="description" />
         <meta property="og:url" content={`${seo.site}/${seo.route}`} />
         <link rel="canonical" href={`${seo.site}/${seo.route}`} />
@@ -66,12 +63,6 @@ export const Layout = ({
           <Footer rawData={rawData} data={data?.footer} />
         </div>
       </Theme>
-      //TODO: find a way to style with tailwindcss, esto peta en rehydration
-      <Toaster
-        toastOptions={{
-          position: "top-right",
-        }}
-      />
     </>
   );
 };

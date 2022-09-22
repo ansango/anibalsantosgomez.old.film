@@ -21,6 +21,7 @@ import {
   CloudIcon,
   EyeIcon,
   MagnifyingGlassIcon,
+  CheckIcon,
 } from "@heroicons/react/24/outline";
 import { monoTextColors, primaryHoverTextColors } from "../styles";
 
@@ -30,6 +31,7 @@ export const iconsTheme = {
     close: XMarkIcon,
     eye: EyeIcon,
     search: MagnifyingGlassIcon,
+    check: CheckIcon,
     code: CodeBracketIcon,
     like: HandThumbUpIcon,
     map: MapIcon,
@@ -59,7 +61,9 @@ export const Icon = ({ data, className = "", tinaField = "" }) => {
   const iconName = data.name;
   const IconSVG = iconsTheme[icon][iconName];
   const iconSizeClasses = data.size && iconSizeClass[data.size];
-
+  console.log(
+    `${iconSizeClasses} ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]} ${className}`
+  );
   return (
     <IconSVG
       data-tinafield={tinaField}

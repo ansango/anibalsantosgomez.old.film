@@ -1,7 +1,6 @@
 import { onPostContactForm } from "../../lib/services/contact";
 import { FC, useCallback, useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
-import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 import { Container } from "..//util/container";
 import { TinaTemplate } from "tinacms";
 
@@ -15,52 +14,14 @@ import {
 import { useTheme } from "../layout";
 import { Section } from "../util/section";
 import { Spinner } from "../util/spinner";
+import { Toast, toastError, toastSuccess } from "../util/toast";
 
 type Props = {
   lang?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   parentField: string;
 };
-
-const toastSuccess = () =>
-  toast("your message was sent! thanks!", {
-    className: "rounded-none text-green-600 w-full",
-    duration: 4000,
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-      </svg>
-    ),
-  });
-
-const toastError = () =>
-  toast("error sending your message.", {
-    className: "rounded-none text-red-600", //TODO: MAQUETAR
-    duration: 10004000,
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
-    ),
-  });
 
 export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
   const { mono, color } = useTheme();
@@ -85,10 +46,10 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
         await onPostContactForm({ contactForm, lang });
         setIsSubmitting(false);
         reset();
-        toastSuccess();
+        toastSuccess({ message: "Your message has been sent!" });
       } catch (error) {
         setIsSubmitting(false);
-        toastError();
+        toastError({ message: "Error sending your message!" });
       }
     },
     [reset, lang]
@@ -97,6 +58,8 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
   return (
     <Section>
       <Container>
+        <button onClick={toastSuccess}>Success</button>
+        <button onClick={toastError}>Error</button>
         <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
             <div className="space-y-1 col-span-12 md:col-span-6">
@@ -197,6 +160,8 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
             {submit?.label}
           </button>
         </form>
+        <Toast position="top-right" />
+        <Toast position="bottom-right" />
       </Container>
     </Section>
   );
