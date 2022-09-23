@@ -34,7 +34,7 @@ export const Featured = ({ data, parentField = "" }) => {
                   <Link href={`/serie/${lastSerie._sys.filename}`} passHref>
                     <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
                       <div className="flex-shrink-0">
-                        {lastSerie.meta.cover && (
+                        {lastSerie.meta?.cover && (
                           <img
                             className="object-cover w-full aspect-4/3"
                             alt=""

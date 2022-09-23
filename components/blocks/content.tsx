@@ -36,12 +36,12 @@ export const components: Components<{
     authorName: string;
   }) => {
     return (
-      <div>
+      <span className="block">
         <blockquote>
           <TinaMarkdown content={props.children} />
           {props.authorName}
         </blockquote>
-      </div>
+      </span>
     );
   },
   DateTime: (props) => {
@@ -62,9 +62,9 @@ export const components: Components<{
   },
 
   img: (props) => (
-    <div className="flex items-center justify-center">
+    <span className="flex items-center justify-center">
       <img src={props.url} alt={props.alt} />
-    </div>
+    </span>
   ),
 };
 
