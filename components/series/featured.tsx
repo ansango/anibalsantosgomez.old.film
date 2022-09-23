@@ -12,7 +12,7 @@ export const Featured = ({ data, parentField = "" }) => {
   const { series, loading } = useFeaturedSeriesQuery({ init: 0, limit: 3 });
   const lastSerie = series?.filter((serie) => serie.priority === true)[0];
   const restSeries = series?.filter((serie) => serie.priority === false);
-
+  //TODO:CAMBIAR LOADINGS
   return (
     <Section>
       <Container className="py-6 lg:py-12">

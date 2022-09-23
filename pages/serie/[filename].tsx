@@ -50,7 +50,6 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
             summary,
           }}
         />
-        ;
       </Layout>
     );
   }

@@ -49,7 +49,7 @@ export const WrapperContent: FC<{
   return (
     <Section>
       <Container
-        className={`max-w-4xl prose dark:prose-invert prose-code:font-medium
+        className={`prose dark:prose-invert prose-code:font-medium
         ${proseMono[mono]} 
         ${h1["sizes"]} 
         ${h2["sizes"]}

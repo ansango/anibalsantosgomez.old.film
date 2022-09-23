@@ -10,7 +10,7 @@ import { useLatestSeriesQuery } from "../../lib/hooks";
 export const Latests = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
   const { series, loading } = useLatestSeriesQuery({ init: 0, limit: 6 });
-
+  //TODO:CAMBIAR LOADINGS
   return (
     <Section>
       <Container className="py-6 lg:py-12">

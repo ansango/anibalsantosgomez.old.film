@@ -42,7 +42,6 @@ export const Serie: FC<SerieProps> = ({
           }}
         />
       </Section>
-
       <WrapperContent highlight={bodyHighlight}>
         <TinaMarkdown components={components} content={body} />
       </WrapperContent>

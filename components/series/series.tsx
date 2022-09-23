@@ -102,7 +102,7 @@ export const Series = ({ data, parentField = "" }) => {
   ) {
     pageNumbers.push(i);
   }
-
+  //TODO:CAMBIAR LOADINGS
   return (
     <Section>
       <Container>

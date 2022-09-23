@@ -7,10 +7,10 @@ export type BlockQuoteProps = {
 
 export const BlockQuote = (props: BlockQuoteProps) => {
   return (
-    <span className="block">
+    <span className="block prose-blockquote:text-base prose-p:mb-2 prose-p:font-mono">
       <blockquote>
         <TinaMarkdown content={props.children} />
-        {props.authorName}
+        <strong>{props.authorName}</strong>
       </blockquote>
     </span>
   );
