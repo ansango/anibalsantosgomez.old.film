@@ -7,7 +7,6 @@ import { useTheme } from "../layout";
 import {
   monoBgColorsBlur,
   monoTextColors,
-  primaryBorderColors,
   primaryHoverBorderColors,
   primaryHoverTextColors,
   primaryTextColors,
@@ -31,7 +30,7 @@ type HeroData = {
 };
 
 const Meta: FC<{ meta: SerieProps["meta"] }> = ({ meta }) => {
-  const { color, mono } = useTheme();
+  const { color } = useTheme();
   const { camera, film, shot, tags } = meta;
   return (
     <>
@@ -192,7 +191,7 @@ const renderHero = (
                 {tagline}
               </span>
               <h1
-                className={`mb-8 text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl lg:text-5xl ${monoTextColors[700][mono]}`}
+                className={`mb-8 text-5xl font-bold leading-none tracking-tighter text-neutral-600 md:text-6xl lg:text-5xl ${monoTextColors[700][mono]}`}
               >
                 {headline}
               </h1>

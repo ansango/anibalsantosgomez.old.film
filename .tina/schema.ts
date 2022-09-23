@@ -33,12 +33,7 @@ const kodak = [
 ];
 const fuji = ["Fujifilm", "Superia 400", "C200"];
 const cineStill = ["CineStill", "800T"];
-const ilford = [
-  "Ilford",
-  "HP5 400",
-  "Delta 3200",
-  "XP2 400",
-];
+const ilford = ["Ilford", "HP5 400", "Delta 3200", "XP2 400"];
 export const series = [...kodak, ...fuji, ...cineStill, ...ilford].map(
   (value) => kebabParser(value)
 );
@@ -267,6 +262,23 @@ const schema = defineSchema({
                   name: "authorName",
                   label: "Author",
                   type: "string",
+                },
+              ],
+            },
+            {
+              name: "ContainerText",
+              label: "Container Text",
+              fields: [
+                {
+                  name: "size",
+                  label: "Size",
+                  type: "string",
+                  options: ["md", "lg", "xl", "2xl", "3xl", "full"],
+                },
+                {
+                  name: "children",
+                  label: "Text",
+                  type: "rich-text",
                 },
               ],
             },

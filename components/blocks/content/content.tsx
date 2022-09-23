@@ -1,4 +1,8 @@
-import { Components, TinaMarkdown } from "tinacms/dist/rich-text";
+import {
+  Components,
+  TinaMarkdown,
+  TinaMarkdownContent,
+} from "tinacms/dist/rich-text";
 import type { TinaTemplate } from "tinacms";
 import { type SerieProps } from "../../series/serie";
 import { type FC, type ReactNode } from "react";
@@ -49,7 +53,7 @@ export const WrapperContent: FC<{
   return (
     <Section>
       <Container
-        className={`prose dark:prose-invert prose-code:font-medium
+        className={`prose dark:prose-invert prose-code:font-medium pt-0 lg:pt-0
         ${proseMono[mono]} 
         ${h1["sizes"]} 
         ${h2["sizes"]}
@@ -68,13 +72,81 @@ export const WrapperContent: FC<{
   );
 };
 
+const maxWidth = {
+  md: "max-w-lg",
+  lg: "max-w-xl",
+  xl: "max-w-2xl",
+  "2xl": "max-w-3xl",
+  "3xl": "max-w-4xl",
+  full: "",
+};
+
+const ContainerText = (props: {
+  children: TinaMarkdownContent;
+  size: "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
+}) => {
+  const render = (size) => {
+    switch (size) {
+      case "md": {
+        return (
+          <div className="max-w-lg">
+            <TinaMarkdown content={props.children} />
+          </div>
+        );
+      }
+
+      case "lg": {
+        return (
+          <div className="max-w-xl">
+            <TinaMarkdown content={props.children} />
+          </div>
+        );
+      }
+      case "xl": {
+        return (
+          <div className="max-w-2xl">
+            <TinaMarkdown content={props.children} />
+          </div>
+        );
+      }
+      case "2xl": {
+        return (
+          <div className="max-w-3xl">
+            <TinaMarkdown content={props.children} />
+          </div>
+        );
+      }
+      case "3xl": {
+        return (
+          <div className="max-w-4xl">
+            <TinaMarkdown content={props.children} />
+          </div>
+        );
+      }
+      default: {
+        return (
+          <div>
+            <TinaMarkdown content={props.children} />
+          </div>
+        );
+      }
+    }
+  };
+  return <>{render(props.size)}</>;
+};
+
 export const components: Components<{
   BlockQuote: BlockQuoteProps;
   DateTime: DateTimeProps;
+  ContainerText: {
+    children: TinaMarkdownContent;
+    size: "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
+  };
 }> = {
   BlockQuote,
   DateTime,
   img,
+  ContainerText,
 };
 
 export const Content: FC<{
@@ -130,6 +202,23 @@ export const contentBlockSchema: TinaTemplate = {
               name: "authorName",
               label: "Author",
               type: "string",
+            },
+          ],
+        },
+        {
+          name: "ContainerText",
+          label: "Container Text",
+          fields: [
+            {
+              name: "size",
+              label: "Size",
+              type: "string",
+              options: ["md", "lg", "xl", "2xl", "3xl", "full"],
+            },
+            {
+              name: "children",
+              label: "Text",
+              type: "rich-text",
             },
           ],
         },
