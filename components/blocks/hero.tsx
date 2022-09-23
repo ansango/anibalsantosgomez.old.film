@@ -15,13 +15,13 @@ import { SerieProps } from "../series/serie";
 import { formatDate } from "../../lib/utils";
 
 type HeroImage = {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   parentField?: string;
 };
 
 type HeroData = {
-  type: "left" | "center" | "serie";
+  type?: "left" | "center" | "serie" | string;
   tagline?: string;
   headline?: string;
   text?: string;

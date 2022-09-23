@@ -16,7 +16,7 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
                     key={i + block.__typename}
                     highlight={block.highlight}
                   >
-                    <Content data={block} />
+                    <Content data={block.body} />
                   </WrapperContent>
                 );
               case "PageBlocksHero":
