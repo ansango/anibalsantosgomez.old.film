@@ -10,6 +10,7 @@ import {
   monoRestColors,
   baseButtonStyles,
   buttonPrimaryColors,
+  monoBordersColors,
 } from "../styles";
 import { useTheme } from "../layout";
 import { Section } from "../util/section";
@@ -23,7 +24,7 @@ type Props = {
   parentField: string;
 };
 
-export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
+export const ContactForm: FC<Props> = ({ data, parentField, lang = "en" }) => {
   const { mono, color } = useTheme();
   const { email, fullName, message, submit } = data;
 
@@ -54,10 +55,20 @@ export const ContactForm: FC<Props> = ({ data, lang = "en" }) => {
     },
     [reset, lang]
   );
-
+  console.log("data", data);
   return (
     <Section>
-      <Container>
+      <Container className="space-y-8">
+        {data.titleForm && data.titleForm.active && (
+          <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
+            <h2
+              className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
+              data-tinafield={`${parentField}.title`}
+            >
+              {data.titleForm.label}
+            </h2>
+          </div>
+        )}
         <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-12 space-y-10 md:space-y-0 md:gap-10">
             <div className="space-y-1 col-span-12 md:col-span-6">
@@ -173,6 +184,10 @@ export const contactFormSchema: TinaTemplate = {
   ui: {
     previewSrc: "",
     defaultItem: {
+      titleForm: {
+        label: "Contact Us",
+        active: true,
+      },
       fullName: {
         label: "Name",
         placeholder: "Enter your name",
@@ -192,6 +207,23 @@ export const contactFormSchema: TinaTemplate = {
     },
   },
   fields: [
+    {
+      label: "Title Form",
+      name: "titleForm",
+      type: "object",
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          type: "string",
+        },
+        {
+          label: "Active",
+          name: "active",
+          type: "boolean",
+        },
+      ],
+    },
     {
       label: "Full Name",
       name: "fullName",

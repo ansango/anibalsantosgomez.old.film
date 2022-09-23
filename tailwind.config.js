@@ -22,9 +22,9 @@ const fontSize = {
   "7xl": "5rem",
   "8xl": "6rem",
 };
-//text-4xl dark:text-slate-300 md:text-7xl
+
 const typography = ({ colors }) => {
-  const { slate, gray, zinc, neutral, stone, pink } = colors;
+  const { slate, gray, zinc, neutral, stone } = colors;
   return {
     DEFAULT: {
       css: {
