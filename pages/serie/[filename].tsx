@@ -2,7 +2,7 @@
 import { client } from "../../.tina/__generated__/client";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
-import { Post } from "../../components/series/post";
+import { Serie } from "../../components/series/serie";
 import FourOhFour from "../404";
 import { seoConfig } from "../../components/layout/layout";
 
@@ -15,7 +15,9 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
 
   const { serie } = data;
 
-  if (data && data.serie && data.serie.isPublished) {
+  if (serie && serie.isPublished) {
+    const { _body, bodyHighlight, meta, publishedAt, title } = serie;
+
     return (
       <Layout
         rawData={data}
@@ -29,7 +31,16 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
           image: serie.meta?.cover,
         }}
       >
-        <Post {...data.serie} />;
+        <Serie
+          {...{
+            _body,
+            bodyHighlight,
+            meta,
+            publishedAt,
+            title,
+          }}
+        />
+        ;
       </Layout>
     );
   }

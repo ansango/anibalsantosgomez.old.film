@@ -1,10 +1,9 @@
 import React from "react";
 import type { Page } from "../.tina/__generated__/types";
-import { Hero, Content, ContactForm } from "./blocks";
+import { Hero, Content, ContactForm, WrapperContent } from "./blocks";
 import { Series, Featured, Latests } from "./series";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
-  console.log(props);
   return (
     <>
       {props.blocks
@@ -12,12 +11,13 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
             switch (block.__typename) {
               case "PageBlocksContent":
                 return (
-                  <div
-                    data-tinafield={`blocks.${i}`}
+                  <WrapperContent
+                    parentField={`blocks.${i}`}
                     key={i + block.__typename}
+                    highlight={block.highlight}
                   >
-                    <Content data={block} parentField={`blocks.${i}`} />
-                  </div>
+                    <Content data={block} />
+                  </WrapperContent>
                 );
               case "PageBlocksHero":
                 return (

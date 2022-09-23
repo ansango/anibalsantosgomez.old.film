@@ -232,6 +232,11 @@ const schema = defineSchema({
         },
         metaSchema,
         {
+          label: "Body Highlight",
+          name: "bodyHighlight",
+          type: "boolean",
+        },
+        {
           type: "rich-text",
           label: "Body",
           name: "_body",

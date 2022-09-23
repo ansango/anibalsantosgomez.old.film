@@ -47,9 +47,9 @@
   },
   "theme": {
     "mono": "neutral",
-    "color": "red",
+    "color": "cyan",
     "font": "work-sans",
     "icon": "hi",
-    "darkMode": "light"
+    "darkMode": "dark"
   }
 }

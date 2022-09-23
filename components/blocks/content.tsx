@@ -1,7 +1,11 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import {
+  Components,
+  TinaMarkdown,
+  TinaMarkdownContent,
+} from "tinacms/dist/rich-text";
 import type { TinaTemplate } from "tinacms";
 import { useTheme } from "../layout";
 import {
@@ -18,15 +22,59 @@ import {
   codeMonoDark,
 } from "../styles/prose";
 
-//TODO: ACABAR MERGEO DE COMPONENTES!!!!
+export const components: Components<{
+  BlockQuote: {
+    children: TinaMarkdownContent;
+    authorName: string;
+  };
+  DateTime: {
+    format?: string;
+  };
+}> = {
+  BlockQuote: (props: {
+    children: TinaMarkdownContent;
+    authorName: string;
+  }) => {
+    return (
+      <div>
+        <blockquote>
+          <TinaMarkdown content={props.children} />
+          {props.authorName}
+        </blockquote>
+      </div>
+    );
+  },
+  DateTime: (props) => {
+    const dt = useMemo(() => {
+      return new Date();
+    }, []);
 
-export const Content: FC<{
-  data: any;
+    switch (props.format) {
+      case "iso":
+        return <span>{dt.toISOString()}</span>;
+      case "utc":
+        return <span>{dt.toUTCString()}</span>;
+      case "local":
+        return <span>{dt.toLocaleDateString()}</span>;
+      default:
+        return <span>{dt.toLocaleDateString()}</span>;
+    }
+  },
+
+  img: (props) => (
+    <div className="flex items-center justify-center">
+      <img src={props.url} alt={props.alt} />
+    </div>
+  ),
+};
+
+export const WrapperContent: FC<{
+  children: React.ReactNode;
+  highlight?: boolean;
   parentField?: string;
-  components?: any;
-}> = ({ data, parentField = "", components }) => {
+}> = ({ children, highlight = false, parentField = "" }) => {
   const { color, mono } = useTheme();
-  const classElements = data.highlight
+  const classElements = highlight
     ? `${h1["colors"][color]}
         ${h2["colors"][color]}
         ${h3["colors"][color]}
@@ -38,7 +86,6 @@ export const Content: FC<{
         ${codeColorDark[color][mono]}
         `
     : `${codeMonoDark[mono]}`;
-
   return (
     <Section>
       <Container
@@ -55,10 +102,17 @@ export const Content: FC<{
         `}
         data-tinafield={`${parentField}.body`}
       >
-        <TinaMarkdown content={data.body} components={components} />
+        {children}
       </Container>
     </Section>
   );
+};
+
+export const Content: FC<{
+  data: any;
+  parentField?: string;
+}> = ({ data }) => {
+  return <TinaMarkdown content={data.body} components={components} />;
 };
 
 export const contentBlockSchema: TinaTemplate = {
@@ -80,6 +134,37 @@ export const contentBlockSchema: TinaTemplate = {
       type: "rich-text",
       label: "Body",
       name: "body",
+      templates: [
+        {
+          name: "DateTime",
+          label: "Date & Time",
+          inline: true,
+          fields: [
+            {
+              name: "format",
+              label: "Format",
+              type: "string",
+              options: ["utc", "iso", "local"],
+            },
+          ],
+        },
+        {
+          name: "BlockQuote",
+          label: "Block Quote",
+          fields: [
+            {
+              name: "children",
+              label: "Quote",
+              type: "rich-text",
+            },
+            {
+              name: "authorName",
+              label: "Author",
+              type: "string",
+            },
+          ],
+        },
+      ],
     },
   ],
 };

@@ -55,7 +55,6 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "en" }) => {
     },
     [reset, lang]
   );
-  console.log("data", data);
   return (
     <Section>
       <Container className="space-y-8">
