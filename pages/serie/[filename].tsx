@@ -16,7 +16,15 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { serie } = data;
 
   if (serie && serie.isPublished) {
-    const { _body, bodyHighlight, meta, publishedAt, title } = serie;
+    const {
+      _body,
+      bodyHighlight,
+      meta,
+      publishedAt,
+      title,
+      description,
+      summary,
+    } = serie;
 
     return (
       <Layout
@@ -33,11 +41,13 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
       >
         <Serie
           {...{
-            _body,
+            body: _body,
             bodyHighlight,
             meta,
             publishedAt,
             title,
+            description,
+            summary,
           }}
         />
         ;

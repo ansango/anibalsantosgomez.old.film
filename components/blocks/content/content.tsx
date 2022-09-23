@@ -1,13 +1,11 @@
-import React, { FC, useMemo } from "react";
-import { Container } from "../util/container";
-import { Section } from "../util/section";
-import {
-  Components,
-  TinaMarkdown,
-  TinaMarkdownContent,
-} from "tinacms/dist/rich-text";
+import { Components, TinaMarkdown } from "tinacms/dist/rich-text";
 import type { TinaTemplate } from "tinacms";
-import { useTheme } from "../layout";
+import { type SerieProps } from "../../series/serie";
+import { type FC, type ReactNode } from "react";
+import { Container } from "../../util/container";
+import { Section } from "../../util/section";
+import { useTheme } from "../../layout";
+
 import {
   h1,
   h2,
@@ -20,56 +18,18 @@ import {
   codeColorDark,
   proseMono,
   codeMonoDark,
-} from "../styles/prose";
+} from "../../styles/prose";
 
-export const components: Components<{
-  BlockQuote: {
-    children: TinaMarkdownContent;
-    authorName: string;
-  };
-  DateTime: {
-    format?: string;
-  };
-}> = {
-  BlockQuote: (props: {
-    children: TinaMarkdownContent;
-    authorName: string;
-  }) => {
-    return (
-      <span className="block">
-        <blockquote>
-          <TinaMarkdown content={props.children} />
-          {props.authorName}
-        </blockquote>
-      </span>
-    );
-  },
-  DateTime: (props) => {
-    const dt = useMemo(() => {
-      return new Date();
-    }, []);
-
-    switch (props.format) {
-      case "iso":
-        return <span>{dt.toISOString()}</span>;
-      case "utc":
-        return <span>{dt.toUTCString()}</span>;
-      case "local":
-        return <span>{dt.toLocaleDateString()}</span>;
-      default:
-        return <span>{dt.toLocaleDateString()}</span>;
-    }
-  },
-
-  img: (props) => (
-    <span className="flex items-center justify-center">
-      <img src={props.url} alt={props.alt} />
-    </span>
-  ),
-};
+import {
+  type BlockQuoteProps,
+  BlockQuote,
+  type DateTimeProps,
+  DateTime,
+  img,
+} from "./components";
 
 export const WrapperContent: FC<{
-  children: React.ReactNode;
+  children: ReactNode;
   highlight?: boolean;
   parentField?: string;
 }> = ({ children, highlight = false, parentField = "" }) => {
@@ -108,8 +68,17 @@ export const WrapperContent: FC<{
   );
 };
 
+export const components: Components<{
+  BlockQuote: BlockQuoteProps;
+  DateTime: DateTimeProps;
+}> = {
+  BlockQuote,
+  DateTime,
+  img,
+};
+
 export const Content: FC<{
-  data: any;
+  data: { body: SerieProps["body"] };
   parentField?: string;
 }> = ({ data }) => {
   return <TinaMarkdown content={data.body} components={components} />;

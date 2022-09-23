@@ -1,48 +1,50 @@
-import React from "react";
+import React, { FC } from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { components, WrapperContent } from "../blocks";
+import { components, Hero, WrapperContent } from "../blocks";
 import { formatDate } from "../../lib/utils";
+import { type SerieQuery } from "../../.tina/__generated__/types";
 
-export const Serie = (props) => {
+export type SerieProps = {
+  body: SerieQuery["serie"]["_body"];
+  bodyHighlight: SerieQuery["serie"]["bodyHighlight"];
+  meta: SerieQuery["serie"]["meta"];
+  publishedAt: SerieQuery["serie"]["publishedAt"];
+  title: SerieQuery["serie"]["title"];
+  description: SerieQuery["serie"]["description"];
+  summary: SerieQuery["serie"]["summary"];
+};
+
+export const Serie: FC<SerieProps> = ({
+  body,
+  bodyHighlight,
+  description,
+  meta,
+  publishedAt,
+  summary,
+  title,
+}) => {
   return (
     <>
-      <Section className="flex-1">
-        <Container className={`flex-1 max-w-4xl pb-2`} size="large">
-          <h2
-            data-tinafield="title"
-            className={`w-full relative	mb-8 text-6xl font-extrabold tracking-normal text-center title-font`}
-          >
-            <span>{props.title}</span>
-          </h2>
-          <div
-            data-tinafield="author"
-            className="flex items-center justify-center mb-16"
-          >
-            <>
-              <div className="flex-shrink-0 mr-4">
-                <img className="h-14 w-14 object-cover rounded-full shadow-sm" />
-              </div>
-              <p className="text-base font-medium text-gray-600 group-hover:text-gray-800 dark:text-gray-200 dark:group-hover:text-white">
-                pepe
-              </p>
-              <span className="font-bold text-gray-200 dark:text-gray-500 mx-2">
-                —
-              </span>
-            </>
-
-            <p
-              data-tinafield="date"
-              className="text-base text-gray-400 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-150"
-            >
-              {formatDate(props.publishedAt)}
-            </p>
-          </div>
-        </Container>
+      <Section>
+        <Hero
+          data={{
+            type: "serie",
+            headline: title,
+            tagline: description,
+            image: {
+              src: meta.cover,
+              alt: title,
+            },
+            text: summary,
+            meta,
+          }}
+        />
       </Section>
-      <WrapperContent highlight={props.bodyHighlight}>
-        <TinaMarkdown components={components} content={props._body} />
+
+      <WrapperContent highlight={bodyHighlight}>
+        <TinaMarkdown components={components} content={body} />
       </WrapperContent>
     </>
   );

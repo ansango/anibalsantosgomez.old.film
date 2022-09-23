@@ -166,9 +166,13 @@ export const buttonPrimaryColors = {
     "text-white dark:text-stone-100 bg-stone-600 dark:bg-stone-800 hover:bg-stone-700 dark:hover:bg-stone-600",
 };
 
-export const spinnerPrimaryColors = {
-  red: "text-red-600 dark:text-red-400",
-}
+export const monoBgColorsBlur = {
+  slate: "bg-slate-300 dark:bg-black",
+  gray: "bg-gray-300 dark:bg-black",
+  zinc: "bg-zinc-300 dark:bg-black",
+  neutral: "bg-neutral-300 dark:bg-black",
+  stone: "bg-stone-300 dark:bg-black",
+};
 
 export const monoTextColors = {
   50: {
