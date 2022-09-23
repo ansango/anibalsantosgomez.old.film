@@ -21,7 +21,7 @@ export const Header = ({ data }) => {
   useAutoClose({ setIsOpen, menu });
 
   return (
-    <Container>
+    <Container className="pt-6 sm:py-12">
       <div className="flex flex-col md:items-center md:justify-between md:flex-row">
         <div className="flex flex-row items-center justify-between lg:justify-start">
           <Link href="/">

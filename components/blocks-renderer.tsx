@@ -4,6 +4,7 @@ import { Hero, Content, ContactForm } from "./blocks";
 import { Series, Featured, Latests } from "./series";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
+  console.log(props);
   return (
     <>
       {props.blocks
