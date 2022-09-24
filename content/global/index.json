@@ -50,7 +50,7 @@
     "color": "neutral",
     "font": "work-sans",
     "icon": "hi",
-    "darkMode": "light"
+    "darkMode": "dark"
   },
   "_collection": "global",
   "_keepTemplateKey": false,
