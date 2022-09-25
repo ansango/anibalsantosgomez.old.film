@@ -140,7 +140,7 @@ export const Series = ({ data, parentField = "" }) => {
                                 <img
                                   className="object-cover w-full aspect-4/3"
                                   alt=""
-                                  src={serie.meta?.cover}
+                                  src={serie.cover}
                                   width={2048}
                                   height={1365}
                                 />
