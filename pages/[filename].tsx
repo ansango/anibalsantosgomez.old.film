@@ -4,7 +4,7 @@ import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../components/layout";
 import { client } from "../.tina/__generated__/client";
 import { seoConfig } from "../components/layout/layout";
-
+import { motion } from "framer-motion";
 export default function NextPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
 ) {
@@ -27,7 +27,14 @@ export default function NextPage(
         route: props.route,
       }}
     >
-      <Blocks {...data.page} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Blocks {...data.page} />
+      </motion.div>
     </Layout>
   );
 }
