@@ -490,7 +490,7 @@ export const tinaConfig = defineConfig({
      * When `tina-admin` is enabled, this plugin configures contextual editing for collections
      */
     const RouteMapping = new RouteMappingPlugin((collection, document) => {
-      if (["global", "places"].includes(collection.name)) {
+      if (["global"].includes(collection.name)) {
         return undefined;
       }
       if (["page"].includes(collection.name)) {
