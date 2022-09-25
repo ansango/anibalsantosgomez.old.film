@@ -135,7 +135,7 @@ export const Series = ({ data, parentField = "" }) => {
                       <Link href={`/serie/` + serie._sys.filename} passHref>
                         <a className="pt-8 sm:flex lg:items-start group">
                           <div className="mb-4 sm:mb-0 sm:mr-4">
-                            {serie.meta?.cover && (
+                            {serie?.cover && (
                               <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
                                 <img
                                   className="object-cover w-full aspect-4/3"

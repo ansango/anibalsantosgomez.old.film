@@ -1,9 +1,4 @@
-import {
-  defineSchema,
-  defineConfig,
-  RouteMappingPlugin,
-  TinaField,
-} from "tinacms";
+import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
 import {
   contentBlockSchema,
   contactFormSchema,
@@ -16,167 +11,8 @@ import {
   allSeriesSchema,
 } from "../components/series";
 import { client } from "./__generated__/client";
-import { kebabParser } from "../lib/utils";
 import { seoSchema } from "../components/layout/layout";
-
-const kodak = [
-  "Kodak",
-  "Portra 400",
-  "Portra 160",
-  "Portra 800",
-  "Ektar 100",
-  "Gold 100",
-  "Gold 200",
-  "Ultramax 400",
-  "Pro Image 100",
-  "T-Max 400",
-];
-const fuji = ["Fujifilm", "Superia 400", "C200"];
-const cineStill = ["CineStill", "800T"];
-const ilford = ["Ilford", "HP5 400", "Delta 3200", "XP2 400"];
-export const series = [...kodak, ...fuji, ...cineStill, ...ilford].map(
-  (value) => kebabParser(value)
-);
-
-const metaSchema: TinaField = {
-  type: "object",
-  name: "meta",
-  label: "Meta",
-  fields: [
-    {
-      type: "image",
-      name: "cover",
-      label: "Cover",
-    },
-    {
-      label: "Camera",
-      name: "camera",
-      type: "string",
-      required: true,
-      options: [
-        "Canon EOS Elan",
-        "Canon EOS 50 E",
-        "Canon EOS 33",
-        "Canon EOS 50D",
-        "Canon EOS 6D",
-      ],
-    },
-    {
-      label: "Film",
-      name: "film",
-      type: "string",
-      required: true,
-      options: [
-        "Digital",
-        "Kodak Gold 200",
-        "Kodak Portra 400",
-        "Kodak Ektar 100",
-        "Ilford Delta 3200",
-        "Ilford HP5 Plus 400",
-        "Ilford XP2 Super 400",
-        "Fujifilm C200",
-        "Fujifilm Superia 400",
-      ],
-    },
-    {
-      label: "Map",
-      name: "map",
-      type: "object",
-      fields: [
-        {
-          label: "Promoted locations",
-          name: "promoted",
-          type: "string",
-          required: true,
-          list: true,
-          ui: {
-            defaultValue: ["Salamanca, Spain"],
-          },
-        },
-        {
-          label: "Locations",
-          name: "locations",
-          type: "object",
-          list: true,
-          ui: {
-            itemProps: (item) => {
-              return { label: `${item?.name}, ${item?.country}` };
-            },
-            defaultItem: {
-              name: "Name",
-              country: "Country",
-            },
-          },
-          fields: [
-            {
-              label: "Name",
-              name: "name",
-              type: "string",
-            },
-            {
-              label: "Country",
-              name: "country",
-              type: "string",
-            },
-            {
-              label: "Latitude",
-              name: "latitude",
-              type: "number",
-            },
-            {
-              label: "Longitude",
-              name: "longitude",
-              type: "number",
-            },
-          ],
-        },
-      ],
-    },
-
-    {
-      type: "object",
-      label: "Shot Period",
-      name: "shot",
-      fields: [
-        {
-          label: "Start",
-          name: "start",
-          type: "datetime",
-          required: true,
-          ui: {
-            dateFormat: "MMMM DD YYYY",
-            timeFormat: "HH:mm",
-          },
-        },
-        {
-          label: "End",
-          name: "end",
-          type: "datetime",
-          required: true,
-          ui: {
-            dateFormat: "MMMM DD YYYY",
-            timeFormat: "HH:mm",
-          },
-        },
-      ],
-    },
-    {
-      label: "Tags",
-      name: "tags",
-      type: "string",
-      list: true,
-      options: series,
-      ui: {
-        itemProps: (item) => {
-          return { label: item?.label };
-        },
-        defaultItem: {
-          label: "tag",
-        },
-      },
-    },
-  ],
-};
+import { metaSchema } from "../components/util/meta";
 
 const schema = defineSchema({
   config: {
@@ -206,16 +42,23 @@ const schema = defineSchema({
       path: "content/series",
       format: "mdx",
       fields: [
-        seoSchema,
+        { ...seoSchema },
+        { ...metaSchema },
         {
           label: "Title",
           name: "title",
           type: "string",
+          ui: {
+            defaultValue: "This is the title",
+          },
         },
         {
           label: "Description",
           name: "description",
           type: "string",
+          ui: {
+            defaultValue: "This is a short description",
+          },
         },
         {
           label: "Summary",
@@ -223,9 +66,17 @@ const schema = defineSchema({
           type: "string",
           ui: {
             component: "textarea",
+            defaultValue: "This is a long description",
           },
         },
-        metaSchema,
+        {
+          type: "image",
+          name: "cover",
+          label: "Cover",
+          ui: {
+            defaultValue: "/uploads/avatar.jpeg",
+          },
+        },
         {
           label: "Body Highlight",
           name: "bodyHighlight",
@@ -245,7 +96,7 @@ const schema = defineSchema({
                   name: "format",
                   label: "Format",
                   type: "string",
-                  options: ["utc", "iso", "local"], //TODO: AQUI METER EL TINA MD NUEVO!!!!
+                  options: ["utc", "iso", "local"],
                 },
               ],
             },
@@ -274,6 +125,9 @@ const schema = defineSchema({
                   label: "Size",
                   type: "string",
                   options: ["md", "lg", "xl", "2xl", "3xl", "full"],
+                  ui: {
+                    defaultValue: "md",
+                  },
                 },
                 {
                   name: "children",
@@ -293,6 +147,7 @@ const schema = defineSchema({
           ui: {
             dateFormat: "MMMM DD YYYY",
             timeFormat: "hh:mm A",
+            defaultValue: new Date().toISOString(),
           },
         },
         {
@@ -307,6 +162,34 @@ const schema = defineSchema({
         },
       ],
     },
+
+    {
+      label: "Pages",
+      name: "page",
+      path: "content/pages",
+      format: "mdx",
+      fields: [
+        { ...seoSchema },
+        {
+          type: "object",
+          list: true,
+          name: "blocks",
+          label: "Sections",
+          ui: {
+            visualSelector: true,
+          },
+          templates: [
+            heroBlockSchema,
+            featuredBlockSchema,
+            latestsBlockSchema,
+            allSeriesSchema,
+            contactFormSchema,
+            contentBlockSchema,
+          ],
+        },
+      ],
+    },
+
     {
       label: "Global",
       name: "global",
@@ -595,32 +478,6 @@ const schema = defineSchema({
         },
       ],
     },
-    {
-      label: "Pages",
-      name: "page",
-      path: "content/pages",
-      format: "mdx",
-      fields: [
-        seoSchema,
-        {
-          type: "object",
-          list: true,
-          name: "blocks",
-          label: "Sections",
-          ui: {
-            visualSelector: true,
-          },
-          templates: [
-            heroBlockSchema,
-            featuredBlockSchema,
-            latestsBlockSchema,
-            allSeriesSchema,
-            contactFormSchema,
-            contentBlockSchema,
-          ],
-        },
-      ],
-    },
   ],
 });
 
@@ -633,7 +490,7 @@ export const tinaConfig = defineConfig({
      * When `tina-admin` is enabled, this plugin configures contextual editing for collections
      */
     const RouteMapping = new RouteMappingPlugin((collection, document) => {
-      if (["global"].includes(collection.name)) {
+      if (["global", "places"].includes(collection.name)) {
         return undefined;
       }
       if (["page"].includes(collection.name)) {
@@ -648,6 +505,7 @@ export const tinaConfig = defineConfig({
         }
         return undefined;
       }
+
       return `/${collection.name}/${document._sys.filename}`;
     });
     cms.plugins.add(RouteMapping);

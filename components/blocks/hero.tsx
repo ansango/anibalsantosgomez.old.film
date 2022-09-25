@@ -1,83 +1,25 @@
 import { FC } from "react";
-
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import type { TinaTemplate } from "tinacms";
 import { useTheme } from "../layout";
-import {
-  monoBgColorsBlur,
-  monoTextColors,
-  primaryHoverBorderColors,
-  primaryHoverTextColors,
-  primaryTextColors,
-} from "../styles";
+import { monoBgColorsBlur, monoTextColors, primaryTextColors } from "../styles";
 import { SerieProps } from "../series/serie";
-import { formatDate } from "../../lib/utils";
-
-type HeroImage = {
-  src?: string;
-  alt?: string;
-  parentField?: string;
-};
+import { Meta } from "../util/meta";
+import { Image, ImageSerie } from "../util/image";
 
 type HeroData = {
   type?: "left" | "center" | "serie" | string;
   tagline?: string;
   headline?: string;
   text?: string;
-  image?: HeroImage;
+  image?: {
+    src?: string;
+    alt?: string;
+    parentField?: string;
+  };
   meta?: SerieProps["meta"];
 };
-
-const Meta: FC<{ meta: SerieProps["meta"] }> = ({ meta }) => {
-  const { color } = useTheme();
-  const { camera, film, shot, tags } = meta;
-  return (
-    <>
-      <p>
-        <span>Camera: </span>
-        <span>{camera}</span>
-      </p>
-      <p>
-        <span>Film: </span>
-        <span>{film}</span>
-      </p>
-      {shot && (
-        <p>
-          <span>Period: </span>
-          <span>
-            {formatDate(shot.start)} / {formatDate(shot.start)}
-          </span>
-        </p>
-      )}
-      <div className="mt-6 flex flex-wrap relative z-10">
-        {tags?.map((tag, i) => (
-          <a
-            key={`${tag}-${i}`}
-            className={`cursor-pointer mr-1.5 py-1.5 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-none border-b-2 border-transparent ${primaryTextColors[color]} opacity-70 hover:opacity-100 ${primaryHoverTextColors[color]} ${primaryHoverBorderColors[color]}`}
-          >
-            #{tag}
-          </a>
-        ))}
-      </div>
-    </>
-  );
-};
-
-const Image = ({ image, parentField = "" }) => (
-  <div
-    className="flex flex-col items-center justify-center"
-    data-tinafield={`${parentField}.image`}
-  >
-    <img
-      className="object-cover w-full aspect-4/3"
-      alt={image.alt}
-      src={image.src}
-      width={image.type === "portrait" ? 1365 : 2048}
-      height={image.type === "portrait" ? 2048 : 1365}
-    />
-  </div>
-);
 
 const renderHero = (
   { type, headline, image, tagline, text, meta }: HeroData,
@@ -121,7 +63,11 @@ const renderHero = (
           </Container>
           {image?.src && (
             <Container>
-              <Image image={image} parentField={parentField} />
+              <Image
+                alt={image.alt}
+                src={image.alt}
+                parentField={parentField}
+              />
             </Container>
           )}
         </>
@@ -154,7 +100,11 @@ const renderHero = (
           </Container>
           {image?.src && (
             <Container>
-              <Image image={image} parentField={parentField} />
+              <Image
+                alt={image.alt}
+                src={image.alt}
+                parentField={parentField}
+              />
             </Container>
           )}
         </>
@@ -175,11 +125,9 @@ const renderHero = (
                     className={`absolute rounded-full -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 ${monoBgColorsBlur[mono]}`}
                   ></div>
                   <div className="relative">
-                    <img
-                      className="object-cover object-center mx-auto shadow-2xl dark:shadow-black aspect-square"
-                      alt="hero"
-                      src={image.src}
-                    />
+                    {image?.src && (
+                      <ImageSerie alt={image.alt} src={image.src} />
+                    )}
                   </div>
                 </div>
               </div>
@@ -212,8 +160,9 @@ const renderHero = (
         </Container>
       );
     }
-    default:
+    default: {
       return null;
+    }
   }
 };
 

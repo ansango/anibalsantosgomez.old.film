@@ -36,7 +36,7 @@ export const Latests = ({ data, parentField = "" }) => {
                   >
                     <a className="flex flex-col mb-12 overflow-hidden cursor-pointer group">
                       <div className="flex-shrink-0">
-                        {serie.meta?.cover && (
+                        {serie?.cover && (
                           <img
                             className="object-cover w-full aspect-4/3"
                             alt=""

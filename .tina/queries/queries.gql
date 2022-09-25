@@ -34,8 +34,8 @@ query seriesPublishedQuery {
         title
         description
         summary
+        cover
         meta {
-          cover
           camera
           film
           tags
@@ -61,8 +61,8 @@ query seriesFeaturedQuery {
         title
         description
         summary
+        cover
         meta {
-          cover
           camera
           film
           tags
@@ -85,8 +85,8 @@ query seriesLatestsQuery {
         title
         description
         summary
+        cover
         meta {
-          cover
           camera
           film
           tags

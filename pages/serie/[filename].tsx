@@ -25,6 +25,7 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
       title,
       description,
       summary,
+      cover,
     } = serie;
 
     return (
@@ -47,6 +48,7 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
             meta,
             publishedAt,
             title,
+            cover,
             description,
             summary,
           }}

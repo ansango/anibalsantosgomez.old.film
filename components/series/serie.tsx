@@ -19,6 +19,7 @@ export type SerieProps = {
   meta: SerieQuery["serie"]["meta"];
   publishedAt: SerieQuery["serie"]["publishedAt"];
   title: SerieQuery["serie"]["title"];
+  cover: SerieQuery["serie"]["cover"];
   description: SerieQuery["serie"]["description"];
   summary: SerieQuery["serie"]["summary"];
   prev?: Pagination | null;
@@ -29,7 +30,7 @@ const Pagination: FC<{
   prev?: Pagination | null;
   next?: Pagination | null;
 }> = ({ next, prev }) => {
-  const { color, mono } = useTheme();
+  const { mono } = useTheme();
   return (
     <Container className="grid grid-cols-2 gap-5">
       {prev && (
@@ -40,7 +41,9 @@ const Pagination: FC<{
             Previous
           </h4>
           <Link href={prev.route} passHref>
-            <a className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[700][mono]}`}>
+            <a
+              className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[700][mono]}`}
+            >
               {prev.title}
             </a>
           </Link>
@@ -55,7 +58,9 @@ const Pagination: FC<{
           </h4>
 
           <Link href={`${next.route}`} passHref>
-            <a className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[700][mono]}`}>
+            <a
+              className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[700][mono]}`}
+            >
               {next.title}
             </a>
           </Link>
@@ -70,6 +75,7 @@ export const Serie: FC<SerieProps> = ({
   bodyHighlight,
   description,
   meta,
+  cover,
   publishedAt,
   summary,
   title,
@@ -85,7 +91,7 @@ export const Serie: FC<SerieProps> = ({
             headline: title,
             tagline: description,
             image: {
-              src: meta.cover,
+              src: cover,
               alt: title,
             },
             text: summary,
