@@ -7,7 +7,7 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
     <>
       {props.blocks
-        ? props.blocks.map(function (block, i) {
+        ? props.blocks.map((block, i) => {
             switch (block.__typename) {
               case "PageBlocksContent":
                 return (
@@ -16,7 +16,7 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
                     key={i + block.__typename}
                     highlight={block.highlight}
                   >
-                    <Content data={block.body} />
+                    <Content body={block.body} />
                   </WrapperContent>
                 );
               case "PageBlocksHero":

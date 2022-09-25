@@ -150,10 +150,10 @@ export const components: Components<{
 };
 
 export const Content: FC<{
-  data?: { body: SerieProps["body"] };
+  body: SerieProps["body"];
   parentField?: string;
-}> = ({ data }) => {
-  return <TinaMarkdown content={data.body} components={components} />;
+}> = ({ body }) => {
+  return <TinaMarkdown content={body} components={components} />;
 };
 
 export const contentBlockSchema: TinaTemplate = {
