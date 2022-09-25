@@ -107,25 +107,24 @@ export const Series = ({ data, parentField = "" }) => {
     <Section>
       <Container>
         {loading && <div>Loading...</div>}
-        {series?.length > 0 ? (
-          <div className="space-y-16">
-            <Searcher
-              onSearch={(e) => setSearchValue(e.target.value)}
-              placeholder={configSearch.placeholder}
-            />
-            <div className="space-y-5 sm:space-y-0">
-              <div className="relative">
-                <div
-                  className={`pb-4 border-b ${monoBordersColors[600][mono]}`}
+
+        <div className="space-y-16">
+          <Searcher
+            onSearch={(e) => setSearchValue(e.target.value)}
+            placeholder={configSearch.placeholder}
+          />
+          <div className="space-y-5 sm:space-y-0">
+            <div className="relative">
+              <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
+                <h2
+                  className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
+                  data-tinafield={`${parentField}.title`}
                 >
-                  <h2
-                    className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
-                    data-tinafield={`${parentField}.title`}
-                  >
-                    {data.title}
-                  </h2>
-                </div>
+                  {data.title}
+                </h2>
               </div>
+            </div>
+            {series?.length > 0 ? (
               <div
                 className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
               >
@@ -170,14 +169,14 @@ export const Series = ({ data, parentField = "" }) => {
                   );
                 })}
               </div>
-            </div>
-            <Pagination
-              onPagination={onPagination}
-              currentPage={currentPage}
-              pageNumbers={pageNumbers}
-            />
+            ) : null}
           </div>
-        ) : null}
+          <Pagination
+            onPagination={onPagination}
+            currentPage={currentPage}
+            pageNumbers={pageNumbers}
+          />
+        </div>
       </Container>
     </Section>
   );

@@ -17,17 +17,17 @@ export const Featured = ({ data, parentField = "" }) => {
     <Section>
       <Container className="py-6 lg:py-12">
         {loading && <div>Loading...</div>}
-        {series?.length > 0 ? (
-          <>
-            <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
-              <h2
-                className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
-                data-tinafield={`${parentField}.title`}
-              >
-                {data.title}
-              </h2>
-            </div>
 
+        <>
+          <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
+            <h2
+              className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
+              data-tinafield={`${parentField}.title`}
+            >
+              {data.title}
+            </h2>
+          </div>
+          {series?.length > 0 ? (
             <div className="relative mx-auto max-w-7xl">
               <div className="grid gap-8 grid-cols-12 mx-auto mt-12">
                 {lastSerie && (
@@ -128,8 +128,8 @@ export const Featured = ({ data, parentField = "" }) => {
                 </div>
               </div>
             </div>
-          </>
-        ) : null}
+          ) : null}
+        </>
       </Container>
     </Section>
   );

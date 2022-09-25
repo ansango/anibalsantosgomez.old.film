@@ -65,7 +65,7 @@ const renderHero = (
             <Container>
               <Image
                 alt={image.alt}
-                src={image.alt}
+                src={image.src}
                 parentField={parentField}
               />
             </Container>
@@ -102,7 +102,7 @@ const renderHero = (
             <Container>
               <Image
                 alt={image.alt}
-                src={image.alt}
+                src={image.src}
                 parentField={parentField}
               />
             </Container>
