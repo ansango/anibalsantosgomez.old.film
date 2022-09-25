@@ -40,7 +40,7 @@ const Pagination: FC<{
             Previous
           </h4>
           <Link href={prev.route} passHref>
-            <a className={`line-clamp-1 ${monoTextColors[700][mono]}`}>
+            <a className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[700][mono]}`}>
               {prev.title}
             </a>
           </Link>
@@ -55,7 +55,7 @@ const Pagination: FC<{
           </h4>
 
           <Link href={`${next.route}`} passHref>
-            <a className={`line-clamp-1 ${monoTextColors[700][mono]}`}>
+            <a className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[700][mono]}`}>
               {next.title}
             </a>
           </Link>
