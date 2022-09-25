@@ -15,7 +15,7 @@
       },
       {
         "href": "about",
-        "label": "About"
+        "label": "Sobre mi"
       }
     ]
   },
@@ -23,7 +23,7 @@
     "links": [
       {
         "href": "",
-        "label": "Home"
+        "label": "Inicio"
       },
       {
         "href": "series",
@@ -31,7 +31,7 @@
       },
       {
         "href": "about",
-        "label": "About"
+        "label": "Sobre mi"
       }
     ],
     "social": [

@@ -28,21 +28,6 @@ export const formatDate = (date, locale = "en-US") => {
   return now;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const countPhotos = (serie: any) => {
-  const photosLength = serie._body?.children
-    .filter((child) => child.type === "p")
-    .map((child) => child.children)
-    .filter((child) => child[0].type === "img").length;
-  const result =
-    photosLength > 1
-      ? `${photosLength} photos`
-      : photosLength === 1
-      ? `${photosLength} photo`
-      : "";
-  return result;
-};
-
 export type ErrorFetcher = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error: any;

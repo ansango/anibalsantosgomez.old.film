@@ -49,7 +49,7 @@ const schema = defineSchema({
           name: "title",
           type: "string",
           ui: {
-            defaultValue: "This is the title",
+            defaultValue: "Éste es el titulo",
           },
         },
         {
@@ -57,7 +57,7 @@ const schema = defineSchema({
           name: "description",
           type: "string",
           ui: {
-            defaultValue: "This is a short description",
+            defaultValue: "Ésta es una descripción corta",
           },
         },
         {
@@ -66,7 +66,7 @@ const schema = defineSchema({
           type: "string",
           ui: {
             component: "textarea",
-            defaultValue: "This is a long description",
+            defaultValue: "Esta es una descripción mucho más larga",
           },
         },
         {

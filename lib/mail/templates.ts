@@ -1,5 +1,5 @@
 export const clientHtml = ({
-  lang = "en",
+  lang = "es",
   name,
 }: {
   lang: string;

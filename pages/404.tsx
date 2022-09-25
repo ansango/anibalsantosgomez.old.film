@@ -8,15 +8,15 @@ export default function FourOhFour() {
     <Layout
       seo={{
         ...seoConfig,
-        title: "Not found",
-        description: "This Page does not exist",
+        title: "No encontrada",
+        description: "Esta página no existe",
       }}
     >
       <Container>
         <Hero
           data={{
-            headline: "404 - Page Not Found",
-            text: "The page you are looking for does not exist.",
+            headline: "404 - Página no encontrada",
+            text: "Esta página no existe",
             type: "center",
           }}
         />

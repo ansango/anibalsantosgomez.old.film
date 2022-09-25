@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="es">
       <Head>
         <link href="/site.webmanifest" rel="manifest" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

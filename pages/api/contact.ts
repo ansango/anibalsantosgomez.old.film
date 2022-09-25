@@ -6,7 +6,7 @@ import { clientHtml, submission } from "../../lib/mail/templates";
 const handler = nc<NextApiRequest, NextApiResponse>();
 
 handler.post(async (req, res) => {
-  const { contactForm, lang = "en" } = req.body as {
+  const { contactForm, lang = "es" } = req.body as {
     contactForm: { name: string; email: string; message: string };
     lang: string | undefined;
   };

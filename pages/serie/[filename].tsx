@@ -38,7 +38,7 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
           description: serie.seo?.description,
           route: props.route,
           date: serie.publishedAt,
-          image: serie.meta?.cover,
+          image: serie.cover,
         }}
       >
         <Serie

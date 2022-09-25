@@ -16,10 +16,10 @@ import { useAllSeriesQuery } from "../../lib/hooks";
 import { useState } from "react";
 import { Icon } from "../util/icon";
 
-const Searcher = ({ onSearch, placeholder }) => {
+const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   const { mono } = useTheme();
   return (
-    <div className="relative max-w-lg">
+    <div className="relative max-w-lg" data-tinafield={`${parentField}.search`}>
       <input
         aria-label="Search"
         type="text"
@@ -102,17 +102,18 @@ export const Series = ({ data, parentField = "" }) => {
   ) {
     pageNumbers.push(i);
   }
-  //TODO:CAMBIAR LOADINGS
+
   return (
     <Section>
       <Container>
-        {loading && <div>Loading...</div>}
-
         <div className="space-y-16">
-          <Searcher
-            onSearch={(e) => setSearchValue(e.target.value)}
-            placeholder={configSearch.placeholder}
-          />
+          {data.search.active && (
+            <Searcher
+              onSearch={(e) => setSearchValue(e.target.value)}
+              placeholder={configSearch.placeholder}
+              parentField={parentField}
+            />
+          )}
           <div className="space-y-5 sm:space-y-0">
             <div className="relative">
               <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
@@ -169,13 +170,22 @@ export const Series = ({ data, parentField = "" }) => {
                   );
                 })}
               </div>
-            ) : null}
+            ) : (
+              <div
+                className="py-10"
+                data-tinafield={`${parentField}.noDataMessage`}
+              >
+                {data.noDataMessage}
+              </div>
+            )}
           </div>
-          <Pagination
-            onPagination={onPagination}
-            currentPage={currentPage}
-            pageNumbers={pageNumbers}
-          />
+          {data.search.active && (
+            <Pagination
+              onPagination={onPagination}
+              currentPage={currentPage}
+              pageNumbers={pageNumbers}
+            />
+          )}
         </div>
       </Container>
     </Section>
@@ -188,7 +198,13 @@ export const allSeriesSchema: TinaTemplate = {
   ui: {
     previewSrc: "",
     defaultItem: {
-      title: "All Series",
+      title: "Series",
+      noDataMessage: "No hay series",
+      search: {
+        placeholder: "Buscar",
+        active: false,
+        maxPosts: 3,
+      },
     },
   },
   fields: [
@@ -196,6 +212,11 @@ export const allSeriesSchema: TinaTemplate = {
       name: "title",
       label: "Title",
       type: "string",
+    },
+    {
+      type: "string",
+      name: "noDataMessage",
+      label: "No data message",
     },
     {
       name: "search",

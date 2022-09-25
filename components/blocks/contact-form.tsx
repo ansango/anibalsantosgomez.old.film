@@ -24,7 +24,7 @@ type Props = {
   parentField: string;
 };
 
-export const ContactForm: FC<Props> = ({ data, parentField, lang = "en" }) => {
+export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
   const { mono, color } = useTheme();
   const { email, fullName, message, submit } = data;
 
@@ -89,12 +89,12 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "en" }) => {
               />
               {errors.name?.type === "required" && (
                 <div className="text-red-600 dark:text-red-500">
-                  Please enter your name
+                  Introduce tu nombre
                 </div>
               )}
               {errors.name?.type === "minLength" && (
                 <div className="text-red-600 dark:text-red-500">
-                  Your name must be at least 3 characters long
+                  Tu nombre debe tener al menos 3 caracteres
                 </div>
               )}
             </div>
@@ -120,12 +120,12 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "en" }) => {
               />
               {errors.email?.type === "required" && (
                 <div className="text-red-600 dark:text-red-500">
-                  Please enter your email
+                  Introduce tu email
                 </div>
               )}
               {errors.email?.type === "pattern" && (
                 <div className="text-red-600 dark:text-red-500">
-                  Please enter a valid email address
+                  Introduce un email válido
                 </div>
               )}
             </div>
@@ -148,12 +148,12 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "en" }) => {
               ></textarea>
               {errors.message?.type === "required" && (
                 <div className="text-red-600 dark:text-red-500">
-                  Please enter a message
+                  Introduce tu mensaje
                 </div>
               )}
               {errors.message?.type === "minLength" && (
                 <div className="text-red-600 dark:text-red-500">
-                  Your message must be at least 10 characters long
+                  Tu mensaje debe tener al menos 10 caracteres
                 </div>
               )}
             </div>
@@ -184,23 +184,23 @@ export const contactFormSchema: TinaTemplate = {
     previewSrc: "",
     defaultItem: {
       titleForm: {
-        label: "Contact Us",
+        label: "Hablemos",
         active: true,
       },
       fullName: {
-        label: "Name",
-        placeholder: "Enter your name",
+        label: "Nombre",
+        placeholder: "Tu nombre completo",
       },
       email: {
         label: "Email",
-        placeholder: "Enter your email",
+        placeholder: "Tu dirección de email",
       },
       message: {
-        label: "Message",
-        placeholder: "Say hello!",
+        label: "Mensaje",
+        placeholder: "Di hola!",
       },
       submit: {
-        label: "Send",
+        label: "Enviar",
         disabled: false,
       },
     },

@@ -78,7 +78,7 @@ export const Footer = ({ data, rawData }) => {
                   <h3
                     className={`text-xs font-semibold tracking-wider ${primaryTextColors[color]} uppercase`}
                   >
-                    Navigation
+                    Mapa
                   </h3>
                   <ul role="list" className="mt-4 space-y-4">
                     {internalLinks.map((link) => link.el)}
@@ -102,8 +102,8 @@ export const Footer = ({ data, rawData }) => {
             <span
               className={`mt-2 text-sm font-light ${monoTextColors[500][mono]}`}
             >
-              Copyright © 2013 - {new Date().getFullYear()}. Anibal Santos. All
-              rights reserved.
+              Copyright © 2013 - {new Date().getFullYear()}. Anibal Santos.
+              Todos los derechos reservados.
             </span>
           </div>
         </Container>

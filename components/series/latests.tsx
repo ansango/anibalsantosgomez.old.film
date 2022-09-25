@@ -1,7 +1,7 @@
 import { TinaTemplate } from "tinacms";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-import { formatDate, countPhotos } from "../../lib/utils";
+import { formatDate } from "../../lib/utils";
 import Link from "next/link";
 import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useTheme } from "../layout";
@@ -10,12 +10,10 @@ import { useLatestSeriesQuery } from "../../lib/hooks";
 export const Latests = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
   const { series, loading } = useLatestSeriesQuery({ init: 0, limit: 6 });
-  //TODO:CAMBIAR LOADINGS
+
   return (
     <Section>
       <Container className="py-6 lg:py-12">
-        {loading && <div>Loading...</div>}
-
         <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
           <h2
             className={`text-2xl font-semibold leading-6 ${monoTextColors[800][mono]}`}
@@ -39,7 +37,7 @@ export const Latests = ({ data, parentField = "" }) => {
                         <img
                           className="object-cover w-full aspect-4/3"
                           alt=""
-                          src={serie.meta.cover}
+                          src={serie.cover}
                           width={2048}
                           height={1365}
                         />
@@ -54,8 +52,6 @@ export const Latests = ({ data, parentField = "" }) => {
                           <time dateTime="2020-03-10">
                             {formatDate(serie.publishedAt)}
                           </time>
-                          <span aria-hidden="true"> · </span>
-                          <span> {countPhotos(serie)}</span>
                         </div>
 
                         <div className="mt-2 space-y-6">
@@ -77,7 +73,14 @@ export const Latests = ({ data, parentField = "" }) => {
               ))}
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div
+            className="py-10"
+            data-tinafield={`${parentField}.noDataMessage`}
+          >
+            {data.noDataMessage}
+          </div>
+        )}
       </Container>
     </Section>
   );
@@ -89,7 +92,8 @@ export const latestsBlockSchema: TinaTemplate = {
   ui: {
     previewSrc: "",
     defaultItem: {
-      title: "Latests Series",
+      title: "Lo último",
+      noDataMessage: "No hay series",
     },
   },
   fields: [
@@ -97,6 +101,11 @@ export const latestsBlockSchema: TinaTemplate = {
       type: "string",
       name: "title",
       label: "Title",
+    },
+    {
+      type: "string",
+      name: "noDataMessage",
+      label: "No data message",
     },
   ],
 };

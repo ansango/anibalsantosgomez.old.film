@@ -2,7 +2,7 @@ import { TinaTemplate } from "tinacms";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import Link from "next/link";
-import { formatDate, countPhotos } from "../../lib/utils";
+import { formatDate } from "../../lib/utils";
 import { useTheme } from "../layout";
 import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useFeaturedSeriesQuery } from "../../lib/hooks";
@@ -12,12 +12,10 @@ export const Featured = ({ data, parentField = "" }) => {
   const { series, loading } = useFeaturedSeriesQuery({ init: 0, limit: 3 });
   const lastSerie = series?.filter((serie) => serie.priority === true)[0];
   const restSeries = series?.filter((serie) => serie.priority === false);
-  //TODO:CAMBIAR LOADINGS
+
   return (
     <Section>
       <Container className="py-6 lg:py-12">
-        {loading && <div>Loading...</div>}
-
         <>
           <div className={`pb-4 border-b ${monoBordersColors[600][mono]}`}>
             <h2
@@ -38,7 +36,7 @@ export const Featured = ({ data, parentField = "" }) => {
                           <img
                             className="object-cover w-full aspect-4/3"
                             alt=""
-                            src={lastSerie.meta.cover}
+                            src={lastSerie.cover}
                             width={2048}
                             height={1365}
                           />
@@ -53,8 +51,6 @@ export const Featured = ({ data, parentField = "" }) => {
                             <time dateTime="2020-03-10">
                               {formatDate(lastSerie.publishedAt)}
                             </time>
-                            <span aria-hidden="true"> · </span>
-                            <span>{countPhotos(lastSerie)}</span>
                           </div>
 
                           <div className="mt-2 space-y-6">
@@ -89,7 +85,7 @@ export const Featured = ({ data, parentField = "" }) => {
                               <img
                                 className="object-cover w-full aspect-4/3"
                                 alt=""
-                                src={serie.meta.cover}
+                                src={serie.cover}
                                 width={2048}
                                 height={1365}
                               />
@@ -104,8 +100,6 @@ export const Featured = ({ data, parentField = "" }) => {
                                 <time dateTime="2020-03-10">
                                   {formatDate(serie.publishedAt)}
                                 </time>
-                                <span aria-hidden="true"> · </span>
-                                <span> {countPhotos(serie)}</span>
                               </div>
 
                               <div className="mt-2 space-y-6">
@@ -128,7 +122,14 @@ export const Featured = ({ data, parentField = "" }) => {
                 </div>
               </div>
             </div>
-          ) : null}
+          ) : (
+            <div
+              className="py-10"
+              data-tinafield={`${parentField}.noDataMessage`}
+            >
+              {data.noDataMessage}
+            </div>
+          )}
         </>
       </Container>
     </Section>
@@ -141,7 +142,8 @@ export const featuredBlockSchema: TinaTemplate = {
   ui: {
     previewSrc: "",
     defaultItem: {
-      title: "Featured Series",
+      title: "Destacadas",
+      noDataMessage: "No hay series",
     },
   },
   fields: [
@@ -149,6 +151,11 @@ export const featuredBlockSchema: TinaTemplate = {
       type: "string",
       name: "title",
       label: "Title",
+    },
+    {
+      type: "string",
+      name: "noDataMessage",
+      label: "No Data Message",
     },
   ],
 };
