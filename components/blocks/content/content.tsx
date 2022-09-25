@@ -30,6 +30,8 @@ import {
   type DateTimeProps,
   DateTime,
   img,
+  type ContainerTextProps,
+  ContainerText,
 } from "./components";
 
 export const WrapperContent: FC<{
@@ -72,76 +74,10 @@ export const WrapperContent: FC<{
   );
 };
 
-const maxWidth = {
-  md: "max-w-lg",
-  lg: "max-w-xl",
-  xl: "max-w-2xl",
-  "2xl": "max-w-3xl",
-  "3xl": "max-w-4xl",
-  full: "",
-};
-
-const ContainerText = (props: {
-  children: TinaMarkdownContent;
-  size: "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
-}) => {
-  const render = (size) => {
-    switch (size) {
-      case "md": {
-        return (
-          <div className="max-w-lg">
-            <TinaMarkdown content={props.children} />
-          </div>
-        );
-      }
-
-      case "lg": {
-        return (
-          <div className="max-w-xl">
-            <TinaMarkdown content={props.children} />
-          </div>
-        );
-      }
-      case "xl": {
-        return (
-          <div className="max-w-2xl">
-            <TinaMarkdown content={props.children} />
-          </div>
-        );
-      }
-      case "2xl": {
-        return (
-          <div className="max-w-3xl">
-            <TinaMarkdown content={props.children} />
-          </div>
-        );
-      }
-      case "3xl": {
-        return (
-          <div className="max-w-4xl">
-            <TinaMarkdown content={props.children} />
-          </div>
-        );
-      }
-      default: {
-        return (
-          <div>
-            <TinaMarkdown content={props.children} />
-          </div>
-        );
-      }
-    }
-  };
-  return <>{render(props.size)}</>;
-};
-
 export const components: Components<{
   BlockQuote: BlockQuoteProps;
   DateTime: DateTimeProps;
-  ContainerText: {
-    children: TinaMarkdownContent;
-    size: "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
-  };
+  ContainerText: ContainerTextProps;
 }> = {
   BlockQuote,
   DateTime,
