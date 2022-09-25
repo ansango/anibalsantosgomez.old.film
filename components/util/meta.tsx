@@ -22,7 +22,7 @@ export const Meta: FC<{ meta: SerieProps["meta"] }> = ({ meta }) => {
         <p>
           <span>Period: </span>
           <span>
-            {formatDate(shot.start)} / {formatDate(shot.start)}
+            {formatDate(shot.start)} / {formatDate(shot.end)}
           </span>
         </p>
       )}
