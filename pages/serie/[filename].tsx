@@ -74,7 +74,7 @@ export const getStaticProps = async ({ params }) => {
 
   const prevSerie = allSeries[serieIndex - 1] || null;
   const nextSerie = allSeries[serieIndex + 1] || null;
-  console.log("prevSerie", prevSerie);
+
   const prev =
     (prevSerie && { title: prevSerie.title, route: prevSerie._sys.filename }) ||
     null;

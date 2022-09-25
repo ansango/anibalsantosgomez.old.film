@@ -50,7 +50,6 @@ export const useLatestSeriesQuery = ({ init = 0, limit = 6 }) => {
     client.queries
       .seriesLatestsQuery()
       .then((res) => {
-        console.log(res);
         setSeries({
           loading: false,
           series: res.data.serieConnection.edges
