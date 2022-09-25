@@ -7,12 +7,13 @@ import FourOhFour from "../404";
 import { seoConfig } from "../../components/layout/layout";
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
+  const { prev, next } = props;
+
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
     data: props.data,
   });
-
   const { serie } = data;
 
   if (serie && serie.isPublished) {
@@ -49,6 +50,8 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
             description,
             summary,
           }}
+          next={next}
+          prev={prev}
         />
       </Layout>
     );
@@ -59,13 +62,34 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
 export default SeriePage;
 
 export const getStaticProps = async ({ params }) => {
+  const allSeries = await (
+    await client.queries.serieConnection()
+  ).data.serieConnection.edges.map(({ node }) => node);
+
+  const serieIndex = allSeries.findIndex(
+    (serie) => serie._sys.filename === params.filename
+  );
+
+  const prevSerie = allSeries[serieIndex - 1] || null;
+  const nextSerie = allSeries[serieIndex + 1] || null;
+  console.log("prevSerie", prevSerie);
+  const prev =
+    (prevSerie && { title: prevSerie.title, route: prevSerie._sys.filename }) ||
+    null;
+  const next =
+    (nextSerie && { title: nextSerie.title, route: nextSerie._sys.filename }) ||
+    null;
+
   const tinaProps = await client.queries.serieQuery({
     relativePath: `${params.filename}.mdx`,
   });
+
   return {
     props: {
       ...tinaProps,
       route: `serie/${params.filename}`,
+      prev,
+      next,
     },
   };
 };
@@ -74,7 +98,9 @@ export const getStaticPaths = async () => {
   const postsListData = await client.queries.serieConnection();
   return {
     paths: postsListData.data.serieConnection.edges.map((post) => ({
-      params: { filename: post.node._sys.filename },
+      params: {
+        filename: post.node._sys.filename,
+      },
     })),
     fallback: "blocking",
   };
