@@ -16,7 +16,7 @@ export const kebabParser = (str) => {
     .toLowerCase();
 };
 
-export const formatDate = (date, locale = "en-US") => {
+export const formatDate = (date, locale = "es-ES") => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",
