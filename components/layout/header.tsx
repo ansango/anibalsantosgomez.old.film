@@ -51,7 +51,7 @@ export const Header = ({ data }) => {
             </button>
             {isOpen && (
               <div
-                className="absolute right-5 z-10 mt-4 w-24 p-2 origin-top-right rounded-md bg-white dark:bg-black ring-1 ring-black dark:ring-white ring-opacity-5 focus:outline-none"
+                className="absolute right-8 sm:right-10 z-10 mt-4 w-24 p-2 origin-top-right rounded-md bg-neutral-100/20 dark:bg-neutral-800/30 ring-1 ring-neutral-700 dark:ring-neutral-500 ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-hidden={!isOpen}
               >
