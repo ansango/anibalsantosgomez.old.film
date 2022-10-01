@@ -183,7 +183,7 @@ export const contactFormSchema: Template = {
   label: "Contact Form",
   name: "contactForm",
   ui: {
-    previewSrc: "/uploads/avatar.jpeg",
+    previewSrc: "",
     defaultItem: {
       titleForm: {
         label: "Hablemos",
