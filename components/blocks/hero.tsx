@@ -57,11 +57,11 @@ const renderHero = (
               </div>
             </div>
           </Container>
-          {image?.src && (
+          {image?.url && (
             <Container>
               <Image
                 alt={image.alt}
-                src={image.src}
+                url={image.url}
                 parentField={parentField}
                 aspectRatio={image.aspectRatio}
               />
@@ -95,11 +95,11 @@ const renderHero = (
               </div>
             </div>
           </Container>
-          {image?.src && (
+          {image?.url && (
             <Container>
               <Image
                 alt={image.alt}
-                src={image.src}
+                url={image.url}
                 parentField={parentField}
                 aspectRatio={image.aspectRatio}
               />
@@ -123,8 +123,8 @@ const renderHero = (
                     className={`absolute rounded-full -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 ${monoBgColorsBlur[mono]}`}
                   ></div>
                   <div className="relative">
-                    {image?.src && (
-                      <ImageSerie alt={image.alt} src={image.src} />
+                    {image?.url && (
+                      <ImageSerie alt={image.alt} url={image.url} />
                     )}
                   </div>
                 </div>
@@ -216,8 +216,8 @@ export const heroBlockSchema: Template = {
       name: "image",
       fields: [
         {
-          name: "src",
-          label: "Image Source",
+          name: "url",
+          label: "URL",
           type: "image",
         },
         {
