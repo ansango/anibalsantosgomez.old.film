@@ -91,7 +91,7 @@ export const Serie: FC<SerieProps> = ({
             headline: title,
             tagline: description,
             image: {
-              src: cover,
+              url: cover,
               alt: title,
             },
             text: summary,
