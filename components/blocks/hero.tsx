@@ -64,6 +64,7 @@ const renderHero = (
                 url={image.url}
                 parentField={parentField}
                 aspectRatio={image.aspectRatio}
+                loading="eager"
               />
             </Container>
           )}
@@ -102,6 +103,7 @@ const renderHero = (
                 url={image.url}
                 parentField={parentField}
                 aspectRatio={image.aspectRatio}
+                loading="eager"
               />
             </Container>
           )}

@@ -87,7 +87,7 @@ export const metaSchema: TinaField = {
 export const defaultMeta = {
   camera: cameras[1],
   film: films[1],
-  shotPeriod: {
+  shot: {
     start: new Date().toISOString(),
     end: new Date().toISOString(),
   },

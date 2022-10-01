@@ -1,10 +1,18 @@
-import { FC } from "react";
+import { type FC, useEffect } from "react";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export type ImageProps = {
   url?: string;
   alt?: string;
   parentField?: string;
   aspectRatio?: "4/3" | "4/5" | string;
+  loading?: "lazy" | "eager";
+};
+
+const variants: Variants = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.35 } },
+  hidden: { opacity: 0, scale: 1 },
 };
 
 export const Image: FC<ImageProps> = ({
@@ -12,30 +20,68 @@ export const Image: FC<ImageProps> = ({
   url,
   parentField = "",
   aspectRatio = "4/3",
+  loading = "lazy",
 }) => {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
   const aRatio = aspectRatio === "4/5" ? "aspect-4/5" : "aspect-4/3";
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
   return (
     <>
       {url ? (
-        <span
+        <motion.span
           className="flex flex-col items-center justify-center"
           data-tinafield={`${parentField}.image`}
+          ref={ref}
+          variants={variants}
+          initial="hidden"
+          animate={control}
         >
           <img
+            loading={loading}
             className={`object-cover w-full ${aRatio}`}
             alt={alt}
             src={url}
           />
-        </span>
+        </motion.span>
       ) : null}
     </>
   );
 };
 
-export const ImageSerie: FC<ImageProps> = ({ alt, url }) => (
-  <img
-    className="object-cover object-center mx-auto shadow-2xl dark:shadow-black aspect-square"
-    alt={alt}
-    src={url}
-  />
-);
+export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+  return (
+    <motion.span
+      className="flex flex-col items-center justify-center"
+      ref={ref}
+      variants={variants}
+      initial="hidden"
+      animate={control}
+    >
+      <img
+        loading={loading}
+        className="object-cover object-center mx-auto shadow-2xl dark:shadow-black aspect-square"
+        alt={alt}
+        src={url}
+      />
+    </motion.span>
+  );
+};
