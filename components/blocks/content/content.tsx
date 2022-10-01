@@ -25,9 +25,9 @@ import {
   BlockQuote,
   type DateTimeProps,
   DateTime,
-  type ImgProps,
-  img,
+  type ImageProps,
   Image,
+  img,
   type ContainerTextProps,
   ContainerText,
 } from "./components";
@@ -77,7 +77,7 @@ export const components: Components<{
   BlockQuote: BlockQuoteProps;
   DateTime: DateTimeProps;
   ContainerText: ContainerTextProps;
-  Image: ImgProps;
+  Image: ImageProps;
 }> = {
   BlockQuote,
   DateTime,
@@ -156,6 +156,28 @@ export const contentBlockSchema: Template = {
               name: "children",
               label: "Text",
               type: "rich-text",
+            },
+          ],
+        },
+        {
+          name: "Image",
+          label: "Image",
+          fields: [
+            {
+              name: "url",
+              label: "URL",
+              type: "image",
+            },
+            {
+              name: "alt",
+              label: "Alt Text",
+              type: "string",
+            },
+            {
+              name: "aspectRatio",
+              label: "Aspect Ratio",
+              type: "string",
+              options: ["4/3", "4/5"],
             },
           ],
         },
