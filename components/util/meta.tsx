@@ -11,16 +11,16 @@ export const Meta: FC<{ meta: SerieProps["meta"] }> = ({ meta }) => {
   return (
     <>
       <p>
-        <span>Camera: </span>
+        <span>Cámara: </span>
         <span>{camera}</span>
       </p>
       <p>
-        <span>Film: </span>
+        <span>Película: </span>
         <span>{film}</span>
       </p>
       {shot && (
         <p>
-          <span>Period: </span>
+          <span>Periodo: </span>
           <span>
             {formatDate(shot.start)} / {formatDate(shot.end)}
           </span>
@@ -91,5 +91,5 @@ export const defaultMeta = {
     start: new Date().toISOString(),
     end: new Date().toISOString(),
   },
-  tags: [tags[0], tags[1]],
+  tags: [tags[0], tags[6]],
 };

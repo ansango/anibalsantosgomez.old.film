@@ -6,7 +6,7 @@ import { type SerieQuery } from "../../.tina/__generated__/types";
 import Link from "next/link";
 import { Container } from "../util/container";
 import { useTheme } from "../layout";
-import { monoTextColors } from "../styles";
+import { monoRestColors, monoTextColors } from "../styles";
 
 type Pagination = {
   title: string;
@@ -33,39 +33,44 @@ const Pagination: FC<{
   const { mono } = useTheme();
   return (
     <Container className="grid grid-cols-2 gap-5">
-      {prev && (
-        <div className="text-left">
-          <h4
-            className={`text-xs tracking-wide italic ${monoTextColors[500][mono]}`}
-          >
-            Previous
-          </h4>
-          <Link href={prev.route} passHref>
-            <a
-              className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[700][mono]}`}
+      <div className="text-left group">
+        {prev && (
+          <>
+            <h4
+              className={`text-xs tracking-wide italic ${monoTextColors[500][mono]}`}
             >
-              {prev.title}
-            </a>
-          </Link>
-        </div>
-      )}
-      {next && (
-        <div className="text-right">
-          <h4
-            className={`text-xs tracking-wide italic ${monoTextColors[500][mono]}`}
-          >
-            Next
-          </h4>
+              Anterior
+            </h4>
+            <Link href={prev.route} passHref>
+              <a
+                className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+              >
+                {prev.title}
+              </a>
+            </Link>
+          </>
+        )}
+      </div>
 
-          <Link href={`${next.route}`} passHref>
-            <a
-              className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[700][mono]}`}
+      <div className="text-right group">
+        {next && (
+          <>
+            <h4
+              className={`text-xs tracking-wide italic ${monoTextColors[500][mono]}`}
             >
-              {next.title}
-            </a>
-          </Link>
-        </div>
-      )}
+              Siguiente
+            </h4>
+
+            <Link href={`${next.route}`} passHref>
+              <a
+                className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+              >
+                {next.title}
+              </a>
+            </Link>
+          </>
+        )}
+      </div>
     </Container>
   );
 };

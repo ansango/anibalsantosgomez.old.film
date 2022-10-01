@@ -34,11 +34,11 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
         data={data.global as any}
         seo={{
           ...seoConfig,
-          title: serie.seo?.title,
-          description: serie.seo?.description,
+          title: title,
+          description: description,
           route: props.route,
-          date: serie.publishedAt,
-          image: serie.cover,
+          date: publishedAt,
+          image: cover,
         }}
       >
         <motion.div
@@ -76,9 +76,9 @@ export const getStaticProps = async ({ params }) => {
     await client.queries.serieConnection()
   ).data.serieConnection.edges.map(({ node }) => node);
 
-  const serieIndex = allSeries.findIndex(
-    (serie) => serie._sys.filename === params.filename
-  );
+  const serieIndex = allSeries
+    .sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1))
+    .findIndex((serie) => serie._sys.filename === params.filename);
 
   const prevSerie = allSeries[serieIndex - 1] || null;
   const nextSerie = allSeries[serieIndex + 1] || null;

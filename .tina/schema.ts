@@ -51,20 +51,18 @@ const schema = defineSchema({
         },
       },
       defaultItem: () => ({
-        seo: defaultSeo,
         meta: defaultMeta,
         sequence: 1,
         title: "Éste es el titulo",
         description: "Ésta es una descripción corta",
         summary: "Ésta es una descripción larga",
         cover: "https://picsum.photos/2048/1365",
-        bodyHighlight: false,
+        bodyHighlight: true,
         isPublished: false,
         isFeatured: false,
         publishedAt: new Date().toISOString(),
       }),
       fields: [
-        { ...seoSchema },
         { ...metaSchema },
         {
           label: "Sequence",
