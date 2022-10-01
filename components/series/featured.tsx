@@ -1,4 +1,3 @@
-import { TinaTemplate } from "tinacms";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import Link from "next/link";
@@ -6,6 +5,7 @@ import { formatDate } from "../../lib/utils";
 import { useTheme } from "../layout";
 import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useFeaturedSeriesQuery } from "../../lib/hooks";
+import { Template } from "../../.tina/schema";
 
 export const Featured = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
@@ -136,7 +136,7 @@ export const Featured = ({ data, parentField = "" }) => {
   );
 };
 
-export const featuredBlockSchema: TinaTemplate = {
+export const featuredBlockSchema: Template = {
   name: "featuredSeries",
   label: "Featured Series",
   ui: {

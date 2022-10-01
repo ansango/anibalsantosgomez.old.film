@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://anibalsantosgomez.com/series</loc>
-  </url>
-
-  <url>
-    <loc>https://anibalsantosgomez.com/about</loc>
-  </url>
-
-  <url>
     <loc>https://anibalsantosgomez.com/</loc>
   </url>
 
   <url>
-    <loc>https://anibalsantosgomez.com/series/prueba</loc>
+    <loc>https://anibalsantosgomez.com/series</loc>
   </url>
 
   <url>
-    <loc>https://anibalsantosgomez.com/series/prueba2</loc>
-  </url>
-
-  <url>
-    <loc>https://anibalsantosgomez.com/series/prueba3</loc>
+    <loc>https://anibalsantosgomez.com/sobremi</loc>
   </url>
 </urlset>

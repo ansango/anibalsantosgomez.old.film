@@ -1,4 +1,3 @@
-import { TinaTemplate } from "tinacms";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { formatDate } from "../../lib/utils";
@@ -6,6 +5,7 @@ import Link from "next/link";
 import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useTheme } from "../layout";
 import { useLatestSeriesQuery } from "../../lib/hooks";
+import { Template } from "../../.tina/schema";
 
 export const Latests = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
@@ -86,7 +86,7 @@ export const Latests = ({ data, parentField = "" }) => {
   );
 };
 
-export const latestsBlockSchema: TinaTemplate = {
+export const latestsBlockSchema: Template = {
   label: "Latests Series",
   name: "latestsSeries",
   ui: {

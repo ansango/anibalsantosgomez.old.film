@@ -9,12 +9,12 @@ import {
 } from "../styles";
 
 import { useTheme } from "../layout";
-import { TinaTemplate } from "tinacms";
 import { Section } from "../util/section";
 import { Container } from "../util/container";
 import { useAllSeriesQuery } from "../../lib/hooks";
 import { useState } from "react";
 import { Icon } from "../util/icon";
+import { Template } from "../../.tina/schema";
 
 const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   const { mono } = useTheme();
@@ -192,7 +192,7 @@ export const Series = ({ data, parentField = "" }) => {
   );
 };
 
-export const allSeriesSchema: TinaTemplate = {
+export const allSeriesSchema: Template = {
   label: "All series",
   name: "allSeries",
   ui: {
