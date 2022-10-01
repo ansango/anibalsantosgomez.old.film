@@ -2,7 +2,7 @@ import { onPostContactForm } from "../../lib/services/contact";
 import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container } from "..//util/container";
-import { TinaTemplate } from "tinacms";
+import { type TinaCloudSchema } from "tinacms";
 
 import {
   baseInputStyles,
@@ -16,6 +16,8 @@ import { useTheme } from "../layout";
 import { Section } from "../util/section";
 import { Spinner } from "../util/spinner";
 import { Toast, toastError, toastSuccess } from "../util/toast";
+import { TinaField } from "tinacms";
+import { Template } from "../../.tina/schema";
 
 type Props = {
   lang?: string;
@@ -177,11 +179,11 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
   );
 };
 
-export const contactFormSchema: TinaTemplate = {
+export const contactFormSchema: Template = {
   label: "Contact Form",
   name: "contactForm",
   ui: {
-    previewSrc: "",
+    previewSrc: "/uploads/avatar.jpeg",
     defaultItem: {
       titleForm: {
         label: "Hablemos",
@@ -210,6 +212,7 @@ export const contactFormSchema: TinaTemplate = {
       label: "Title Form",
       name: "titleForm",
       type: "object",
+
       fields: [
         {
           label: "Label",

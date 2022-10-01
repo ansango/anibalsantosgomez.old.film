@@ -77,18 +77,17 @@ export const seoSchema: TinaField = {
       label: "Title",
       name: "title",
       required: true,
-      ui: {
-        defaultValue: seoConfig.title,
-      },
     },
     {
       type: "string",
       label: "Description",
       name: "description",
       required: true,
-      ui: {
-        defaultValue: seoConfig.description,
-      },
     },
   ],
+};
+
+export const defaultSeo = {
+  title: seoConfig.title,
+  description: seoConfig.description,
 };

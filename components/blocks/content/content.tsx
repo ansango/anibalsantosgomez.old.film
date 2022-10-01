@@ -1,8 +1,4 @@
-import {
-  Components,
-  TinaMarkdown,
-  TinaMarkdownContent,
-} from "tinacms/dist/rich-text";
+import { Components, TinaMarkdown } from "tinacms/dist/rich-text";
 import type { TinaTemplate } from "tinacms";
 import { type SerieProps } from "../../series/serie";
 import { type FC, type ReactNode } from "react";
@@ -29,10 +25,13 @@ import {
   BlockQuote,
   type DateTimeProps,
   DateTime,
+  type ImgProps,
   img,
+  Image,
   type ContainerTextProps,
   ContainerText,
 } from "./components";
+import { Template } from "../../../.tina/schema";
 
 export const WrapperContent: FC<{
   children: ReactNode;
@@ -78,10 +77,12 @@ export const components: Components<{
   BlockQuote: BlockQuoteProps;
   DateTime: DateTimeProps;
   ContainerText: ContainerTextProps;
+  Image: ImgProps;
 }> = {
   BlockQuote,
   DateTime,
   img,
+  Image,
   ContainerText,
 };
 
@@ -92,7 +93,7 @@ export const Content: FC<{
   return <TinaMarkdown content={body} components={components} />;
 };
 
-export const contentBlockSchema: TinaTemplate = {
+export const contentBlockSchema: Template = {
   name: "content",
   label: "Content",
   ui: {

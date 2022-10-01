@@ -1,23 +1,19 @@
 import { FC } from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
-import type { TinaTemplate } from "tinacms";
+
 import { useTheme } from "../layout";
 import { monoBgColorsBlur, monoTextColors, primaryTextColors } from "../styles";
 import { SerieProps } from "../series/serie";
 import { Meta } from "../util/meta";
-import { Image, ImageSerie } from "../util/image";
-
+import { Image, ImageSerie, type ImageProps } from "../util/image";
+import { Template } from "../../.tina/schema";
 type HeroData = {
   type?: "left" | "center" | "serie" | string;
   tagline?: string;
   headline?: string;
   text?: string;
-  image?: {
-    src?: string;
-    alt?: string;
-    parentField?: string;
-  };
+  image?: ImageProps;
   meta?: SerieProps["meta"];
 };
 
@@ -67,6 +63,7 @@ const renderHero = (
                 alt={image.alt}
                 src={image.src}
                 parentField={parentField}
+                aspectRatio={image.aspectRatio}
               />
             </Container>
           )}
@@ -104,6 +101,7 @@ const renderHero = (
                 alt={image.alt}
                 src={image.src}
                 parentField={parentField}
+                aspectRatio={image.aspectRatio}
               />
             </Container>
           )}
@@ -174,11 +172,12 @@ export const Hero: FC<{
   return <Section>{renderHero(data, parentField, color, mono)}</Section>;
 };
 
-export const heroBlockSchema: TinaTemplate = {
+export const heroBlockSchema: Template = {
   name: "hero",
   label: "Hero",
   ui: {
     previewSrc: "",
+
     defaultItem: {
       tagline: "Your tagline",
       headline: "This Big Text is Totally Awesome",
@@ -225,6 +224,13 @@ export const heroBlockSchema: TinaTemplate = {
           name: "alt",
           label: "Alt Text",
           type: "string",
+        },
+        {
+          name: "aspectRatio",
+          label: "Aspect Ratio",
+          type: "string",
+
+          options: ["4/3", "4/5"],
         },
       ],
     },

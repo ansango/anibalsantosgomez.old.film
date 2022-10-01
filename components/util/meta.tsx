@@ -45,9 +45,6 @@ export const metaSchema: TinaField = {
       name: "camera",
       type: "string",
       required: true,
-      ui: {
-        defaultValue: cameras[1],
-      },
       options: cameras,
     },
     {
@@ -55,9 +52,6 @@ export const metaSchema: TinaField = {
       name: "film",
       type: "string",
       required: true,
-      ui: {
-        defaultValue: films[1],
-      },
       options: films,
     },
 
@@ -71,22 +65,12 @@ export const metaSchema: TinaField = {
           name: "start",
           type: "datetime",
           required: true,
-          ui: {
-            dateFormat: "MMMM DD YYYY",
-            timeFormat: "HH:mm",
-            defaultValue: new Date().toISOString(),
-          },
         },
         {
           label: "End",
           name: "end",
           type: "datetime",
           required: true,
-          ui: {
-            dateFormat: "MMMM DD YYYY",
-            timeFormat: "HH:mm",
-            defaultValue: new Date().toISOString(),
-          },
         },
       ],
     },
@@ -96,9 +80,16 @@ export const metaSchema: TinaField = {
       type: "string",
       list: true,
       options: tags,
-      ui: {
-        defaultValue: [tags[0], tags[1]],
-      },
     },
   ],
+};
+
+export const defaultMeta = {
+  camera: cameras[1],
+  film: films[1],
+  shotPeriod: {
+    start: new Date().toISOString(),
+    end: new Date().toISOString(),
+  },
+  tags: [tags[0], tags[1]],
 };

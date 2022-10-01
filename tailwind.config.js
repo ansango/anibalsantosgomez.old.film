@@ -234,7 +234,7 @@ const typography = ({ colors }) => {
 };
 
 const extend = {
-  aspectRatio: { "4/3": "4 / 3" },
+  aspectRatio: { "4/3": "4 / 3", "4/5": "4 / 5" },
   opacity: {
     7: ".075",
     15: ".15",

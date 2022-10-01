@@ -1,4 +1,9 @@
-import { defineSchema, defineConfig, RouteMappingPlugin } from "tinacms";
+import {
+  defineSchema,
+  defineConfig,
+  RouteMappingPlugin,
+  TinaField,
+} from "tinacms";
 import {
   contentBlockSchema,
   contactFormSchema,
@@ -11,8 +16,10 @@ import {
   allSeriesSchema,
 } from "../components/series";
 import { client } from "./__generated__/client";
-import { seoSchema } from "../components/layout/layout";
-import { metaSchema } from "../components/util/meta";
+import { defaultSeo, seoConfig, seoSchema } from "../components/layout/layout";
+import { defaultMeta, metaSchema } from "../components/util/meta";
+import { kebabCase } from "../lib/utils";
+import { cameras, films, tags } from "../constants";
 
 const schema = defineSchema({
   config: {
@@ -35,41 +42,69 @@ const schema = defineSchema({
       name: "serie",
       path: "content/series",
       format: "mdx",
+      ui: {
+        filename: {
+          disabled: true,
+          slugify: ({ title, sequence }) => {
+            return title && sequence ? kebabCase(`${sequence}-${title}`) : "";
+          },
+        },
+      },
+      defaultItem: () => ({
+        seo: defaultSeo,
+        meta: defaultMeta,
+        sequence: 1,
+        title: "Éste es el titulo",
+        description: "Ésta es una descripción corta",
+        summary: "Ésta es una descripción larga",
+        cover: "https://picsum.photos/2048/1365",
+        bodyHighlight: false,
+        isPublished: false,
+        isFeatured: false,
+        publishedAt: new Date().toISOString(),
+      }),
       fields: [
         { ...seoSchema },
         { ...metaSchema },
         {
+          label: "Sequence",
+          name: "sequence",
+          type: "number",
+          required: true,
+          ui: {
+            validate: (value) => {
+              if (value < 1) {
+                return "Sequence must be greater than 0";
+              }
+            },
+          },
+        },
+        {
           label: "Title",
           name: "title",
           type: "string",
-          ui: {
-            defaultValue: "Éste es el titulo",
-          },
+          required: true,
         },
         {
           label: "Description",
           name: "description",
           type: "string",
-          ui: {
-            defaultValue: "Ésta es una descripción corta",
-          },
+          required: true,
         },
         {
           label: "Summary",
           name: "summary",
           type: "string",
+          required: true,
           ui: {
             component: "textarea",
-            defaultValue: "Esta es una descripción mucho más larga",
           },
         },
         {
           type: "image",
           name: "cover",
           label: "Cover",
-          ui: {
-            defaultValue: "/uploads/avatar.jpeg",
-          },
+          required: true,
         },
         {
           label: "Body Highlight",
@@ -130,6 +165,28 @@ const schema = defineSchema({
                 },
               ],
             },
+            {
+              name: "Image",
+              label: "Image",
+              fields: [
+                {
+                  name: "url",
+                  label: "URL",
+                  type: "image",
+                },
+                {
+                  name: "alt",
+                  label: "Alt Text",
+                  type: "string",
+                },
+                {
+                  name: "aspectRatio",
+                  label: "Aspect Ratio",
+                  type: "string",
+                  options: ["4/3", "4/5"],
+                },
+              ],
+            },
           ],
           isBody: true,
         },
@@ -162,6 +219,9 @@ const schema = defineSchema({
       name: "page",
       path: "content/pages",
       format: "mdx",
+      defaultItem: () => ({
+        seo: defaultSeo,
+      }),
       fields: [
         { ...seoSchema },
         {
@@ -514,5 +574,15 @@ export const tinaConfig = defineConfig({
     return createForm(formConfig);
   },
 });
+
+export type Template = {
+  label: string;
+  name: string;
+  ui?: {
+    previewSrc?: string;
+    defaultItem?: object;
+  };
+  fields: TinaField[];
+};
 
 export default schema;
