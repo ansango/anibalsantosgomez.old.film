@@ -4,7 +4,7 @@ export type ImageProps = {
   src?: string;
   alt?: string;
   parentField?: string;
-  aspectRatio?: "4/3" | "4/5";
+  aspectRatio?: "4/3" | "4/5" | string;
 };
 
 export const Image: FC<ImageProps> = ({
