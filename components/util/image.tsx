@@ -56,7 +56,9 @@ export const Image: FC<ImageProps> = ({
         >
           <img
             loading={loading}
-            className={`object-cover w-full ${aRatio}`}
+            className={`object-cover w-full ${aRatio} ${
+              onClick ? "cursor-pointer" : ""
+            }`}
             alt={alt}
             src={url}
             onClick={onClick}
