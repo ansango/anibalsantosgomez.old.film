@@ -10,6 +10,7 @@ import Box from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 const LightboxContext = createContext({
   slides: [],
@@ -39,7 +40,7 @@ export const Lightbox: FC<{ children: ReactNode }> = ({ children }) => {
         open={index >= 0}
         close={() => setIndex(-1)}
         slides={slides}
-        plugins={[Thumbnails]}
+        plugins={[Thumbnails, Zoom]}
         thumbnails={{
           position: "bottom",
         }}
