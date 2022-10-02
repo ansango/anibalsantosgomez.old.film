@@ -51,10 +51,5 @@
     "font": "work-sans",
     "icon": "hi",
     "darkMode": "light"
-  },
-  "_collection": "global",
-  "_keepTemplateKey": false,
-  "_template": "global",
-  "_relativePath": "index.json",
-  "_id": "content/global/index.json"
+  }
 }

@@ -24,7 +24,7 @@ export default function NextPage(
         ...seoConfig,
         title: page?.seo?.title,
         description: page?.seo?.description,
-        route: props.route,
+        route: props.route === "/home" ? "" : props.route.replace("/", ""),
       }}
     >
       <motion.div
