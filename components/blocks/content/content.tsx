@@ -1,5 +1,4 @@
 import { Components, TinaMarkdown } from "tinacms/dist/rich-text";
-import type { TinaTemplate } from "tinacms";
 import { type SerieProps } from "../../series/serie";
 import { type FC, type ReactNode } from "react";
 import { Container } from "../../util/container";
@@ -18,6 +17,7 @@ import {
   codeColorDark,
   proseMono,
   codeMonoDark,
+  p,
 } from "../../styles/prose";
 
 import {
@@ -30,8 +30,10 @@ import {
   img,
   type ContainerTextProps,
   ContainerText,
+  containerSizesCn,
 } from "./components";
 import { Template } from "../../../.tina/schema";
+import { aspectRatioCn } from "../../util/image";
 
 export const WrapperContent: FC<{
   children: ReactNode;
@@ -63,6 +65,7 @@ export const WrapperContent: FC<{
         ${h5["sizes"]}
         ${h6["sizes"]}
         ${a["sizes"]}
+        ${p}
         ${classElements}
         `}
         data-tinafield={`${parentField}.body`}
@@ -150,12 +153,52 @@ export const contentBlockSchema: Template = {
               name: "size",
               label: "Size",
               type: "string",
-              options: ["md", "lg", "xl", "2xl", "3xl", "full"],
+              options: Object.keys(containerSizesCn),
             },
             {
               name: "children",
               label: "Text",
               type: "rich-text",
+              templates: [
+                {
+                  name: "Image",
+                  label: "Image",
+                  fields: [
+                    {
+                      name: "url",
+                      label: "URL",
+                      type: "image",
+                    },
+                    {
+                      name: "alt",
+                      label: "Alt Text",
+                      type: "string",
+                    },
+                    {
+                      name: "aspectRatio",
+                      label: "Aspect Ratio",
+                      type: "string",
+                      options: Object.keys(aspectRatioCn),
+                    },
+                  ],
+                },
+                {
+                  name: "BlockQuote",
+                  label: "Block Quote",
+                  fields: [
+                    {
+                      name: "children",
+                      label: "Quote",
+                      type: "rich-text",
+                    },
+                    {
+                      name: "authorName",
+                      label: "Author",
+                      type: "string",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -177,7 +220,7 @@ export const contentBlockSchema: Template = {
               name: "aspectRatio",
               label: "Aspect Ratio",
               type: "string",
-              options: ["4/3", "4/5"],
+              options: Object.keys(aspectRatioCn),
             },
           ],
         },

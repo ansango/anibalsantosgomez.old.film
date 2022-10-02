@@ -20,6 +20,8 @@ import { defaultSeo, seoConfig, seoSchema } from "../components/layout/layout";
 import { defaultMeta, metaSchema } from "../components/util/meta";
 import { kebabCase } from "../lib/utils";
 import { cameras, films, tags } from "../constants";
+import { aspectRatioCn } from "../components/util/image";
+import { containerSizesCn } from "../components/blocks/content/components";
 
 const schema = defineSchema({
   config: {
@@ -151,7 +153,7 @@ const schema = defineSchema({
                   name: "size",
                   label: "Size",
                   type: "string",
-                  options: ["md", "lg", "xl", "2xl", "3xl", "full"],
+                  options: Object.keys(containerSizesCn),
                   ui: {
                     defaultValue: "md",
                   },
@@ -160,6 +162,46 @@ const schema = defineSchema({
                   name: "children",
                   label: "Text",
                   type: "rich-text",
+                  templates: [
+                    {
+                      name: "Image",
+                      label: "Image",
+                      fields: [
+                        {
+                          name: "url",
+                          label: "URL",
+                          type: "image",
+                        },
+                        {
+                          name: "alt",
+                          label: "Alt Text",
+                          type: "string",
+                        },
+                        {
+                          name: "aspectRatio",
+                          label: "Aspect Ratio",
+                          type: "string",
+                          options: Object.keys(aspectRatioCn),
+                        },
+                      ],
+                    },
+                    {
+                      name: "BlockQuote",
+                      label: "Block Quote",
+                      fields: [
+                        {
+                          name: "children",
+                          label: "Quote",
+                          type: "rich-text",
+                        },
+                        {
+                          name: "authorName",
+                          label: "Author",
+                          type: "string",
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
@@ -181,7 +223,7 @@ const schema = defineSchema({
                   name: "aspectRatio",
                   label: "Aspect Ratio",
                   type: "string",
-                  options: ["4/3", "4/5"],
+                  options: Object.keys(aspectRatioCn),
                 },
               ],
             },

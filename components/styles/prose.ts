@@ -202,6 +202,8 @@ export const a = {
   },
 };
 
+export const p = "prose-p:text-base leading-relaxed";
+
 export const codeColor = {
   red: "prose-pre:bg-red-100",
   orange: "prose-pre:bg-orange-100",

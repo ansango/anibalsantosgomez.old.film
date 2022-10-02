@@ -6,13 +6,19 @@ export type ImageProps = {
   url?: string;
   alt?: string;
   parentField?: string;
-  aspectRatio?: "4/3" | "4/5" | string;
+  aspectRatio?: "4/3" | "4/5" | "square" | string;
   loading?: "lazy" | "eager";
 };
 
 const variants: Variants = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.35 } },
   hidden: { opacity: 0, scale: 1 },
+};
+
+export const aspectRatioCn = {
+  "4/3": "aspect-4/3",
+  "4/5": "aspect-4/5",
+  square: "aspect-square",
 };
 
 export const Image: FC<ImageProps> = ({
@@ -25,7 +31,7 @@ export const Image: FC<ImageProps> = ({
   const control = useAnimation();
   const [ref, inView] = useInView();
 
-  const aRatio = aspectRatio === "4/5" ? "aspect-4/5" : "aspect-4/3";
+  const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
 
   useEffect(() => {
     if (inView) {
