@@ -1,12 +1,17 @@
-import React, { FC } from "react";
+import React, { type FC, useEffect } from "react";
 import { Section } from "../util/section";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { components, Hero, WrapperContent } from "../blocks";
 import { type SerieQuery } from "../../.tina/__generated__/types";
 import Link from "next/link";
 import { Container } from "../util/container";
 import { useTheme } from "../layout";
 import { monoRestColors, monoTextColors } from "../styles";
+import {
+  getBodyMappedToRender,
+  getSlidesFromBody,
+  useLightbox,
+} from "../layout/lightbox";
 
 type Pagination = {
   title: string;
@@ -87,6 +92,17 @@ export const Serie: FC<SerieProps> = ({
   next,
   prev,
 }) => {
+  const { setSlides, setIndex } = useLightbox();
+  const slides = getSlidesFromBody(body);
+  const content = getBodyMappedToRender(
+    body,
+    slides,
+    setIndex
+  ) as TinaMarkdownContent;
+  useEffect(() => {
+    setSlides(slides);
+  }, [body]);
+
   return (
     <>
       <Section>
@@ -105,7 +121,7 @@ export const Serie: FC<SerieProps> = ({
         />
       </Section>
       <WrapperContent highlight={bodyHighlight}>
-        <TinaMarkdown components={components} content={body} />
+        <TinaMarkdown components={components} content={content} />
       </WrapperContent>
       {(next || prev) && <Pagination next={next} prev={prev} />}
     </>

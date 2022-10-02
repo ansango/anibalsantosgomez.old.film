@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import { type FC } from "react";
 import toast, { Toaster, ToasterProps } from "react-hot-toast";
+import { useMounted } from "../../lib/hooks";
 import { Icon } from "./icon";
 
 export const Toast: FC<ToasterProps> = ({ position, ...props }) => {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => setIsMounted(true), []);
+  const isMounted = useMounted();
   return <>{isMounted && <Toaster position={position} {...props} />}</>;
 };
 

@@ -6,6 +6,8 @@ import { Serie } from "../../components/series/serie";
 import FourOhFour from "../404";
 import { seoConfig } from "../../components/layout/layout";
 import { motion } from "framer-motion";
+import { Lightbox } from "../../components/layout/lightbox";
+
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { prev, next } = props;
 
@@ -48,20 +50,22 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Serie
-            {...{
-              body: _body,
-              bodyHighlight,
-              meta,
-              publishedAt,
-              title,
-              cover,
-              description,
-              summary,
-            }}
-            next={next}
-            prev={prev}
-          />
+          <Lightbox>
+            <Serie
+              {...{
+                body: _body,
+                bodyHighlight,
+                meta,
+                publishedAt,
+                title,
+                cover,
+                description,
+                summary,
+              }}
+              next={next}
+              prev={prev}
+            />
+          </Lightbox>
         </motion.div>
       </Layout>
     );

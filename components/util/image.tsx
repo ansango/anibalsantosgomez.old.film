@@ -8,6 +8,7 @@ export type ImageProps = {
   parentField?: string;
   aspectRatio?: "4/3" | "4/5" | "square" | string;
   loading?: "lazy" | "eager";
+  onClick?: () => void;
 };
 
 const variants: Variants = {
@@ -27,6 +28,7 @@ export const Image: FC<ImageProps> = ({
   parentField = "",
   aspectRatio = "4/3",
   loading = "lazy",
+  onClick,
 }) => {
   const control = useAnimation();
   const [ref, inView] = useInView();
@@ -57,6 +59,7 @@ export const Image: FC<ImageProps> = ({
             className={`object-cover w-full ${aRatio}`}
             alt={alt}
             src={url}
+            onClick={onClick}
           />
         </motion.span>
       ) : null}

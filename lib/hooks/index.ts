@@ -1,7 +1,7 @@
 export * from "./queries";
 
 import { useRouter } from "next/router";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useAutoClose = ({ setIsOpen, menu }) => {
   const { asPath } = useRouter();
@@ -21,4 +21,21 @@ export const useAutoClose = ({ setIsOpen, menu }) => {
       window.removeEventListener("focusin", handleClosure);
     };
   }, [handleClosure, menu]);
+};
+
+export const useMounted = () => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted;
+};
+
+export const useDimensions = (ref) => {
+  const dimensions = useRef({ width: 0, height: 0 });
+
+  useEffect(() => {
+    dimensions.current.width = ref.current.offsetWidth;
+    dimensions.current.height = ref.current.offsetHeight;
+  }, []);
+
+  return dimensions.current;
 };

@@ -1,5 +1,7 @@
 import { kebabParser } from "../lib/utils";
-
+const generic = ["35mm", "viajes", "retrato",
+  "miscelánea", 
+];
 const kodak = [
   "Kodak",
   "Portra 400",
