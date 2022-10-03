@@ -79,7 +79,10 @@ const Loader = ({ items = 3 }) => {
       className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
     >
       {[...Array(items)].map((_, i) => (
-        <div key={i} className="pt-8 sm:flex lg:items-start animate-pulse">
+        <div
+          key={i}
+          className="pt-8 sm:flex lg:items-start animate-pulse"
+        >
           <div className="mb-4 sm:mb-0 sm:mr-4">
             <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
               <div className={`object-cover w-full aspect-4/3 ${bgColor}`} />
@@ -159,7 +162,7 @@ export const Series = ({ data, parentField = "" }) => {
                 </h2>
               </div>
             </div>
-            {loading && <Loader items={search.maxPosts} />}
+            {!loading && <Loader items={search.maxPosts} />}
             {!loading && series?.length > 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
