@@ -40,7 +40,7 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
           description: description,
           route: props.route,
           date: publishedAt,
-          image: `https://anibalsantosgomez.com/serie/${serie.sequence}.jpg`,
+          image: `https://anibalsantosgomez.com/static/series/${serie.sequence}.jpg`,
         }}
       >
         <motion.div
