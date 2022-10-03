@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/rss.mjs && node ./lib/scripts/sitemap.mjs",
+    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/rss.mjs && node ./lib/scripts/sitemap.mjs && node ./lib/scripts/seoImage.mjs",
     "start": "tinacms build && next start",
     "export": "npm run build && next export",
     "lint": "eslint . --ext .ts,.tsx"
@@ -23,6 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.11",
+    "axios": "^0.27.2",
     "eslint": "^8.13.0",
     "globby": "^13.1.2",
     "gray-matter": "^4.0.3",
@@ -31,6 +32,7 @@
     "postcss-nesting": "^10.2.0",
     "prettier": "^2.7.1",
     "rss": "^1.2.2",
+    "sharp": "^0.31.1",
     "tailwindcss": "^3.1.8",
     "ts-node": "^10.9.1"
   },
