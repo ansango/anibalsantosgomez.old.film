@@ -120,6 +120,7 @@ export const Serie: FC<SerieProps> = ({
             },
             text: summary,
             meta,
+            publishedAt,
           }}
         />
       </Section>

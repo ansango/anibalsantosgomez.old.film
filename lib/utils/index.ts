@@ -19,14 +19,18 @@ export const kebabParser = (str) => {
     .toLowerCase();
 };
 
-export const formatDate = (date, locale = "es-ES") => {
-  const options: Intl.DateTimeFormatOptions = {
+export const formatDate = (
+  date,
+  locale = "es-ES",
+  options?: Intl.DateTimeFormatOptions
+) => {
+  const defaultOptions: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
   };
-
-  const now = new Date(date).toLocaleDateString(locale, options);
+  const _options = options || defaultOptions;
+  const now = new Date(date).toLocaleDateString(locale, _options);
 
   return now;
 };
@@ -57,5 +61,3 @@ Promise<any | Error> => {
     .catch((error) => Promise.reject(error));
 };
 export default fetcher;
-
-

@@ -14,9 +14,9 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 const LightboxContext = createContext({
   slides: [],
-  setSlides: (slides) => null,
+  setSlides: (slides) => console.log("setSlides", slides),
   index: -1,
-  setIndex: (value) => null,
+  setIndex: (value) => console.log("setIndex", value),
 });
 
 export const useLightbox = () => useContext(LightboxContext);
@@ -49,6 +49,7 @@ export const Lightbox: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getSlidesFromBody = (body: { children: any[] }) => {
   return Object.values(body.children)
     .filter((item) => item.name === "Image")
@@ -59,14 +60,16 @@ export const getSlidesFromBody = (body: { children: any[] }) => {
 };
 
 export const getBodyMappedToRender = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: { children: any[] },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   slides: any[],
   setIndex: (index: number) => void
 ) => {
   return {
     ...body,
     children: [
-      ...body.children.map((item, index) => {
+      ...body.children.map((item) => {
         if (item.name === "Image") {
           return {
             ...item,

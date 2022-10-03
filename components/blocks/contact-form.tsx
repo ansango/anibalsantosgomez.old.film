@@ -3,8 +3,6 @@ import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container } from "..//util/container";
 
-import { event } from "nextjs-google-analytics";
-
 import {
   baseInputStyles,
   monoTextColors,
@@ -21,7 +19,6 @@ import { Toast, toastError, toastSuccess } from "../util/toast";
 import { Template } from "../../.tina/schema";
 import eEvents from "../../lib/ga";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useMounted } from "../../lib/hooks";
 
 type Props = {
   lang?: string;

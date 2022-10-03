@@ -26,7 +26,7 @@ export type ActionEngagement =
 
 export type Action = ActionEcommerce | ActionEngagement;
 
-type EventOptions = Record<string, any> & {
+type EventOptions = Record<string, object | string | boolean | number> & {
   category: "ecommerce" | "engagement";
   label?: string;
   value?: number;

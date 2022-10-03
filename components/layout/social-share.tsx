@@ -9,7 +9,6 @@ import { monoTextColors } from "../styles";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
 import { useTheme } from "./theme";
-import { event } from "nextjs-google-analytics";
 import { eEngagementEvents } from "../../lib/ga";
 
 const buttons = [

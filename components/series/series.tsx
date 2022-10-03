@@ -125,7 +125,7 @@ export const Series = ({ data, parentField = "" }) => {
                 </h2>
               </div>
             </div>
-            {series?.length > 0 ? (
+            {!loading && series?.length > 0 ? (
               <div
                 className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
               >

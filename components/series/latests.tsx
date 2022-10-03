@@ -22,7 +22,7 @@ export const Latests = ({ data, parentField = "" }) => {
             {data.title}
           </h2>
         </div>
-        {series?.length > 0 ? (
+        {!loading && series?.length > 0 ? (
           <div className="relative mx-auto max-w-7xl">
             <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
               {series.map((serie, i) => (

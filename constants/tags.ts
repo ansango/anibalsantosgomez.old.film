@@ -1,7 +1,5 @@
 import { kebabParser } from "../lib/utils";
-const generic = ["35mm", "viajes", "retrato",
-  "miscelánea", 
-];
+const generic = ["35mm", "viajes", "retrato", "miscelánea", "fotografía"];
 const kodak = [
   "Kodak",
   "Portra 400",
@@ -17,6 +15,6 @@ const kodak = [
 const fuji = ["Fujifilm", "Superia 400", "C200"];
 const cineStill = ["CineStill", "800T"];
 const ilford = ["Ilford", "HP5 400", "Delta 3200", "XP2 400"];
-export const tags = [...kodak, ...fuji, ...cineStill, ...ilford].map((value) =>
-  kebabParser(value)
+export const tags = [...kodak, ...fuji, ...cineStill, ...ilford, ...generic].map(
+  (value) => kebabParser(value)
 );

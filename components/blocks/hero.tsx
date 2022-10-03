@@ -9,12 +9,12 @@ import { Meta } from "../util/meta";
 import {
   aspectRatioResponsiveCn,
   centerMobileCn,
-  Image,
   ImageHero,
   ImageSerie,
   type ImageProps,
 } from "../util/image";
 import { Template } from "../../.tina/schema";
+import { formatDate } from "../../lib/utils";
 
 type HeroData = {
   type?: "left" | "center" | "serie" | string;
@@ -23,10 +23,11 @@ type HeroData = {
   text?: string;
   image?: ImageProps;
   meta?: SerieProps["meta"];
+  publishedAt?: SerieProps["publishedAt"];
 };
 
 const renderHero = (
-  { type, headline, image, tagline, text, meta }: HeroData,
+  { type, headline, image, tagline, text, meta, publishedAt }: HeroData,
   parentField,
   color,
   mono
@@ -128,7 +129,6 @@ const renderHero = (
                   <div
                     className={`absolute top-0 rounded-full -left-10 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob ${monoBgColorsBlur[mono]}`}
                   ></div>
-
                   <div
                     className={`absolute rounded-full -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 ${monoBgColorsBlur[mono]}`}
                   ></div>
@@ -146,6 +146,7 @@ const renderHero = (
               >
                 {tagline}
               </span>
+
               <h1
                 className={`mb-8 text-5xl font-bold leading-none tracking-tighter text-neutral-600 md:text-6xl lg:text-5xl ${monoTextColors[700][mono]}`}
               >
@@ -155,6 +156,16 @@ const renderHero = (
                 className={`mb-8 text-base leading-relaxed text-left ${monoTextColors[500][mono]}`}
               >
                 {text}
+              </p>
+              <p
+                className={`mb-4 text-sm italic leading-relaxed text-left ${monoTextColors[500][mono]}`}
+              >
+                Publicado el{" "}
+                {formatDate(publishedAt, "es-ES", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })}
               </p>
               {meta && (
                 <div

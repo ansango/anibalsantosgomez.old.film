@@ -30,8 +30,9 @@ export async function sendMail({
       subject,
       html,
     });
-  } catch (e: any) {
-    throw new Error(`Could not send email: ${e.message}`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    throw new Error(`Could not send email: ${error.message}`);
   }
 }
 
