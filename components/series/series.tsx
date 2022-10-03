@@ -162,7 +162,7 @@ export const Series = ({ data, parentField = "" }) => {
                 </h2>
               </div>
             </div>
-            {!loading && <Loader items={search.maxPosts} />}
+            {loading && <Loader items={search.maxPosts} />}
             {!loading && series?.length > 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
