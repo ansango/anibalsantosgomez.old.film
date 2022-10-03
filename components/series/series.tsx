@@ -187,12 +187,14 @@ export const Series = ({ data, parentField = "" }) => {
                             )}
                           </div>
                           <div>
-                            <span
+                            <time
+                              dateTime={serie.publishedAt}
                               className={`text-sm md:hidden ${monoTextColors[500][mono]}`}
                             >
                               {formatDate(serie.publishedAt)}
-                            </span>
-                            <span
+                            </time>
+                            <time
+                              dateTime={serie.publishedAt}
                               className={`hidden md:block text-sm ${monoTextColors[500][mono]}`}
                             >
                               {formatDate(serie.publishedAt, "es-ES", {
@@ -200,7 +202,7 @@ export const Series = ({ data, parentField = "" }) => {
                                 day: "numeric",
                                 year: "numeric",
                               })}
-                            </span>
+                            </time>
                             <h3
                               className={`mt-3 text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                             >

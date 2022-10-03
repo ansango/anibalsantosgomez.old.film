@@ -122,7 +122,7 @@ export const Featured = ({ data, parentField = "" }) => {
                           <div
                             className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
                           >
-                            <time dateTime="2020-03-10">
+                            <time dateTime={lastSerie.publishedAt}>
                               {formatDate(lastSerie.publishedAt)}
                             </time>
                           </div>
@@ -171,7 +171,7 @@ export const Featured = ({ data, parentField = "" }) => {
                               <div
                                 className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
                               >
-                                <time dateTime="2020-03-10">
+                                <time dateTime={serie.publishedAt}>
                                   {formatDate(serie.publishedAt)}
                                 </time>
                               </div>

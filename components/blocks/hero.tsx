@@ -161,11 +161,13 @@ const renderHero = (
                 className={`mb-4 text-sm italic leading-relaxed text-left ${monoTextColors[500][mono]}`}
               >
                 Publicado el{" "}
-                {formatDate(publishedAt, "es-ES", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}
+                <time dateTime={publishedAt}>
+                  {formatDate(publishedAt, "es-ES", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </time>
               </p>
               {meta && (
                 <div
