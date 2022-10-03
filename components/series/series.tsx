@@ -44,13 +44,13 @@ const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
 const Pagination = ({ pageNumbers = [], onPagination, currentPage = 0 }) => {
   const { mono, color } = useTheme();
   return (
-    <div className="flex justify-center py-5">
+    <div className="flex justify-center py-5 space-x-5">
       {pageNumbers.length !== 1 &&
         pageNumbers.map((number) => {
           const cn =
             currentPage === number
-              ? `p-5 text-lg font-semibold ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]}`
-              : `p-5 text-lg font-semibold ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`;
+              ? `text-lg font-medium ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]}`
+              : `text-lg ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`;
 
           return (
             <button

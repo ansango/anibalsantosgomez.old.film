@@ -14,6 +14,7 @@ const App = ({ Component, pageProps }) => {
         appendTo: "head",
         nonce: undefined,
       }}
+      language="es"
     >
       <NextHead>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
