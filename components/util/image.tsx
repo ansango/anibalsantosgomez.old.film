@@ -1,6 +1,9 @@
 import { type FC, useEffect } from "react";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Icon } from "./icon";
+import { monoTextColors } from "../styles";
+import { useTheme } from "../layout";
 
 export type ImageProps = {
   url?: string;
@@ -30,6 +33,7 @@ export const Image: FC<ImageProps> = ({
   loading = "lazy",
   onClick,
 }) => {
+  const { mono } = useTheme();
   const control = useAnimation();
   const [ref, inView] = useInView();
 
@@ -47,21 +51,30 @@ export const Image: FC<ImageProps> = ({
     <>
       {url ? (
         <motion.span
-          className="flex flex-col items-center justify-center"
+          className={`relative flex flex-col items-center justify-center ${
+            onClick ? "cursor-pointer" : ""
+          }`}
           data-tinafield={`${parentField}.image`}
           ref={ref}
           variants={variants}
           initial="hidden"
           animate={control}
+          onClick={onClick}
         >
+          {onClick && (
+            <Icon
+              data={{
+                name: "fullScreen",
+                size: "sm",
+              }}
+              className={`absolute right-4 top-12 ${monoTextColors[400][mono]}`}
+            />
+          )}
           <img
+            className={`object-cover w-full ${aRatio}`}
             loading={loading}
-            className={`object-cover w-full ${aRatio} ${
-              onClick ? "cursor-pointer" : ""
-            }`}
             alt={alt}
             src={url}
-            onClick={onClick}
           />
         </motion.span>
       ) : null}
