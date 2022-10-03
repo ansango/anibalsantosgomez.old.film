@@ -79,7 +79,9 @@ export default SeriePage;
 export const getStaticProps = async ({ params }) => {
   const allSeries = await (
     await client.queries.serieConnection()
-  ).data.serieConnection.edges.map(({ node }) => node);
+  ).data.serieConnection.edges
+    .map(({ node }) => node)
+    .filter((serie) => serie.isPublished);
 
   const serieIndex = allSeries
     .sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1))
