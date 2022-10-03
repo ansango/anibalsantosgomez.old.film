@@ -2,7 +2,8 @@ import { onPostContactForm } from "../../lib/services/contact";
 import { FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container } from "..//util/container";
-import { type TinaCloudSchema } from "tinacms";
+
+import { event } from "nextjs-google-analytics";
 
 import {
   baseInputStyles,
@@ -16,8 +17,9 @@ import { useTheme } from "../layout";
 import { Section } from "../util/section";
 import { Spinner } from "../util/spinner";
 import { Toast, toastError, toastSuccess } from "../util/toast";
-import { TinaField } from "tinacms";
+
 import { Template } from "../../.tina/schema";
+import eEvents from "../../lib/ga";
 
 type Props = {
   lang?: string;
@@ -29,7 +31,7 @@ type Props = {
 export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
   const { mono, color } = useTheme();
   const { email, fullName, message, submit } = data;
-
+  const { eContact } = eEvents;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -50,9 +52,11 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
         setIsSubmitting(false);
         reset();
         toastSuccess({ message: "Your message has been sent!" });
+        eContact({ label: "success" });
       } catch (error) {
         setIsSubmitting(false);
         toastError({ message: "Error sending your message!" });
+        eContact({ label: "error" });
       }
     },
     [reset, lang]
