@@ -4,7 +4,31 @@
         <description><![CDATA[Anibal Santos]]></description>
         <link>https://anibalsantosgomez.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 01 Oct 2022 17:25:37 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 03 Oct 2022 22:08:04 GMT</lastBuildDate>
         <atom:link href="https://anibalsantosgomez.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Lisboa y un largo camino]]></title>
+            <description><![CDATA[Algunos disparos en Portugal II]]></description>
+            <link>https://anibalsantosgomez.com/serie/34-lisboa-y-un-largo-camino</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/serie/34-lisboa-y-un-largo-camino</guid>
+            <dc:creator><![CDATA[Anibal Santos]]></dc:creator>
+            <pubDate>Fri, 30 Sep 2022 18:26:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Junio y Manchester]]></title>
+            <description><![CDATA[La revolución del ladrillo rojo]]></description>
+            <link>https://anibalsantosgomez.com/serie/43-junio-y-manchester</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/serie/43-junio-y-manchester</guid>
+            <dc:creator><![CDATA[Anibal Santos]]></dc:creator>
+            <pubDate>Sun, 02 Oct 2022 19:09:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Bilbao y otros fracasos]]></title>
+            <description><![CDATA[El Turismo en el que vivimos]]></description>
+            <link>https://anibalsantosgomez.com/serie/45-bilbao-y-otros-fracasos</link>
+            <guid isPermaLink="true">https://anibalsantosgomez.com/serie/45-bilbao-y-otros-fracasos</guid>
+            <dc:creator><![CDATA[Anibal Santos]]></dc:creator>
+            <pubDate>Sat, 01 Oct 2022 18:52:33 GMT</pubDate>
+        </item>
     </channel>
 </rss>

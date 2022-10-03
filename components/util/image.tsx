@@ -37,11 +37,24 @@ export const aspectRatioCn = {
   square: "aspect-square",
 };
 
+export const objectPositionCn = {
+  top: "object-top",
+  center: "object-center",
+  bottom: "object-bottom",
+  left: "object-left",
+  "left-top": "object-left-top",
+  "left-bottom": "object-left-bottom",
+  right: "object-right",
+  "right-top": "object-right-top",
+  "right-bottom": "object-right-bottom",
+};
+
 export const Image: FC<ImageProps> = ({
   alt,
   url,
   parentField = "",
   aspectRatio = "4/3",
+  centerImage = "center",
   loading = "lazy",
   onClick,
 }) => {
@@ -50,7 +63,7 @@ export const Image: FC<ImageProps> = ({
   const [ref, inView] = useInView();
 
   const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
-
+  const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
   useEffect(() => {
     if (inView) {
       control.start("visible");
@@ -83,7 +96,7 @@ export const Image: FC<ImageProps> = ({
             />
           )}
           <img
-            className={`object-cover w-full ${aRatio}`}
+            className={`object-cover ${centerCn} w-full ${aRatio}`}
             loading={loading}
             alt={alt}
             src={url}

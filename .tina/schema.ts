@@ -15,12 +15,12 @@ import {
   latestsBlockSchema,
   allSeriesSchema,
 } from "../components/series";
+
 import { client } from "./__generated__/client";
-import { defaultSeo, seoConfig, seoSchema } from "../components/layout/layout";
+import { defaultSeo, seoSchema } from "../components/layout/layout";
 import { defaultMeta, metaSchema } from "../components/util/meta";
 import { kebabCase } from "../lib/utils";
-import { cameras, films, tags } from "../constants";
-import { aspectRatioCn } from "../components/util/image";
+import { aspectRatioCn, objectPositionCn } from "../components/util/image";
 import { containerSizesCn } from "../components/blocks/content/components";
 
 const schema = defineSchema({
@@ -154,9 +154,6 @@ const schema = defineSchema({
                   label: "Size",
                   type: "string",
                   options: Object.keys(containerSizesCn),
-                  ui: {
-                    defaultValue: "md",
-                  },
                 },
                 {
                   name: "children",
@@ -182,6 +179,12 @@ const schema = defineSchema({
                           label: "Aspect Ratio",
                           type: "string",
                           options: Object.keys(aspectRatioCn),
+                        },
+                        {
+                          name: "centerImage",
+                          label: "Center Image",
+                          type: "string",
+                          options: Object.keys(objectPositionCn),
                         },
                       ],
                     },
@@ -224,6 +227,12 @@ const schema = defineSchema({
                   label: "Aspect Ratio",
                   type: "string",
                   options: Object.keys(aspectRatioCn),
+                },
+                {
+                  name: "centerImage",
+                  label: "Center Image",
+                  type: "string",
+                  options: Object.keys(objectPositionCn),
                 },
               ],
             },
