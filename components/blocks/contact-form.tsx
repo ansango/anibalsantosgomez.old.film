@@ -60,11 +60,11 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
         await onPostContactForm({ contactForm, lang, token });
         setIsSubmitting(false);
         reset();
-        toastSuccess({ message: "Your message has been sent!" });
+        toastSuccess({ message: "Tu menaje se envió!" });
         eContact({ label: "success" });
       } catch (error) {
         setIsSubmitting(false);
-        toastError({ message: "Error sending your message!" });
+        toastError({ message: "Un error ocurrió" });
         eContact({ label: "error" });
       }
     },
