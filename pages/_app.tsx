@@ -6,25 +6,23 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const App = ({ Component, pageProps }) => {
   return (
-    <>
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+      scriptProps={{
+        async: false,
+        defer: false,
+        appendTo: "head",
+        nonce: undefined,
+      }}
+    >
       <NextHead>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </NextHead>
       <GoogleAnalytics trackPageViews strategy="lazyOnload" />
       <TinaProvider>
-        <GoogleReCaptchaProvider
-          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-          scriptProps={{
-            async: false,
-            defer: false,
-            appendTo: "head",
-            nonce: undefined,
-          }}
-        >
-          <Component {...pageProps} />
-        </GoogleReCaptchaProvider>
-      </TinaProvider>{" "}
-    </>
+        <Component {...pageProps} />
+      </TinaProvider>
+    </GoogleReCaptchaProvider>
   );
 };
 
