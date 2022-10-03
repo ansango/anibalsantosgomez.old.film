@@ -12,6 +12,7 @@ import {
   getSlidesFromBody,
   useLightbox,
 } from "../layout/lightbox";
+import { SocialShare } from "../layout/social-share";
 
 type Pagination = {
   title: string;
@@ -29,6 +30,7 @@ export type SerieProps = {
   summary: SerieQuery["serie"]["summary"];
   prev?: Pagination | null;
   next?: Pagination | null;
+  url?: string;
 };
 
 const Pagination: FC<{
@@ -91,6 +93,7 @@ export const Serie: FC<SerieProps> = ({
   title,
   next,
   prev,
+  url,
 }) => {
   const { setSlides, setIndex } = useLightbox();
   const slides = getSlidesFromBody(body);
@@ -123,6 +126,7 @@ export const Serie: FC<SerieProps> = ({
       <WrapperContent highlight={bodyHighlight}>
         <TinaMarkdown components={components} content={content} />
       </WrapperContent>
+      <SocialShare title={title} url={`https://anibalsantosgomez.com/${url}`} />
       {(next || prev) && <Pagination next={next} prev={prev} />}
     </>
   );

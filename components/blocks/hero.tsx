@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 
@@ -8,6 +8,7 @@ import { SerieProps } from "../series/serie";
 import { Meta } from "../util/meta";
 import { Image, ImageSerie, type ImageProps } from "../util/image";
 import { Template } from "../../.tina/schema";
+
 type HeroData = {
   type?: "left" | "center" | "serie" | string;
   tagline?: string;

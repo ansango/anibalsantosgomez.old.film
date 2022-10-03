@@ -22,7 +22,9 @@ import {
   EyeIcon,
   MagnifyingGlassIcon,
   CheckIcon,
+  ViewfinderCircleIcon,
 } from "@heroicons/react/24/outline";
+import { SiTelegram, SiWhatsapp, SiTwitter, SiGmail } from "react-icons/si";
 import { monoTextColors, primaryHoverTextColors } from "../styles";
 
 export const iconsTheme = {
@@ -31,6 +33,7 @@ export const iconsTheme = {
     close: XMarkIcon,
     eye: EyeIcon,
     search: MagnifyingGlassIcon,
+    fullScreen: ViewfinderCircleIcon,
     check: CheckIcon,
     code: CodeBracketIcon,
     like: HandThumbUpIcon,
@@ -45,6 +48,10 @@ export const iconsTheme = {
     user: UserIcon,
     chat: ChatBubbleBottomCenterIcon,
     cloud: CloudIcon,
+    email: SiGmail,
+    telegram: SiTelegram,
+    whatsapp: SiWhatsapp,
+    twitter: SiTwitter,
   },
 };
 
