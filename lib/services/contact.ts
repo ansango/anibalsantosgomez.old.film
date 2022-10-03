@@ -3,6 +3,7 @@ import { fetcher } from "../utils";
 export const onPostContactForm = async ({
   contactForm,
   lang,
+  token,
 }: {
   contactForm: {
     name: string;
@@ -10,6 +11,7 @@ export const onPostContactForm = async ({
     message: string;
   };
   lang: string;
+  token: string;
 }) => {
   // eslint-disable-next-line no-useless-catch
   try {
@@ -18,10 +20,10 @@ export const onPostContactForm = async ({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ contactForm, lang }),
+      body: JSON.stringify({ contactForm, lang, token }),
     });
     return true;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     throw err;
   }

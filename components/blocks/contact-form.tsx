@@ -20,6 +20,8 @@ import { Toast, toastError, toastSuccess } from "../util/toast";
 
 import { Template } from "../../.tina/schema";
 import eEvents from "../../lib/ga";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useMounted } from "../../lib/hooks";
 
 type Props = {
   lang?: string;
@@ -32,6 +34,7 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
   const { mono, color } = useTheme();
   const { email, fullName, message, submit } = data;
   const { eContact } = eEvents;
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -48,7 +51,13 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
     async (contactForm) => {
       setIsSubmitting(true);
       try {
-        await onPostContactForm({ contactForm, lang });
+        if (!executeRecaptcha) {
+          toastError({ message: "Execute recaptcha not yet available" });
+          setIsSubmitting(false);
+          return;
+        }
+        const token = await executeRecaptcha("contact_form");
+        await onPostContactForm({ contactForm, lang, token });
         setIsSubmitting(false);
         reset();
         toastSuccess({ message: "Your message has been sent!" });
@@ -61,6 +70,7 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
     },
     [reset, lang]
   );
+
   return (
     <Section>
       <Container className="space-y-8">
