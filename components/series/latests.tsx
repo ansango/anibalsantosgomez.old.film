@@ -6,6 +6,50 @@ import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useTheme } from "../layout";
 import { useLatestSeriesQuery } from "../../lib/hooks";
 import { Template } from "../../.tina/schema";
+import { motion } from "framer-motion";
+
+const Loader = ({ items = 3 }) => {
+  const { mono } = useTheme();
+  const bgColor = monoRestColors.monoBgSkeleton[mono];
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.75 }}
+      className={`relative mx-auto max-w-7xl animate-pulse`}
+    >
+      <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
+        {[...Array(items)].map((_, i) => (
+          <div
+            key={i}
+            className="flex flex-col mb-12 overflow-hidden cursor-pointer group"
+          >
+            <div className="flex-shrink-0">
+              <div className={`object-cover w-full aspect-4/3 ${bgColor}`} />
+            </div>
+
+            <div className="flex flex-col justify-between flex-1">
+              <div className="flex-1">
+                <div className="mt-5 space-y-6">
+                  <div className="space-y-3">
+                    <div className={`py-2 px-20 max-w-[1rem] ${bgColor}`} />
+                    <div className={`py-2 px-28 max-w-[1rem] ${bgColor}`} />
+                  </div>
+                  <div className="space-y-3">
+                    <div className={`py-2 px-28 w-full ${bgColor}`} />
+                    <div className={`py-2 px-28 w-full ${bgColor}`} />
+                    <div className={`py-2 px-28 w-full ${bgColor}`} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
 
 export const Latests = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
@@ -22,8 +66,15 @@ export const Latests = ({ data, parentField = "" }) => {
             {data.title}
           </h2>
         </div>
+        {loading && <Loader items={6} />}
         {!loading && series?.length > 0 && (
-          <div className="relative mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.75 }}
+            className="relative mx-auto max-w-7xl"
+          >
             <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
               {series.map((serie, i) => (
                 <Link
@@ -72,7 +123,7 @@ export const Latests = ({ data, parentField = "" }) => {
                 </Link>
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
         {!loading && series?.length === 0 && (
           <div
