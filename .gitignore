@@ -28,3 +28,7 @@ lib/scripts/__generated__
 
 .env
 .env.local
+
+/public/static/series
+/public/sitemap.xml
+/public/feed.xml
