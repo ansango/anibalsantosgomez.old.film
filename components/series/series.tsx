@@ -15,6 +15,7 @@ import { useAllSeriesQuery } from "../../lib/hooks";
 import { useState } from "react";
 import { Icon } from "../util/icon";
 import { Template } from "../../.tina/schema";
+import { motion } from "framer-motion";
 
 const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   const { mono } = useTheme();
@@ -63,6 +64,39 @@ const Pagination = ({ pageNumbers = [], onPagination, currentPage = 0 }) => {
           );
         })}
     </div>
+  );
+};
+
+const Loader = ({ items = 3 }) => {
+  const { mono } = useTheme();
+  const bgColor = monoRestColors.monoBgSkeleton[mono];
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.75 }}
+      className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
+    >
+      {[...Array(items)].map((_, i) => (
+        <div key={i} className="pt-8 sm:flex lg:items-start animate-pulse">
+          <div className="mb-4 sm:mb-0 sm:mr-4">
+            <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
+              <div className={`object-cover w-full aspect-4/3 ${bgColor}`} />
+            </div>
+          </div>
+          <div className="w-full">
+            <div className={`py-2 px-20 max-w-[1rem] ${bgColor}`} />
+            <div className={`mt-4 py-2 px-28 max-w-[1rem] ${bgColor}`} />
+            <div className="mt-4 space-y-3">
+              <div className={`py-2 px-28 w-full ${bgColor}`} />
+              <div className={`py-2 px-28 w-full ${bgColor}`} />
+              <div className={`py-2 px-28 w-full ${bgColor}`} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </motion.div>
   );
 };
 
@@ -125,8 +159,13 @@ export const Series = ({ data, parentField = "" }) => {
                 </h2>
               </div>
             </div>
-            {!loading && series?.length > 0 ? (
-              <div
+            {loading && <Loader items={search.maxPosts} />}
+            {!loading && series?.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.75 }}
                 className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
               >
                 {currentPosts.map((serie) => {
@@ -149,9 +188,18 @@ export const Series = ({ data, parentField = "" }) => {
                           </div>
                           <div>
                             <span
-                              className={`text-sm ${monoTextColors[500][mono]}`}
+                              className={`text-sm md:hidden ${monoTextColors[500][mono]}`}
                             >
                               {formatDate(serie.publishedAt)}
+                            </span>
+                            <span
+                              className={`hidden md:block text-sm ${monoTextColors[500][mono]}`}
+                            >
+                              {formatDate(serie.publishedAt, "es-ES", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric",
+                              })}
                             </span>
                             <h3
                               className={`mt-3 text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
@@ -169,8 +217,9 @@ export const Series = ({ data, parentField = "" }) => {
                     </article>
                   );
                 })}
-              </div>
-            ) : (
+              </motion.div>
+            )}
+            {!loading && series?.length === 0 && (
               <div
                 className="py-10"
                 data-tinafield={`${parentField}.noDataMessage`}

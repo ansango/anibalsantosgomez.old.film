@@ -25,7 +25,7 @@ export const Featured = ({ data, parentField = "" }) => {
               {data.title}
             </h2>
           </div>
-          {!loading && series?.length > 0 ? (
+          {!loading && series?.length > 0 && (
             <div className="relative mx-auto max-w-7xl">
               <div className="grid gap-8 grid-cols-12 mx-auto mt-12">
                 {lastSerie && (
@@ -122,7 +122,8 @@ export const Featured = ({ data, parentField = "" }) => {
                 </div>
               </div>
             </div>
-          ) : (
+          )}
+          {!loading && series?.length === 0 && (
             <div
               className="py-10"
               data-tinafield={`${parentField}.noDataMessage`}

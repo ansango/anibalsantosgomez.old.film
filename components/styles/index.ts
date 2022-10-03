@@ -362,6 +362,13 @@ export const monoRestColors = {
     stone:
       "bg-stone-100 dark:bg-stone-800 placeholder-stone-400 focus:ring-white focus:ring-offset-red-300 dark:focus:ring-red-700 dark:focus:ring-offset-red-700",
   },
+  monoBgSkeleton: {
+    slate: "bg-slate-200 dark:bg-slate-700",
+    gray: "bg-gray-200 dark:bg-gray-700",
+    zinc: "bg-zinc-200 dark:bg-zinc-700",
+    neutral: "bg-neutral-200 dark:bg-neutral-700",
+    stone: "bg-stone-200 dark:bg-stone-700",
+  },
 };
 
 export const baseInputStyles =
