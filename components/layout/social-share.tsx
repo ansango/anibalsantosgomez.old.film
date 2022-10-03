@@ -15,7 +15,6 @@ const buttons = [
     name: "email",
     icon: {
       name: "email",
-      size: "sm",
     },
     Component: Email,
   },
@@ -23,7 +22,6 @@ const buttons = [
     name: "telegram",
     icon: {
       name: "telegram",
-      size: "sm",
     },
     Component: Telegram,
   },
@@ -31,7 +29,6 @@ const buttons = [
     name: "twitter",
     icon: {
       name: "twitter",
-      size: "sm",
     },
     Component: Twitter,
   },
@@ -39,7 +36,6 @@ const buttons = [
     name: "whatsapp",
     icon: {
       name: "whatsapp",
-      size: "sm",
     },
     Component: Whatsapp,
   },
@@ -51,17 +47,15 @@ export const SocialShare: FC<{ title: string; url: string }> = ({
 }) => {
   const { mono } = useTheme();
   return (
-    <Container className=" flex space-x-2">
+    <Container className="flex space-x-2 py-0 lg:py-0">
       {buttons.map(({ name, Component, icon }, index) => {
         return (
-          <div key={`${name}-${index}`}>
-            <Component url={url} title={title}>
-              <Icon
-                data={icon}
-                className={`w-5 h-5 ${monoTextColors[500][mono]}`}
-              />
-            </Component>
-          </div>
+          <Component key={`${name}-${index}`} url={url} title={title}>
+            <Icon
+              data={icon}
+              className={`${monoTextColors[500][mono]} w-[1.25rem] h-[1.25rem]`}
+            />
+          </Component>
         );
       })}
     </Container>
