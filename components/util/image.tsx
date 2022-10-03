@@ -10,6 +10,18 @@ export type ImageProps = {
   alt?: string;
   parentField?: string;
   aspectRatio?: "4/3" | "4/5" | "square" | string;
+  centerImage?:
+    | "top"
+    | "center"
+    | "bottom"
+    | "left"
+    | "left-top"
+    | "left-bottom"
+    | "right"
+    | "right-top"
+    | "right-bottom"
+    | string;
+
   loading?: "lazy" | "eager";
   onClick?: () => void;
 };
@@ -107,5 +119,42 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
         src={url}
       />
     </motion.span>
+  );
+};
+
+export const aspectRatioResponsiveCn = {
+  "4/3": "aspect-4/5 md:aspect-4/3",
+  "4/5": "aspect-4/5",
+};
+
+export const centerMobileCn = {
+  top: "bg-top",
+  bottom: "bg-bottom",
+  center: "bg-center",
+  left: "bg-left",
+  "left-top": "bg-left-top",
+  "left-bottom": "bg-left-bottom",
+  right: "bg-right",
+  "right-top": "bg-right-top",
+  "right-bottom": "bg-right-bottom",
+};
+
+export const ImageHero: FC<ImageProps> = ({
+  url,
+  parentField = "",
+  aspectRatio = "4/3",
+  centerImage = "center",
+}) => {
+  const centerMobile = centerMobileCn[centerImage] || centerMobileCn["center"];
+  const aRatio =
+    aspectRatioResponsiveCn[aspectRatio] || aspectRatioResponsiveCn["4/3"];
+  return (
+    <span data-tinafield={`${parentField}.image`}>
+      <motion.div
+        className={`bg-no-repeat bg-cover ${centerMobile} md:bg-center ${aRatio}`}
+        style={{ backgroundImage: `url(${url})` }}
+        data-tinafield={`${parentField}.image`}
+      />
+    </span>
   );
 };
