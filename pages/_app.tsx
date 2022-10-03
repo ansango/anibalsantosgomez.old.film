@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }) => {
       <NextHead>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </NextHead>
-      <GoogleAnalytics trackPageViews />
+      <GoogleAnalytics trackPageViews strategy="lazyOnload" />
       <TinaProvider>
         <Component {...pageProps} />
       </TinaProvider>
