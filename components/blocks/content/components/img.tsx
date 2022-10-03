@@ -1,4 +1,4 @@
-import { Image as ImageComponent, type ImageProps } from "../../../util/image";
+import { Image, type ImageProps } from "../../../util/image";
 
 export const img = (props) => (
   <span className="flex items-center justify-center">
@@ -9,13 +9,5 @@ export const img = (props) => (
     />
   </span>
 );
-
-const Image = (props: ImageProps) => {
-  return (
-    <>
-      <ImageComponent {...props} />
-    </>
-  );
-};
 
 export { Image, type ImageProps };

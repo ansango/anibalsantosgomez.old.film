@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 
@@ -6,8 +6,16 @@ import { useTheme } from "../layout";
 import { monoBgColorsBlur, monoTextColors, primaryTextColors } from "../styles";
 import { SerieProps } from "../series/serie";
 import { Meta } from "../util/meta";
-import { Image, ImageSerie, type ImageProps } from "../util/image";
+import {
+  aspectRatioResponsiveCn,
+  centerMobileCn,
+  Image,
+  ImageHero,
+  ImageSerie,
+  type ImageProps,
+} from "../util/image";
 import { Template } from "../../.tina/schema";
+
 type HeroData = {
   type?: "left" | "center" | "serie" | string;
   tagline?: string;
@@ -59,12 +67,12 @@ const renderHero = (
           </Container>
           {image?.url && (
             <Container>
-              <Image
+              <ImageHero
                 alt={image.alt}
                 url={image.url}
+                centerImage={image.centerImage}
                 parentField={parentField}
                 aspectRatio={image.aspectRatio}
-                loading="eager"
               />
             </Container>
           )}
@@ -98,12 +106,12 @@ const renderHero = (
           </Container>
           {image?.url && (
             <Container>
-              <Image
+              <ImageHero
                 alt={image.alt}
                 url={image.url}
+                centerImage={image.centerImage}
                 parentField={parentField}
                 aspectRatio={image.aspectRatio}
-                loading="eager"
               />
             </Container>
           )}
@@ -232,7 +240,13 @@ export const heroBlockSchema: Template = {
           label: "Aspect Ratio",
           type: "string",
 
-          options: ["4/3", "4/5"],
+          options: Object.keys(aspectRatioResponsiveCn),
+        },
+        {
+          name: "centerImage",
+          label: "Center Image Mobile",
+          type: "string",
+          options: Object.keys(centerMobileCn),
         },
       ],
     },

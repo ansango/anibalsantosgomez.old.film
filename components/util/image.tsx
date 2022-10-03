@@ -1,12 +1,27 @@
 import { type FC, useEffect } from "react";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Icon } from "./icon";
+import { monoTextColors } from "../styles";
+import { useTheme } from "../layout";
 
 export type ImageProps = {
   url?: string;
   alt?: string;
   parentField?: string;
   aspectRatio?: "4/3" | "4/5" | "square" | string;
+  centerImage?:
+    | "top"
+    | "center"
+    | "bottom"
+    | "left"
+    | "left-top"
+    | "left-bottom"
+    | "right"
+    | "right-top"
+    | "right-bottom"
+    | string;
+
   loading?: "lazy" | "eager";
   onClick?: () => void;
 };
@@ -30,6 +45,7 @@ export const Image: FC<ImageProps> = ({
   loading = "lazy",
   onClick,
 }) => {
+  const { mono } = useTheme();
   const control = useAnimation();
   const [ref, inView] = useInView();
 
@@ -47,21 +63,30 @@ export const Image: FC<ImageProps> = ({
     <>
       {url ? (
         <motion.span
-          className="flex flex-col items-center justify-center"
+          className={`relative flex flex-col items-center justify-center ${
+            onClick ? "cursor-pointer" : ""
+          }`}
           data-tinafield={`${parentField}.image`}
           ref={ref}
           variants={variants}
           initial="hidden"
           animate={control}
+          onClick={onClick}
         >
+          {onClick && (
+            <Icon
+              data={{
+                name: "fullScreen",
+                size: "sm",
+              }}
+              className={`absolute right-4 top-12 ${monoTextColors[400][mono]}`}
+            />
+          )}
           <img
+            className={`object-cover w-full ${aRatio}`}
             loading={loading}
-            className={`object-cover w-full ${aRatio} ${
-              onClick ? "cursor-pointer" : ""
-            }`}
             alt={alt}
             src={url}
-            onClick={onClick}
           />
         </motion.span>
       ) : null}
@@ -94,5 +119,42 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
         src={url}
       />
     </motion.span>
+  );
+};
+
+export const aspectRatioResponsiveCn = {
+  "4/3": "aspect-4/5 md:aspect-4/3",
+  "4/5": "aspect-4/5",
+};
+
+export const centerMobileCn = {
+  top: "bg-top",
+  bottom: "bg-bottom",
+  center: "bg-center",
+  left: "bg-left",
+  "left-top": "bg-left-top",
+  "left-bottom": "bg-left-bottom",
+  right: "bg-right",
+  "right-top": "bg-right-top",
+  "right-bottom": "bg-right-bottom",
+};
+
+export const ImageHero: FC<ImageProps> = ({
+  url,
+  parentField = "",
+  aspectRatio = "4/3",
+  centerImage = "center",
+}) => {
+  const centerMobile = centerMobileCn[centerImage] || centerMobileCn["center"];
+  const aRatio =
+    aspectRatioResponsiveCn[aspectRatio] || aspectRatioResponsiveCn["4/3"];
+  return (
+    <span data-tinafield={`${parentField}.image`}>
+      <motion.div
+        className={`bg-no-repeat bg-cover ${centerMobile} md:bg-center ${aRatio}`}
+        style={{ backgroundImage: `url(${url})` }}
+        data-tinafield={`${parentField}.image`}
+      />
+    </span>
   );
 };

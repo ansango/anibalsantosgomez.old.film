@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { Lightbox } from "../../components/layout/lightbox";
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
-  const { prev, next } = props;
+  const { prev, next, route } = props;
 
   const { data } = useTina({
     query: props.query,
@@ -38,13 +38,13 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
           ...seoConfig,
           title: title,
           description: description,
-          route: props.route,
+          route: route,
           date: publishedAt,
-          image: cover,
+          image: `https://anibalsantosgomez.com/static/series/${serie.sequence}.jpg`,
         }}
       >
         <motion.div
-          key={props.route}
+          key={route}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -61,6 +61,7 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
                 cover,
                 description,
                 summary,
+                url: route,
               }}
               next={next}
               prev={prev}
