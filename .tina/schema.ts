@@ -8,6 +8,7 @@ import {
   contentBlockSchema,
   contactFormSchema,
   heroBlockSchema,
+  masonryBlockSchema,
 } from "../components/blocks/";
 import { iconSchema } from "../components/util/icon";
 import {
@@ -312,12 +313,13 @@ const schema = defineSchema({
             visualSelector: true,
           },
           templates: [
+            contentBlockSchema,
             heroBlockSchema,
             featuredBlockSchema,
             latestsBlockSchema,
             allSeriesSchema,
             contactFormSchema,
-            contentBlockSchema,
+            masonryBlockSchema,
           ],
         },
       ],
