@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Blocks } from "../components/blocks-renderer";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../components/layout";
 import { client } from "../.tina/__generated__/client";
-import { seoConfig } from "../components/layout/layout";
 import { motion } from "framer-motion";
+import { NextSeoProps } from "next-seo";
 export default function NextPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
 ) {
@@ -15,18 +14,30 @@ export default function NextPage(
   });
 
   const { page } = data;
+  const url = props.route === "/home" ? "" : props.route.replace("/", "");
+
+  const seoProps: NextSeoProps = {
+    title: page?.seo?.title,
+    description: page?.seo?.description,
+    robotsProps: {
+      maxImagePreview: "standard",
+      notranslate: true,
+      maxSnippet: -1,
+    },
+    canonical: `${process.env.NEXT_PUBLIC_WEB_URI}/${url}`,
+    mobileAlternate: {
+      media: "handheld",
+      href: `${process.env.NEXT_PUBLIC_WEB_URI}/${url}`,
+    },
+    openGraph: {
+      url: `${process.env.NEXT_PUBLIC_WEB_URI}/${url}`,
+      title: page?.seo?.title,
+      description: page?.seo?.description,
+    },
+  };
 
   return (
-    <Layout
-      rawData={data}
-      data={data.global as any}
-      seo={{
-        ...seoConfig,
-        title: page?.seo?.title,
-        description: page?.seo?.description,
-        route: props.route === "/home" ? "" : props.route.replace("/", ""),
-      }}
-    >
+    <Layout rawData={data} data={data.global} seo={seoProps}>
       <motion.div
         key={props.route}
         initial={{ opacity: 0 }}
@@ -64,5 +75,7 @@ export const getStaticPaths = async () => {
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends (...args: any) => Promise<infer R> ? R : any;
