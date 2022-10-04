@@ -107,7 +107,7 @@ export const Serie: FC<SerieProps> = ({
   }, [body]);
 
   return (
-    <>
+    <article>
       <Section>
         <Hero
           data={{
@@ -129,6 +129,6 @@ export const Serie: FC<SerieProps> = ({
       </WrapperContent>
       <SocialShare title={title} url={`https://anibalsantosgomez.com/${url}`} />
       {(next || prev) && <Pagination next={next} prev={prev} />}
-    </>
+    </article>
   );
 };

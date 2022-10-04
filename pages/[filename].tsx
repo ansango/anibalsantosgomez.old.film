@@ -38,7 +38,7 @@ export default function NextPage(
 
   return (
     <Layout rawData={data} data={data.global} seo={seoProps}>
-      <motion.div
+      <motion.article
         key={props.route}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -46,7 +46,7 @@ export default function NextPage(
         transition={{ duration: 0.5 }}
       >
         <Blocks {...data.page} />
-      </motion.div>
+      </motion.article>
     </Layout>
   );
 }
