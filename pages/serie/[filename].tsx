@@ -30,14 +30,16 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
       summary,
       cover,
     } = serie;
-    
+
     const firstTag =
       serie?.meta?.tags[0].charAt(0).toUpperCase() +
       serie?.meta?.tags[0].slice(1);
-    
+    const secondTag =
+      serie?.meta?.tags[1].charAt(0).toUpperCase() +
+      serie?.meta?.tags[1].slice(1);
     const seoProps: NextSeoProps = {
       title: serie?.seo?.title,
-      titleTemplate: `%s | Serie | ${firstTag}`,
+      titleTemplate: `%s | Serie | ${firstTag} ${secondTag}`,
       robotsProps: {
         maxImagePreview: "standard",
         notranslate: true,
