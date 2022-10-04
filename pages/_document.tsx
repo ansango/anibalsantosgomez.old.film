@@ -44,7 +44,6 @@ export default function Document() {
         <meta content="#ffffff" name="theme-color" />
         <meta content="#ffffff" name="msapplication-TileColor" />
         <meta content="/browserconfig.xml" name="msapplication-config" />{" "}
-        <meta name="robots" content="follow, index" />
       </Head>
       <body>
         <Main />

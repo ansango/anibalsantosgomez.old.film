@@ -1,36 +1,27 @@
-import React from "react";
-import NextHead from "next/head";
+import React, { FC, ReactNode } from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
 import { TinaField } from "tinacms";
+import { NextSeo, type NextSeoProps } from "next-seo";
 
-export const seoConfig = {
-  title: "film captures",
-  description: "film captures",
-  image: "https://anibalsantosgomez.com/avatar.jpeg",
-  type: "website",
-  author: "Aníbal Santos Gómez",
-  uname: "anibalsantos",
-  site: "https://anibalsantosgomez.com",
-  twitter: "@iamasync_",
-  route: "",
-  date: undefined,
-};
-
-export const Layout = ({
-  rawData = {},
-  data = layoutData,
-  seo = {
-    ...seoConfig,
-  },
-  children,
-}) => {
+export const Layout: FC<{
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  rawData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  seo: NextSeoProps;
+  children: ReactNode;
+}> = ({ rawData = {}, data = layoutData, seo, children }) => {
   return (
     <>
-      <NextHead>
-        <title>{seo.title}</title>
+      <NextSeo {...seo} />
+      {/* <NextSeo {...seoA} /> */}
+      {/* <NextHead>
+        <title>
+          {seo.title} / {seo.author}
+        </title>
         <meta content={seo.description} name="description" />
         <meta property="og:url" content={`${seo.site}/${seo.route}`} />
         <link rel="canonical" href={`${seo.site}/${seo.route}`} />
@@ -47,7 +38,7 @@ export const Layout = ({
         {seo.date && (
           <meta property="article:published_time" content={seo.date} />
         )}
-      </NextHead>
+      </NextHead> */}
       <Theme data={data?.theme}>
         <div
           className={`min-h-screen flex flex-col ${
@@ -85,9 +76,4 @@ export const seoSchema: TinaField = {
       required: true,
     },
   ],
-};
-
-export const defaultSeo = {
-  title: seoConfig.title,
-  description: seoConfig.description,
 };

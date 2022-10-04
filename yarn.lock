@@ -10176,6 +10176,11 @@ next-connect@^0.13.0:
   dependencies:
     trouter "^3.2.0"
 
+next-seo@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.5.0.tgz#12bdfce60a6ae098f49617357a166c2d44dbc29e"
+  integrity sha512-5ouBHFtx8YrSDW44lj0qIEQ+oMcz6stgoITB+SqHUZbhgizoJsyLmq73gJ0lxtEKpcN8vG2QgRIJfdb8OAPChw==
+
 next-svgr@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/next-svgr/-/next-svgr-0.0.2.tgz#bde3bc75d124a0149e263ec9b8dce67ec76cfcac"

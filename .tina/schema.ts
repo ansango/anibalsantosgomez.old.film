@@ -17,7 +17,6 @@ import {
 } from "../components/series";
 
 import { client } from "./__generated__/client";
-import { defaultSeo, seoSchema } from "../components/layout/layout";
 import { defaultMeta, metaSchema } from "../components/util/meta";
 import { kebabCase } from "../lib/utils";
 import { aspectRatioCn, objectPositionCn } from "../components/util/image";
@@ -65,6 +64,23 @@ const schema = defineSchema({
         publishedAt: new Date().toISOString(),
       }),
       fields: [
+        {
+          name: "seo",
+          label: "SEO",
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              label: "Title",
+              type: "string",
+            },
+            {
+              name: "description",
+              label: "Description",
+              type: "string",
+            },
+          ],
+        },
         { ...metaSchema },
         {
           label: "Sequence",
@@ -268,11 +284,25 @@ const schema = defineSchema({
       name: "page",
       path: "content/pages",
       format: "mdx",
-      defaultItem: () => ({
-        seo: defaultSeo,
-      }),
+
       fields: [
-        { ...seoSchema },
+        {
+          name: "seo",
+          label: "SEO",
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              label: "Title",
+              type: "string",
+            },
+            {
+              name: "description",
+              label: "Description",
+              type: "string",
+            },
+          ],
+        },
         {
           type: "object",
           list: true,
