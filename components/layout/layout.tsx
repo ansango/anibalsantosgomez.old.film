@@ -8,9 +8,9 @@ import { NextSeo, type NextSeoProps } from "next-seo";
 
 export const Layout: FC<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  rawData: any;
+  rawData?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data?: any;
   seo: NextSeoProps;
   children: ReactNode;
 }> = ({ rawData = {}, data = layoutData, seo, children }) => {
