@@ -54,10 +54,7 @@ export const Footer = ({ data, rawData }) => {
 
   return (
     <>
-      <footer aria-labelledby="footer-heading">
-        <h2 id="footer-heading" className="sr-only">
-          Footer
-        </h2>
+      <footer>
         <Container>
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
@@ -108,7 +105,6 @@ export const Footer = ({ data, rawData }) => {
           </div>
         </Container>
       </footer>
-
       {process.env.NODE_ENV === "development" && (
         <RawRenderer rawData={rawData} />
       )}
