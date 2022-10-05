@@ -1,10 +1,11 @@
 import { Template } from "../../.tina/schema";
 import { Container } from "../util/container";
-import { aspectRatioCn, objectPositionCn } from "../util/image";
+import { aspectRatioCn, ImageMasonry, objectPositionCn } from "../util/image";
 import { Section } from "../util/section";
-import { Image } from "../util/image";
-import { FC } from "react";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { FC, useEffect } from "react";
 import { PageBlocksMasonry } from "../../.tina/__generated__/types";
+import { useInView } from "react-intersection-observer";
 
 const gapOptionsCn = {
   default: {
@@ -119,6 +120,11 @@ const columnsOptionsCn = {
   },
 };
 
+const variants: Variants = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.35 } },
+  hidden: { opacity: 0, scale: 1 },
+};
+
 export const Masonry: FC<{
   data: {
     images?: PageBlocksMasonry["images"];
@@ -145,19 +151,33 @@ export const Masonry: FC<{
 
   const gapClasses = `${gapDefault} ${gapSm} ${gapMd} ${gapLg}`;
   const columnsClasses = `${columnsDefault} ${columnsSm} ${columnsMd} ${columnsLg}`;
-
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
   return (
     <Section>
       <Container>
-        <div className={`${gapClasses} ${columnsClasses}`}>
+        <motion.div
+          ref={ref}
+          variants={variants}
+          initial="hidden"
+          animate={control}
+          className={`${gapClasses} ${columnsClasses}`}
+        >
           {images?.map(({ ...imageProps }, i) => (
-            <Image
+            <ImageMasonry
               key={i}
               {...imageProps}
               parentField={`${parentField}.${i}`}
             />
           ))}
-        </div>
+        </motion.div>
       </Container>
     </Section>
   );

@@ -177,3 +177,33 @@ export const ImageHero: FC<ImageProps> = ({
     </span>
   );
 };
+
+export const ImageMasonry: FC<ImageProps> = ({
+  alt,
+  url,
+  parentField = "",
+  aspectRatio = "4/3",
+  centerImage = "center",
+  loading = "lazy",
+}) => {
+  const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
+  const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
+
+  return (
+    <>
+      {url ? (
+        <span
+          className={`relative flex flex-col items-center justify-center`}
+          data-tinafield={`${parentField}.image`}
+        >
+          <img
+            className={`object-cover ${centerCn} w-full ${aRatio}`}
+            loading={loading}
+            alt={alt}
+            src={url}
+          />
+        </span>
+      ) : null}
+    </>
+  );
+};
