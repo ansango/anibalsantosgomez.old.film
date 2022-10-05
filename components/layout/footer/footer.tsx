@@ -95,7 +95,7 @@ export const Footer = ({ data, rawData }) => {
             </div>
           </div>
 
-          <div className="px-5 py-12 mt-12 mx-auto bg-neutral-100 dark:bg-neutral-800 max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-20">
+          <div className="px-5 py-12 mt-12 mx-auto bg-neutral-100 dark:bg-neutral-800 sm:px-6 md:flex md:items-center md:justify-between lg:px-20">
             <span
               className={`mt-2 text-sm font-light ${monoTextColors[500][mono]}`}
             >

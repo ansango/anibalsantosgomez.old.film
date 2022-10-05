@@ -17,7 +17,7 @@ const Loader = ({ items = 3 }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.75 }}
-      className={`relative mx-auto max-w-7xl animate-pulse`}
+      className={`relative mx-auto animate-pulse`}
     >
       <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
         {[...Array(items)].map((_, i) => (
@@ -73,7 +73,7 @@ export const Latests = ({ data, parentField = "" }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.75 }}
-            className="relative mx-auto max-w-7xl"
+            className="relative mx-auto"
           >
             <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
               {series.map((serie, i) => (
@@ -112,7 +112,7 @@ export const Latests = ({ data, parentField = "" }) => {
                             {serie.title}
                           </h3>
                           <p
-                            className={`text-base font-normal line-clamp-4 lg:line-clamp-5 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
+                            className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
                           >
                             {serie.summary}
                           </p>

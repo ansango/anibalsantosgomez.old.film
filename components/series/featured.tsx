@@ -17,7 +17,7 @@ const Loader = ({ items = 2 }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.75 }}
-      className={`relative mx-auto max-w-7xl animate-pulse`}
+      className={`relative mx-auto animate-pulse`}
     >
       <div className="grid gap-8 grid-cols-12 mx-auto mt-12 ">
         <div className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
@@ -99,7 +99,7 @@ export const Featured = ({ data, parentField = "" }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.75 }}
-              className="relative mx-auto max-w-7xl"
+              className="relative mx-auto"
             >
               <div className="grid gap-8 grid-cols-12 mx-auto mt-12">
                 {lastSerie && (
@@ -134,7 +134,7 @@ export const Featured = ({ data, parentField = "" }) => {
                               {lastSerie.title}
                             </h3>
                             <p
-                              className={`text-base font-normal line-clamp-4 lg:line-clamp-5 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+                              className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                             >
                               {lastSerie.summary}
                             </p>
@@ -183,7 +183,7 @@ export const Featured = ({ data, parentField = "" }) => {
                                   {serie.title}
                                 </h3>
                                 <p
-                                  className={`text-base font-normal line-clamp-4 lg:line-clamp-5 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
+                                  className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
                                 >
                                   {serie.summary}
                                 </p>
