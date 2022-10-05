@@ -57,7 +57,7 @@ const renderHero = (
                 )}
                 {text && (
                   <p
-                    className={`mb-8 text-base leading-relaxed text-left ${monoTextColors[500][mono]}`}
+                    className={`mb-8 text-base leading-relaxed text-left max-w-4xl ${monoTextColors[500][mono]}`}
                     data-tinafield={`${parentField}.text`}
                   >
                     {text}
