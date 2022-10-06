@@ -17,28 +17,6 @@ export const Layout: FC<{
   return (
     <>
       <NextSeo {...seo} />
-      {/* <NextSeo {...seoA} /> */}
-      {/* <NextHead>
-        <title>
-          {seo.title} / {seo.author}
-        </title>
-        <meta content={seo.description} name="description" />
-        <meta property="og:url" content={`${seo.site}/${seo.route}`} />
-        <link rel="canonical" href={`${seo.site}/${seo.route}`} />
-        <meta property="og:type" content={seo.type} />
-        <meta property="og:site_name" content={seo.author} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:image" content={seo.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={seo.twitter} />
-        <meta name="twitter:title" content={seo.title} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={seo.image} />
-        {seo.date && (
-          <meta property="article:published_time" content={seo.date} />
-        )}
-      </NextHead> */}
       <Theme data={data?.theme}>
         <div
           className={`min-h-screen flex flex-col ${
