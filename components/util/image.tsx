@@ -225,7 +225,7 @@ export const ImageMasonry: FC<
   };
   const sm = colSm > 1 ? `600px` : `768px`;
   const md = colMd > 1 ? `768px` : `1024px`;
-  const lg = colLg < 3 ? (colLg < 2 ? `1024px` : `768px`) : `600px`;
+  const lg = colLg < 3 ? (colLg <= 2 ? `1024px` : `768px`) : `600px`;
   const sizes = `(max-width: 512px) 600px, (max-width: 600px) ${sm}, (max-width: 768px) ${md}, (min-width: 1024px) ${lg}, 2048px`;
   return (
     <>
