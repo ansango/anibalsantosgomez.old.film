@@ -9,12 +9,6 @@ export default function FourOhFour() {
         title: "404",
         description:
           "404 - Página no encontrada, vuelve a la página principal o a la página anterior",
-
-        robotsProps: {
-          nosnippet: true,
-        },
-        nofollow: true,
-        noindex: true,
       }}
     >
       <Container>
