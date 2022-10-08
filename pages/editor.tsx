@@ -16,8 +16,8 @@ const Crop = ({
     console.log(croppedArea, croppedAreaPixels);
   }, []);
   return (
-    <>
-      <Section>
+    <div className="h-96">
+      <Section className="h-full">
         <Container>
           {isMounted && (
             <Cropper
@@ -31,7 +31,7 @@ const Crop = ({
             />
           )}
         </Container>
-      </Section>{" "}
+      </Section>
       <Section>
         <Container>
           <input
@@ -48,7 +48,7 @@ const Crop = ({
           />
         </Container>
       </Section>
-    </>
+    </div>
   );
 };
 
