@@ -8,8 +8,7 @@
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/rss.mjs && node ./lib/scripts/sitemap.mjs && node ./lib/scripts/seoImage.mjs",
     "start": "tinacms build && next start",
     "export": "npm run build && next export",
-    "lint": "eslint . --ext .ts,.tsx",
-    "exp": "NODE_OPTIONS='--experimental-json-modules' node ./lib/scripts/s3Img.mjs"
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
