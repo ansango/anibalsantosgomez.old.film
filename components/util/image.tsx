@@ -9,7 +9,7 @@ export type ImageProps = {
   url?: string;
   alt?: string;
   parentField?: string;
-  aspectRatio?: "4/3" | "4/5" | "square" | string;
+  aspectRatio?: typeof aspectRatioCn
   centerImage?:
     | "top"
     | "center"
@@ -117,7 +117,7 @@ export const Image: FC<ImageProps> = ({
   alt,
   url,
   parentField = "",
-  aspectRatio = "4/3",
+  aspectRatio = "auto",
   centerImage = "center",
   loading = "lazy",
   onClick,
@@ -166,7 +166,7 @@ export const Image: FC<ImageProps> = ({
             />
           )}
           <img
-            className={`object-cover ${centerCn} w-full ${aRatio}`}
+            className={`object-cover ${centerCn} w-full ${aRatio} hover:opacity-90 transition-all duration-300`}
             loading={loading}
             alt={alt}
             src={url}
