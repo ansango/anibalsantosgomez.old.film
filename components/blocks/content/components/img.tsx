@@ -1,4 +1,4 @@
-import { Image, type ImageProps } from "../../../util/image";
+import { Image, type ImageProps, DefaultImage } from "../../../util/image";
 
 export const img = (props) => (
   <span className="flex items-center justify-center">
@@ -10,4 +10,4 @@ export const img = (props) => (
   </span>
 );
 
-export { Image, type ImageProps };
+export { Image, type ImageProps, DefaultImage };

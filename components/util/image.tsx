@@ -55,6 +55,64 @@ export const objectPositionCn = {
   "right-bottom": "object-right-bottom",
 };
 
+export const DefaultImage: FC<ImageProps> = ({
+  alt,
+  url,
+  parentField = "",
+  aspectRatio = "4/3",
+  centerImage = "center",
+  loading = "lazy",
+  onClick,
+}) => {
+  const { mono } = useTheme();
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
+  const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
+
+  return (
+    <>
+      {url ? (
+        <motion.span
+          className={`relative flex flex-col items-center justify-center ${
+            onClick ? "cursor-pointer" : ""
+          }`}
+          data-tinafield={`${parentField}.image`}
+          ref={ref}
+          variants={variants}
+          initial="hidden"
+          animate={control}
+          onClick={onClick}
+        >
+          {onClick && (
+            <Icon
+              data={{
+                name: "fullScreen",
+                size: "sm",
+              }}
+              className={`absolute right-4 top-12 ${monoTextColors[400][mono]}`}
+            />
+          )}
+          <img
+            className={`object-cover ${centerCn} w-full ${aRatio}`}
+            loading={loading}
+            alt={alt}
+            src={url}
+          />
+        </motion.span>
+      ) : null}
+    </>
+  );
+};
+
 export const Image: FC<ImageProps> = ({
   alt,
   url,
