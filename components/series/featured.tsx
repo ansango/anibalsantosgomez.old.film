@@ -7,6 +7,7 @@ import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
 import { useFeaturedSeriesQuery } from "../../lib/hooks";
 import { Template } from "../../.tina/schema";
 import { motion } from "framer-motion";
+import { Image } from "../util/image";
 
 const Loader = ({ items = 2 }) => {
   const { mono } = useTheme();
@@ -107,12 +108,10 @@ export const Featured = ({ data, parentField = "" }) => {
                     <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
                       <div className="flex-shrink-0">
                         {lastSerie?.cover && (
-                          <img
-                            className="object-cover w-full aspect-4/3"
-                            alt=""
-                            src={lastSerie.cover}
-                            width={2048}
-                            height={1365}
+                          <Image
+                            alt={lastSerie.title}
+                            url={lastSerie.cover}
+                            onClick={() => ""}
                           />
                         )}
                       </div>
@@ -156,12 +155,10 @@ export const Featured = ({ data, parentField = "" }) => {
                         <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
                           <div className="flex-shrink-0">
                             {serie?.cover && (
-                              <img
-                                className="object-cover w-full aspect-4/3"
-                                alt=""
-                                src={serie.cover}
-                                width={2048}
-                                height={1365}
+                              <Image
+                                alt={serie.title}
+                                url={serie.cover}
+                                onClick={() => ""}
                               />
                             )}
                           </div>

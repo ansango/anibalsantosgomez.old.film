@@ -7,6 +7,7 @@ import { useTheme } from "../layout";
 import { useLatestSeriesQuery } from "../../lib/hooks";
 import { Template } from "../../.tina/schema";
 import { motion } from "framer-motion";
+import { Image } from "../util/image";
 
 const Loader = ({ items = 3 }) => {
   const { mono } = useTheme();
@@ -85,12 +86,10 @@ export const Latests = ({ data, parentField = "" }) => {
                   <a className="flex flex-col mb-12 overflow-hidden cursor-pointer group">
                     <div className="flex-shrink-0">
                       {serie?.cover && (
-                        <img
-                          className="object-cover w-full aspect-4/3"
-                          alt=""
-                          src={serie.cover}
-                          width={2048}
-                          height={1365}
+                        <Image
+                          alt={serie.title}
+                          url={serie.cover}
+                          onClick={() => ""}
                         />
                       )}
                     </div>

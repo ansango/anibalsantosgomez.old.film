@@ -9,7 +9,17 @@ export type ImageProps = {
   url?: string;
   alt?: string;
   parentField?: string;
-  aspectRatio?: typeof aspectRatioCn
+  aspectRatio?:
+    | "4/3"
+    | "4/5"
+    | "5/4"
+    | "9/16"
+    | "2/3"
+    | "3/2"
+    | "square"
+    | "video"
+    | "auto:"
+    | string;
   centerImage?:
     | "top"
     | "center"
@@ -62,9 +72,7 @@ export const DefaultImage: FC<ImageProps> = ({
   aspectRatio = "4/3",
   centerImage = "center",
   loading = "lazy",
-  onClick,
 }) => {
-  const { mono } = useTheme();
   const control = useAnimation();
   const [ref, inView] = useInView();
 
@@ -82,25 +90,13 @@ export const DefaultImage: FC<ImageProps> = ({
     <>
       {url ? (
         <motion.span
-          className={`relative flex flex-col items-center justify-center ${
-            onClick ? "cursor-pointer" : ""
-          }`}
+          className={`relative flex flex-col items-center justify-center`}
           data-tinafield={`${parentField}.image`}
           ref={ref}
           variants={variants}
           initial="hidden"
           animate={control}
-          onClick={onClick}
         >
-          {onClick && (
-            <Icon
-              data={{
-                name: "fullScreen",
-                size: "sm",
-              }}
-              className={`absolute right-4 top-12 ${monoTextColors[400][mono]}`}
-            />
-          )}
           <img
             className={`object-cover ${centerCn} w-full ${aRatio}`}
             loading={loading}
@@ -156,17 +152,10 @@ export const Image: FC<ImageProps> = ({
           animate={control}
           onClick={onClick}
         >
-          {onClick && (
-            <Icon
-              data={{
-                name: "fullScreen",
-                size: "sm",
-              }}
-              className={`absolute right-4 top-12 ${monoTextColors[400][mono]}`}
-            />
-          )}
           <img
-            className={`object-cover ${centerCn} w-full ${aRatio} hover:opacity-90 transition-all duration-300`}
+            className={`object-cover ${centerCn} w-full ${aRatio} ${
+              onClick && `hover:opacity-90 transition-all duration-300`
+            }`}
             loading={loading}
             alt={alt}
             src={url}
