@@ -1,9 +1,6 @@
 import { type FC, useEffect } from "react";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Icon } from "./icon";
-import { monoTextColors } from "../styles";
-import { useTheme } from "../layout";
 
 export type ImageProps = {
   url?: string;
@@ -118,7 +115,6 @@ export const Image: FC<ImageProps> = ({
   loading = "lazy",
   onClick,
 }) => {
-  const { mono } = useTheme();
   const control = useAnimation();
   const [ref, inView] = useInView();
 
@@ -154,7 +150,7 @@ export const Image: FC<ImageProps> = ({
         >
           <img
             className={`object-cover ${centerCn} w-full ${aRatio} ${
-              onClick && `hover:opacity-90 transition-all duration-300`
+              onClick && `hover:opacity-80 group-hover:opacity-80 transition-all duration-300`
             }`}
             loading={loading}
             alt={alt}

@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Icon } from "../util/icon";
 import { Template } from "../../.tina/schema";
 import { motion } from "framer-motion";
+import { Image } from "../util/image";
 
 const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   const { mono } = useTheme();
@@ -176,12 +177,10 @@ export const Series = ({ data, parentField = "" }) => {
                           <div className="mb-4 sm:mb-0 sm:mr-4">
                             {serie?.cover && (
                               <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
-                                <img
-                                  className="object-cover w-full aspect-4/3"
-                                  alt=""
-                                  src={serie.cover}
-                                  width={2048}
-                                  height={1365}
+                                <Image
+                                  alt={serie.title}
+                                  url={serie.cover}
+                                  onClick={() => ""}
                                 />
                               </div>
                             )}
