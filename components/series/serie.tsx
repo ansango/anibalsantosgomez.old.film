@@ -1,7 +1,7 @@
 import React, { type FC, useEffect } from "react";
 import { Section } from "../util/section";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
-import { components, Hero, WrapperContent } from "../blocks";
+import { components, Hero, HeroSerie, WrapperContent } from "../blocks";
 import { type SerieQuery } from "../../.tina/__generated__/types";
 import Link from "next/link";
 import { Container } from "../util/container";
@@ -109,8 +109,8 @@ export const Serie: FC<SerieProps> = ({
   return (
     <article>
       <Section>
-        <Hero
-          data={{
+        <HeroSerie
+          {...{
             type: "serie",
             headline: title,
             tagline: description,

@@ -5,7 +5,7 @@ export const img = (props) => (
     <img
       src={props.url}
       alt={props.alt}
-      className="object-cover w-full aspect-4/3"
+      className="object-cover w-full aspect-auto"
     />
   </span>
 );
