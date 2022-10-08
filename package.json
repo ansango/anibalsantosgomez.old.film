@@ -53,6 +53,7 @@
     "nodemailer": "^6.7.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-easy-crop": "^4.5.1",
     "react-google-recaptcha-v3": "^1.10.0",
     "react-hook-form": "^7.36.0",
     "react-hot-toast": "^2.4.0",
