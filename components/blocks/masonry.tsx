@@ -160,6 +160,7 @@ export const Masonry: FC<{
       control.start("hidden");
     }
   }, [control, inView]);
+
   return (
     <Section>
       <Container>
@@ -174,6 +175,7 @@ export const Masonry: FC<{
             <ImageMasonry
               key={i}
               {...imageProps}
+              columns={columns}
               parentField={`${parentField}.${i}`}
             />
           ))}

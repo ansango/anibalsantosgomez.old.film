@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { Icon } from "./icon";
 import { monoTextColors } from "../styles";
 import { useTheme } from "../layout";
+import { PageBlocksMasonryColumns } from "../../.tina/__generated__/types";
 
 export type ImageProps = {
   url?: string;
@@ -195,16 +196,26 @@ export const ImageHero: FC<ImageProps> = ({
   );
 };
 
-export const ImageMasonry: FC<ImageProps> = ({
+export const ImageMasonry: FC<
+  ImageProps & {
+    columns: PageBlocksMasonryColumns;
+  }
+> = ({
   alt,
   url,
   parentField = "",
   aspectRatio = "4/3",
   centerImage = "center",
   loading = "lazy",
+  columns,
 }) => {
   const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
   const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
+
+  const colSm = columns.sm && parseInt(columns.sm);
+  const colMd = columns.md && parseInt(columns.md);
+  const colLg = columns.lg && parseInt(columns.lg);
+
   const rawUrl = url.replace("2048x1365.webp", "");
   const srcSet = {
     2048: `${rawUrl}2048x1365.webp`,
@@ -212,7 +223,10 @@ export const ImageMasonry: FC<ImageProps> = ({
     768: `${rawUrl}768x512.webp`,
     600: `${rawUrl}600x400.webp`,
   };
-
+  const sm = colSm > 1 ? `600px` : `768px`;
+  const md = colMd > 1 ? `768px` : `1024px`;
+  const lg = colLg < 3 ? (colLg < 2 ? `1024px` : `768px`) : `600px`;
+  const sizes = `(max-width: 512px) 600px, (max-width: 600px) ${sm}, (max-width: 768px) ${md}, (min-width: 1024px) ${lg}, 2048px`;
   return (
     <>
       {url ? (
@@ -223,7 +237,7 @@ export const ImageMasonry: FC<ImageProps> = ({
           <img
             className={`object-cover ${centerCn} w-full ${aRatio}`}
             srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
-            sizes="(max-width: 512px) 600px, (max-width: 600px) 768px, (max-width: 768px) 1024px, 2048px"
+            sizes={sizes}
             loading={loading}
             alt={alt}
             src={`${url}`}
