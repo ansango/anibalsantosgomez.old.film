@@ -175,7 +175,6 @@ export const Masonry: FC<{
             <ImageMasonry
               key={i}
               {...imageProps}
-              columns={columns}
               parentField={`${parentField}.${i}`}
             />
           ))}
