@@ -77,7 +77,13 @@ export const Image: FC<ImageProps> = ({
       control.start("hidden");
     }
   }, [control, inView]);
-
+  const rawUrl = url.replace("2048x1365.webp", "");
+  const srcSet = {
+    2048: `${rawUrl}2048x1365.webp`,
+    1024: `${rawUrl}1024x683.webp`,
+    768: `${rawUrl}768x512.webp`,
+    600: `${rawUrl}600x400.webp`,
+  };
   return (
     <>
       {url ? (
@@ -106,6 +112,8 @@ export const Image: FC<ImageProps> = ({
             loading={loading}
             alt={alt}
             src={url}
+            srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
+            sizes="(max-width: 512px) 600px, (max-width: 600px) 768px, (max-width: 768px) 1024px, 2048px"
           />
         </motion.span>
       ) : null}
@@ -123,6 +131,13 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
       control.start("hidden");
     }
   }, [control, inView]);
+  const rawUrl = url.replace("2048x1365.webp", "");
+  const srcSet = {
+    2048: `${rawUrl}2048x1365.webp`,
+    1024: `${rawUrl}1024x683.webp`,
+    768: `${rawUrl}768x512.webp`,
+    600: `${rawUrl}600x400.webp`,
+  };
   return (
     <motion.span
       className="flex flex-col items-center justify-center"
@@ -135,6 +150,8 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
         loading={loading}
         className="object-cover object-center mx-auto shadow-2xl dark:shadow-black aspect-square"
         alt={alt}
+        srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
+        sizes="(max-width: 512px) 600px, (max-width: 600px) 768px, (max-width: 768px) 1024px, 2048px"
         src={url}
       />
     </motion.span>
