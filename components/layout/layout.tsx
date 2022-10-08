@@ -11,7 +11,7 @@ export const Layout: FC<{
   rawData?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
-  seo: NextSeoProps;
+  seo?: NextSeoProps;
   children: ReactNode;
 }> = ({ rawData = {}, data = layoutData, seo, children }) => {
   return (
