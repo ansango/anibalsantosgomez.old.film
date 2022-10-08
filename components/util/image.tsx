@@ -188,6 +188,13 @@ export const ImageMasonry: FC<ImageProps> = ({
 }) => {
   const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
   const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
+  const rawUrl = url.replace("2048x1365.webp", "");
+  const srcSet = {
+    2048: `${rawUrl}2048x1365.webp`,
+    1024: `${rawUrl}1024x683.webp`,
+    768: `${rawUrl}768x512.webp`,
+    600: `${rawUrl}600x400.webp`,
+  };
 
   return (
     <>
@@ -198,9 +205,11 @@ export const ImageMasonry: FC<ImageProps> = ({
         >
           <img
             className={`object-cover ${centerCn} w-full ${aRatio}`}
+            srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
+            sizes="(max-width: 512px) 600px, (max-width: 600px) 768px, (max-width: 768px) 1024px, 2048px"
             loading={loading}
             alt={alt}
-            src={url}
+            src={`${url}`}
           />
         </span>
       ) : null}
