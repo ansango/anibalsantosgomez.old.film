@@ -135,7 +135,7 @@ export const Image: FC<ImageProps> = ({
       control.start("hidden");
     }
   }, [control, inView]);
-  const rawUrl = url.replace("2048x1365.webp", "");
+  const rawUrl = url?.replace("2048x1365.webp", "");
   const srcSet = {
     2048: `${rawUrl}2048x1365.webp`,
     1024: `${rawUrl}1024x683.webp`,
