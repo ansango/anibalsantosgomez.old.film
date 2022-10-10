@@ -1,12 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { sendMail, CONFIG as MAIL_CONFIG } from "../../lib/mail";
-import nc from "next-connect";
+import { createRouter } from "next-connect";
 import { clientHtml, submission } from "../../lib/mail/templates";
 import fetcher from "../../lib/utils";
+import { corsMiddleware, customErrors } from "../../lib/api";
 
-const handler = nc<NextApiRequest, NextApiResponse>();
+const router = createRouter<NextApiRequest, NextApiResponse>();
 
-handler.post(async (req, res) => {
+router.use(corsMiddleware).post(async (req, res) => {
   const {
     contactForm,
     lang = "es",
@@ -69,4 +70,4 @@ handler.post(async (req, res) => {
   }
 });
 
-export default handler;
+export default router.handler(customErrors);
