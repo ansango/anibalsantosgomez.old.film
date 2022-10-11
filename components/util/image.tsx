@@ -199,6 +199,7 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
     768: `${rawUrl}768x512.webp`,
     600: `${rawUrl}600x400.webp`,
   };
+  console.log(url)
   return (
     <motion.span
       className="flex flex-col items-center justify-center"
