@@ -117,9 +117,15 @@ export const Series = ({ data, parentField = "" }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredSeries =
-    series?.filter((post) =>
-      post.title.toLowerCase().includes(searchValue.toLowerCase())
+    series?.filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+        post.meta?.tags?.some((tag) =>
+          tag.toLowerCase().includes(searchValue.toLowerCase())
+        )
     ) || [];
+
+  
 
   const onPagination = (event) => {
     setCurrentPage(Number(event.target.id));
