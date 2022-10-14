@@ -14,6 +14,7 @@ import {
   ViewfinderCircleIcon,
 } from "@heroicons/react/24/outline";
 import { SiTelegram, SiWhatsapp, SiTwitter, SiGmail } from "react-icons/si";
+import { BiCookie } from "react-icons/bi";
 import { monoTextColors, primaryHoverTextColors } from "../styles";
 
 export const iconsTheme = {
@@ -30,6 +31,7 @@ export const iconsTheme = {
     telegram: SiTelegram,
     whatsapp: SiWhatsapp,
     twitter: SiTwitter,
+    cookie: BiCookie,
   },
 };
 

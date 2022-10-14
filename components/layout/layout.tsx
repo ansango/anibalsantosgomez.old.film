@@ -5,6 +5,7 @@ import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
 import { TinaField } from "tinacms";
 import { NextSeo, type NextSeoProps } from "next-seo";
+import { Policy } from "../util/policy";
 
 export const Layout: FC<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,6 +33,7 @@ export const Layout: FC<{
           <Footer rawData={rawData} data={data?.footer} />
         </div>
       </Theme>
+      <Policy />
     </>
   );
 };
