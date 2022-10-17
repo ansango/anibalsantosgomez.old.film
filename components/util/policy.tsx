@@ -1,5 +1,9 @@
 import { useLocalStorage } from "../../lib/hooks";
 import { useTheme } from "../layout";
+
+import { useEffect, useState } from "react";
+import { setCookie, hasCookie } from "cookies-next";
+
 import {
   baseButtonStyles,
   buttonPrimaryColors,
@@ -8,15 +12,23 @@ import {
 import { Icon } from "./icon";
 
 export const Policy = () => {
-  const { color, mono } = useTheme();
-  const [policyAccepted, setPolicyAccepted] = useLocalStorage(
-    false,
-    "cookiesPolicy"
-  );
-  const handlerAccept = () => {
-    setPolicyAccepted(true);
+  const [consent, setConsent] = useState(true);
+  useEffect(() => {
+    setConsent(hasCookie("localConsent"));
+  }, []);
+
+  const acceptCookie = () => {
+    setConsent(true);
+    setCookie("localConsent", "true", { maxAge: 60 * 60 * 24 * 365 });
   };
-  return !policyAccepted ? (
+
+  const { color, mono } = useTheme();
+
+  if (consent === true) {
+    return null;
+  }
+
+  return (
     <div className="max-w-3xl mx-auto xl:max-w-5xl ">
       <div className="fixed bottom-0 md:bottom-4 max-w-3xl mx-auto xl:max-w-5xl z-10 w-full">
         <div className="w-full shadow-xl">
@@ -36,7 +48,7 @@ export const Policy = () => {
             </p>
 
             <button
-              onClick={handlerAccept}
+              onClick={acceptCookie}
               className={`col-span-12 md:col-span-3 ${baseButtonStyles} ${buttonPrimaryColors[color]}`}
             >
               Aceptar
@@ -45,7 +57,5 @@ export const Policy = () => {
         </div>
       </div>
     </div>
-  ) : (
-    <></>
   );
 };

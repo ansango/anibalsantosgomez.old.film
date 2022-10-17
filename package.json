@@ -42,6 +42,7 @@
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.11",
     "@tinacms/auth": "^0.50.4",
+    "cookies-next": "^2.1.1",
     "cors": "^2.8.5",
     "date-fns": "^2.23.0",
     "framer-motion": "^7.3.6",
