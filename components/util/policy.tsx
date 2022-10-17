@@ -1,6 +1,4 @@
-import { useLocalStorage } from "../../lib/hooks";
 import { useTheme } from "../layout";
-
 import { useEffect, useState } from "react";
 import { setCookie, hasCookie } from "cookies-next";
 
@@ -9,6 +7,7 @@ import {
   buttonPrimaryColors,
   monoTextColors,
 } from "../styles";
+
 import { Icon } from "./icon";
 
 export const Policy = () => {
