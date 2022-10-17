@@ -2,7 +2,12 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { formatDate } from "../../lib/utils";
 import Link from "next/link";
-import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
+import {
+  monoTextColors,
+  monoBordersColors,
+  monoRestColors,
+  primaryHoverTextColors,
+} from "../styles";
 import { useTheme } from "../layout";
 import { useLatestSeriesQuery } from "../../lib/hooks";
 import { Template } from "../../.tina/schema";
@@ -53,7 +58,7 @@ const Loader = ({ items = 3 }) => {
 };
 
 export const Latests = ({ data, parentField = "" }) => {
-  const { mono } = useTheme();
+  const { mono, color } = useTheme();
   const { series, loading } = useLatestSeriesQuery({ init: 0, limit: 6 });
 
   return (
@@ -121,6 +126,15 @@ export const Latests = ({ data, parentField = "" }) => {
                   </a>
                 </Link>
               ))}
+            </div>
+            <div className="flex justify-end">
+              <Link href="/series">
+                <a
+                  className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
+                >
+                  Ver todas las series
+                </a>
+              </Link>
             </div>
           </motion.div>
         )}
