@@ -1,6 +1,7 @@
-import { type FC, useEffect } from "react";
-import { motion, useAnimation, Variants } from "framer-motion";
+import { type FC } from "react";
+
 import { useInView } from "react-intersection-observer";
+import ImageNext from "next/image";
 
 export type ImageProps = {
   url?: string;
@@ -31,11 +32,6 @@ export type ImageProps = {
 
   loading?: "lazy" | "eager";
   onClick?: () => void;
-};
-
-const variants: Variants = {
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.35 } },
-  hidden: { opacity: 0, scale: 1 },
 };
 
 export const aspectRatioCn = {
@@ -79,149 +75,6 @@ export const centerMobileCn = {
   "right-bottom": "bg-right-bottom",
 };
 
-export const DefaultImage: FC<ImageProps> = ({
-  alt,
-  url,
-  parentField = "",
-  aspectRatio = "4/3",
-  centerImage = "center",
-  loading = "lazy",
-}) => {
-  const control = useAnimation();
-  const [ref, inView] = useInView();
-
-  const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
-  const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
-  useEffect(() => {
-    if (inView) {
-      control.start("visible");
-    } else {
-      control.start("hidden");
-    }
-  }, [control, inView]);
-
-  return (
-    <>
-      {url ? (
-        <motion.span
-          className={`relative flex flex-col items-center justify-center`}
-          data-tinafield={`${parentField}.image`}
-          ref={ref}
-          variants={variants}
-          initial="hidden"
-          animate={control}
-        >
-          <img
-            className={`object-cover ${centerCn} w-full ${aRatio}`}
-            loading={loading}
-            alt={alt}
-            src={url}
-          />
-        </motion.span>
-      ) : null}
-    </>
-  );
-};
-
-export const Image: FC<ImageProps> = ({
-  alt,
-  url,
-  parentField = "",
-  aspectRatio = "auto",
-  centerImage = "center",
-  loading = "lazy",
-  onClick,
-}) => {
-  const control = useAnimation();
-  const [ref, inView] = useInView();
-
-  const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
-  const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
-  useEffect(() => {
-    if (inView) {
-      control.start("visible");
-    } else {
-      control.start("hidden");
-    }
-  }, [control, inView]);
-  const rawUrl = url?.replace("2048x1365.webp", "");
-  const srcSet = {
-    2048: `${rawUrl}2048x1365.webp`,
-    1024: `${rawUrl}1024x683.webp`,
-    768: `${rawUrl}768x512.webp`,
-    600: `${rawUrl}600x400.webp`,
-  };
-  return (
-    <>
-      {url ? (
-        <motion.span
-          className={`relative flex flex-col items-center justify-center ${
-            onClick ? "cursor-pointer" : ""
-          }`}
-          data-tinafield={`${parentField}.image`}
-          ref={ref}
-          variants={variants}
-          initial="hidden"
-          animate={control}
-          onClick={onClick}
-        >
-          <img
-            className={`object-cover ${centerCn} w-full ${aRatio} ${
-              onClick &&
-              `hover:opacity-80 group-hover:opacity-80 transition-all duration-300`
-            }`}
-            loading={loading}
-            alt={alt}
-            src={url}
-            srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
-            sizes="(max-width: 512px) 600px, (max-width: 600px) 768px, (max-width: 768px) 1024px, 2048px"
-          />
-        </motion.span>
-      ) : null}
-    </>
-  );
-};
-
-export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
-  const control = useAnimation();
-  const [ref, inView] = useInView();
-  useEffect(() => {
-    if (inView) {
-      control.start("visible");
-    } else {
-      control.start("hidden");
-    }
-  }, [control, inView]);
-  const rawUrl = url.replace("2048x1365.webp", "");
-  const srcSet = {
-    2048: `${rawUrl}2048x1365.webp`,
-    1024: `${rawUrl}1024x683.webp`,
-    768: `${rawUrl}768x512.webp`,
-    600: `${rawUrl}600x400.webp`,
-  };
-  console.log(url);
-  return (
-    <motion.span
-      className="flex flex-col items-center justify-center"
-      ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={control}
-    >
-      <img
-        loading={loading}
-        className="object-cover object-center mx-auto shadow-2xl dark:shadow-black aspect-square"
-        alt={alt}
-        srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
-        sizes="(max-width: 512px) 600px, (max-width: 600px) 768px, (max-width: 768px) 1024px, 2048px"
-        src={url}
-      />
-    </motion.span>
-  );
-};
-
-import ImageNext from "next/image";
-
 const getSize = (aspectRatio: keyof typeof aspectRatioCn | string) => {
   switch (aspectRatio) {
     case "2/3":
@@ -245,13 +98,14 @@ const getSize = (aspectRatio: keyof typeof aspectRatioCn | string) => {
   }
 };
 
-export const ImageMasonry: FC<ImageProps> = ({
+export const Image: FC<ImageProps> = ({
   alt,
   url,
   parentField = "",
-  aspectRatio = "4/3",
+  aspectRatio = "auto",
   centerImage = "center",
   loading = "lazy",
+  onClick,
 }) => {
   const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
 
@@ -259,13 +113,18 @@ export const ImageMasonry: FC<ImageProps> = ({
     <>
       {url ? (
         <ImageNext
-          className={`object-cover ${centerCn}`}
+          className={`object-cover ${centerCn} ${
+            onClick
+              ? "cursor-pointer hover:opacity-80 group-hover:opacity-80 transition-all duration-300"
+              : ""
+          }`}
           src={url}
           objectFit="cover"
           {...getSize(aspectRatio)}
           alt={alt}
           loading={loading}
           data-tinafield={`${parentField}.image`}
+          onClick={onClick}
         />
       ) : null}
     </>

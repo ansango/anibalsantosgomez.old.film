@@ -26,7 +26,6 @@ import {
   type DateTimeProps,
   DateTime,
   type ImageProps,
-  DefaultImage,
   Image,
   img,
   type ContainerTextProps,
@@ -82,13 +81,12 @@ export const components: Components<{
   DateTime: DateTimeProps;
   ContainerText: ContainerTextProps;
   Image: ImageProps;
-  DefaultImage: ImageProps;
 }> = {
   BlockQuote,
   DateTime,
   img,
   Image,
-  DefaultImage,
+
   ContainerText,
 };
 
@@ -198,28 +196,6 @@ export const contentBlockSchema: Template = {
                       name: "authorName",
                       label: "Author",
                       type: "string",
-                    },
-                  ],
-                },
-                {
-                  name: "DefaultImage",
-                  label: "Default Image",
-                  fields: [
-                    {
-                      name: "url",
-                      label: "URL",
-                      type: "image",
-                    },
-                    {
-                      name: "alt",
-                      label: "Alt Text",
-                      type: "string",
-                    },
-                    {
-                      name: "aspectRatio",
-                      label: "Aspect Ratio",
-                      type: "string",
-                      options: Object.keys(aspectRatioCn),
                     },
                   ],
                 },

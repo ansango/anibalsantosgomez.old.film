@@ -6,7 +6,7 @@ import { useTheme } from "../layout";
 import { monoBgColorsBlur, monoTextColors, primaryTextColors } from "../styles";
 import { SerieProps } from "../series/serie";
 import { Meta } from "../util/meta";
-import { ImageSerie, type ImageProps } from "../util/image";
+import { Image, type ImageProps } from "../util/image";
 import { Template } from "../../.tina/schema";
 import { formatDate } from "../../lib/utils";
 
@@ -116,7 +116,14 @@ export const HeroSerie: FC<HeroData> = ({
                   className={`absolute rounded-full -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 ${monoBgColorsBlur[mono]}`}
                 ></div>
                 <div className="relative">
-                  {image?.url && <ImageSerie alt={image.alt} url={image.url} />}
+                  {image?.url && (
+                    <Image
+                      alt={image.alt}
+                      url={image.url}
+                      aspectRatio="square"
+                      loading="eager"
+                    />
+                  )}
                 </div>
               </div>
             </div>
