@@ -199,7 +199,7 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
     768: `${rawUrl}768x512.webp`,
     600: `${rawUrl}600x400.webp`,
   };
-  console.log(url)
+  console.log(url);
   return (
     <motion.span
       className="flex flex-col items-center justify-center"
@@ -220,7 +220,30 @@ export const ImageSerie: FC<ImageProps> = ({ alt, url, loading = "eager" }) => {
   );
 };
 
+import ImageNext from "next/image";
 
+const getSize = (aspectRatio: keyof typeof aspectRatioCn | string) => {
+  switch (aspectRatio) {
+    case "2/3":
+      return { width: 1365, height: 2048 };
+    case "3/2":
+      return { width: 2048, height: 1365 };
+    case "4/3":
+      return { width: 2048, height: 1536 };
+    case "4/5":
+      return { width: 1638, height: 2048 };
+    case "5/4":
+      return { width: 2048, height: 1638 };
+    case "9/16":
+      return { width: 1152, height: 2048 };
+    case "auto":
+      return { width: 2048, height: 1365 };
+    case "square":
+      return { width: 2048, height: 2048 };
+    case "video":
+      return { width: 2048, height: 1152 };
+  }
+};
 
 export const ImageMasonry: FC<ImageProps> = ({
   alt,
@@ -230,32 +253,20 @@ export const ImageMasonry: FC<ImageProps> = ({
   centerImage = "center",
   loading = "lazy",
 }) => {
-  const aRatio = aspectRatioCn[aspectRatio] || aspectRatioCn["4/3"];
   const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
-
-  const rawUrl = url.replace("2048x1365.webp", "");
-  const srcSet = {
-    2048: `${rawUrl}2048x1365.webp`,
-    1024: `${rawUrl}1024x683.webp`,
-    768: `${rawUrl}768x512.webp`,
-    600: `${rawUrl}600x400.webp`,
-  };
 
   return (
     <>
       {url ? (
-        <span
-          className={`relative flex flex-col items-center justify-center`}
+        <ImageNext
+          className={`object-cover ${centerCn}`}
+          src={url}
+          objectFit="cover"
+          {...getSize(aspectRatio)}
+          alt={alt}
+          loading={loading}
           data-tinafield={`${parentField}.image`}
-        >
-          <img
-            className={`object-cover ${centerCn} w-full ${aRatio}`}
-            srcSet={`${srcSet[2048]} 2048w, ${srcSet[1024]} 1024w, ${srcSet[768]} 768w, ${srcSet[600]} 600w`}
-            loading={loading}
-            alt={alt}
-            src={`${url}`}
-          />
-        </span>
+        />
       ) : null}
     </>
   );
