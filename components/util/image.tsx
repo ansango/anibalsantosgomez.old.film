@@ -1,6 +1,5 @@
 import { type FC } from "react";
 
-import { useInView } from "react-intersection-observer";
 import ImageNext from "next/image";
 
 export type ImageProps = {
