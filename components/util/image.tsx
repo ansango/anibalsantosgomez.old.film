@@ -110,7 +110,7 @@ export const Image: FC<ImageProps> = ({
   const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
 
   return (
-    <>
+    <span className="flex flex-col">
       {url ? (
         <ImageNext
           className={`object-cover ${centerCn} ${
@@ -127,6 +127,6 @@ export const Image: FC<ImageProps> = ({
           onClick={onClick}
         />
       ) : null}
-    </>
+    </span>
   );
 };
