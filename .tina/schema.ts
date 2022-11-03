@@ -61,13 +61,13 @@ const schema = defineSchema({
         description: "Ésta es una descripción corta",
         summary: "Ésta es una descripción larga",
         cover: "https://picsum.photos/2048/1365",
-        bodyHighlight: true,
+        // bodyHighlight: true,
         isPublished: false,
         isFeatured: false,
         publishedAt: new Date().toISOString(),
         masonry: {
-          columns: { default: "1", sm: "1", md: "2", lg: "3" },
-          gap: { default: "3", sm: "5", md: "5", lg: "5" },
+          columns: { default: "1", sm: "1", md: "2", lg: "3", xl: "3" },
+          gap: { default: "3", sm: "5", md: "5", lg: "5", xl: "5" },
         },
       }),
       fields: [
