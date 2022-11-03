@@ -79,6 +79,23 @@ export const gapOptionsCn = {
     "16": "lg:gap-16 lg:space-y-16",
     "20": "lg:gap-20 lg:space-y-20",
   },
+  xl: {
+    "1": "xl:gap-1 xl:space-y-1",
+    "2": "xl:gap-2 xl:space-y-2",
+    "3": "xl:gap-3 xl:space-y-3",
+    "4": "xl:gap-4 xl:space-y-4",
+    "5": "xl:gap-5 xl:space-y-5",
+    "6": "xl:gap-6 xl:space-y-6",
+    "7": "xl:gap-7 xl:space-y-7",
+    "8": "xl:gap-8 xl:space-y-8",
+    "9": "xl:gap-9 xl:space-y-9",
+    "10": "xl:gap-10 xl:space-y-10",
+    "11": "xl:gap-11 xl:space-y-11",
+    "12": "xl:gap-12 xl:space-y-12",
+    "14": "xl:gap-14 xl:space-y-14",
+    "16": "xl:gap-16 xl:space-y-16",
+    "20": "xl:gap-20 xl:space-y-20",
+  },
 };
 export const columnsOptionsCn = {
   default: {
@@ -121,6 +138,16 @@ export const columnsOptionsCn = {
     "7": "lg:columns-7",
     "8": "lg:columns-8",
   },
+  xl: {
+    "1": "xl:columns-1",
+    "2": "xl:columns-2",
+    "3": "xl:columns-3",
+    "4": "xl:columns-4",
+    "5": "xl:columns-5",
+    "6": "xl:columns-6",
+    "7": "xl:columns-7",
+    "8": "xl:columns-8",
+  },
 };
 
 export const Masonry: FC<{
@@ -136,6 +163,7 @@ export const Masonry: FC<{
   const gapSm = gapOptionsCn["sm"][gap?.sm] || gapOptionsCn["sm"]["3"];
   const gapMd = gapOptionsCn["md"][gap?.md] || gapOptionsCn["md"]["3"];
   const gapLg = gapOptionsCn["lg"][gap?.lg] || gapOptionsCn["lg"]["3"];
+  const gapXl = gapOptionsCn["xl"][gap?.xl] || gapOptionsCn["xl"]["3"];
   const columnsDefault =
     columnsOptionsCn["default"][columns?.default] ||
     columnsOptionsCn["default"]["2"];
@@ -145,9 +173,10 @@ export const Masonry: FC<{
     columnsOptionsCn["md"][columns?.md] || columnsOptionsCn["md"]["2"];
   const columnsLg =
     columnsOptionsCn["lg"][columns?.lg] || columnsOptionsCn["lg"]["2"];
-
-  const gapClasses = `${gapDefault} ${gapSm} ${gapMd} ${gapLg}`;
-  const columnsClasses = `${columnsDefault} ${columnsSm} ${columnsMd} ${columnsLg}`;
+  const columnsXl =
+    columnsOptionsCn["xl"][columns?.xl] || columnsOptionsCn["xl"]["2"];
+  const gapClasses = `${gapDefault} ${gapSm} ${gapMd} ${gapLg} ${gapXl}`;
+  const columnsClasses = `${columnsDefault} ${columnsSm} ${columnsMd} ${columnsLg} ${columnsXl}`;
 
   return (
     <Section>
@@ -199,6 +228,12 @@ export const masonryBlockSchema: Template = {
           type: "string",
           options: Object.keys(columnsOptionsCn.lg),
         },
+        {
+          name: "xl",
+          label: "Extra Large",
+          type: "string",
+          options: Object.keys(columnsOptionsCn.xl),
+        },
       ],
     },
     {
@@ -230,6 +265,12 @@ export const masonryBlockSchema: Template = {
           type: "string",
           options: Object.keys(gapOptionsCn.lg),
         },
+        {
+          name: "xl",
+          label: "Extra Large",
+          type: "string",
+          options: Object.keys(gapOptionsCn.xl),
+        },
       ],
     },
 
@@ -243,9 +284,11 @@ export const masonryBlockSchema: Template = {
           return { label: item?.alt };
         },
         defaultItem: {
-          url: "https://source.unsplash.com/random/1",
+          url: "https://asg-cms.s3.eu-west-3.amazonaws.com/43-junio-2022-kodak-gold-200-website/11.webp",
           alt: "Image",
           label: "Image",
+          aspectRatio: "square",
+          centerImage: "center",
         },
       },
       fields: [

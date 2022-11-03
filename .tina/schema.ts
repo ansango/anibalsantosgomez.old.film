@@ -129,160 +129,139 @@ const schema = defineSchema({
           label: "Cover",
           required: true,
         },
-        {
-          label: "Body Highlight",
-          name: "bodyHighlight",
-          type: "boolean",
-        },
-        {
-          type: "rich-text",
-          label: "Body",
-          name: "_body",
-          templates: [
-            {
-              name: "DateTime",
-              label: "Date & Time",
-              inline: true,
-              fields: [
-                {
-                  name: "format",
-                  label: "Format",
-                  type: "string",
-                  options: ["utc", "iso", "local"],
-                },
-              ],
-            },
-            {
-              name: "BlockQuote",
-              label: "Block Quote",
-              fields: [
-                {
-                  name: "children",
-                  label: "Quote",
-                  type: "rich-text",
-                },
-                {
-                  name: "authorName",
-                  label: "Author",
-                  type: "string",
-                },
-              ],
-            },
-            {
-              name: "ContainerText",
-              label: "Container Text",
-              fields: [
-                {
-                  name: "size",
-                  label: "Size",
-                  type: "string",
-                  options: Object.keys(containerSizesCn),
-                },
-                {
-                  name: "children",
-                  label: "Text",
-                  type: "rich-text",
-                  templates: [
-                    {
-                      name: "Image",
-                      label: "Image",
-                      fields: [
-                        {
-                          name: "url",
-                          label: "URL",
-                          type: "image",
-                        },
-                        {
-                          name: "alt",
-                          label: "Alt Text",
-                          type: "string",
-                        },
-                        {
-                          name: "aspectRatio",
-                          label: "Aspect Ratio",
-                          type: "string",
-                          options: Object.keys(aspectRatioCn),
-                        },
-                        {
-                          name: "centerImage",
-                          label: "Center Image",
-                          type: "string",
-                          options: Object.keys(objectPositionCn),
-                        },
-                      ],
-                    },
-                    {
-                      name: "BlockQuote",
-                      label: "Block Quote",
-                      fields: [
-                        {
-                          name: "children",
-                          label: "Quote",
-                          type: "rich-text",
-                        },
-                        {
-                          name: "authorName",
-                          label: "Author",
-                          type: "string",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              name: "Image",
-              label: "Image",
-              fields: [
-                {
-                  name: "url",
-                  label: "URL",
-                  type: "image",
-                },
-                {
-                  name: "alt",
-                  label: "Alt Text",
-                  type: "string",
-                },
-                {
-                  name: "aspectRatio",
-                  label: "Aspect Ratio",
-                  type: "string",
-                  options: Object.keys(aspectRatioCn),
-                },
-                {
-                  name: "centerImage",
-                  label: "Center Image",
-                  type: "string",
-                  options: Object.keys(objectPositionCn),
-                },
-              ],
-            },
-          ],
-          isBody: true,
-        },
-
-        {
-          type: "datetime",
-          label: "Published At",
-          name: "publishedAt",
-          ui: {
-            dateFormat: "MMMM DD YYYY",
-            timeFormat: "hh:mm A",
-            defaultValue: new Date().toISOString(),
-          },
-        },
-        {
-          type: "boolean",
-          label: "Is Featured",
-          name: "isFeatured",
-        },
-        {
-          type: "boolean",
-          label: "Is Published",
-          name: "isPublished",
-        },
+        // {
+        //   label: "Body Highlight",
+        //   name: "bodyHighlight",
+        //   type: "boolean",
+        // },
+        // {
+        //   type: "rich-text",
+        //   label: "Body",
+        //   name: "_body",
+        //   templates: [
+        //     {
+        //       name: "DateTime",
+        //       label: "Date & Time",
+        //       inline: true,
+        //       fields: [
+        //         {
+        //           name: "format",
+        //           label: "Format",
+        //           type: "string",
+        //           options: ["utc", "iso", "local"],
+        //         },
+        //       ],
+        //     },
+        //     {
+        //       name: "BlockQuote",
+        //       label: "Block Quote",
+        //       fields: [
+        //         {
+        //           name: "children",
+        //           label: "Quote",
+        //           type: "rich-text",
+        //         },
+        //         {
+        //           name: "authorName",
+        //           label: "Author",
+        //           type: "string",
+        //         },
+        //       ],
+        //     },
+        //     {
+        //       name: "ContainerText",
+        //       label: "Container Text",
+        //       fields: [
+        //         {
+        //           name: "size",
+        //           label: "Size",
+        //           type: "string",
+        //           options: Object.keys(containerSizesCn),
+        //         },
+        //         {
+        //           name: "children",
+        //           label: "Text",
+        //           type: "rich-text",
+        //           templates: [
+        //             {
+        //               name: "Image",
+        //               label: "Image",
+        //               fields: [
+        //                 {
+        //                   name: "url",
+        //                   label: "URL",
+        //                   type: "image",
+        //                 },
+        //                 {
+        //                   name: "alt",
+        //                   label: "Alt Text",
+        //                   type: "string",
+        //                 },
+        //                 {
+        //                   name: "aspectRatio",
+        //                   label: "Aspect Ratio",
+        //                   type: "string",
+        //                   options: Object.keys(aspectRatioCn),
+        //                 },
+        //                 {
+        //                   name: "centerImage",
+        //                   label: "Center Image",
+        //                   type: "string",
+        //                   options: Object.keys(objectPositionCn),
+        //                 },
+        //               ],
+        //             },
+        //             {
+        //               name: "BlockQuote",
+        //               label: "Block Quote",
+        //               fields: [
+        //                 {
+        //                   name: "children",
+        //                   label: "Quote",
+        //                   type: "rich-text",
+        //                 },
+        //                 {
+        //                   name: "authorName",
+        //                   label: "Author",
+        //                   type: "string",
+        //                 },
+        //               ],
+        //             },
+        //           ],
+        //         },
+        //       ],
+        //     },
+        //     {
+        //       name: "Image",
+        //       label: "Image",
+        //       fields: [
+        //         {
+        //           name: "url",
+        //           label: "URL",
+        //           type: "image",
+        //         },
+        //         {
+        //           name: "alt",
+        //           label: "Alt Text",
+        //           type: "string",
+        //         },
+        //         {
+        //           name: "aspectRatio",
+        //           label: "Aspect Ratio",
+        //           type: "string",
+        //           options: Object.keys(aspectRatioCn),
+        //         },
+        //         {
+        //           name: "centerImage",
+        //           label: "Center Image",
+        //           type: "string",
+        //           options: Object.keys(objectPositionCn),
+        //         },
+        //       ],
+        //     },
+        //   ],
+        //   isBody: true,
+        // },
         {
           label: "Masonry",
           name: "masonry",
@@ -317,6 +296,12 @@ const schema = defineSchema({
                   type: "string",
                   options: Object.keys(columnsOptionsCn.lg),
                 },
+                {
+                  name: "xl",
+                  label: "Extra Large",
+                  type: "string",
+                  options: Object.keys(columnsOptionsCn.xl),
+                },
               ],
             },
             {
@@ -347,6 +332,12 @@ const schema = defineSchema({
                   label: "Large",
                   type: "string",
                   options: Object.keys(gapOptionsCn.lg),
+                },
+                {
+                  name: "xl",
+                  label: "Extra Large",
+                  type: "string",
+                  options: Object.keys(gapOptionsCn.xl),
                 },
               ],
             },
@@ -403,6 +394,26 @@ const schema = defineSchema({
               ],
             },
           ],
+        },
+        {
+          type: "datetime",
+          label: "Published At",
+          name: "publishedAt",
+          ui: {
+            dateFormat: "MMMM DD YYYY",
+            timeFormat: "hh:mm A",
+            defaultValue: new Date().toISOString(),
+          },
+        },
+        {
+          type: "boolean",
+          label: "Is Featured",
+          name: "isFeatured",
+        },
+        {
+          type: "boolean",
+          label: "Is Published",
+          name: "isPublished",
         },
       ],
     },

@@ -27,8 +27,8 @@ type Pagination = {
 };
 
 export type SerieProps = {
-  body: SerieQuery["serie"]["_body"];
-  bodyHighlight: SerieQuery["serie"]["bodyHighlight"];
+  // body: SerieQuery["serie"]["_body"];
+  // bodyHighlight: SerieQuery["serie"]["bodyHighlight"];
   meta: SerieQuery["serie"]["meta"];
   publishedAt: SerieQuery["serie"]["publishedAt"];
   title: SerieQuery["serie"]["title"];
@@ -91,8 +91,8 @@ const Pagination: FC<{
 };
 
 export const Serie: FC<SerieProps> = ({
-  body,
-  bodyHighlight,
+  // body,
+  // bodyHighlight,
   description,
   meta,
   cover,
