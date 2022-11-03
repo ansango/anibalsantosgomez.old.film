@@ -91,7 +91,8 @@ export const components: Components<{
 };
 
 export const Content: FC<{
-  body: SerieProps["body"];
+  // body: SerieProps["body"];
+  body: any;
   parentField?: string;
 }> = ({ body }) => {
   return <TinaMarkdown content={body} components={components} />;
