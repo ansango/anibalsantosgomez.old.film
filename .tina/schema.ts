@@ -9,6 +9,8 @@ import {
   contactFormSchema,
   heroBlockSchema,
   masonryBlockSchema,
+  columnsOptionsCn,
+  gapOptionsCn,
 } from "../components/blocks/";
 import { iconSchema } from "../components/util/icon";
 import {
@@ -63,6 +65,10 @@ const schema = defineSchema({
         isPublished: false,
         isFeatured: false,
         publishedAt: new Date().toISOString(),
+        masonry: {
+          columns: { default: "1", sm: "1", md: "2", lg: "3" },
+          gap: { default: "3", sm: "5", md: "5", lg: "5" },
+        },
       }),
       fields: [
         {
@@ -276,6 +282,127 @@ const schema = defineSchema({
           type: "boolean",
           label: "Is Published",
           name: "isPublished",
+        },
+        {
+          label: "Masonry",
+          name: "masonry",
+          type: "object",
+          fields: [
+            {
+              name: "columns",
+              label: "Columns",
+              type: "object",
+              fields: [
+                {
+                  name: "default",
+                  label: "Default",
+                  type: "string",
+                  options: Object.keys(columnsOptionsCn.default),
+                },
+                {
+                  name: "sm",
+                  label: "Small",
+                  type: "string",
+                  options: Object.keys(columnsOptionsCn.sm),
+                },
+                {
+                  name: "md",
+                  label: "Medium",
+                  type: "string",
+                  options: Object.keys(columnsOptionsCn.md),
+                },
+                {
+                  name: "lg",
+                  label: "Large",
+                  type: "string",
+                  options: Object.keys(columnsOptionsCn.lg),
+                },
+              ],
+            },
+            {
+              name: "gap",
+              label: "Gap",
+              type: "object",
+              fields: [
+                {
+                  name: "default",
+                  label: "Default",
+                  type: "string",
+                  options: Object.keys(gapOptionsCn.default),
+                },
+                {
+                  name: "sm",
+                  label: "Small",
+                  type: "string",
+                  options: Object.keys(gapOptionsCn.sm),
+                },
+                {
+                  name: "md",
+                  label: "Medium",
+                  type: "string",
+                  options: Object.keys(gapOptionsCn.md),
+                },
+                {
+                  name: "lg",
+                  label: "Large",
+                  type: "string",
+                  options: Object.keys(gapOptionsCn.lg),
+                },
+              ],
+            },
+
+            {
+              type: "object",
+              label: "Images",
+              name: "images",
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.alt };
+                },
+                defaultItem: {
+                  url: "https://asg-cms.s3.eu-west-3.amazonaws.com/43-junio-2022-kodak-gold-200-website/11.webp",
+                  alt: "Image",
+                  label: "Image",
+                  aspectRatio: "square",
+                  centerImage: "center",
+                },
+              },
+              fields: [
+                {
+                  type: "string",
+                  label: "Label",
+                  name: "label",
+                },
+                {
+                  name: "url",
+                  label: "URL",
+                  type: "image",
+                  required: true,
+                },
+                {
+                  name: "alt",
+                  label: "Alt Text",
+                  type: "string",
+                  required: true,
+                },
+                {
+                  name: "aspectRatio",
+                  label: "Aspect Ratio",
+                  type: "string",
+                  options: Object.keys(aspectRatioCn),
+                  required: true,
+                },
+                {
+                  name: "centerImage",
+                  label: "Center Image",
+                  type: "string",
+                  options: Object.keys(objectPositionCn),
+                  required: true,
+                },
+              ],
+            },
+          ],
         },
       ],
     },

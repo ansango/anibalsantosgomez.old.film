@@ -1,6 +1,5 @@
 import { FC, MouseEvent } from "react";
 import {
-  EmailShareButton as Email,
   TelegramShareButton as Telegram,
   TwitterShareButton as Twitter,
   WhatsappShareButton as Whatsapp,
@@ -12,13 +11,6 @@ import { useTheme } from "./theme";
 import { eEngagementEvents } from "../../lib/ga";
 
 const buttons = [
-  {
-    name: "email",
-    icon: {
-      name: "email",
-    },
-    Component: Email,
-  },
   {
     name: "telegram",
     icon: {

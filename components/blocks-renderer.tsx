@@ -2,6 +2,7 @@ import React from "react";
 import type { Page } from "../.tina/__generated__/types";
 import { Hero, Content, ContactForm, WrapperContent, Masonry } from "./blocks";
 import { Series, Featured, Latests } from "./series";
+import { Image } from "./util/image";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
@@ -70,7 +71,11 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
                     key={i + block.__typename}
                     data-tinafield={`blocks.${i}`}
                   >
-                    <Masonry data={block} parentField={`blocks.${i}`} />
+                    <Masonry data={block}>
+                      {block.images?.map(({ ...imageProps }, i) => {
+                        return <Image key={i} {...imageProps} />;
+                      })}
+                    </Masonry>
                   </div>
                 );
               default:

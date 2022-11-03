@@ -1,13 +1,103 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { client } from "../../.tina/__generated__/client";
 import { useTina } from "tinacms/dist/edit-state";
-import { Layout } from "../../components/layout";
-import { Serie } from "../../components/series/serie";
+import { Layout, useTheme } from "../../components/layout";
+
 import FourOhFour from "../404";
 
 import { motion } from "framer-motion";
-import { Lightbox } from "../../components/layout/lightbox";
+import { Lightbox, useLightbox } from "../../components/layout/lightbox";
 import { NextSeoProps } from "next-seo";
+import { HeroSerie, Masonry } from "../../components/blocks";
+import { Section } from "../../components/util/section";
+import { Image } from "../../components/util/image";
+import { SocialShare } from "../../components/layout/social-share";
+import { FC, useEffect } from "react";
+import { Container } from "../../components/util/container";
+import { monoRestColors, monoTextColors } from "../../components/styles";
+import Link from "next/link";
+
+type Pagination = {
+  title: string;
+  route: string;
+};
+
+const Pagination: FC<{
+  prev?: Pagination | null;
+  next?: Pagination | null;
+}> = ({ next, prev }) => {
+  const { mono } = useTheme();
+  return (
+    <Container className="grid grid-cols-2 gap-5">
+      <div className="text-left group">
+        {prev && (
+          <>
+            <h4
+              className={`text-xs tracking-wide italic ${monoTextColors[500][mono]}`}
+            >
+              Anterior
+            </h4>
+            <Link href={prev.route} passHref>
+              <a
+                className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+              >
+                {prev.title}
+              </a>
+            </Link>
+          </>
+        )}
+      </div>
+
+      <div className="text-right group">
+        {next && (
+          <>
+            <h4
+              className={`text-xs tracking-wide italic ${monoTextColors[500][mono]}`}
+            >
+              Siguiente
+            </h4>
+
+            <Link href={`${next.route}`} passHref>
+              <a
+                className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+              >
+                {next.title}
+              </a>
+            </Link>
+          </>
+        )}
+      </div>
+    </Container>
+  );
+};
+
+const WrapperMasonry = ({ masonry }: { masonry: any }) => {
+  const { setIndex, setSlides } = useLightbox();
+
+  useEffect(() => {
+    if (masonry) {
+      const images = masonry.images?.map((img, index) => {
+        return {
+          src: img.url,
+          index,
+        };
+      });
+      setSlides(images);
+    }
+  }, [masonry]);
+  return (
+    <Masonry
+      data={{
+        columns: masonry?.columns,
+        gap: masonry?.gap,
+      }}
+    >
+      {masonry?.images?.map(({ ...imageProps }, i) => {
+        return <Image key={i} {...imageProps} onClick={() => setIndex(i)} />;
+      })}
+    </Masonry>
+  );
+};
 
 const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { prev, next, route } = props;
@@ -20,16 +110,8 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
   const { serie } = data;
 
   if (serie && serie.isPublished) {
-    const {
-      _body,
-      bodyHighlight,
-      meta,
-      publishedAt,
-      title,
-      description,
-      summary,
-      cover,
-    } = serie;
+    const { meta, publishedAt, title, description, summary, cover, masonry } =
+      serie;
 
     const firstTag =
       serie?.meta?.tags[0]?.charAt(0).toUpperCase() +
@@ -37,9 +119,12 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
     const secondTag =
       serie?.meta?.tags[1]?.charAt(0).toUpperCase() +
       serie?.meta?.tags[1]?.slice(1);
+    const thirdTag =
+      serie?.meta?.tags[2]?.charAt(0).toUpperCase() +
+      serie?.meta?.tags[2]?.slice(1);
     const seoProps: NextSeoProps = {
       title: serie?.seo?.title,
-      titleTemplate: `%s | Serie | ${firstTag} ${secondTag}`,
+      titleTemplate: `%s | Serie | ${firstTag} ${secondTag} ${thirdTag}`,
       robotsProps: {
         maxImagePreview: "standard",
         notranslate: true,
@@ -81,31 +166,40 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
 
     return (
       <Layout rawData={data} data={data.global as any} seo={seoProps}>
-        <motion.div
+        <motion.article
           key={route}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Lightbox>
-            <Serie
+          <Section>
+            <HeroSerie
               {...{
-                body: _body,
-                bodyHighlight,
+                type: "serie",
+                headline: title,
+                tagline: description,
+                image: {
+                  url: cover,
+                  alt: title,
+                },
+                text: summary,
                 meta,
                 publishedAt,
-                title,
-                cover,
-                description,
-                summary,
-                url: route,
               }}
-              next={next}
-              prev={prev}
             />
-          </Lightbox>
-        </motion.div>
+          </Section>
+          {masonry && (
+            <Lightbox>
+              <WrapperMasonry masonry={masonry} />
+            </Lightbox>
+          )}
+          <SocialShare
+            title={title}
+            url={`https://anibalsantosgomez.com/${route}`}
+          />
+          {(next || prev) && <Pagination next={next} prev={prev} />}
+        </motion.article>
       </Layout>
     );
   }

@@ -3,10 +3,14 @@ import { Container } from "../util/container";
 import { aspectRatioCn, Image, objectPositionCn } from "../util/image";
 import { Section } from "../util/section";
 import { motion } from "framer-motion";
-import { FC } from "react";
-import { PageBlocksMasonry } from "../../.tina/__generated__/types";
+import { FC, ReactNode, useEffect } from "react";
+import {
+  PageBlocksMasonry,
+  SerieMasonry,
+} from "../../.tina/__generated__/types";
+import { useLightbox } from "../layout/lightbox";
 
-const gapOptionsCn = {
+export const gapOptionsCn = {
   default: {
     "1": "gap-1 space-y-1",
     "2": "gap-2 space-y-2",
@@ -76,7 +80,7 @@ const gapOptionsCn = {
     "20": "lg:gap-20 lg:space-y-20",
   },
 };
-const columnsOptionsCn = {
+export const columnsOptionsCn = {
   default: {
     "1": "columns-1",
     "2": "columns-2",
@@ -121,13 +125,12 @@ const columnsOptionsCn = {
 
 export const Masonry: FC<{
   data: {
-    images?: PageBlocksMasonry["images"];
-    gap?: PageBlocksMasonry["gap"];
-    columns?: PageBlocksMasonry["columns"];
+    gap?: PageBlocksMasonry["gap"] | SerieMasonry["gap"];
+    columns?: PageBlocksMasonry["columns"] | SerieMasonry["columns"];
   };
-  parentField?: string;
-}> = ({ data, parentField = "" }) => {
-  const { images, gap, columns } = data;
+  children: ReactNode;
+}> = ({ data, children }) => {
+  const { gap, columns } = data;
   const gapDefault =
     gapOptionsCn["default"][gap?.default] || gapOptionsCn["default"]["3"];
   const gapSm = gapOptionsCn["sm"][gap?.sm] || gapOptionsCn["sm"]["3"];
@@ -153,13 +156,7 @@ export const Masonry: FC<{
           initial="hidden"
           className={`${gapClasses} ${columnsClasses}`}
         >
-          {images?.map(({ ...imageProps }, i) => (
-            <Image
-              key={i}
-              {...imageProps}
-              parentField={`${parentField}.${i}`}
-            />
-          ))}
+          {children}
         </motion.div>
       </Container>
     </Section>

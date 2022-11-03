@@ -105,8 +105,8 @@ export const HeroSerie: FC<HeroData> = ({
   return (
     <Section>
       <Container>
-        <div className="flex flex-wrap items-start mx-auto max-w-7xl pb-12">
-          <div className="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
+        <div className="flex flex-wrap items-start max-w-7xl pb-12">
+          <div className="w-full xl:max-w-lg xl:w-1/2 rounded-xl">
             <div>
               <div className="relative w-full">
                 <div

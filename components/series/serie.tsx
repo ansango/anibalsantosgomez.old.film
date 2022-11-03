@@ -1,7 +1,13 @@
 import React, { type FC, useEffect } from "react";
 import { Section } from "../util/section";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
-import { components, Hero, HeroSerie, WrapperContent } from "../blocks";
+import {
+  components,
+  Hero,
+  HeroSerie,
+  Masonry,
+  WrapperContent,
+} from "../blocks";
 import { type SerieQuery } from "../../.tina/__generated__/types";
 import Link from "next/link";
 import { Container } from "../util/container";
@@ -13,6 +19,7 @@ import {
   useLightbox,
 } from "../layout/lightbox";
 import { SocialShare } from "../layout/social-share";
+import { Image } from "../util/image";
 
 type Pagination = {
   title: string;
@@ -31,6 +38,7 @@ export type SerieProps = {
   prev?: Pagination | null;
   next?: Pagination | null;
   url?: string;
+  masonry?: any;
 };
 
 const Pagination: FC<{
@@ -94,17 +102,9 @@ export const Serie: FC<SerieProps> = ({
   next,
   prev,
   url,
+  masonry,
 }) => {
-  const { setSlides, setIndex } = useLightbox();
-  const slides = getSlidesFromBody(body);
-  const content = getBodyMappedToRender(
-    body,
-    slides,
-    setIndex
-  ) as TinaMarkdownContent;
-  useEffect(() => {
-    setSlides(slides);
-  }, [body]);
+  const { columns, gap, images } = masonry;
 
   return (
     <article>
@@ -124,9 +124,19 @@ export const Serie: FC<SerieProps> = ({
           }}
         />
       </Section>
-      <WrapperContent highlight={bodyHighlight}>
+      <Masonry
+        data={{
+          columns,
+          gap,
+        }}
+      >
+        {images?.map(({ ...imageProps }, i) => {
+          return <Image key={i} {...imageProps} />;
+        })}
+      </Masonry>
+      {/* <WrapperContent highlight={bodyHighlight}>
         <TinaMarkdown components={components} content={content} />
-      </WrapperContent>
+      </WrapperContent> */}
       <SocialShare title={title} url={`https://anibalsantosgomez.com/${url}`} />
       {(next || prev) && <Pagination next={next} prev={prev} />}
     </article>
