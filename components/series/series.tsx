@@ -13,15 +13,7 @@ import { useAllSeriesQuery } from "lib/hooks";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const Searcher = ({
-  onSearch,
-  placeholder,
-  parentField = "",
-}: {
-  onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  parentField?: string;
-}) => {
+const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   const { mono } = useTheme();
   return (
     <div className="relative max-w-lg" data-tinafield={`${parentField}.search`}>
@@ -45,15 +37,7 @@ const Searcher = ({
   );
 };
 
-const Pagination = ({
-  pageNumbers = [],
-  onPagination,
-  currentPage = 0,
-}: {
-  pageNumbers: number[];
-  onPagination: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  currentPage: number;
-}) => {
+const Pagination = ({ pageNumbers = [], onPagination, currentPage = 0 }) => {
   const { mono, color } = useTheme();
   return (
     <div className="flex justify-center py-5 space-x-5">
@@ -68,7 +52,7 @@ const Pagination = ({
             <button
               className={cn}
               key={number}
-              id={number + ""}
+              id={number}
               onClick={onPagination}
             >
               {number}
@@ -112,13 +96,7 @@ const Loader = ({ items = 3 }) => {
   );
 };
 
-export const Series = ({
-  data,
-  parentField = "",
-}: {
-  data: any;
-  parentField?: string;
-}) => {
+export const Series = ({ data, parentField = "" }) => {
   const { search } = data;
 
   const configSearch = {
@@ -127,7 +105,7 @@ export const Series = ({
     maxPosts: search.maxPosts || 3,
   };
 
-  const { loading, series } = useAllSeriesQuery() as any;
+  const { loading, series } = useAllSeriesQuery();
   const { mono } = useTheme();
 
   const [searchValue, setSearchValue] = useState("");
@@ -135,14 +113,14 @@ export const Series = ({
 
   const filteredSeries =
     series?.filter(
-      (post: any) =>
+      (post) =>
         post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        post.meta?.tags?.some((tag: string) =>
+        post.meta?.tags?.some((tag) =>
           tag.toLowerCase().includes(searchValue.toLowerCase())
         )
     ) || [];
 
-  const onPagination = (event: any) => {
+  const onPagination = (event) => {
     setCurrentPage(Number(event.target.id));
   };
 
@@ -190,7 +168,7 @@ export const Series = ({
                 transition={{ duration: 0.75 }}
                 className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
               >
-                {currentPosts.map((serie: any) => {
+                {currentPosts.map((serie) => {
                   return (
                     <article key={serie._sys.filename}>
                       <Link

@@ -79,7 +79,7 @@ const WrapperMasonry = ({ masonry }: { masonry: any }) => {
 
   useEffect(() => {
     if (masonry) {
-      const images = masonry.images?.map((img: any, index: number) => {
+      const images = masonry.images?.map((img, index) => {
         return {
           src: img.url,
           index,
@@ -95,15 +95,8 @@ const WrapperMasonry = ({ masonry }: { masonry: any }) => {
         gap: masonry?.gap,
       }}
     >
-      {masonry?.images?.map(({ ...imageProps }, i: number) => {
-        return (
-          <Image
-            key={i}
-            {...imageProps}
-            onClick={() => setIndex(i)}
-            alt={imageProps.alt}
-          />
-        );
+      {masonry?.images?.map(({ ...imageProps }, i) => {
+        return <Image key={i} {...imageProps} onClick={() => setIndex(i)} />;
       })}
     </Masonry>
   );
@@ -124,29 +117,23 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
       serie;
 
     const firstTag =
-      //@ts-ignore
       serie?.meta?.tags[0]?.charAt(0).toUpperCase() +
-      //@ts-ignore
       serie?.meta?.tags[0]?.slice(1);
     const secondTag =
-      //@ts-ignore
       serie?.meta?.tags[1]?.charAt(0).toUpperCase() +
-      //@ts-ignore
       serie?.meta?.tags[1]?.slice(1);
     const thirdTag =
-      //@ts-ignore
       serie?.meta?.tags[2]?.charAt(0).toUpperCase() +
-      //@ts-ignore
       serie?.meta?.tags[2]?.slice(1);
     const seoProps: NextSeoProps = {
-      title: serie?.seo?.title || "",
+      title: serie?.seo?.title,
       titleTemplate: `%s | Serie | ${firstTag} ${secondTag} ${thirdTag}`,
       robotsProps: {
         maxImagePreview: "standard",
         notranslate: true,
         maxSnippet: -1,
       },
-      description: serie?.seo?.description || "",
+      description: serie?.seo?.description,
       canonical: `${process.env.NEXT_PUBLIC_WEB_URI}/${route}`,
       mobileAlternate: {
         media: "handheld",
@@ -155,26 +142,26 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
       additionalMetaTags: [
         {
           property: "article:published_time",
-          content: serie?.publishedAt || "",
+          content: serie?.publishedAt,
         },
       ],
       openGraph: {
         url: `${process.env.NEXT_PUBLIC_WEB_URI}/${route}`,
         type: "article",
-        title: serie?.seo?.title || "",
+        title: serie?.seo?.title,
         article: {
           authors: ["Aníbal Santos Gómez"],
-          publishedTime: serie?.publishedAt || "",
-          tags: serie?.meta?.tags as readonly string[],
+          publishedTime: serie?.publishedAt,
+          tags: serie?.meta?.tags,
           section: "Series",
         },
-        description: serie?.seo?.description || "",
+        description: serie?.seo?.description,
         images: [
           {
             url: `${process.env.NEXT_PUBLIC_WEB_URI}/static/series/${serie.sequence}.jpg`,
             width: 400,
             height: 400,
-            alt: serie?.seo?.title || "",
+            alt: serie?.seo?.title,
           },
         ],
       },
@@ -224,15 +211,16 @@ const SeriePage = (props: AsyncReturnType<typeof getStaticProps>["props"]) => {
 
 export default SeriePage;
 
-export const getStaticProps = async ({ params }: { params: any }) => {
-  const allSeries =
-    (await (await client.queries.serieConnection()).data.serieConnection.edges
-      ?.map((edge) => edge?.node)
-      .filter((serie) => serie?.isPublished)) || [];
+export const getStaticProps = async ({ params }) => {
+  const allSeries = await (
+    await client.queries.serieConnection()
+  ).data.serieConnection.edges
+    ?.map(({ node }) => node)
+    .filter((serie) => serie.isPublished);
 
   const serieIndex = allSeries
-    ?.sort((a, b) => ((a?.publishedAt || "") > (b?.publishedAt || "") ? -1 : 1))
-    .findIndex((serie) => serie?._sys.filename === params.filename);
+    ?.sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1))
+    .findIndex((serie) => serie._sys.filename === params.filename);
 
   const prevSerie = allSeries[serieIndex - 1] || null;
   const nextSerie = allSeries[serieIndex + 1] || null;

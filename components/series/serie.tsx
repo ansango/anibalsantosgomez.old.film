@@ -82,6 +82,8 @@ const Pagination: FC<{
 };
 
 export const Serie: FC<SerieProps> = ({
+  // body,
+  // bodyHighlight,
   description,
   meta,
   cover,
@@ -119,10 +121,13 @@ export const Serie: FC<SerieProps> = ({
           gap,
         }}
       >
-        {images?.map(({ ...imageProps }, i: number) => {
-          return <Image key={i} {...imageProps} alt={imageProps.alt} />;
+        {images?.map(({ ...imageProps }, i) => {
+          return <Image key={i} {...imageProps} />;
         })}
       </Masonry>
+      {/* <WrapperContent highlight={bodyHighlight}>
+        <TinaMarkdown components={components} content={content} />
+      </WrapperContent> */}
       <SocialShare title={title} url={`https://anibalsantosgomez.com/${url}`} />
       {(next || prev) && <Pagination next={next} prev={prev} />}
     </article>

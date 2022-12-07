@@ -56,18 +56,9 @@ const Loader = ({ items = 3 }) => {
   );
 };
 
-export const Latests = ({
-  data = {
-    title: "Featured Series",
-    noDataMessage: "No series found",
-  },
-  parentField = "",
-}) => {
+export const Latests = ({ data, parentField = "" }) => {
   const { mono, color } = useTheme();
-  const { series, loading } = useLatestSeriesQuery({
-    init: 0,
-    limit: 6,
-  }) as any;
+  const { series, loading } = useLatestSeriesQuery({ init: 0, limit: 6 });
 
   return (
     <Section>
@@ -90,7 +81,7 @@ export const Latests = ({
             className="relative mx-auto"
           >
             <div className="grid gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-              {series.map((serie: any, i: number) => (
+              {series.map((serie, i) => (
                 <Link
                   href={`/serie/${serie._sys.filename}`}
                   passHref
@@ -155,4 +146,28 @@ export const Latests = ({
       </Container>
     </Section>
   );
+};
+
+export const latestsBlockSchema: Template = {
+  label: "Latests Series",
+  name: "latestsSeries",
+  ui: {
+    previewSrc: "",
+    defaultItem: {
+      title: "Lo último",
+      noDataMessage: "No hay series",
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Title",
+    },
+    {
+      type: "string",
+      name: "noDataMessage",
+      label: "No data message",
+    },
+  ],
 };

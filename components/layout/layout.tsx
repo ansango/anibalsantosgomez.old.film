@@ -5,6 +5,7 @@ import { NextSeo, type NextSeoProps } from "next-seo";
 
 export const Layout: FC<{
   rawData?: any;
+
   data?: any;
   seo?: NextSeoProps;
   children: ReactNode;

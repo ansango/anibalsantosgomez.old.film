@@ -3,8 +3,6 @@ import Link from "next/link";
 import { Container, Icon, useTheme } from "components";
 
 import {
-  IconName,
-  iconSizeClass,
   monoTextColors,
   primaryBorderColors,
   primaryHoverBorderColors,
@@ -13,24 +11,9 @@ import {
 } from "constant/styles";
 import { useAutoClose } from "lib/hooks";
 
-export const Header = ({
-  data,
-}: {
-  data: {
-    iconMenu: {
-      name: IconName;
-      size: keyof typeof iconSizeClass;
-    };
-    iconClose: {
-      name: IconName;
-      size: keyof typeof iconSizeClass;
-    };
-    nav: {
-      label: string;
-      href: string;
-    }[];
-  };
-}) => {
+// TODO cambiar por sidebar?
+
+export const Header = ({ data }) => {
   const { color, mono } = useTheme();
   const menu = useRef(null);
   const [isOpen, setIsOpen] = useState(false);

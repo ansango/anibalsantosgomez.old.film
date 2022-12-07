@@ -8,17 +8,7 @@ export const Toast: FC<ToasterProps> = ({ position, ...props }) => {
   return <>{isMounted && <Toaster position={position} {...props} />}</>;
 };
 
-export const baseToast = ({
-  message,
-  duration,
-  className,
-  icon,
-}: {
-  message: string;
-  duration?: number;
-  className?: string;
-  icon?: JSX.Element;
-}) =>
+export const baseToast = ({ message, duration, className, icon }) =>
   toast(message, {
     className: `toast ${className}`,
     duration,

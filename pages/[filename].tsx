@@ -1,6 +1,6 @@
 import { Render, Layout } from "components";
 import { useTina } from "tinacms/dist/react";
-import { client } from ".tina/__generated__/client";
+import { client } from "../.tina/__generated__/client";
 import { motion } from "framer-motion";
 import type { NextSeoProps } from "next-seo";
 
