@@ -1,8 +1,45 @@
-import * as React from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type Context,
+  type ReactNode,
+} from "react";
 import GlobalData from "../../content/global/index.json";
 
-const ThemeContext = React.createContext(GlobalData.theme);
-export const useTheme = () => React.useContext(ThemeContext);
+export type Theme = {
+  mono: "slate" | "gray" | "neutral" | "zinc" | "stone";
+  color:
+    | "slate"
+    | "gray"
+    | "neutral"
+    | "zinc"
+    | "stone"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "amber"
+    | "lime"
+    | "green"
+    | "emerald"
+    | "teal"
+    | "cyan"
+    | "sky"
+    | "blue"
+    | "indigo"
+    | "violet"
+    | "purple"
+    | "fuchsia"
+    | "pink"
+    | "rose";
+  icon: "hi";
+  font: "sans" | "nunito" | "lato" | "work-sans";
+  darkMode: "dark" | "light" | "system";
+};
+
+const ThemeContext: Context<Theme> = createContext(GlobalData.theme as Theme);
+export const useTheme = () => useContext(ThemeContext);
 
 const updateRenderColorMode = (themeMode: "dark" | "light") => {
   if (typeof window !== "undefined") {
@@ -23,15 +60,19 @@ const getUserSystemDarkMode = () => {
   return "light";
 };
 
-export const Theme = ({ data, children }) => {
-  const [systemDarkMode, setSystemDarkMode] = React.useState(
-    getUserSystemDarkMode()
-  );
+export const Theme = ({
+  data,
+  children,
+}: {
+  data: any;
+  children: ReactNode;
+}) => {
+  const [systemDarkMode, setSystemDarkMode] = useState(getUserSystemDarkMode());
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
-      const updateSystemMediaPreference = (event) => {
+      const updateSystemMediaPreference = (event: any) => {
         setSystemDarkMode(event.matches ? "dark" : "light");
       };
 
@@ -50,7 +91,7 @@ export const Theme = ({ data, children }) => {
     darkMode = "system",
   } = data;
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateRenderColorMode(
       darkMode === "system"
         ? systemDarkMode

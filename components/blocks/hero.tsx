@@ -1,16 +1,25 @@
 import { type FC } from "react";
-import { Container } from "../util/container";
-import { Section } from "../util/section";
 
-import { useTheme } from "../layout";
-import { monoBgColorsBlur, monoTextColors, primaryTextColors } from "../styles";
-import { SerieProps } from "../series/serie";
-import { Meta } from "../util/meta";
-import { Image, type ImageProps } from "../util/image";
-import { Template } from "../../.tina/schema";
-import { formatDate } from "../../lib/utils";
+import {
+  monoBgColorsBlur,
+  monoTextColors,
+  primaryTextColors,
+} from "constant/styles";
 
-type HeroData = {
+import {
+  Image,
+  type ImageProps,
+  type SerieProps,
+  Section,
+  Container,
+  useTheme,
+  Meta,
+  Theme,
+} from "components";
+
+import { formatDate } from "lib/utils";
+
+export type HeroData = {
   type?: "left" | "center" | string;
   tagline?: string;
   headline?: string;
@@ -22,9 +31,9 @@ type HeroData = {
 
 const renderHero = (
   { type, headline, tagline, text }: HeroData,
-  parentField,
-  color,
-  mono
+  parentField: string,
+  color: Theme["color"],
+  mono: Theme["mono"]
 ) => {
   switch (type) {
     case "left": {
@@ -149,8 +158,8 @@ export const HeroSerie: FC<HeroData> = ({
               className={`mb-4 text-sm italic leading-relaxed text-left ${monoTextColors[500][mono]}`}
             >
               Publicado el{" "}
-              <time dateTime={publishedAt}>
-                {formatDate(publishedAt, "es-ES", {
+              <time dateTime={publishedAt || ""}>
+                {formatDate(publishedAt || "", "es-ES", {
                   day: "2-digit",
                   month: "long",
                   year: "numeric",
@@ -177,45 +186,4 @@ export const Hero: FC<{
 }> = ({ data, parentField = "" }) => {
   const { color, mono } = useTheme();
   return <Section>{renderHero(data, parentField, color, mono)}</Section>;
-};
-
-export const heroBlockSchema: Template = {
-  name: "hero",
-  label: "Hero",
-  ui: {
-    previewSrc: "",
-
-    defaultItem: {
-      tagline: "Your tagline",
-      headline: "This Big Text is Totally Awesome",
-      text: "Here's some text above the other text",
-      type: "left",
-    },
-  },
-  fields: [
-    {
-      name: "tagline",
-      label: "Tagline",
-      type: "string",
-    },
-    {
-      type: "string",
-      label: "Headline",
-      name: "headline",
-    },
-    {
-      type: "string",
-      label: "Text",
-      name: "text",
-      ui: {
-        component: "textarea",
-      },
-    },
-    {
-      type: "string",
-      label: "Type",
-      name: "type",
-      options: ["left", "center"],
-    },
-  ],
 };

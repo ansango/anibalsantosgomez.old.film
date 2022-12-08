@@ -1,18 +1,17 @@
-import { Container } from "../util/container";
-import { Section } from "../util/section";
-import { formatDate } from "../../lib/utils";
+import { Container, Section, useTheme, Image } from "components";
+
 import Link from "next/link";
+import { formatDate } from "lib/utils";
+
 import {
   monoTextColors,
   monoBordersColors,
   monoRestColors,
   primaryHoverTextColors,
-} from "../styles";
-import { useTheme } from "../layout";
-import { useLatestSeriesQuery } from "../../lib/hooks";
-import { Template } from "../../.tina/schema";
+} from "constant/styles";
+
 import { motion } from "framer-motion";
-import { Image } from "../util/image";
+import { useLatestSeriesQuery } from "lib/hooks";
 
 const Loader = ({ items = 3 }) => {
   const { mono } = useTheme();
@@ -87,53 +86,51 @@ export const Latests = ({ data, parentField = "" }) => {
                   href={`/serie/${serie._sys.filename}`}
                   passHref
                   key={`serie-${i}`}
+                  className="flex flex-col mb-12 overflow-hidden cursor-pointer group"
                 >
-                  <a className="flex flex-col mb-12 overflow-hidden cursor-pointer group">
-                    <div className="flex-shrink-0">
-                      {serie?.cover && (
-                        <Image
-                          alt={serie.title}
-                          url={serie.cover}
-                          onClick={() => ""}
-                        />
-                      )}
-                    </div>
+                  <div className="flex-shrink-0">
+                    {serie?.cover && (
+                      <Image
+                        alt={serie.title}
+                        url={serie.cover}
+                        onClick={() => ""}
+                      />
+                    )}
+                  </div>
 
-                    <div className="flex flex-col justify-between flex-1">
-                      <div className="flex-1">
-                        <div
-                          className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
+                  <div className="flex flex-col justify-between flex-1">
+                    <div className="flex-1">
+                      <div
+                        className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
+                      >
+                        <time dateTime={serie.publishedAt}>
+                          {formatDate(serie.publishedAt)}
+                        </time>
+                      </div>
+
+                      <div className="mt-2 space-y-6">
+                        <h3
+                          className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
                         >
-                          <time dateTime={serie.publishedAt}>
-                            {formatDate(serie.publishedAt)}
-                          </time>
-                        </div>
-
-                        <div className="mt-2 space-y-6">
-                          <h3
-                            className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-                          >
-                            {serie.title}
-                          </h3>
-                          <p
-                            className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
-                          >
-                            {serie.summary}
-                          </p>
-                        </div>
+                          {serie.title}
+                        </h3>
+                        <p
+                          className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
+                        >
+                          {serie.summary}
+                        </p>
                       </div>
                     </div>
-                  </a>
+                  </div>
                 </Link>
               ))}
             </div>
             <div className="flex justify-end">
-              <Link href="/series">
-                <a
-                  className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
-                >
-                  Ver todas las series
-                </a>
+              <Link
+                href="/series"
+                className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
+              >
+                Ver todas las series
               </Link>
             </div>
           </motion.div>

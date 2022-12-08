@@ -49,7 +49,7 @@ export const Lightbox: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export const getSlidesFromBody = (body: { children: any[] }) => {
   return Object.values(body.children)
     .filter((item) => item.name === "Image")
@@ -60,9 +60,7 @@ export const getSlidesFromBody = (body: { children: any[] }) => {
 };
 
 export const getBodyMappedToRender = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: { children: any[] },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   slides: any[],
   setIndex: (index: number) => void
 ) => {

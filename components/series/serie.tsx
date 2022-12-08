@@ -1,25 +1,18 @@
-import React, { type FC, useEffect } from "react";
-import { Section } from "../util/section";
-import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { type FC } from "react";
+
 import {
-  components,
-  Hero,
   HeroSerie,
   Masonry,
-  WrapperContent,
-} from "../blocks";
+  Section,
+  Container,
+  useTheme,
+  SocialShare,
+  Image,
+} from "components";
 import { type SerieQuery } from "../../.tina/__generated__/types";
 import Link from "next/link";
-import { Container } from "../util/container";
-import { useTheme } from "../layout";
-import { monoRestColors, monoTextColors } from "../styles";
-import {
-  getBodyMappedToRender,
-  getSlidesFromBody,
-  useLightbox,
-} from "../layout/lightbox";
-import { SocialShare } from "../layout/social-share";
-import { Image } from "../util/image";
+
+import { monoRestColors, monoTextColors } from "constant/styles";
 
 type Pagination = {
   title: string;
@@ -27,8 +20,6 @@ type Pagination = {
 };
 
 export type SerieProps = {
-  // body: SerieQuery["serie"]["_body"];
-  // bodyHighlight: SerieQuery["serie"]["bodyHighlight"];
   meta: SerieQuery["serie"]["meta"];
   publishedAt: SerieQuery["serie"]["publishedAt"];
   title: SerieQuery["serie"]["title"];
@@ -56,12 +47,12 @@ const Pagination: FC<{
             >
               Anterior
             </h4>
-            <Link href={prev.route} passHref>
-              <a
-                className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-              >
-                {prev.title}
-              </a>
+            <Link
+              href={prev.route}
+              passHref
+              className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+            >
+              {prev.title}
             </Link>
           </>
         )}
@@ -76,12 +67,12 @@ const Pagination: FC<{
               Siguiente
             </h4>
 
-            <Link href={`${next.route}`} passHref>
-              <a
-                className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-              >
-                {next.title}
-              </a>
+            <Link
+              href={`${next.route}`}
+              passHref
+              className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+            >
+              {next.title}
             </Link>
           </>
         )}

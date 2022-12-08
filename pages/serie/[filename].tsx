@@ -1,20 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { client } from "../../.tina/__generated__/client";
-import { useTina } from "tinacms/dist/edit-state";
-import { Layout, useTheme } from "../../components/layout";
+import { useTina } from "tinacms/dist/react";
+import { motion } from "framer-motion";
+import { type NextSeoProps } from "next-seo";
+import { type FC, useEffect } from "react";
+import {
+  Layout,
+  useTheme,
+  Lightbox,
+  useLightbox,
+  HeroSerie,
+  Masonry,
+  SocialShare,
+  Section,
+  Image,
+  Container,
+} from "components";
 
 import FourOhFour from "../404";
-
-import { motion } from "framer-motion";
-import { Lightbox, useLightbox } from "../../components/layout/lightbox";
-import { NextSeoProps } from "next-seo";
-import { HeroSerie, Masonry } from "../../components/blocks";
-import { Section } from "../../components/util/section";
-import { Image } from "../../components/util/image";
-import { SocialShare } from "../../components/layout/social-share";
-import { FC, useEffect } from "react";
-import { Container } from "../../components/util/container";
-import { monoRestColors, monoTextColors } from "../../components/styles";
+import { monoRestColors, monoTextColors } from "constant/styles";
 import Link from "next/link";
 
 type Pagination = {
@@ -37,12 +40,12 @@ const Pagination: FC<{
             >
               Anterior
             </h4>
-            <Link href={prev.route} passHref>
-              <a
-                className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-              >
-                {prev.title}
-              </a>
+            <Link
+              href={prev.route}
+              passHref
+              className={`line-clamp-1 max-w-xs mr-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+            >
+              {prev.title}
             </Link>
           </>
         )}
@@ -57,12 +60,12 @@ const Pagination: FC<{
               Siguiente
             </h4>
 
-            <Link href={`${next.route}`} passHref>
-              <a
-                className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-              >
-                {next.title}
-              </a>
+            <Link
+              href={`${next.route}`}
+              passHref
+              className={`line-clamp-1 max-w-xs ml-auto ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+            >
+              {next.title}
             </Link>
           </>
         )}
@@ -212,11 +215,11 @@ export const getStaticProps = async ({ params }) => {
   const allSeries = await (
     await client.queries.serieConnection()
   ).data.serieConnection.edges
-    .map(({ node }) => node)
+    ?.map(({ node }) => node)
     .filter((serie) => serie.isPublished);
 
   const serieIndex = allSeries
-    .sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1))
+    ?.sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1))
     .findIndex((serie) => serie._sys.filename === params.filename);
 
   const prevSerie = allSeries[serieIndex - 1] || null;
@@ -246,9 +249,9 @@ export const getStaticProps = async ({ params }) => {
 export const getStaticPaths = async () => {
   const postsListData = await client.queries.serieConnection();
   return {
-    paths: postsListData.data.serieConnection.edges.map((post) => ({
+    paths: postsListData.data.serieConnection.edges?.map((post) => ({
       params: {
-        filename: post.node._sys.filename,
+        filename: post?.node?._sys.filename,
       },
     })),
     fallback: "blocking",

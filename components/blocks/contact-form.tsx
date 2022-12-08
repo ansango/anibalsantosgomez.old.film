@@ -1,7 +1,15 @@
-import { onPostContactForm } from "../../lib/services/contact";
-import { FC, useCallback, useState } from "react";
+import { onPostContactForm } from "lib/services/contact";
+import { type FC, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Container } from "..//util/container";
+import {
+  Container,
+  useTheme,
+  Section,
+  Spinner,
+  Toast,
+  toastError,
+  toastSuccess,
+} from "components";
 
 import {
   baseInputStyles,
@@ -10,19 +18,13 @@ import {
   baseButtonStyles,
   buttonPrimaryColors,
   monoBordersColors,
-} from "../styles";
-import { useTheme } from "../layout";
-import { Section } from "../util/section";
-import { Spinner } from "../util/spinner";
-import { Toast, toastError, toastSuccess } from "../util/toast";
+} from "constant/styles";
 
-import { Template } from "../../.tina/schema";
-import eEvents from "../../lib/ga";
+import eEvents from "lib/ga";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 type Props = {
   lang?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   parentField: string;
 };
@@ -44,29 +46,26 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
   const areErrors = Object.keys(errors).length > 0;
   const disabled = isSubmitting || areErrors;
 
-  const onSubmit = useCallback(
-    async (contactForm) => {
-      setIsSubmitting(true);
-      try {
-        if (!executeRecaptcha) {
-          toastError({ message: "Execute recaptcha not yet available" });
-          setIsSubmitting(false);
-          return;
-        }
-        const token = await executeRecaptcha("contact_form");
-        await onPostContactForm({ contactForm, lang, token });
+  const onSubmit = async (contactForm: any) => {
+    setIsSubmitting(true);
+    try {
+      if (!executeRecaptcha) {
+        toastError({ message: "Execute recaptcha not yet available" });
         setIsSubmitting(false);
-        reset();
-        toastSuccess({ message: "Tu menaje se envió!" });
-        eContact({ label: "success" });
-      } catch (error) {
-        setIsSubmitting(false);
-        toastError({ message: "Un error ocurrió" });
-        eContact({ label: "error" });
+        return;
       }
-    },
-    [reset, lang]
-  );
+      const token = await executeRecaptcha("contact_form");
+      await onPostContactForm({ contactForm, lang, token });
+      setIsSubmitting(false);
+      reset();
+      toastSuccess({ message: "Tu menaje se envió!" });
+      eContact({ label: "success" });
+    } catch (error) {
+      setIsSubmitting(false);
+      toastError({ message: "Un error ocurrió" });
+      eContact({ label: "error" });
+    }
+  };
 
   return (
     <Section>
@@ -188,124 +187,4 @@ export const ContactForm: FC<Props> = ({ data, parentField, lang = "es" }) => {
       </Container>
     </Section>
   );
-};
-
-export const contactFormSchema: Template = {
-  label: "Contact Form",
-  name: "contactForm",
-  ui: {
-    previewSrc: "",
-    defaultItem: {
-      titleForm: {
-        label: "Hablemos",
-        active: true,
-      },
-      fullName: {
-        label: "Nombre",
-        placeholder: "Tu nombre completo",
-      },
-      email: {
-        label: "Email",
-        placeholder: "Tu dirección de email",
-      },
-      message: {
-        label: "Mensaje",
-        placeholder: "Di hola!",
-      },
-      submit: {
-        label: "Enviar",
-        disabled: false,
-      },
-    },
-  },
-  fields: [
-    {
-      label: "Title Form",
-      name: "titleForm",
-      type: "object",
-
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Active",
-          name: "active",
-          type: "boolean",
-        },
-      ],
-    },
-    {
-      label: "Full Name",
-      name: "fullName",
-      type: "object",
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Placeholder",
-          name: "placeholder",
-          type: "string",
-        },
-      ],
-    },
-    {
-      label: "Email",
-      name: "email",
-      type: "object",
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Placeholder",
-          name: "placeholder",
-          type: "string",
-        },
-      ],
-    },
-    {
-      label: "Message",
-      name: "message",
-      type: "object",
-
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Placeholder",
-          name: "placeholder",
-          type: "string",
-        },
-      ],
-    },
-    {
-      label: "Submit Button",
-      name: "submit",
-      type: "object",
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-
-        {
-          label: "Disabled",
-          name: "disabled",
-          type: "boolean",
-        },
-      ],
-    },
-  ],
 };
