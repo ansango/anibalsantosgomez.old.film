@@ -1,9 +1,9 @@
-import { Render, Layout } from "components";
-import { useTina } from "tinacms/dist/react";
+import { Blocks } from "../components/blocks-renderer";
+import { useTina } from "tinacms/dist/edit-state";
+import { Layout } from "../components/layout";
 import { client } from "../.tina/__generated__/client";
 import { motion } from "framer-motion";
-import type { NextSeoProps } from "next-seo";
-
+import { NextSeoProps } from "next-seo";
 export default function NextPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
 ) {
@@ -17,8 +17,8 @@ export default function NextPage(
   const url = props.route === "/home" ? "" : props.route.replace("/", "");
 
   const seoProps: NextSeoProps = {
-    title: page?.seo?.title || "",
-    description: page?.seo?.description || "",
+    title: page?.seo?.title,
+    description: page?.seo?.description,
     robotsProps: {
       maxImagePreview: "standard",
       notranslate: true,
@@ -31,8 +31,8 @@ export default function NextPage(
     },
     openGraph: {
       url: `${process.env.NEXT_PUBLIC_WEB_URI}/${url}`,
-      title: page?.seo?.title || "",
-      description: page?.seo?.description || "",
+      title: page?.seo?.title,
+      description: page?.seo?.description,
     },
   };
 
@@ -45,13 +45,13 @@ export default function NextPage(
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Render {...data.page} />
+        <Blocks {...data.page} />
       </motion.article>
     </Layout>
   );
 }
 
-export const getStaticProps = async ({ params }: { params: any }) => {
+export const getStaticProps = async ({ params }) => {
   const tinaProps = await client.queries.contentQuery({
     relativePath: `${params.filename}.mdx`,
   });
@@ -68,12 +68,14 @@ export const getStaticProps = async ({ params }: { params: any }) => {
 export const getStaticPaths = async () => {
   const pagesListData = await client.queries.pageConnection();
   return {
-    paths: pagesListData.data.pageConnection.edges?.map((page) => ({
-      params: { filename: page?.node?._sys.filename },
+    paths: pagesListData.data.pageConnection.edges.map((page) => ({
+      params: { filename: page.node._sys.filename },
     })),
     fallback: false,
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends (...args: any) => Promise<infer R> ? R : any;

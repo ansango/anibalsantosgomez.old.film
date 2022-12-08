@@ -1,4 +1,6 @@
-import { Container, Hero, Layout } from "components";
+import { Hero } from "../components/blocks";
+import { Layout } from "../components/layout";
+import { Container } from "../components/util/container";
 
 export default function FourOhFour() {
   return (

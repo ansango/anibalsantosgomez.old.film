@@ -1,4 +1,4 @@
-import { fetcher } from "lib/utils";
+import { fetcher } from "../utils";
 
 export const onPostContactForm = async ({
   contactForm,
@@ -23,6 +23,7 @@ export const onPostContactForm = async ({
       body: JSON.stringify({ contactForm, lang, token }),
     });
     return true;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     throw err;
   }

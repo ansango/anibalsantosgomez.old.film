@@ -1,9 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { sendMail, CONFIG as MAIL_CONFIG } from "lib/mail";
+import { NextApiRequest, NextApiResponse } from "next";
+import { sendMail, CONFIG as MAIL_CONFIG } from "../../lib/mail";
 import { createRouter } from "next-connect";
-import { clientHtml, submission } from "lib/mail/templates";
-import fetcher from "lib/utils";
-import { corsMiddleware, customErrors } from "lib/api";
+import { clientHtml, submission } from "../../lib/mail/templates";
+import fetcher from "../../lib/utils";
+import { corsMiddleware, customErrors } from "../../lib/api";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
@@ -37,7 +37,6 @@ router.use(corsMiddleware).post(async (req, res) => {
           body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
         }
       );
-      console.log(reCaptchaRes);
       if (reCaptchaRes?.score > 0.5 && reCaptchaRes.success) {
         await sendMail({
           to: MAIL_CONFIG.from,

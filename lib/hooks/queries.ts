@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { client } from ".tina/__generated__/client";
+import { client } from "../../.tina/__generated__/client";
 
 export const useAllSeriesQuery = () => {
   const [data, setSeries] = useState({
@@ -14,13 +14,13 @@ export const useAllSeriesQuery = () => {
         setSeries({
           loading: false,
           series: res.data.serieConnection.edges
-            ?.map((edge) => edge?.node)
+            .map((edge) => edge.node)
             .sort((a, b) => {
               return (
-                new Date(b?.publishedAt || "").getTime() -
-                new Date(a?.publishedAt || "").getTime()
+                new Date(b.publishedAt).getTime() -
+                new Date(a.publishedAt).getTime()
               );
-            }) as any,
+            }),
         });
       })
       .catch((err) => {
@@ -53,14 +53,14 @@ export const useLatestSeriesQuery = ({ init = 0, limit = 6 }) => {
         setSeries({
           loading: false,
           series: res.data.serieConnection.edges
-            ?.map((edge) => edge?.node)
+            .map((edge) => edge.node)
             .sort((a, b) => {
               return (
-                new Date(b?.publishedAt || "").getTime() -
-                new Date(a?.publishedAt || "").getTime()
+                new Date(b.publishedAt).getTime() -
+                new Date(a.publishedAt).getTime()
               );
             })
-            .slice(init, limit) as any,
+            .slice(init, limit),
         });
       })
       .catch((err) => {
@@ -93,14 +93,14 @@ export const useFeaturedSeriesQuery = ({ init = 0, limit = 6 }) => {
         setSeries({
           loading: false,
           series: res.data.serieConnection.edges
-            ?.map((edge) => edge?.node)
+            .map((edge) => edge.node)
             .sort((a, b) => {
               return (
-                new Date(b?.publishedAt || "").getTime() -
-                new Date(a?.publishedAt || "").getTime()
+                new Date(b.publishedAt).getTime() -
+                new Date(a.publishedAt).getTime()
               );
             })
-            .slice(init, limit) as any,
+            .slice(init, limit),
         });
       })
       .catch((err) => {
@@ -119,8 +119,7 @@ export const useFeaturedSeriesQuery = ({ init = 0, limit = 6 }) => {
   }, []);
   return {
     ...data,
-    // @ts-ignore
-    series: data?.series?.map((serie: any, i: number) => ({
+    series: data?.series?.map((serie, i) => ({
       ...serie,
       priority: i === 0 ? true : false,
     })),

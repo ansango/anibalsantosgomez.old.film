@@ -1,17 +1,22 @@
 import Link from "next/link";
-import { formatDate } from "lib/utils";
+import { formatDate } from "../../lib/utils";
 import {
   baseInputStyles,
   monoBordersColors,
   monoTextColors,
   monoRestColors,
   primaryHoverTextColors,
-} from "constant/styles";
+} from "../styles";
 
-import { useTheme, Section, Container, Image, Icon } from "components";
-import { useAllSeriesQuery } from "lib/hooks";
+import { useTheme } from "../layout";
+import { Section } from "../util/section";
+import { Container } from "../util/container";
+import { useAllSeriesQuery } from "../../lib/hooks";
 import { useState } from "react";
+import { Icon } from "../util/icon";
+import { Template } from "../../.tina/schema";
 import { motion } from "framer-motion";
+import { Image } from "../util/image";
 
 const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   const { mono } = useTheme();
@@ -120,6 +125,8 @@ export const Series = ({ data, parentField = "" }) => {
         )
     ) || [];
 
+  
+
   const onPagination = (event) => {
     setCurrentPage(Number(event.target.id));
   };
@@ -171,50 +178,48 @@ export const Series = ({ data, parentField = "" }) => {
                 {currentPosts.map((serie) => {
                   return (
                     <article key={serie._sys.filename}>
-                      <Link
-                        href={`/serie/` + serie._sys.filename}
-                        passHref
-                        className="pt-8 sm:flex lg:items-start group"
-                      >
-                        <div className="mb-4 sm:mb-0 sm:mr-4">
-                          {serie?.cover && (
-                            <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
-                              <Image
-                                alt={serie.title}
-                                url={serie.cover}
-                                onClick={() => ""}
-                              />
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <time
-                            dateTime={serie.publishedAt}
-                            className={`text-sm md:hidden ${monoTextColors[500][mono]}`}
-                          >
-                            {formatDate(serie.publishedAt)}
-                          </time>
-                          <time
-                            dateTime={serie.publishedAt}
-                            className={`hidden md:block text-sm ${monoTextColors[500][mono]}`}
-                          >
-                            {formatDate(serie.publishedAt, "es-ES", {
-                              month: "long",
-                              day: "numeric",
-                              year: "numeric",
-                            })}
-                          </time>
-                          <h3
-                            className={`mt-3 text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-                          >
-                            {serie.title}
-                          </h3>
-                          <p
-                            className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-4 lg:line-clamp-3 ${monoRestColors.groupTextHover700[mono]}`}
-                          >
-                            {serie.summary}
-                          </p>
-                        </div>
+                      <Link href={`/serie/` + serie._sys.filename} passHref>
+                        <a className="pt-8 sm:flex lg:items-start group">
+                          <div className="mb-4 sm:mb-0 sm:mr-4">
+                            {serie?.cover && (
+                              <div className="w-full relative sm:w-48 md:w-64 lg:w-40">
+                                <Image
+                                  alt={serie.title}
+                                  url={serie.cover}
+                                  onClick={() => ""}
+                                />
+                              </div>
+                            )}
+                          </div>
+                          <div>
+                            <time
+                              dateTime={serie.publishedAt}
+                              className={`text-sm md:hidden ${monoTextColors[500][mono]}`}
+                            >
+                              {formatDate(serie.publishedAt)}
+                            </time>
+                            <time
+                              dateTime={serie.publishedAt}
+                              className={`hidden md:block text-sm ${monoTextColors[500][mono]}`}
+                            >
+                              {formatDate(serie.publishedAt, "es-ES", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric",
+                              })}
+                            </time>
+                            <h3
+                              className={`mt-3 text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+                            >
+                              {serie.title}
+                            </h3>
+                            <p
+                              className={`mt-2 text-base ${monoTextColors[500][mono]} line-clamp-4 lg:line-clamp-3 ${monoRestColors.groupTextHover700[mono]}`}
+                            >
+                              {serie.summary}
+                            </p>
+                          </div>
+                        </a>
                       </Link>
                     </article>
                   );
@@ -241,4 +246,55 @@ export const Series = ({ data, parentField = "" }) => {
       </Container>
     </Section>
   );
+};
+
+export const allSeriesSchema: Template = {
+  label: "All series",
+  name: "allSeries",
+  ui: {
+    previewSrc: "",
+    defaultItem: {
+      title: "Series",
+      noDataMessage: "No hay series",
+      search: {
+        placeholder: "Buscar",
+        active: false,
+        maxPosts: 3,
+      },
+    },
+  },
+  fields: [
+    {
+      name: "title",
+      label: "Title",
+      type: "string",
+    },
+    {
+      type: "string",
+      name: "noDataMessage",
+      label: "No data message",
+    },
+    {
+      name: "search",
+      label: "Search",
+      type: "object",
+      fields: [
+        {
+          name: "placeholder",
+          label: "Placeholder",
+          type: "string",
+        },
+        {
+          name: "active",
+          label: "Active",
+          type: "boolean",
+        },
+        {
+          name: "maxPosts",
+          label: "Max posts",
+          type: "number",
+        },
+      ],
+    },
+  ],
 };

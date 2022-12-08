@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+const withSvgr = require("next-svgr");
+
+module.exports = withSvgr({
   images: {
     domains: ["asg-cms.s3.eu-west-3.amazonaws.com"],
   },
@@ -11,12 +10,6 @@ const nextConfig = {
         source: "/",
         destination: "/home",
       },
-      {
-        source: "/admin",
-        destination: "/admin/index.html",
-      },
     ];
   },
-};
-
-module.exports = nextConfig;
+});

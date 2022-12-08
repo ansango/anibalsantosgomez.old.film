@@ -1,15 +1,16 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { Container, Icon, useTheme } from "components";
-
+import { Container } from "../util/container";
+import { Icon } from "../util/icon";
+import { useTheme } from "./theme";
 import {
   monoTextColors,
   primaryBorderColors,
   primaryHoverBorderColors,
   primaryHoverTextColors,
   primaryTextColors,
-} from "constant/styles";
-import { useAutoClose } from "lib/hooks";
+} from "../styles";
+import { useAutoClose } from "../../lib/hooks";
 
 // TODO cambiar por sidebar?
 
@@ -24,11 +25,12 @@ export const Header = ({ data }) => {
       <Container className="pt-6 sm:py-12">
         <div className="flex flex-col md:items-center md:justify-between md:flex-row">
           <div className="flex flex-row items-center justify-between lg:justify-start">
-            <Link
-              href="/"
-              className={`text-lg font-bold tracking-tight transition duration-600 ease-in-out transform tracking-relaxed lg:pr-8 ${primaryTextColors[color]}`}
-            >
-              anibalsantos
+            <Link href="/">
+              <a
+                className={`text-lg font-bold tracking-tight transition duration-600 ease-in-out transform tracking-relaxed lg:pr-8 ${primaryTextColors[color]}`}
+              >
+                anibalsantos
+              </a>
             </Link>
             <div ref={menu}>
               <button
@@ -61,9 +63,12 @@ export const Header = ({ data }) => {
                           href={`/${item.href}`}
                           passHref
                           key={`${item.label}-${i}`}
-                          className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] border-b-2 border-transparent ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]}`}
                         >
-                          {item.label}
+                          <a
+                            className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] border-b-2 border-transparent ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]}`}
+                          >
+                            {item.label}
+                          </a>
                         </Link>
                       );
                     })}
@@ -82,9 +87,12 @@ export const Header = ({ data }) => {
                   href={`/${item.href}`}
                   passHref
                   key={`${item.label}-${i}`}
-                  className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] border-b-2 border-transparent ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]} ${primaryHoverBorderColors[color]}`}
                 >
-                  {item.label}
+                  <a
+                    className={`px-4 py-2 mt-2 text-sm md:mt-0 focus:outline-none focus:shadow-outline leading-[22px] border-b-2 border-transparent ${monoTextColors[600][mono]} ${primaryHoverTextColors[color]} ${primaryHoverBorderColors[color]}`}
+                  >
+                    {item.label}
+                  </a>
                 </Link>
               );
             })}

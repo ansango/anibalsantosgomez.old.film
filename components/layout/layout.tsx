@@ -1,11 +1,16 @@
-import type { FC, ReactNode } from "react";
-import { Header, Footer, Theme, Policy } from "components";
-import layoutData from "content/global/index.json";
+import React, { FC, ReactNode } from "react";
+import { Header } from "./header";
+import { Footer } from "./footer";
+import layoutData from "../../content/global/index.json";
+import { Theme } from "./theme";
+import { TinaField } from "tinacms";
 import { NextSeo, type NextSeoProps } from "next-seo";
+import { Policy } from "../util/policy";
 
 export const Layout: FC<{
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   rawData?: any;
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
   seo?: NextSeoProps;
   children: ReactNode;
@@ -31,4 +36,24 @@ export const Layout: FC<{
       <Policy />
     </>
   );
+};
+
+export const seoSchema: TinaField = {
+  type: "object",
+  label: "Seo",
+  name: "seo",
+  fields: [
+    {
+      type: "string",
+      label: "Title",
+      name: "title",
+      required: true,
+    },
+    {
+      type: "string",
+      label: "Description",
+      name: "description",
+      required: true,
+    },
+  ],
 };

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Container } from "components";
+import { Container } from "../../util/container";
 import { RawRenderer } from "./rawRenderer";
 import {
   monoTextColors,
   primaryHoverTextColors,
   primaryTextColors,
-} from "constant";
+} from "../../styles";
 import { useTheme } from "../theme";
 
 export const Footer = ({ data, rawData }) => {
@@ -24,12 +24,12 @@ export const Footer = ({ data, rawData }) => {
       data.links.map((link, i) => ({
         el: (
           <li key={`${link.label}-${i}`}>
-            <Link
-              href={`${prefix}/${link.href}`}
-              passHref
-              className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
-            >
-              {link.label}
+            <Link href={`${prefix}/${link.href}`} passHref>
+              <a
+                className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
+              >
+                {link.label}
+              </a>
             </Link>
           </li>
         ),
@@ -44,7 +44,6 @@ export const Footer = ({ data, rawData }) => {
               className={`text-sm font-normal ${monoTextColors[500][mono]} ${primaryHoverTextColors[color]}`}
               href={link.href}
               target="_blank"
-              rel="noopener noreferrer"
             >
               {link.label}
             </a>
@@ -59,12 +58,12 @@ export const Footer = ({ data, rawData }) => {
         <Container>
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
-              <Link
-                href="/"
-                passHref
-                className={`text-lg font-bold tracking-tight ${primaryTextColors[color]} transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8`}
-              >
-                anibalsantos
+              <Link href="/" passHref>
+                <a
+                  className={`text-lg font-bold tracking-tight ${primaryTextColors[color]} transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8`}
+                >
+                  anibalsantos
+                </a>
               </Link>
               <p className={`mt-2 text-sm ${monoTextColors[500][mono]}`}>
                 film captures / miscellaneous

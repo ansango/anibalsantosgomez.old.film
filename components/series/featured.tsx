@@ -1,16 +1,13 @@
-import { Container, Section, useTheme, Image } from "components";
-
+import { Container } from "../util/container";
+import { Section } from "../util/section";
 import Link from "next/link";
-import { formatDate } from "lib/utils";
-
-import {
-  monoTextColors,
-  monoBordersColors,
-  monoRestColors,
-} from "constant/styles";
-import { useFeaturedSeriesQuery } from "lib/hooks";
-
+import { formatDate } from "../../lib/utils";
+import { useTheme } from "../layout";
+import { monoTextColors, monoBordersColors, monoRestColors } from "../styles";
+import { useFeaturedSeriesQuery } from "../../lib/hooks";
+import { Template } from "../../.tina/schema";
 import { motion } from "framer-motion";
+import { Image } from "../util/image";
 
 const Loader = ({ items = 2 }) => {
   const { mono } = useTheme();
@@ -78,17 +75,11 @@ const Loader = ({ items = 2 }) => {
   );
 };
 
-export const Featured = ({
-  data = {
-    title: "Featured Series",
-    noDataMessage: "No series found",
-  },
-  parentField = "",
-}) => {
+export const Featured = ({ data, parentField = "" }) => {
   const { mono } = useTheme();
   const { series, loading } = useFeaturedSeriesQuery({ init: 0, limit: 3 });
-  const lastSerie = series?.filter((serie: any) => serie.priority === true)[0];
-  const restSeries = series?.filter((serie: any) => serie.priority === false);
+  const lastSerie = series?.filter((serie) => serie.priority === true)[0];
+  const restSeries = series?.filter((serie) => serie.priority === false);
 
   return (
     <Section>
@@ -113,91 +104,90 @@ export const Featured = ({
             >
               <div className="grid gap-8 grid-cols-12 mx-auto mt-12">
                 {lastSerie && (
-                  <Link
-                    href={`/serie/${lastSerie._sys.filename}`}
-                    passHref
-                    className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group"
-                  >
-                    <div className="flex-shrink-0">
-                      {lastSerie?.cover && (
-                        <Image
-                          alt={lastSerie.title}
-                          url={lastSerie.cover}
-                          onClick={() => ""}
-                        />
-                      )}
-                    </div>
+                  <Link href={`/serie/${lastSerie._sys.filename}`} passHref>
+                    <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
+                      <div className="flex-shrink-0">
+                        {lastSerie?.cover && (
+                          <Image
+                            alt={lastSerie.title}
+                            url={lastSerie.cover}
+                            onClick={() => ""}
+                          />
+                        )}
+                      </div>
 
-                    <div className="flex flex-col justify-between flex-1">
-                      <div className="flex-1">
-                        <div
-                          className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
-                        >
-                          <time dateTime={lastSerie.publishedAt}>
-                            {formatDate(lastSerie.publishedAt)}
-                          </time>
-                        </div>
+                      <div className="flex flex-col justify-between flex-1">
+                        <div className="flex-1">
+                          <div
+                            className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
+                          >
+                            <time dateTime={lastSerie.publishedAt}>
+                              {formatDate(lastSerie.publishedAt)}
+                            </time>
+                          </div>
 
-                        <div className="mt-2 space-y-6">
-                          <h3
-                            className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-                          >
-                            {lastSerie.title}
-                          </h3>
-                          <p
-                            className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-                          >
-                            {lastSerie.summary}
-                          </p>
+                          <div className="mt-2 space-y-6">
+                            <h3
+                              className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+                            >
+                              {lastSerie.title}
+                            </h3>
+                            <p
+                              className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+                            >
+                              {lastSerie.summary}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </Link>
                 )}
 
                 <div className="col-span-12 lg:col-span-6 grid gap-8 grid-cols-12">
                   {restSeries &&
-                    restSeries.map((serie: any, i: number) => (
+                    restSeries.map((serie, i) => (
                       <Link
                         href={`/serie/${serie._sys.filename}`}
                         passHref
                         key={`serie-${i}`}
-                        className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group"
                       >
-                        <div className="flex-shrink-0">
-                          {serie?.cover && (
-                            <Image
-                              alt={serie.title}
-                              url={serie.cover}
-                              onClick={() => ""}
-                            />
-                          )}
-                        </div>
+                        <a className="flex flex-col mb-12 overflow-hidden cursor-pointer col-span-12 lg:col-span-6 group">
+                          <div className="flex-shrink-0">
+                            {serie?.cover && (
+                              <Image
+                                alt={serie.title}
+                                url={serie.cover}
+                                onClick={() => ""}
+                              />
+                            )}
+                          </div>
 
-                        <div className="flex flex-col justify-between flex-1">
-                          <div className="flex-1">
-                            <div
-                              className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
-                            >
-                              <time dateTime={serie.publishedAt}>
-                                {formatDate(serie.publishedAt)}
-                              </time>
-                            </div>
+                          <div className="flex flex-col justify-between flex-1">
+                            <div className="flex-1">
+                              <div
+                                className={`flex pt-6 space-x-1 text-sm ${monoTextColors[500][mono]}`}
+                              >
+                                <time dateTime={serie.publishedAt}>
+                                  {formatDate(serie.publishedAt)}
+                                </time>
+                              </div>
 
-                            <div className="mt-2 space-y-6">
-                              <h3
-                                className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
-                              >
-                                {serie.title}
-                              </h3>
-                              <p
-                                className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
-                              >
-                                {serie.summary}
-                              </p>
+                              <div className="mt-2 space-y-6">
+                                <h3
+                                  className={`text-xl font-semibold leading-none tracking-tighter ${monoTextColors[600][mono]} ${monoRestColors.groupTextHover800[mono]}`}
+                                >
+                                  {serie.title}
+                                </h3>
+                                <p
+                                  className={`text-base font-normal line-clamp-4 ${monoTextColors[500][mono]} ${monoRestColors.groupTextHover700[mono]}`}
+                                >
+                                  {serie.summary}
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       </Link>
                     ))}
                 </div>
@@ -216,4 +206,28 @@ export const Featured = ({
       </Container>
     </Section>
   );
+};
+
+export const featuredBlockSchema: Template = {
+  name: "featuredSeries",
+  label: "Featured Series",
+  ui: {
+    previewSrc: "",
+    defaultItem: {
+      title: "Destacadas",
+      noDataMessage: "No hay series",
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Title",
+    },
+    {
+      type: "string",
+      name: "noDataMessage",
+      label: "No Data Message",
+    },
+  ],
 };

@@ -1,12 +1,14 @@
-import type { FC, MouseEvent } from "react";
+import { FC, MouseEvent } from "react";
 import {
   TelegramShareButton as Telegram,
   TwitterShareButton as Twitter,
   WhatsappShareButton as Whatsapp,
 } from "react-share";
-import { monoTextColors } from "constant/styles";
-import { Container, Icon, useTheme } from "components";
-import { eEngagementEvents } from "lib/ga";
+import { monoTextColors } from "../styles";
+import { Container } from "../util/container";
+import { Icon } from "../util/icon";
+import { useTheme } from "./theme";
+import { eEngagementEvents } from "../../lib/ga";
 
 const buttons = [
   {

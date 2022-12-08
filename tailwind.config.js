@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-
+/* eslint-disable @typescript-eslint/no-var-requires */
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const plugins = [
@@ -270,8 +270,7 @@ const borderWidth = { DEFAULT: "3px", 0: "0", 2: "2px", 3: "3px", 4: "4px" };
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/**/*.{js,ts,jsx,tsx}",
-    "./constant/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
   theme: {

@@ -1,4 +1,3 @@
-
 query pageQuery {
   ...LayoutQueryFragment
   serieConnection {
@@ -20,7 +19,6 @@ query contentQuery($relativePath: String!) {
     ...PageParts
   }
 }
-
 
 query serieQuery($relativePath: String!) {
   ...LayoutQueryFragment

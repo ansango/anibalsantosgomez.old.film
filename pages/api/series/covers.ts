@@ -16,14 +16,13 @@ router
   .get(async (req, res) => {
     const query = await client.queries.seriesLatestsQuery();
     const data = await query.data.serieConnection.edges
-      ?.map((edge) => edge?.node)
+      .map((edge) => edge.node)
       .sort((a, b) => {
         return (
-          new Date(b?.publishedAt || "").getTime() -
-          new Date(a?.publishedAt || "").getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
         );
       })
-      .map((serie) => serie?.cover);
+      .map((serie) => serie.cover);
 
     res.json(data);
   });

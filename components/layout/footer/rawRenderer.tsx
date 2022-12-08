@@ -1,6 +1,8 @@
+import React from "react";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Icon, useTheme } from "components";
+import { useTheme } from "..";
+import { Icon } from "../../util/icon";
 
 export const RawRenderer = ({ rawData }) => {
   const theme = useTheme();

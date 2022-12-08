@@ -1,9 +1,8 @@
-import "styles/globals.css";
-
+import "../styles.css";
+import TinaProvider from "../.tina/components/TinaDynamicProvider";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { DefaultSeo, type DefaultSeoProps } from "next-seo";
-import { type AppProps } from "next/app";
 
 const defaultSeoProps: DefaultSeoProps = {
   title: "Film Captures",
@@ -68,10 +67,10 @@ const defaultSeoProps: DefaultSeoProps = {
   },
 };
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }) => {
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
       scriptProps={{
         async: false,
         defer: false,
@@ -82,8 +81,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     >
       <DefaultSeo {...defaultSeoProps} />
       <GoogleAnalytics trackPageViews strategy="lazyOnload" />
-
-      <Component {...pageProps} />
+      <TinaProvider>
+        <Component {...pageProps} />
+      </TinaProvider>
     </GoogleReCaptchaProvider>
   );
 };
