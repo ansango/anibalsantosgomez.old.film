@@ -6,7 +6,13 @@ import {
   spinnerSizeClass,
 } from "constant/styles";
 
-export const Spinner = ({ isPrimary = false, size = "sm" }) => {
+export const Spinner = ({
+  isPrimary = false,
+  size = "sm",
+}: {
+  isPrimary?: boolean;
+  size?: keyof typeof spinnerSizeClass;
+}) => {
   const { color, mono } = useTheme();
   const textColor = isPrimary
     ? primaryTextColors[color]

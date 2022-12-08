@@ -5,7 +5,7 @@ import {
   primaryTextColors,
 } from "constant/styles";
 
-export const Tag = ({ tag }) => {
+export const Tag = ({ tag }: { tag: string | null }) => {
   const { color } = useTheme();
   return (
     <a

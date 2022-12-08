@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Icon, useTheme } from "components";
 
-export const RawRenderer = ({ rawData }) => {
+export const RawRenderer = ({ rawData }: { rawData: any }) => {
   const theme = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +25,6 @@ export const RawRenderer = ({ rawData }) => {
         <Icon
           data={{
             name: "eye",
-            color: theme.color,
             size: "sm",
           }}
         />

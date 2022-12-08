@@ -56,7 +56,7 @@ export const SocialShare: FC<{ title: string; url: string }> = ({
             onClick={(e) => handleClick(e, name)}
           >
             <Icon
-              data={icon}
+              data={icon as any}
               className={`${monoTextColors[500][mono]} w-[1.25rem] h-[1.25rem]`}
             />
           </Component>

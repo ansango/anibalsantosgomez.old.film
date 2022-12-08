@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Container } from "components";
+import { Container, useTheme } from "components";
 import { RawRenderer } from "./rawRenderer";
 import {
   monoTextColors,
   primaryHoverTextColors,
   primaryTextColors,
 } from "constant";
-import { useTheme } from "../theme";
 
-export const Footer = ({ data, rawData }) => {
+export const Footer = ({
+  data,
+  rawData,
+}: {
+  data: {
+    links?: {
+      label: string;
+      href: string;
+    }[];
+    social?: {
+      label: string;
+      href: string;
+    }[];
+  };
+  rawData: any;
+}) => {
   const { color, mono } = useTheme();
   const [prefix, setPrefix] = useState("");
 

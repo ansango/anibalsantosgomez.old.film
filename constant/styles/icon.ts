@@ -11,6 +11,8 @@ import {
 import { SiTelegram, SiWhatsapp, SiTwitter, SiGmail } from "react-icons/si";
 import { BiCookie } from "react-icons/bi";
 
+export type IconName = keyof typeof iconsTheme.hi;
+
 export const iconsTheme = {
   hi: {
     menu: Bars2Icon,

@@ -1,5 +1,4 @@
 import { aspectRatioCn, objectPositionCn } from "constant";
-import type { FC } from "react";
 import ImageNext from "next/image";
 
 export type ImageProps = {

@@ -13,7 +13,15 @@ import { useAllSeriesQuery } from "lib/hooks";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
+const Searcher = ({
+  onSearch,
+  placeholder,
+  parentField = "",
+}: {
+  onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  parentField?: string;
+}) => {
   const { mono } = useTheme();
   return (
     <div className="relative max-w-lg" data-tinafield={`${parentField}.search`}>
@@ -37,7 +45,15 @@ const Searcher = ({ onSearch, placeholder, parentField = "" }) => {
   );
 };
 
-const Pagination = ({ pageNumbers = [], onPagination, currentPage = 0 }) => {
+const Pagination = ({
+  pageNumbers = [],
+  onPagination,
+  currentPage = 0,
+}: {
+  pageNumbers: number[];
+  onPagination: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  currentPage: number;
+}) => {
   const { mono, color } = useTheme();
   return (
     <div className="flex justify-center py-5 space-x-5">
@@ -52,7 +68,7 @@ const Pagination = ({ pageNumbers = [], onPagination, currentPage = 0 }) => {
             <button
               className={cn}
               key={number}
-              id={number}
+              id={number + ""}
               onClick={onPagination}
             >
               {number}
@@ -96,7 +112,13 @@ const Loader = ({ items = 3 }) => {
   );
 };
 
-export const Series = ({ data, parentField = "" }) => {
+export const Series = ({
+  data,
+  parentField = "",
+}: {
+  data: any;
+  parentField?: string;
+}) => {
   const { search } = data;
 
   const configSearch = {
@@ -105,7 +127,7 @@ export const Series = ({ data, parentField = "" }) => {
     maxPosts: search.maxPosts || 3,
   };
 
-  const { loading, series } = useAllSeriesQuery();
+  const { loading, series } = useAllSeriesQuery() as any;
   const { mono } = useTheme();
 
   const [searchValue, setSearchValue] = useState("");
@@ -113,14 +135,14 @@ export const Series = ({ data, parentField = "" }) => {
 
   const filteredSeries =
     series?.filter(
-      (post) =>
+      (post: any) =>
         post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        post.meta?.tags?.some((tag) =>
+        post.meta?.tags?.some((tag: string) =>
           tag.toLowerCase().includes(searchValue.toLowerCase())
         )
     ) || [];
 
-  const onPagination = (event) => {
+  const onPagination = (event: any) => {
     setCurrentPage(Number(event.target.id));
   };
 
@@ -168,7 +190,7 @@ export const Series = ({ data, parentField = "" }) => {
                 transition={{ duration: 0.75 }}
                 className={`space-y-12 sm:space-y-8 lg:divide-y ${monoRestColors.divide100[mono]} h-full`}
               >
-                {currentPosts.map((serie) => {
+                {currentPosts.map((serie: any) => {
                   return (
                     <article key={serie._sys.filename}>
                       <Link

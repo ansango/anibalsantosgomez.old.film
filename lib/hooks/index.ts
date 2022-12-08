@@ -3,12 +3,18 @@ export * from "./queries";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export const useAutoClose = ({ setIsOpen, menu }) => {
+export const useAutoClose = ({
+  setIsOpen,
+  menu,
+}: {
+  setIsOpen: (isOpen: boolean) => void;
+  menu: any;
+}) => {
   const { asPath } = useRouter();
   useEffect(() => setIsOpen(false), [asPath]);
 
   const handleClosure = useCallback(
-    (event) => !menu.current.contains(event.target) && setIsOpen(false),
+    (event: any) => !menu.current.contains(event.target) && setIsOpen(false),
     [setIsOpen, menu]
   );
 
@@ -29,7 +35,7 @@ export const useMounted = () => {
   return mounted;
 };
 
-export const useDimensions = (ref) => {
+export const useDimensions = (ref: any) => {
   const dimensions = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -40,7 +46,7 @@ export const useDimensions = (ref) => {
   return dimensions.current;
 };
 
-export const useLocalStorage = (defaultValue, key) => {
+export const useLocalStorage = (defaultValue: any, key: string) => {
   const [value, setValue] = useState(defaultValue);
 
   useEffect(() => {

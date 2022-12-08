@@ -14,9 +14,9 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 const LightboxContext = createContext({
   slides: [],
-  setSlides: (slides) => console.log("setSlides", slides),
+  setSlides: (slides: any) => console.log("setSlides", slides),
   index: -1,
-  setIndex: (value) => console.log("setIndex", value),
+  setIndex: (value: any) => console.log("setIndex", value),
 });
 
 export const useLightbox = () => useContext(LightboxContext);
@@ -48,7 +48,6 @@ export const Lightbox: FC<{ children: ReactNode }> = ({ children }) => {
     </LightboxContext.Provider>
   );
 };
-
 
 export const getSlidesFromBody = (body: { children: any[] }) => {
   return Object.values(body.children)

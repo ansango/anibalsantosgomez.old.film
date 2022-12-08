@@ -64,7 +64,10 @@ export const Render = (props: Omit<Page, "id" | "_sys" | "_values">) => {
                     data-tinafield={`blocks.${i}`}
                     key={i + block.__typename}
                   >
-                    <Latests data={block} parentField={`blocks.${i}`} />
+                    <Latests
+                      data={block as { title: string; noDataMessage: string }}
+                      parentField={`blocks.${i}`}
+                    />
                   </div>
                 );
               case "PageBlocksAllSeries":
