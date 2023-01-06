@@ -50,7 +50,7 @@
     "color": "lime",
     "font": "lato",
     "icon": "hi",
-    "darkMode": "dark"
+    "darkMode": "light"
   },
   "_collection": "global",
   "_keepTemplateKey": false,
