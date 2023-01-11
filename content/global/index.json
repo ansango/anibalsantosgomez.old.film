@@ -46,9 +46,9 @@
     ]
   },
   "theme": {
-    "mono": "gray",
-    "color": "lime",
-    "font": "lato",
+    "mono": "neutral",
+    "color": "purple",
+    "font": "nunito",
     "icon": "hi",
     "darkMode": "light"
   },
