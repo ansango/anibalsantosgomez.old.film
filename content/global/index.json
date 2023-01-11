@@ -47,7 +47,7 @@
   },
   "theme": {
     "mono": "neutral",
-    "color": "purple",
+    "color": "neutral",
     "font": "work-sans",
     "icon": "hi",
     "darkMode": "light"
