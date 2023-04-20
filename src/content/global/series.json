@@ -1,0 +1,13 @@
+{
+  "background": {
+    "light": "bg-hero-topography-secondary-light-20",
+    "dark": "dark:bg-hero-topography-primary-dark-10"
+  },
+  "navigation": [
+    {
+      "visible": false,
+      "href": "home",
+      "label": "Home"
+    }
+  ]
+}

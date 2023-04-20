@@ -1,3 +1,4 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
@@ -16,19 +17,31 @@
 
 # misc
 .DS_Store
-.env
-.idea
+*.pem
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-lib/scripts/__generated__
-
+# local env files
 .env
-.env.local
+.env*.local
 
-/public/static/series
-/public/sitemap.xml
-/public/feed.xml
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+node_modules
+
+.images
+.images___output
+.images___output_blur
+
+public/covers
+public/sitemap.xml
+public/feed.xml

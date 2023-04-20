@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.light {
+  --color-primary: theme("colors.neutral.900");
+  --color-secondary: theme("colors.amber.500");
+  --color-text: theme("colors.neutral.600");
+  --color-text-offset: theme("colors.neutral.400");
+  --color-text-button: theme("colors.neutral.50");
+  --color-background: theme("colors.neutral.50");
+  --color-background-offset: theme("colors.neutral.100");
+  --color-border: theme("colors.neutral.900" / 10%);
+  --color-border-offset: theme("colors.neutral.900" / 40%);
+}
+
+html.dark {
+  --color-primary: theme("colors.amber.400");
+  --color-secondary: theme("colors.blue.500");
+  --color-text: theme("colors.neutral.400");
+  --color-text-offset: theme("colors.neutral.600");
+  --color-text-button: theme("colors.neutral.900");
+  --color-background: theme("colors.neutral.900");
+  --color-background-offset: theme("colors.neutral.800");
+  --color-border: theme("colors.neutral.50" / 10%);
+  --color-border-offset: theme("colors.neutral.50" / 40%);
+}
+html {
+  @apply h-full motion-safe:scroll-smooth;
+}
+
+body,
+#__next {
+  @apply h-full font-serif text-base bg-default text-default selection:bg-secondary selection:text-white;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  @apply !leading-relaxed !tracking-widest !font-display;
+}
+
+h1 {
+  @apply !leading-relaxed !tracking-widest !text-9xl !text-primary;
+}
+
+h2 {
+  @apply !text-6xl !text-primary;
+}
+
+h3 {
+  @apply !text-4xl !text-primary;
+}
+
+h4 {
+  @apply !text-2xl !text-primary;
+}
+
+h5 {
+  @apply !text-xl !text-primary;
+}
+
+h6 {
+  @apply !text-lg !text-primary;
+}
+
+p {
+  @apply !text-base !text-default;
+}
+
+li {
+  @apply !text-base !text-default;
+}
+
+ul > li::marker {
+  @apply !text-primary;
+}
+
+strong {
+  @apply !font-semibold !text-primary;
+}
+
+a,
+.link {
+  @apply font-serif transition-all duration-300 text-primary hover:text-secondary hover:underline hover:underline-offset-4 group-hover:underline-offset-4 group-hover:underline group-hover:text-secondary;
+}
+
+label {
+  @apply block text-base text-default;
+}
+
+label > span {
+  @apply text-default;
+}
+
+label > [type="text"]::placeholder,
+[type="email"]::placeholder,
+[type="url"]::placeholder,
+[type="password"]::placeholder,
+[type="number"]::placeholder,
+[type="date"]::placeholder,
+[type="datetime-local"]::placeholder,
+[type="month"]::placeholder,
+[type="search"]::placeholder,
+[type="tel"]::placeholder,
+[type="time"]::placeholder,
+[type="week"]::placeholder,
+[multiple]::placeholder,
+textarea::placeholder,
+select::placeholder {
+  @apply text-offset;
+}
+
+label > [type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+  @apply block w-full mt-1 transition-all duration-200 border-default bg-offset focus:border-primary focus:ring-1 focus:ring-offset-2 focus:ring-primary;
+}
+
+label > [type="checkbox"] {
+  @apply transition-all duration-200 border-default bg-offset text-secondary focus:border-primary focus:ring-1 focus:ring-offset-2 focus:ring-primary;
+}
+
+label > [type="text"].offset,
+[type="email"].offset,
+[type="url"].offset,
+[type="password"].offset,
+[type="number"].offset,
+[type="date"],
+[type="datetime-local"].offset,
+[type="month"].offset,
+[type="search"].offset,
+[type="tel"].offset,
+[type="time"].offset,
+[type="week"].offset,
+[multiple].offset,
+textarea.offset,
+select.offset {
+  @apply block w-full mt-1 transition-all duration-200 border-offset bg-default focus:border-primary focus:ring-1 focus:ring-offset-2 focus:ring-primary;
+}
+
+label > [type="checkbox"].offset {
+  @apply transition-all duration-200 border-offset bg-default text-secondary focus:border-primary focus:ring-1 focus:ring-offset-2 focus:ring-primary;
+}
+
+button.btn,
+a.btn {
+  @apply inline-flex items-center justify-center px-4 py-2;
+}
+
+button.btn-primary,
+a.btn-primary {
+  @apply text-base font-medium transition-all duration-200 border border-transparent rounded-sm shadow-sm text-button bg-primary hover:bg-secondary focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-primary;
+}
+
+button.btn-primary[disabled],
+a.btn-primary[disabled] {
+  @apply cursor-not-allowed opacity-30;
+}
+
+button.btn-secondary,
+a.btn-secondary {
+  @apply text-base font-medium transition-all duration-200 bg-transparent border rounded-sm shadow-sm text-primary border-primary hover:bg-offset focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-primary;
+}
+
+label > span.helper-text {
+  @apply text-xs text-offset;
+}
+
+label > span.error-text {
+  @apply text-xs text-red-500;
+}
