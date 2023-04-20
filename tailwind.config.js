@@ -1,282 +1,110 @@
-/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const defaultTheme = require("tailwindcss/defaultTheme");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
-const plugins = [
-  require("@tailwindcss/typography"),
-  require("@tailwindcss/line-clamp"),
-  require("@tailwindcss/forms"),
-];
-
-const fontSize = {
-  xs: ".875rem",
-  sm: "1rem",
-  base: "1.125rem",
-  lg: "1.25rem",
-  xl: "1.5rem",
-  "2xl": "1.75rem",
-  "3xl": "2rem",
-  "4xl": "2.5rem",
-  "5xl": "3.25rem",
-  "6xl": "4rem",
-  "7xl": "5rem",
-  "8xl": "6rem",
-};
-
-const typography = ({ colors }) => {
-  const { slate, gray, zinc, neutral, stone } = colors;
-  return {
-    DEFAULT: {
-      css: {
-        pre: {
-          lineHeight: 1.5,
-        },
-        code: {
-          padding: "0.25rem",
-          margin: "-0.25rem 1px",
-        },
-        "code::before": {
-          content: '""',
-        },
-        "code::after": {
-          content: '""',
-        },
-      },
-    },
-    slate: {
-      css: {
-        "--tw-prose-body": slate[500],
-        "--tw-prose-headings": slate[700],
-        "--tw-prose-lead": slate[500],
-        "--tw-prose-links": slate[700],
-        "--tw-prose-bold": slate[600],
-        "--tw-prose-counters": slate[500],
-        "--tw-prose-bullets": slate[500],
-        "--tw-prose-hr": slate[200],
-        "--tw-prose-quotes": slate[600],
-        "--tw-prose-quote-borders": slate[400],
-        "--tw-prose-captions": slate[400],
-        "--tw-prose-code": slate[100],
-        "--tw-prose-pre-code": slate[700],
-        "--tw-prose-pre-bg": slate[100],
-        "--tw-prose-th-borders": slate[200],
-        "--tw-prose-td-borders": slate[200],
-
-        "--tw-prose-invert-body": slate[400],
-        "--tw-prose-invert-headings": slate[300],
-        "--tw-prose-invert-lead": slate[500],
-        "--tw-prose-invert-links": slate[300],
-        "--tw-prose-invert-bold": slate[400],
-        "--tw-prose-invert-counters": slate[500],
-        "--tw-prose-invert-bullets": slate[500],
-        "--tw-prose-invert-hr": slate[200],
-        "--tw-prose-invert-quotes": slate[400],
-        "--tw-prose-invert-quote-borders": slate[400],
-        "--tw-prose-invert-captions": slate[400],
-        "--tw-prose-invert-code": slate[100],
-        "--tw-prose-invert-pre-code": slate[300],
-        "--tw-prose-invert-pre-bg": slate[100],
-        "--tw-prose-invert-th-borders": slate[200],
-        "--tw-prose-invert-td-borders": slate[200],
-      },
-    },
-    gray: {
-      css: {
-        "--tw-prose-body": gray[500],
-        "--tw-prose-headings": gray[700],
-        "--tw-prose-lead": gray[500],
-        "--tw-prose-links": gray[700],
-        "--tw-prose-bold": gray[600],
-        "--tw-prose-counters": gray[500],
-        "--tw-prose-bullets": gray[500],
-        "--tw-prose-hr": gray[200],
-        "--tw-prose-quotes": gray[600],
-        "--tw-prose-quote-borders": gray[400],
-        "--tw-prose-captions": gray[400],
-        "--tw-prose-code": gray[100],
-        "--tw-prose-pre-code": gray[700],
-        "--tw-prose-pre-bg": gray[100],
-        "--tw-prose-th-borders": gray[200],
-        "--tw-prose-td-borders": gray[200],
-
-        "--tw-prose-invert-body": gray[400],
-        "--tw-prose-invert-headings": gray[300],
-        "--tw-prose-invert-lead": gray[500],
-        "--tw-prose-invert-links": gray[300],
-        "--tw-prose-invert-bold": gray[400],
-        "--tw-prose-invert-counters": gray[500],
-        "--tw-prose-invert-bullets": gray[500],
-        "--tw-prose-invert-hr": gray[200],
-        "--tw-prose-invert-quotes": gray[400],
-        "--tw-prose-invert-quote-borders": gray[400],
-        "--tw-prose-invert-captions": gray[400],
-        "--tw-prose-invert-code": gray[100],
-        "--tw-prose-invert-pre-code": gray[300],
-        "--tw-prose-invert-pre-bg": gray[100],
-        "--tw-prose-invert-th-borders": gray[200],
-        "--tw-prose-invert-td-borders": gray[200],
-      },
-    },
-    zinc: {
-      css: {
-        "--tw-prose-body": zinc[500],
-        "--tw-prose-headings": zinc[700],
-        "--tw-prose-lead": zinc[500],
-        "--tw-prose-links": zinc[700],
-        "--tw-prose-bold": zinc[600],
-        "--tw-prose-counters": zinc[500],
-        "--tw-prose-bullets": zinc[500],
-        "--tw-prose-hr": zinc[200],
-        "--tw-prose-quotes": zinc[600],
-        "--tw-prose-quote-borders": zinc[400],
-        "--tw-prose-captions": zinc[400],
-        "--tw-prose-code": zinc[100],
-        "--tw-prose-pre-code": zinc[700],
-        "--tw-prose-pre-bg": zinc[100],
-        "--tw-prose-th-borders": zinc[200],
-        "--tw-prose-td-borders": zinc[200],
-
-        "--tw-prose-invert-body": zinc[400],
-        "--tw-prose-invert-headings": zinc[300],
-        "--tw-prose-invert-lead": zinc[500],
-        "--tw-prose-invert-links": zinc[300],
-        "--tw-prose-invert-bold": zinc[400],
-        "--tw-prose-invert-counters": zinc[500],
-        "--tw-prose-invert-bullets": zinc[500],
-        "--tw-prose-invert-hr": zinc[200],
-        "--tw-prose-invert-quotes": zinc[400],
-        "--tw-prose-invert-quote-borders": zinc[400],
-        "--tw-prose-invert-captions": zinc[400],
-        "--tw-prose-invert-code": zinc[100],
-        "--tw-prose-invert-pre-code": zinc[300],
-        "--tw-prose-invert-pre-bg": zinc[100],
-        "--tw-prose-invert-th-borders": zinc[200],
-        "--tw-prose-invert-td-borders": zinc[200],
-      },
-    },
-
-    neutral: {
-      css: {
-        "--tw-prose-body": neutral[500],
-        "--tw-prose-headings": neutral[700],
-        "--tw-prose-lead": neutral[500],
-        "--tw-prose-links": neutral[700],
-        "--tw-prose-bold": neutral[600],
-        "--tw-prose-counters": neutral[500],
-        "--tw-prose-bullets": neutral[500],
-        "--tw-prose-hr": neutral[200],
-        "--tw-prose-quotes": neutral[600],
-        "--tw-prose-quote-borders": neutral[400],
-        "--tw-prose-captions": neutral[400],
-        "--tw-prose-code": neutral[100],
-        "--tw-prose-pre-code": neutral[700],
-        "--tw-prose-pre-bg": neutral[100],
-        "--tw-prose-th-borders": neutral[200],
-        "--tw-prose-td-borders": neutral[200],
-
-        "--tw-prose-invert-body": neutral[400],
-        "--tw-prose-invert-headings": neutral[300],
-        "--tw-prose-invert-lead": neutral[500],
-        "--tw-prose-invert-links": neutral[300],
-        "--tw-prose-invert-bold": neutral[400],
-        "--tw-prose-invert-counters": neutral[500],
-        "--tw-prose-invert-bullets": neutral[500],
-        "--tw-prose-invert-hr": neutral[200],
-        "--tw-prose-invert-quotes": neutral[400],
-        "--tw-prose-invert-quote-borders": neutral[400],
-        "--tw-prose-invert-captions": neutral[400],
-        "--tw-prose-invert-code": neutral[100],
-        "--tw-prose-invert-pre-code": neutral[300],
-        "--tw-prose-invert-pre-bg": neutral[100],
-        "--tw-prose-invert-th-borders": neutral[200],
-        "--tw-prose-invert-td-borders": neutral[200],
-      },
-    },
-
-    stone: {
-      css: {
-        "--tw-prose-body": stone[500],
-        "--tw-prose-headings": stone[700],
-        "--tw-prose-lead": stone[500],
-        "--tw-prose-links": stone[700],
-        "--tw-prose-bold": stone[600],
-        "--tw-prose-counters": stone[500],
-        "--tw-prose-bullets": stone[500],
-        "--tw-prose-hr": stone[200],
-        "--tw-prose-quotes": stone[600],
-        "--tw-prose-quote-borders": stone[400],
-        "--tw-prose-captions": stone[400],
-        "--tw-prose-code": stone[100],
-        "--tw-prose-pre-code": stone[700],
-        "--tw-prose-pre-bg": stone[100],
-        "--tw-prose-th-borders": stone[200],
-        "--tw-prose-td-borders": stone[200],
-
-        "--tw-prose-invert-body": stone[400],
-        "--tw-prose-invert-headings": stone[300],
-        "--tw-prose-invert-lead": stone[500],
-        "--tw-prose-invert-links": stone[300],
-        "--tw-prose-invert-bold": stone[400],
-        "--tw-prose-invert-counters": stone[500],
-        "--tw-prose-invert-bullets": stone[500],
-        "--tw-prose-invert-hr": stone[200],
-        "--tw-prose-invert-quotes": stone[400],
-        "--tw-prose-invert-quote-borders": stone[400],
-        "--tw-prose-invert-captions": stone[400],
-        "--tw-prose-invert-code": stone[100],
-        "--tw-prose-invert-pre-code": stone[300],
-        "--tw-prose-invert-pre-bg": stone[100],
-        "--tw-prose-invert-th-borders": stone[200],
-        "--tw-prose-invert-td-borders": stone[200],
-      },
-    },
-  };
-};
-
-const extend = {
-  aspectRatio: {
-    "4/3": "4 / 3",
-    "4/5": "4 / 5",
-    "5/4": "5 / 4",
-    "9/16": "9 / 16",
-    "2/3": "2 / 3",
-    "3/2": "3 / 2",
-  },
-  opacity: {
-    7: ".075",
-    15: ".15",
-  },
-  maxWidth: {
-    "8xl": "86rem",
-  },
-  spacing: {
-    128: "32rem",
-  },
-  zIndex: {
-    "-1": "-1",
-  },
-  fontFamily: {
-    nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
-    lato: ["Lato", ...defaultTheme.fontFamily.sans],
-    "work-sans": ["Work Sans", ...defaultTheme.fontFamily.sans],
-    "ibm-sans": ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
-    mono: ["Fira Code", ...defaultTheme.fontFamily.mono],
-  },
-  typography,
-};
-
-const borderWidth = { DEFAULT: "3px", 0: "0", 2: "2px", 3: "3px", 4: "4px" };
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
-    fontSize,
-    borderWidth,
-    extend,
+    extend: {
+      fontFamily: {
+        sans: ["var(--sans)", ...fontFamily.sans],
+        serif: ["var(--serif)", ...fontFamily.serif],
+        display: ["var(--display)", ...fontFamily.sans],
+      },
+      colors: {
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+      },
+      textColor: {
+        default: "var(--color-text)",
+        offset: "var(--color-text-offset)",
+        button: "var(--color-text-button)",
+      },
+      backgroundColor: {
+        default: "var(--color-background)",
+        offset: "var(--color-background-offset)",
+      },
+      borderColor: {
+        default: "var(--color-border)",
+        offset: "var(--color-border-offset)",
+      },
+      aspectRatio: {
+        "4/3": "4 / 3",
+        "4/5": "4 / 5",
+        "5/4": "5 / 4",
+        "9/16": "9 / 16",
+        "2/3": "2 / 3",
+        "3/2": "3 / 2",
+      },
+      opacity: {
+        7: ".075",
+        15: ".15",
+      },
+      maxWidth: {
+        "8xl": "86rem",
+      },
+      spacing: {
+        128: "32rem",
+      },
+      zIndex: {
+        "-1": "-1",
+      },
+    },
   },
-  plugins,
+  plugins: [
+    require("tailwindcss-debug-screens"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("tailwindcss-fluid-type")({
+      settings: {
+        fontSizeMin: 1.125, // 1.125rem === 18px
+        fontSizeMax: 1.25, // 1.25rem === 20px
+        ratioMin: 1.125, // Multiplicator Min
+        ratioMax: 1.2, // Multiplicator Max
+        screenMin: 20, // 20rem === 320px
+        screenMax: 96, // 96rem === 1536px
+        unit: "rem", // default is rem but it's also possible to use 'px'
+        prefix: "", // set a prefix to use it alongside the default font sizes
+      },
+      values: {
+        xs: [-2, 1.6],
+        sm: [-1, 1.6],
+        base: [0, 1.6],
+        lg: [1, 1.6],
+        xl: [2, 1.2],
+        "2xl": [3, 1.2],
+        "3xl": [4, 1.2],
+        "4xl": [5, 1.1],
+        "5xl": [6, 1.1],
+        "6xl": [7, 1.1],
+        "7xl": [8, 1],
+        "8xl": [9, 1],
+        "9xl": [10, 1],
+      },
+    }),
+    require("tailwind-heropatterns")({
+      variants: [],
+      patterns: ["graph-paper", "pie-factory", "topography"],
+      colors: {
+        "primary-light": "#171717",
+        "secondary-light": "#f59e0b",
+        "default-light": "#525252",
+        "offset-light": "#a3a3a3",
+
+        "primary-dark": "#fbbf24",
+        "secondary-dark": "#3b82f6",
+        "default-dark": "#a3a3a3",
+        "offset-dark": "#525252",
+      },
+
+      opacity: {
+        10: "0.1",
+        15: "0.15",
+        20: "0.2",
+        100: "1.0",
+      },
+    }),
+  ],
 };

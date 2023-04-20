@@ -1,0 +1,40 @@
+{
+  "navigation": [
+    {
+      "visible": true,
+      "href": "",
+      "label": "inicio"
+    },
+    {
+      "visible": true,
+      "href": "series",
+      "label": "series"
+    },
+    {
+      "visible": true,
+      "href": "sobremi",
+      "label": "sobre mi"
+    },
+    {
+      "visible": true,
+      "href": "contacto",
+      "label": "contacto"
+    }
+  ],
+  "social": [
+    {
+      "visible": true,
+      "href": "https://www.instagram.com/iamasync/",
+      "label": "instagram"
+    },
+    {
+      "visible": false,
+      "href": "https://github.com/ansango/",
+      "label": "github"
+    }
+  ],
+  "background": {
+    "light": "bg-hero-topography-offset-light-10",
+    "dark": "dark:bg-hero-topography-offset-dark-10"
+  }
+}

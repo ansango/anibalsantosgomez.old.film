@@ -1,15 +1,25 @@
-const withSvgr = require("next-svgr");
-
-module.exports = withSvgr({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
   images: {
-    domains: ["asg-cms.s3.eu-west-3.amazonaws.com"],
+    domains: [`${process.env.NEXT_PUBLIC_BUCKET_URL.replace("https://", "")}`],
+    formats: ["image/webp"],
   },
   async rewrites() {
     return [
       {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+      {
         source: "/",
-        destination: "/home",
+        destination: "/index",
       },
     ];
   },
-});
+  experimental: {
+    appDir: true,
+  },
+};
+
+module.exports = nextConfig;

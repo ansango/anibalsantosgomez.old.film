@@ -1,0 +1,160 @@
+fragment SerieParts on Serie {
+  visible
+  cover
+  meta {
+    __typename
+    publishedAt
+    camera
+    film
+    shot {
+      __typename
+      start
+      end
+    }
+    tags
+  }
+  thumbnails {
+    __typename
+    firstThumbnail {
+      __typename
+      url
+      centerImage
+    }
+    secondThumbnail {
+      __typename
+      url
+      centerImage
+    }
+    thirdThumbnail {
+      __typename
+      url
+      centerImage
+    }
+  }
+  blocks {
+    __typename
+    ... on SerieBlocksHeroSerie {
+      visible
+    }
+    ... on SerieBlocksBodySimple {
+      visible
+      content
+      size
+      center
+      align
+      paddingTop
+      paddingBottom
+    }
+    ... on SerieBlocksMasonryFS {
+      label
+      visible
+      columns {
+        __typename
+        default
+        sm
+        md
+        lg
+        xl
+      }
+      gap {
+        __typename
+        default
+        sm
+        md
+        lg
+        xl
+      }
+      images {
+        __typename
+        label
+        url
+        aspectRatio
+        centerImage
+      }
+    }
+  }
+}
+
+fragment PageParts on Page {
+  visible
+  title
+  description
+  blocks {
+    __typename
+    ... on PageBlocksHeroBase {
+      visible
+      tagline
+      headline
+      text
+      align
+      rotationTitle
+      backgroundLight
+      backgroundDark
+    }
+    ... on PageBlocksMasonryBase {
+      label
+      visible
+      columns {
+        __typename
+        default
+        sm
+        md
+        lg
+        xl
+      }
+      gap {
+        __typename
+        default
+        sm
+        md
+        lg
+        xl
+      }
+      images {
+        __typename
+        label
+        url
+        aspectRatio
+        centerImage
+      }
+    }
+    ... on PageBlocksAllSeries {
+      visible
+    }
+    ... on PageBlocksContactForm {
+      visible
+      offset
+      backgroundLight
+      backgroundDark
+    }
+    ... on PageBlocksBodySimple {
+      visible
+      content
+      size
+      center
+      align
+      paddingTop
+      paddingBottom
+    }
+  }
+}
+
+fragment GlobalParts on Global {
+  navigation {
+    __typename
+    visible
+    href
+    label
+  }
+  social {
+    __typename
+    visible
+    href
+    label
+  }
+  background {
+    __typename
+    light
+    dark
+  }
+}
