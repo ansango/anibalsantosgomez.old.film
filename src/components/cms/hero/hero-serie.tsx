@@ -38,7 +38,7 @@ export const HeroSerie: FC<HeroSerieProps> = ({
           <time className="font-serif text-xs italic">publicado el {formatDate(publishedAt)}</time>
         )}
 
-        <article className="space-y-5 prose prose-lg lg:prose-xl xl:prose-2xl ">
+        <article className="space-y-5 prose prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert">
           {description && (
             <p>
               <Balancer>{description}</Balancer>
