@@ -5,6 +5,7 @@ import { useEffect, useContext, createContext, useState } from "react";
 
 import Box from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -58,7 +59,7 @@ export const LightBox: FC<{ children: ReactNode }> = ({ children }) => {
         open={index >= 0}
         close={() => setIndex(-1)}
         slides={slides}
-        plugins={[Fullscreen]}
+        plugins={[Fullscreen, Zoom]}
       />
     </LightBoxContext.Provider>
   );
