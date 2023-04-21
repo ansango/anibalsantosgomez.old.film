@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Theme } from "@/components";
+import { Theme, Transition } from "@/components";
 
 import PagesConfig from "../../content/global/pages.json";
 
@@ -10,7 +10,7 @@ export default function PageLayout({ children }: { children: ReactNode }) {
   return (
     <div className={`${background.light} ${background.dark}`}>
       <Theme>
-        <main className="flex flex-col flex-1">{children}</main>
+        <Transition className="flex flex-col flex-1">{children}</Transition>
       </Theme>
     </div>
   );

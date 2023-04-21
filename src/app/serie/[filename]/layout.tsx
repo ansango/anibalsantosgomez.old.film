@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Theme } from "@/components";
+import { Theme, Transition } from "@/components";
 import { PaginationBase } from "@/components/cms";
 import { getSeriesPagination } from "@/lib";
 
@@ -21,7 +21,7 @@ export default async function SerieLayout({
   return (
     <div className={`${background.light} ${background.dark}`}>
       <Theme>
-        <main>{children}</main>
+        <Transition>{children}</Transition>
         {pagination && (
           <PaginationBase
             next={{
