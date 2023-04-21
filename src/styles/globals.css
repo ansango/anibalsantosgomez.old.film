@@ -37,8 +37,10 @@ body,
 
 h1,
 h2,
-h3 {
-  @apply !leading-relaxed !tracking-widest !font-display;
+h3,
+h4,
+.prose-headings {
+  @apply !leading-relaxed !tracking-widest !font-display !font-medium;
 }
 
 h1 {
