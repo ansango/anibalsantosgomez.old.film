@@ -86,6 +86,10 @@ a,
   @apply transition-all duration-300 text-primary hover:text-secondary hover:underline hover:underline-offset-4 group-hover:underline-offset-4 group-hover:underline group-hover:text-secondary;
 }
 
+.link-simple {
+  @apply transition-all duration-300 text-primary hover:text-secondary group-hover:text-secondary;
+}
+
 label {
   @apply block text-base text-default;
 }
