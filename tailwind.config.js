@@ -45,6 +45,12 @@ module.exports = {
       maxWidth: {
         "8xl": "86rem",
       },
+      minHeight: {
+        screenHeightWithoutHeader: "calc(100vh - 101px)",
+      },
+      height: {
+        screenHeightWithoutHeader: "calc(100vh - 101px)",
+      },
       spacing: {
         128: "32rem",
       },

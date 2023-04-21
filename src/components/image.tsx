@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import { motion } from "framer-motion";
 import ImageNext from "next/image";
 
 import { getSize } from "../lib";
@@ -69,7 +70,12 @@ export const Image: FC<ImageProps> = ({
   const centerCn = objectPositionCn[centerImage] || objectPositionCn["center"];
 
   return (
-    <span className="flex flex-col items-center">
+    <motion.span
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}
+      exit={{ opacity: 0, x: 20 }}
+      className="flex flex-col items-center"
+    >
       {url ? (
         <ImageNext
           className={`object-cover ${centerCn} ${aspectRatioCn[aspectRatio]} ${
@@ -87,7 +93,7 @@ export const Image: FC<ImageProps> = ({
           blurDataURL={blurDataURL}
         />
       ) : null}
-    </span>
+    </motion.span>
   );
 };
 
