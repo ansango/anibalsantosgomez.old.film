@@ -33,32 +33,30 @@ export const Series: FC<Props> = ({ data }) => {
               <li key={id}>
                 <article className="group">
                   <time className="text-xs"># {formatDate(meta?.publishedAt as string)}</time>
-                  {thumbnails && (
-                    <Masonry
-                      {...({
-                        columns: { default: "3", sm: "3", md: "3", lg: "3", xl: "3" },
-                        gap: { default: "1", sm: "2", md: "3", lg: "3", xl: "3" },
-                      } as MasonryProps)}
-                    >
-                      {mergedThumbs?.map((image, iThumbnail) => (
-                        <Image
-                          key={iThumbnail}
-                          {...(image as ImageProps)}
-                          aspectRatio="4/3"
-                          alt={`${filename}-thumbnail-${iThumbnail}`}
-                          loading={iBlock < 2 && iThumbnail < 2 ? "eager" : "lazy"}
-                          blurDataURL={getBlurUrl(image as ImageProps)}
-                        />
-                      ))}
-                    </Masonry>
-                  )}
-
-                  <h3 className="font-semibold tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em]">
-                    <Balancer>{filename?.replaceAll("-", " ")}</Balancer>
-                  </h3>
-
                   <Link className="text-sm" href={`/serie/${filename}`}>
-                    ver más
+                    {thumbnails && (
+                      <Masonry
+                        {...({
+                          columns: { default: "3", sm: "3", md: "3", lg: "3", xl: "3" },
+                          gap: { default: "1", sm: "2", md: "3", lg: "3", xl: "3" },
+                        } as MasonryProps)}
+                      >
+                        {mergedThumbs?.map((image, iThumbnail) => (
+                          <Image
+                            key={iThumbnail}
+                            {...(image as ImageProps)}
+                            aspectRatio="4/3"
+                            alt={`${filename}-thumbnail-${iThumbnail}`}
+                            loading={iBlock < 2 && iThumbnail < 2 ? "eager" : "lazy"}
+                            blurDataURL={getBlurUrl(image as ImageProps)}
+                          />
+                        ))}
+                      </Masonry>
+                    )}
+                    <h3 className="font-semibold tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em]">
+                      <Balancer className="link">{filename?.replaceAll("-", " ")}</Balancer>
+                    </h3>
+                    <span>ver más</span>
                   </Link>
                 </article>
               </li>

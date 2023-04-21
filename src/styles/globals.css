@@ -83,7 +83,7 @@ strong {
 
 a,
 .link {
-  @apply font-serif transition-all duration-300 text-primary hover:text-secondary hover:underline hover:underline-offset-4 group-hover:underline-offset-4 group-hover:underline group-hover:text-secondary;
+  @apply transition-all duration-300 text-primary hover:text-secondary hover:underline hover:underline-offset-4 group-hover:underline-offset-4 group-hover:underline group-hover:text-secondary;
 }
 
 label {
