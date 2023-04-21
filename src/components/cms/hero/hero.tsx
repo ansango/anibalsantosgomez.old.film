@@ -55,7 +55,7 @@ export const HeroBase: FC<HeroBaseProps> = ({
       <Container className={`h-[65vh] flex items-center ${cnContainer}`}>
         <div className={`space-y-5 ${cnText}`}>
           {tagline && (
-            <span>
+            <span className="font-sans font-medium tracking-widest text-primary">
               <Balancer>{tagline}</Balancer>
             </span>
           )}

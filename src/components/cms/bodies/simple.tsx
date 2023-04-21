@@ -66,7 +66,7 @@ export const BodySimple: FC<BodySimpleProps> = ({
   return (
     <Section className={`!flex-none ${cnPadding}`}>
       <Container className={`flex ${cnCenter} ${cnAlign}`}>
-        <article className={`prose ${cnSize}`}>
+        <article className={`prose ${cnSize} dark:prose-invert`}>
           <Balancer>
             <TinaMarkdown content={content} />
           </Balancer>
