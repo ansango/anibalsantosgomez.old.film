@@ -1773,67 +1773,63 @@ const data = [
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/01.webp",
-    img: "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoIAAwAAsBMJZACdAEO4agvkgD+7e9DMrNanOfJ0YELzZyqszbRbLIanguGRPYbqjCR0AAA",
+    img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoIAAwAAsBMJZACdAEOvDA3wZAA/vAbwQnTlYtV/Z3+A/pJN8vDofZkHe5L6ztlP3wys5QAAAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/02.webp",
-    img: "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoIAAwAAsBMJZgCdAD0SCmyBMAA/vIu0n3/ZbDxYZVBEcoX3Ykq7tWh/HzSrx1Wr52Rz2+t1AAAAA==",
+    img: "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoIAAwAAsBMJYgCdAEO4rPEGAD+6za9Ac6ySZLr2s1gwyk78MPMH924X6M4xtkEvAAAAA==",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/03.webp",
-    img: "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAACwAQCdASoIAAwAAsBMJQBOgCHXTWAAAP701PNCv+H/uj6vnFtknK1Csi9ER66u+zcdz2eJ8AAAAA==",
+    img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoIAAwAAsBMJZACdAD0SC3/UgAA/vPD6LK2a3/qGRRr8xoCMnth77KzbVTfDTM6RtVjl0WzwAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/04.webp",
-    img: "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAwAAsBMJYwCdAD0ZZLYFYAA/uKR2WBkDGnV+9a2g7twHw6bUJFDzhNqG2fGxkzZsQCaUoVlvkFBZfAAAA==",
+    img: "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoIAAwAAsBMJYwCdAEOu1YW4AD+83VqFJO/J+rfi0kOYNjimE4HyhSfxoGqPhSAAAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/05.webp",
-    img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoIAAUAAsBMJagCdADb607gAP7RgUXF/gu1Xt6XO6cIJzj9nBUmAw5ZoYi36wfi72Eb9he4CAA=",
+    img: "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoIAAwAAsBMJYwCdAD5h+npzgAA/uKR2WBkDGnV+HVY77y0+hZ+Tc3O0uG4lrVRJXydnuANyE1QNZQHYAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/06.webp",
-    img: "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAACwAQCdASoIAAUAAsBMJZgCdADyfvaAAP7eGBmwYG1OUDo00FQpKPtmVRiTGmwwmCdfF3YjjJIAAA==",
+    img: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAgCdASoIAAwAAsBMJaACdGuAAvq7CKgoEAD+1iB0rOGk1Q/N/12tT4/vvK7EcR7whszl10A741NFYaL56TE9JdkyAAAA",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/07.webp",
-    img: "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoIAAwAAsBMJagCdGuAAj38FR0AAP5hWxzm2DW5gY/gMz0utT/rcoWoV/mklDXEValW5DZJi+MgIAH0WYQqt86zS76Xd9oAAAA=",
+    img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoIAAUAAsBMJZgCdADc5U9gAP5MwbBAkz0CKmdA2/vfELUrMGc2Xl6iajaZ25fyYNa+aqAAAAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/08.webp",
-    img: "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAACwAQCdASoIAAUAAsBMJZgCdADdDAUAAP7qMdd0lVfhjb+rLOh2LVzu05zUCCRi4TVPl8moyIYAAA==",
+    img: "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoIAAwAAsBMJZACdAEXfk++2AAA/snj2I5E70EGm2H9CYM+3Ovnz79BZmrClY6p47PfQTQV5vB1obph3Mgt251wAAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/09.webp",
-    img: "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoIAAwAAsBMJZACdAD5hyooqgAA/gjBsEZtZ+r1ghgYr7EItfnDcZD/N7bt3BH3TVJv6CdiCuJ8T/illHa+qqsqAAA=",
+    img: "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoIAAwAAsBMJbACdADdcybLX5zAAM4/5PKngzcPPAqCeiCN66zqAI9o8w6/XVd7uQI/tysB/GgZf5hIj+DrV1+sbFv1plcAAAA=",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/10.webp",
-    img: "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoIAAwAAsBMJbACdAEXfkBpBTQAAP5P8vEx9FUR2g666wHOXKw21UheCXlGQmclsjX4EKIoSnal+yLcgjgboflli78JUYAA",
+    img: "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoIAAwAAsBMJYgCdADdKUDRu0wA/vCkipk+rRccaCOQ61KZdfidBeKztO21PuVcMYIps0XJ8OKgivINF6GRLNGXzwRUAAAA",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/11.webp",
-    img: "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoIAAwAAsBMJbACdAEPCqTPzAAA/seCfoeDeLsC49kZcJimv1yLQnSSYYYT+wq/ugUkbpgnCMcNFf255oZr2RKD3fcAAA==",
+    img: "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQAgCdASoIAAwAAsBMJZgCdAEOeIYvWSwAAP7oAEru+GhkqD6eoacL6WSdf3X9mAvugmCkxHKA1fvj8meDTT2/5AAAAA==",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/12.webp",
-    img: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoIAAwAAsBMJaACdAEOzDlyMAAAyyXWlGu/ZQwpDrP/z5sXoR7Zrb2rOnJsf/2t203C18UWEuUW4fKI57g6AAAA",
+    img: "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQAgCdASoIAAwAAsBMJZgCdAEO/m2bp2oAAP3ijk055F0i/ZVyF2ujXJva04qHC0o1VKNVM4mWwosJcnvh3eulsi4AAA==",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/13.webp",
-    img: "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQAgCdASoIAAwAAsBMJbACdAD5idgkMfVAAP38+/Pbd6wC4nwxzEJx7iyYEwK1N/p0ov9x91oypxtt/Vb8bpHerhhqAudKC12jCSl+1boQflnawR+Zo9bf7ztg79v7pNQ4dh7zZVUHrvvKAAA=",
+    img: "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQAgCdASoIAAwAAsBMJbACdAEeglfTsUFgAP5mhVwCzo1broQjutEgfcURPJ3LAE2iBcsnD1aTRqzPq+lxgv+d8eEIbTnqC/6cH2rdCD8s7WCPxYq/0l0UpYL90noxwE/1J4k/UPRwAAAA",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/14.webp",
-    img: "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoIAAwAAsBMJaACdADdDeRWAAD+76f+32+pknBr4PDhCsLd3Hf8iy0xpn+7lQ+xS4ulrPNJ1wtlmT8jwtnSPuwZUAA=",
+    img: "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoIAAwAAsBMJbACdADbVHGx4AAA/kdDnh5aofk+Psm1ONBsl9fba1FYrTGrwjxXP4B8bH6BfNdeDZIO/UV8jwtnSPuwfLAA",
   },
   {
     url: "/01-series/60-noviembre-2022-kodak-gold-200/15.webp",
-    img: "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoIAAUAAsBMJZgCdAED/YPF/oAA/k/bKAl9tTSbRw4J+Llvt6sP1njg4UdU3igHcBHxd2I4ySAAAA==",
-  },
-  {
-    url: "/01-series/60-noviembre-2022-kodak-gold-200/99.webp",
-    img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoIAAUAAsBMJQBOiP/wPOyhQ4AA/seD4frg2jMakDD6QHEZj9XFxfGGyjw/1bkkUzsNf2cAAAA=",
+    img: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoIAAwAAsBMJYgCdAEPCAtnHgAA/lu4vFoJYHmnQ305F2UmW83qvzex74lg16YV4NLTxZHX3ZjPwJ1Kvrp6ogAA",
   },
   {
     url: "/01-series/61-diciembre-2022-fujifilm-color-200/01.webp",
@@ -1910,6 +1906,66 @@ const data = [
   {
     url: "/01-series/61-diciembre-2022-fujifilm-color-200/19.webp",
     img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoIAAUAAsBMJZACdAD0cgEQAP1PR0G4hpjiX7/R6++vdeGDjozOQ586tlk06Y7jVm8ZjBgAAAA=",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/01.webp",
+    img: "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACQAQCdASoIAAUAAsBMJaQAApweRUAA9r+AWGDFqGsWOdygK/a4R3QRoUOMAAAA",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/02.webp",
+    img: "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACwAQCdASoIAAUAAsBMJaQAAlmb4h8AAP5mEKRe5t/9sX0a3T51XYOAAAA=",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/03.webp",
+    img: "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoIAAUAAsBMJaQAAqrneKgwAM45vMSim6kCX1/lucPDFVFfD2lXZqKVIAAAAA==",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/04.webp",
+    img: "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoIAAUAAsBMJaQAAudqS/4AAP6sc2sBlCyMNlAu8VG7FdAUpvs8xatSrQAAAA==",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/05.webp",
+    img: "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACQAQCdASoIAAwAAsBMJaQAAuWaIkAA/vKtA4As26J+/RDheSWaSZs9lAAAAA==",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/06.webp",
+    img: "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoIAAwAAsBMJaQAD4fuzhaaOgAA/uZ7x2nIAHfuMNqLHbwooCktF3kZtmFgRdfaRsxBj1iAYnJUDKT1xwbpw9BAv56AAA==",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/07.webp",
+    img: "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoIAAwAAsBMJaQAAp3WQCqW0AAA/vVBOkcqP8BpYNGrHbtdQy3LuO4z97h81RVoGfOeioCYeigpfqefajiOvIngAAA=",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/08.webp",
+    img: "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoIAAUAAsBMJaQAAub17g2AAOI3b5t4tzzHNz0IMbd/sE+8fVhA4AAA",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/09.webp",
+    img: "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADwAQCdASoIAAwAAsBMJaQAAueMDLuPWgAA/vMOQMMg1Ed7O9OTtwYWLhdful5pGf4AAA==",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/10.webp",
+    img: "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAACQAQCdASoIAAUAAsBMJaQAAuUt8gAA/vBNFgb4EZBMkW4gAAA=",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/11.webp",
+    img: "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoIAAUAAsBMJaQAApx7ymwAAM4zZHNM8vr7HIT+MP6UtTg2hyvkgAAA",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/12.webp",
+    img: "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACQAQCdASoIAAwAAsBMJaQAApn56gAA/vQy1n9PYil+XWQOwe0g7dKtakTsJY2Y+OnNOPgMsl1So3wAAAA=",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/13.webp",
+    img: "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACQAQCdASoIAAUAAsBMJaQAAuUve0AA/kkVPE8J5u+1WWBGrK3sbBzgAAA=",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/14.webp",
+    img: "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACQAQCdASoIAAUAAsBMJaQAAuWrwoAA/rbAtWtoS2Dnx6IGauF8AAAA",
+  },
+  {
+    url: "/01-series/62-enero-2023-ilford-xp2-400/15.webp",
+    img: "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAQCdASoIAAUAAsBMJaQAAv+zi/BsAP7oM4Vo7D/MnPwo+KMcKAAA",
   },
 ];
 export default data;
