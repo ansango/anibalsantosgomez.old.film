@@ -42,17 +42,20 @@ const display = Bebas_Neue({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--display",
+  display: "swap",
 });
 
 const serif = PT_Serif({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--serif",
+  display: "swap",
 });
 
 const sans = Inter({
   subsets: ["latin"],
   variable: "--sans",
+  display: "swap",
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
