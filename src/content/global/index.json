@@ -12,6 +12,11 @@
     },
     {
       "visible": true,
+      "href": "cianos",
+      "label": "cianos"
+    },
+    {
+      "visible": true,
       "href": "sobremi",
       "label": "sobre mi"
     },

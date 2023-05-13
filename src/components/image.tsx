@@ -91,6 +91,7 @@ export const Image: FC<ImageProps> = ({
           priority={loading === "eager" ? true : false}
           placeholder={blurDataURL ? "blur" : "empty"}
           blurDataURL={blurDataURL}
+          unoptimized
         />
       ) : null}
     </motion.span>
