@@ -11,7 +11,7 @@
       "label": "series"
     },
     {
-      "visible": true,
+      "visible": false,
       "href": "cianos",
       "label": "cianos"
     },
