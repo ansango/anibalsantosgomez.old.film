@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: [`${process.env.NEXT_PUBLIC_BUCKET_URL.replace("https://", "")}`],
     formats: ["image/webp"],
+    unoptimized: true,
   },
   async rewrites() {
     return [
